@@ -2,11 +2,15 @@ project:
   type: book
 
 book:
-  title: "book"
-  author: "Norah Jones"
-  date: "12/6/2025"
+  title: "Introduction to Model-based Statistics"
+  subtitle: "Frequentist and Bayesian Reasoning with Simulation"
+  author: "Dr. Cheng-Han Yu"
+  date: today
+  site-url: https://chenghanyu-fbi.netlify.app/
+  repo-url: https://github.com/chenghanyustats/fbi
   chapters:
     - index.qmd
+    - 00-recommendation.qmd
     - intro.qmd
     - summary.qmd
     - references.qmd

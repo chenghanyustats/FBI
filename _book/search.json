@@ -2,11 +2,11 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "book",
+    "title": "Introduction to Model-based Statistics",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "text": "Welcome\nThis book offers an introduction to statistics built around a model based view of data and uncertainty. Rather than treating descriptive statistics, probability, and inference as separate topics, we will return again and again to a simple organizing idea:\n\\[\nY_i = f(x_i) + \\varepsilon_i .\n\\]\nIn words, we assume that each observation \\(Y_i\\) can be described by\nEven the basic problem of estimating a single population mean fits into this framework: it is the case where \\(f(x_i)\\) is a constant. More complex tasks such as comparing groups or fitting a regression line simply enrich the form of \\(f(x)\\) and the information available in \\(x\\).\nThis model based perspective is the backbone of the entire book. It allows us to present classical frequentist methods, simulation based methods, and Bayesian methods as three complementary ways to answer the same inferential questions.",
     "crumbs": [
-      "Preface"
+      "Welcome"
     ]
   },
   {
@@ -37,6 +37,306 @@
     "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
       "References"
+    ]
+  },
+  {
+    "objectID": "index.html#a-different-kind-of-introduction",
+    "href": "index.html#a-different-kind-of-introduction",
+    "title": "Introduction to Model-based Statistics",
+    "section": "",
+    "text": "information about the unit \\(x_i\\) (such as group membership or a predictor),\na systematic part \\(f(x_i)\\) that links \\(x_i\\) to the typical value of \\(Y_i\\),\na random error term \\(\\varepsilon_i\\) that captures variability we do not explain.",
+    "crumbs": [
+      "A different kind of introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#three-ways-to-think-about-inference",
+    "href": "index.html#three-ways-to-think-about-inference",
+    "title": "Introduction to Model-based Statistics",
+    "section": "Three ways to think about inference",
+    "text": "Three ways to think about inference\nFor almost every inferential problem in this book, you will see three approaches side by side.\n\nDistribution-based methods\nWe treat the parameters in the model as fixed but unknown quantities and study the long run behavior of procedures. This leads to familiar ideas such as standard errors, confidence intervals, hypothesis tests, and p values. Distribution based methods use mathematical results about sampling distributions, such as the Central Limit Theorem and the \\(t\\) distribution.\nSimulation-based methods\nWe use the computer to mimic what could have happened under repeated sampling. Bootstrap methods approximate the sampling distribution of statistics directly from the data. Permutation and randomization tests approximate the distribution of test statistics under a null hypothesis. Simulation provides intuition for frequentist ideas and is often easier to extend to new situations than purely algebraic formulas.\nBayesian methods\nWe treat the unknown parameters in the model as random quantities and specify prior distributions that represent our initial beliefs or information. The data update these priors through the likelihood to produce posterior distributions. From the posterior we obtain point estimates, credible intervals, and probability statements about parameters and predictions that have a direct and intuitive interpretation.\n\nThe same model \\(Y_i = f(x_i) + \\varepsilon_i\\) underlies all three perspectives. What differs is how we treat the unknown parts of the model and how we quantify uncertainty.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#what-is-different-about-this-book",
+    "href": "index.html#what-is-different-about-this-book",
+    "title": "Introduction to Model-based Statistics",
+    "section": "What is different about this book",
+    "text": "What is different about this book\nMany introductory statistics texts focus almost entirely on distribution based frequentist methods and mention simulation or Bayesian ideas only briefly, if at all. This book aims to be different in several ways.\n\nModel based from the start\nOne sample problems, two sample comparisons, analysis of variance, and regression are all presented as special cases of a common model based framework. This makes it easier to see connections between topics and to transition to more advanced modeling.\nFrequentist and Bayesian reasoning at the introductory level\nBayesian thinking is introduced early in simple settings, such as proportions and means, using graphical and computational tools rather than heavy algebra. Students see both confidence intervals and credible intervals, and they learn how to interpret each clearly.\nSimulation as a first class tool\nBootstrap intervals and permutation tests are not add ons at the end of the course. They are used throughout to build intuition for sampling variability, to check the behavior of classical methods, and to extend inference to situations where standard formulas do not apply.\nComparisons across methods\nFor key inferential tasks, such as inference for one mean, differences in means, proportions, and simple regression, the book presents distribution based, simulation based, and Bayesian approaches in a common structure. Each method is described in terms of its assumptions, interpretation, and strengths and limitations. Students see how the answers are similar, how they differ, and why.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#who-this-book-is-for",
+    "href": "index.html#who-this-book-is-for",
+    "title": "Introduction to Model-based Statistics",
+    "section": "Who this book is for",
+    "text": "Who this book is for\nThis book is designed for\n\nstudents in a first course in statistics or data analysis who want a conceptually rich and modern introduction,\ninstructors who wish to integrate simulation and Bayesian ideas into an introductory course without giving up core frequentist content,\nreaders in fields such as the social sciences, health sciences, and data science who want a unified model based view of statistical inference.\n\nThe mathematical level assumes familiarity with high school algebra. Calculus is not required, although some optional sections sketch connections for interested readers. Programming experience is not required too.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#using-this-book-in-different-courses",
+    "href": "index.html#using-this-book-in-different-courses",
+    "title": "Introduction to Model-based Statistics",
+    "section": "Using this book in different courses",
+    "text": "Using this book in different courses\nThe book is intentionally more comprehensive than a typical one term course. It is written to support several different paths:\n\na short quarter course that emphasizes data, visualization, and a gentle introduction to inference,\na one semester course that focuses mainly on frequentist methods, supported by simulation and brief Bayesian examples,\na one semester course that uses frequentist methods as a starting point and emphasizes Bayesian reasoning,\na two semester sequence in which a first term covers frequentist and simulation based inference and a second term develops Bayesian modeling more deeply.\n\nIn the next section, “Recommended paths,” we outline concrete chapter selections for these different uses and indicate which sections are core, which are extensions, and which are more advanced.\nThroughout the book, recurring visual conventions and section labels will help you recognize which material is frequentist, which is simulation based, which is Bayesian, and which is more advanced. This is intended to make the text flexible for instructors while giving students a coherent and connected experience.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Introduction to Model-based Statistics",
+    "section": "",
+    "text": "information about the unit \\(x_i\\) (such as group membership or a predictor),\na systematic part \\(f(x_i)\\) that links \\(x_i\\) to the typical value of \\(Y_i\\),\na random error term \\(\\varepsilon_i\\) that captures variability we do not explain.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Introduction to Model-based Statistics",
+    "section": "",
+    "text": "information about the unit \\(x_i\\) (such as group membership or a predictor),\na systematic part \\(f(x_i)\\) that links \\(x_i\\) to the typical value of \\(Y_i\\),\na random error term \\(\\varepsilon_i\\) that captures variability we do not explain.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html",
+    "href": "00-recommendation.html",
+    "title": "Recommended paths",
+    "section": "",
+    "text": "Proposed structure for Introduction to Model-based Statistics: Frequentist and Bayesian Reasoning with Simulation",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#path-1-ten-week-quarter-course",
+    "href": "00-recommendation.html#path-1-ten-week-quarter-course",
+    "title": "Recommended paths",
+    "section": "",
+    "text": "STEM students in a fast paced quarter system.\nStudents who need a solid foundation in data analysis and basic inferential ideas, but not a full treatment of all models.\n\n\n\nUnderstand data types, study design, and basic data summaries.\nDevelop intuition for probability and variability.\nLearn core ideas of confidence intervals and hypothesis testing in simple settings.\nSee a first glimpse of simulation and Bayesian reasoning.\n\n\n\nStatistics and Data\n\nCore:\n\n1 Science of Data and Data Science\n\n2 Data Collection and Data Type\n\nRecommended (if you use R or Python in the course):\n\n3 ready fo R data\n\n4 P repare Y ourself for data\n\n\nSummarizing Data\n\nCore:\n\n5 Data Visualization\n\n6 Numerical Measures of Data\n\n\nProbability\n\nCore (conceptual, at an intuitive level):\n\n7 Definition of Probability\n\n8 Probability Rules and Bayes Formula (focus on basic rules and a gentle, intuitive introduction to Bayes’ rule)\n\n\n(Optional, for more mathematically prepared students):\n\n9 Random Variables\n\n10 Discrete Probability Distributions\n\n11 Continuous Probability Distributions\n\n\nStatistical Inference\n\nCore:\n\n12 Random Sampling and Sampling Distribution (conceptual emphasis)\n\n13 Law of Large Numbers and Central Limit Theorem (conceptual emphasis)\n\n14 Point and Interval Estimation (focus on one mean and one proportion)\n\n15 Bootstrapping (simulation based intervals for one mean / one proportion)\n\n\nRecommended:\n\n16 Hypothesis Testing (core ideas of tests in one sample settings)\n\n\nBayesian and extensions\n\nRecommended (brief, conceptual selection):\n\n22 Bayesian Thinking and Inference\n\nSelect one or two simple examples (for example, a proportion) to illustrate prior → posterior → credible interval, without technical depth.\n\n\n\nAppendices\n\nRecommended if you use software:\n\nA R programming\n\nB Python Programming",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#path-2-one-semester-course-frequentist-emphasis",
+    "href": "00-recommendation.html#path-2-one-semester-course-frequentist-emphasis",
+    "title": "Recommended paths",
+    "section": "Path 2: One semester course, frequentist emphasis",
+    "text": "Path 2: One semester course, frequentist emphasis\nA traditional introductory statistics course, enhanced with simulation and early Bayesian ideas\nTypical audience\n\nStandard introductory statistics for STEM majors, biological sciences, or applied fields.\nCourses that need to ensure coverage of classical frequentist topics (t tests, proportions, chi square, regression), but also want to modernize with simulation and a taste of Bayes.\n\nHigh level learning goals\n\nDevelop fluency with descriptive statistics, probability, and the logic of statistical inference.\nUse both distribution based and simulation based methods for common inferential tasks.\nUnderstand the meaning and limitations of p values and confidence intervals.\nSee the basic ideas of Bayesian reasoning in simple settings.\n\nSuggested chapters\n\nStatistics and Data\n\nCore:\n\n1 Science of Data and Data Science\n\n2 Data Collection and Data Type\n\nRecommended:\n\n3 ready fo R data\n\n4 P repare Y ourself for data\n\n\nSummarizing Data\n\nCore:\n\n5 Data Visualization\n\n6 Numerical Measures of Data\n\n\nProbability\n\nCore:\n\n7 Definition of Probability\n\n8 Probability Rules and Bayes Formula\n\n9 Random Variables\n\n10 Discrete Probability Distributions\n\n11 Continuous Probability Distributions\n\nRecommended (if time allows, at a conceptual level):\n\nSome sections of 8 focusing on Bayes’ rule as a precursor to Bayesian inference.\n\n\nStatistical Inference\n\nCore:\n\n12 Random Sampling and Sampling Distribution\n\n13 Law of Large Numbers and Central Limit Theorem\n\n14 Point and Interval Estimation (one and two sided intervals for means and proportions)\n\n15 Bootstrapping (simulation based intervals; use to support and check classical methods)\n\n16 Hypothesis Testing (one sample tests, test statistics, p values)\n\n17 Comparing Two Population Means\n\n19 Inference About Proportions\n\n20 Inference about Categorical Data (chi square tests)\n\n21 The Issues of p -value and Statistical Significance (interpretation, effect size, practical significance)\n\nRecommended:\n\n18 Inference About Variances (for more mathematically inclined or engineering audiences)\n\n23 Nonparametric Tests (brief introduction to robustness and rank based methods)\n\n\nBayesian and models\n\nRecommended (selected sections):\n\n22 Bayesian Thinking and Inference (introduce prior, likelihood, posterior, and credible intervals with one or two simple examples; emphasize comparison with confidence intervals)\n\n27 Simple Linear Regression (cover classical least squares inference; simulation based checks as time permits)\n\n\nAppendices\n\nRecommended:\n\nA R programming or B Python Programming depending on the software used in the course.\n\n\n\nIn this path, the frequentist distribution based and simulation based subsections are primary. The Bayesian subsections are used selectively to show alternative interpretations and to build conceptual bridges, without trying to fully parallel every frequentist method.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#path-3-one-semester-course-bayesian-emphasis",
+    "href": "00-recommendation.html#path-3-one-semester-course-bayesian-emphasis",
+    "title": "Recommended paths",
+    "section": "Path 3: One semester course, Bayesian emphasis",
+    "text": "Path 3: One semester course, Bayesian emphasis\nA first course that explicitly develops both frequentist and Bayesian reasoning\nTypical audience\n\nStudents taking an introductory course that intentionally integrates Bayes from the start.\nPrograms that want students to understand both paradigms conceptually, even if technical details are light.\n\nHigh level learning goals\n\nAchieve all core goals of a traditional introductory course (Path 2).\nDevelop clear, intuitive understanding of prior, likelihood, posterior, and credible intervals.\nCompare confidence intervals and credible intervals in several canonical settings.\nUse simulation (bootstrap and posterior simulation) as a common language for uncertainty.\n\nSuggested chapters\nMuch of the material overlaps with Path 2, but you prioritize Bayesian subsections and examples.\n\nStatistics and Data\n\nSame as Path 2: 1–2 core; 3–4 recommended.\n\nSummarizing Data\n\nSame as Path 2: 5–6 core.\n\nProbability\n\nCore:\n\n7 Definition of Probability\n\n8 Probability Rules and Bayes Formula (emphasize Bayes’ rule and simple discrete Bayes examples; connect to later Bayesian inference)\n\n9 Random Variables\n\n10 Discrete Probability Distributions (Binomial as key example feeding into Beta–Binomial models)\n\n11 Continuous Probability Distributions (Normal as key example for Normal–Normal models)\n\n\nStatistical Inference\n\nCore:\n\n12 Random Sampling and Sampling Distribution\n\n13 Law of Large Numbers and Central Limit Theorem\n\n14 Point and Interval Estimation (include both confidence intervals and first credible intervals in simple conjugate cases)\n\n15 Bootstrapping (for means and proportions; emphasize connection between simulation and posterior sampling)\n\n16 Hypothesis Testing (frequentist tests)\n\n17 Comparing Two Population Means\n\n19 Inference About Proportions\n\n21 The Issues of p -value and Statistical Significance\n\nRecommended:\n\n20 Inference about Categorical Data\n\n23 Nonparametric Tests\n\n\nBayesian focus\n\nCore:\n\n22 Bayesian Thinking and Inference (use extensively; multiple examples in one proportion, one mean, and perhaps two means)\n\n\nRecommended:\n\n30 Bayesian Linear Regression (at an intuitive level, focusing on priors on regression coefficients and posterior intervals; connect to simple regression)\n\n\nModels\n\nRecommended:\n\n27 Simple Linear Regression (classical view, then Bayesian comparison)\n\n\n\nIn this path, each main inferential chapter becomes an opportunity to show three viewpoints: distribution based frequentist, simulation based, and Bayesian. Time constraints will likely require that you focus on a small number of canonical situations (one proportion, one mean, difference in means, simple regression) and treat them deeply rather than covering every possible test.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#path-4-two-semester-sequence",
+    "href": "00-recommendation.html#path-4-two-semester-sequence",
+    "title": "Recommended paths",
+    "section": "Path 4: Two semester sequence",
+    "text": "Path 4: Two semester sequence\nFall: Frequentist and simulation based inference; Spring: Bayesian modeling\nTypical audience\n\nPrograms that can dedicate a full year to introductory statistics and wish to give students a modern, model based foundation.\nDepartments that want a strong frequentist grounding followed by a coherent Bayesian follow up, using the same notation and examples.\n\n\nFall semester: Frequentist and simulation based\nLearning goals\n\nBuild a strong base in data, probability, and classical inference.\nUse simulation to understand and check frequentist procedures.\nPrepare students conceptually for Bayesian modeling in the spring.\n\nSuggested chapters (Fall)\n\nStatistics and Data:\n\n1–2 core; 3–4 recommended.\n\nSummarizing Data:\n\n5–6 core.\n\nProbability:\n\n7–11 core.\n\nStatistical Inference:\n\n12–21 core, with particular emphasis on:\n\n14 Point and Interval Estimation\n\n15 Bootstrapping\n\n16 Hypothesis Testing\n\n17 Comparing Two Population Means\n\n19 Inference About Proportions\n\n20 Inference about Categorical Data\n\n21 The Issues of p -value and Statistical Significance\n\n\nRecommended:\n\n18 Inference About Variances\n\n23 Nonparametric Tests\n\n\nModels (classical)\n\nCore:\n\n27 Simple Linear Regression\n\n\nRecommended:\n\n24 Analysis of Variance\n\n25 Multiple Comparison\n\n26 Two-Way ANOVA\n\n28 Multiple Linear Regression\n\n29 Logistic Regression\n\n\n\nBayesian material in Fall can be very light and mostly conceptual (for example, a short segment from 22 to motivate Spring).\n\n\nSpring semester: Bayesian and model based\nLearning goals\n\nRevisit key inferential questions within a Bayesian framework.\nSee regression and simple hierarchical models from a Bayesian perspective.\nUse simulation (posterior sampling) as the common computational tool.\n\nSuggested chapters (Spring)\n\nReview and bridge\n\nSelective review of:\n\n8 Probability Rules and Bayes Formula (Bayes’ rule)\n\n14–17, 19 (main inferential questions)\n\n\nBayesian foundation\n\nCore:\n\n22 Bayesian Thinking and Inference (full treatment)\n\n\nUse the examples in 22 to revisit:\n\nOne proportion\n\nOne mean\n\nDifference in means\n\n\nBayesian models\n\nCore:\n\n30 Bayesian Linear Regression* (full chapter; prior on coefficients, posterior inference, prediction)\n\n\nRecommended (if you choose to add more Bayesian content in future revisions):\n\nBayesian versions of logistic regression or simple hierarchical models, building on 29 and 31.\n\n\n\nIn the Spring, frequentist material is treated as known background. Class time focuses on model specification, prior choice, posterior interpretation, and model checking, always anchored by the same model based view (Y_i = f(x_i) + _i).",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#choosing-and-adapting-a-path",
+    "href": "00-recommendation.html#choosing-and-adapting-a-path",
+    "title": "Recommended paths",
+    "section": "Choosing and adapting a path",
+    "text": "Choosing and adapting a path\nThese four paths are starting points. Many instructors will adapt them:\n\nYou might run a single semester course that is mostly Path 2, but adopt a few deeper Bayesian case studies from Path 3.\nYou might use the Fall half of Path 4 as a stand alone course and reserve the Spring half for students in a data science track.\nYou might treat the appendices on R and Python as core in courses with a strong computational emphasis, and as optional references in more theory oriented offerings.\n\nWhatever path you choose, the goal of this book is to give you and your students a coherent, model based framework in which frequentist, simulation based, and Bayesian reasoning are seen as complementary ways of answering the same inferential questions.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-i-data-variation-and-models",
+    "href": "00-recommendation.html#part-i-data-variation-and-models",
+    "title": "Recommended paths",
+    "section": "Part I: Data, Variation, and Models",
+    "text": "Part I: Data, Variation, and Models\n\nChapter 1: Why Statistics? Data, Variation, and Decisions\n\nReal world examples of uncertainty and decision making.\nData as measured aspects of units (people, schools, machines, etc.).\nVariability within and between groups.\nInformal idea of a “model” as a structured way to describe patterns and noise.\n\n\n\nChapter 2: Data, Studies, and Causality\n\nObservational studies vs experiments.\nConfounding, randomization, and control.\nUnits, variables, and data tables.\nWhy we are cautious about causal claims, even with models.\n\n\n\nChapter 3: A First Look at Model-based Thinking: \\(Y = f(x) + \\varepsilon\\)\n\nIntroduce the model based backbone:\n\n\\(Y_i = f(x_i) + \\varepsilon_i\\).\n\nExamples:\n\nOne sample mean: \\(Y_i = \\mu + \\varepsilon_i\\).\nTwo groups: \\(Y_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i\\) with \\(x_i \\in \\{0,1\\}\\).\nSimple regression: \\(Y_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i\\).\n\nParameters vs random error; what it means to “learn about” parameters.\nVery gentle foreshadowing: same model, different inferential philosophies (Frequentist, Bayesian).\n\n\n\nChapter 4: Working with Data (R or Python)\n\nHow to load, tidy, and inspect data in your chosen language.\nData frames, basic plotting, simple summaries.\nThis chapter can be software specific and optional for courses not using computation.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-ii-describing-and-visualizing-data",
+    "href": "00-recommendation.html#part-ii-describing-and-visualizing-data",
+    "title": "Recommended paths",
+    "section": "Part II: Describing and Visualizing Data",
+    "text": "Part II: Describing and Visualizing Data\n\nChapter 5: Visualizing One and Two Variables\n\nGraphs for a single quantitative variable (histograms, density plots, boxplots).\nGraphs for categorical variables (bar charts).\nGraphs for relationships (scatterplots, side by side boxplots).\nEmphasis on patterns vs noise; link back to \\(Y = f(x) + \\varepsilon\\).\n\n\n\nChapter 6: Numerical Descriptions of Data\n\nMeasures of center and spread (mean, median, variance, standard deviation, IQR).\nQuantiles and percentiles.\nCorrelation and covariance.\nRobust vs non robust summaries; connection to later nonparametric methods.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-iii-probability-random-variables-and-sampling",
+    "href": "00-recommendation.html#part-iii-probability-random-variables-and-sampling",
+    "title": "Recommended paths",
+    "section": "Part III: Probability, Random Variables, and Sampling",
+    "text": "Part III: Probability, Random Variables, and Sampling\n\nChapter 7: Probability and Long-run Behavior\n\nProbability as long run relative frequency.\nBasic rules (addition, multiplication, conditional probability).\nIndependence and dependence.\nSimple tree diagrams and tables.\n\n\n\nChapter 8: Random Variables, Parameters, and Distributions\n\nRandom variables vs parameters vs observed data.\nDiscrete and continuous random variables.\nExpected value and variance (conceptually).\nSimple families: Bernoulli, Binomial, Normal (others only briefly).\n\n\n\nChapter 9: Sampling Distributions and the Central Limit Theorem\n\nConcept of a sampling distribution (of the sample mean, sample proportion).\nStandard error as a measure of sampling variability.\nLaw of Large Numbers and Central Limit Theorem (conceptual, maybe with simulation).\nLink to model based view: sampling distributions arise from repeated sampling under the model.\n\n\n\nChapter 10: Simulation as a Tool for Understanding Models\n\nUsing the computer to simulate coin flips, dice rolls, and sample means.\nEmpirical approximations to sampling distributions.\nBootstrap idea (very informally): resample from data to mimic sampling from the population.\nThis chapter sets up later “simulation based inference.”",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-iv-paradigms-of-inference",
+    "href": "00-recommendation.html#part-iv-paradigms-of-inference",
+    "title": "Recommended paths",
+    "section": "Part IV: Paradigms of Inference",
+    "text": "Part IV: Paradigms of Inference\n\nChapter 11: What Is Statistical Inference?\n\nInference as learning about unknown aspects of a model using data.\nParameters, estimators, and uncertainty.\nPoint estimation vs interval estimation vs hypothesis testing.\nRevisit \\(Y = f(x) + \\varepsilon\\) and make it explicit that inference is about the unknown parts of \\(f\\) and the variance of \\(\\varepsilon\\).\n\n\n\nChapter 12: Frequentist Reasoning\n\nParameters fixed but unknown; randomness comes from the data.\nLong run properties of procedures (coverage, Type I and Type II errors).\nConfidence intervals and their long run interpretation.\nHypothesis tests, p values, significance vs effect size.\nAt this stage, keep examples simple (one mean, one proportion) and conceptual.\n\n\n\nChapter 13: Bayesian Reasoning\n\nParameters treated as random with a prior distribution.\nLikelihood as the bridge from model to data.\nPosterior \\(\\propto\\) prior \\(\\times\\) likelihood.\nSimple conjugate examples:\n\nBeta–Binomial for a proportion.\nNormal–Normal for a mean (without heavy math).\n\nCredible intervals and probability statements about parameters.\nContrast of interpretations with confidence intervals.\n\n\n\nChapter 14: Distribution-based vs Simulation-based Inference\n\nDistribution-based (theory-based) methods\n\nUse mathematical results about sampling distributions.\nt distribution, z distribution, chi-square, etc.\nEmphasize assumptions (normality, independence, equal variances).\n\nSimulation-based (sampling-based) methods\n\nBootstrap for interval estimation.\nPermutation/randomization tests for hypothesis testing.\nWhen and why simulation is helpful (small samples, complex models, intuition).\n\nConceptual comparison:\n\nBoth aim to approximate the behavior of estimators or test statistics under the model.\nOne uses algebra; the other uses the computer.\n\nBrief mention of nonparametric distribution free approaches:\n\nTests based on ranks, signs, or permutations as examples of procedures that do not rely on specific distributional forms.\n\nPrepare a general template that will be reused in later chapters.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-v-inference-for-one-population",
+    "href": "00-recommendation.html#part-v-inference-for-one-population",
+    "title": "Recommended paths",
+    "section": "Part V: Inference for One Population",
+    "text": "Part V: Inference for One Population\n\nEach of the following chapters will use a common internal structure: 1. The model and parameter(s) of interest\n2. Distribution based inference\n3. Simulation based inference\n4. Bayesian inference\n5. Nonparametric or robust approaches (when appropriate)\n6. Comparison and interpretation\n\n\nChapter 15: Inference for One Population Proportion\n\nModel: \\(Y_i \\sim \\text{Bernoulli}(p)\\) or \\(Y \\sim \\text{Binomial}(n, p)\\), parameter \\(p\\).\nDistribution based:\n\nLarge sample \\(z\\) intervals and tests.\n\nSimulation based:\n\nBootstrap interval for \\(p\\).\nRandomization tests for simple null hypotheses.\n\nBayesian:\n\nBeta prior for \\(p\\), posterior Beta distribution.\nCredible intervals and probability statements.\n\nNonparametric / distribution free:\n\nHere the Binomial model is already discrete; discuss exact Binomial tests as a “distribution free” alternative to asymptotic approximations.\n\nComparison:\n\nSummarize similarities and differences among methods on common examples.\n\n\n\n\nChapter 16: Inference for One Population Mean\n\nModel: \\(Y_i = \\mu + \\varepsilon_i\\), \\(\\varepsilon_i \\sim\\) symmetric with mean 0 (Normal as a special case).\nDistribution based:\n\nt interval and t test for \\(\\mu\\).\n\nSimulation based:\n\nBootstrap interval for \\(\\mu\\).\nPermutation/randomization test when appropriate.\n\nBayesian:\n\nNormal prior for \\(\\mu\\) (with known or unknown variance).\nPosterior for \\(\\mu\\); credible intervals.\n\nNonparametric:\n\nSign test or Wilcoxon signed rank as distribution free alternatives when normality is doubtful.\n\nComparison:\n\nVisual and numerical comparison of confidence intervals, credible intervals, and nonparametric intervals/tests.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-vi-comparing-two-groups",
+    "href": "00-recommendation.html#part-vi-comparing-two-groups",
+    "title": "Recommended paths",
+    "section": "Part VI: Comparing Two Groups",
+    "text": "Part VI: Comparing Two Groups\n\nChapter 17: Comparing Two Proportions\n\nModel: two independent Binomial samples with parameters \\(p_1, p_2\\), or log odds framework.\nDistribution based:\n\nTwo sample \\(z\\) test and intervals for \\(p_1 - p_2\\).\n\nSimulation based:\n\nBootstrap interval.\nRandomization test for equality of proportions.\n\nBayesian:\n\nIndependent Beta priors for \\(p_1, p_2\\); posterior for difference.\n\nNonparametric:\n\nFisher’s exact test for small samples.\n\nComparison and interpretation.\n\n\n\nChapter 18: Comparing Two Means: Independent Samples\n\nModel: \\(Y_{ij} = \\mu_j + \\varepsilon_{ij}\\) for groups \\(j = 1,2\\).\nDistribution based:\n\nPooled/unpooled two sample t tests and intervals.\n\nSimulation based:\n\nBootstrap for difference in means.\nRandomization/permutation test under equal means.\n\nBayesian:\n\nPriors on \\(\\mu_1, \\mu_2\\) (or on difference).\nPosterior for \\(\\mu_1 - \\mu_2\\); credible intervals.\n\nNonparametric:\n\nWilcoxon rank sum (Mann–Whitney) test.\n\nComparison and interpretation.\n\n\n\nChapter 19: Paired Data and Matched Pairs\n\nModel: differences \\(D_i = Y_{i, \\text{after}} - Y_{i, \\text{before}}\\) with mean \\(\\mu_D\\).\nDistribution based:\n\nOne sample t methods on \\(D_i\\).\n\nSimulation based:\n\nBootstrap on \\(D_i\\); randomization signs.\n\nBayesian:\n\nPrior on \\(\\mu_D\\); posterior and credible intervals.\n\nNonparametric:\n\nSign test and Wilcoxon signed rank test.\n\nComparison and interpretation.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-vii-linear-models-and-regression",
+    "href": "00-recommendation.html#part-vii-linear-models-and-regression",
+    "title": "Recommended paths",
+    "section": "Part VII: Linear Models and Regression",
+    "text": "Part VII: Linear Models and Regression\n\nChapter 20: Simple Linear Regression\n\nModel: \\(Y_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i\\).\nDistribution based:\n\nLeast squares estimation, standard errors, confidence intervals, tests for \\(\\beta_1\\).\n\nSimulation based:\n\nBootstrap for regression coefficients.\nPermutation tests for slope under null of no association.\n\nBayesian:\n\nPriors on \\((\\beta_0, \\beta_1)\\); posterior and credible intervals.\nPosterior predictive distribution for new observations.\n\nNonparametric / robust:\n\nRank based correlation; robust regression or nonparametric smoothers (brief conceptual).\n\nComparison and interpretation.\n\n\n\nChapter 21: Multiple Linear Regression (Introductory)\n\nExtend model to multiple predictors.\nFocus mainly on distribution based and simulation based methods.\nProvide a conceptual Bayesian view with simple priors on coefficients (details optional).\n\n\n\nChapter 22: Logistic Regression and Categorical Outcomes (Optional / Advanced Intro)\n\nBinary response with logit link.\nBasic interpretation of logistic model coefficients and odds ratios.\nFrequentist vs Bayesian conceptual comparison.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-viii-nonparametric-robustness-and-model-checking",
+    "href": "00-recommendation.html#part-viii-nonparametric-robustness-and-model-checking",
+    "title": "Recommended paths",
+    "section": "Part VIII: Nonparametric, Robustness, and Model Checking",
+    "text": "Part VIII: Nonparametric, Robustness, and Model Checking\n\nChapter 23: Nonparametric and Distribution-free Methods\n\nUnify the nonparametric tests introduced earlier.\nWhen and why to prefer nonparametric procedures.\nStrengths and limitations compared to parametric and Bayesian approaches.\n\n\n\nChapter 24: Checking Model Assumptions\n\nResidual plots, influence and leverage.\nDiagnostics for regression and ANOVA type models.\nConceptual Bayesian model checking and posterior predictive checks.",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-ix-design-power-and-practice",
+    "href": "00-recommendation.html#part-ix-design-power-and-practice",
+    "title": "Recommended paths",
+    "section": "Part IX: Design, Power, and Practice",
+    "text": "Part IX: Design, Power, and Practice\n\nChapter 25: Sample Size, Power, and Planning Studies\n\nFrequentist power and sample size calculations for simple tests.\nSimulation based power analysis.\nBayesian perspectives on planning (brief).\n\n\n\nChapter 26: Reproducible Data Analysis and Communication\n\nOrganizing an analysis in a reproducible way (Quarto, scripts, notebooks).\nTelling a coherent story with models, graphs, and uncertainty.\nEthical use of statistical methods and honest reporting.\n\n\n\nAppendices\n\nAppendix A: R basics (if you choose R)\nAppendix B: Python basics (if you choose Python)\nAppendix C: Mathematical details (optional, for more advanced readers)",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-i-statistics-and-data",
+    "href": "00-recommendation.html#part-i-statistics-and-data",
+    "title": "Recommended paths",
+    "section": "Part I: Statistics and Data",
+    "text": "Part I: Statistics and Data\n\nChapter 1: Why Statistics? Data, Variation, and Decisions\n\n\nChapter 2: Data, Studies, and Causality\n\n\nChapter 3: A First Look at Model-based Thinking: \\(Y = f(x) + \\varepsilon\\)\n\n\nChapter 4: Working with Data in R / Python\n\n\nChapter 5: Visualizing One and Two Variables\n\n\nChapter 6: Numerical Descriptions of Data",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-ii-randomness-and-data-generating-process",
+    "href": "00-recommendation.html#part-ii-randomness-and-data-generating-process",
+    "title": "Recommended paths",
+    "section": "Part II: Randomness and Data Generating Process",
+    "text": "Part II: Randomness and Data Generating Process\n\nChapter 7: Probability and Long-run Behavior\n\n\nChapter 8: Random Variables, Parameters, and Distributions\n\n\nChapter 9: Sampling Distributions and the Central Limit Theorem\n\n\nChapter 10: Simulation as a Tool for Understanding Models",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-iii-parameter-learning-from-data",
+    "href": "00-recommendation.html#part-iii-parameter-learning-from-data",
+    "title": "Recommended paths",
+    "section": "Part III: Parameter Learning from Data",
+    "text": "Part III: Parameter Learning from Data\n\nChapter 11: What Is Statistical Inference?\n\n\nChapter 12: Frequentist Reasoning\n\n\nChapter 13: Bayesian Reasoning\n\n\nChapter 14: Distribution-based vs Simulation-based Inference",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-iv-inference-for-one-population",
+    "href": "00-recommendation.html#part-iv-inference-for-one-population",
+    "title": "Recommended paths",
+    "section": "Part IV: Inference for One Population",
+    "text": "Part IV: Inference for One Population\n\nChapter 15: Inference for One Population Proportion\n\nModel: \\(Y \\sim \\text{Binomial}(n, p)\\)\nDistribution-based: large sample \\(z\\) CI and tests\nSimulation-based: bootstrap and randomization\nBayesian: Beta–Binomial\nExact Binomial as “distribution-free” alternative\nComparison\n\n\n\nChapter 16: Inference for One Population Mean\n\nModel: \\(Y_i = \\mu + \\varepsilon_i\\)\nDistribution-based: \\(t\\) CI and tests\nSimulation-based: bootstrap, randomization\nBayesian: Normal prior for \\(\\mu\\)\nNonparametric: sign test, Wilcoxon signed rank\nComparison",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-v-comparing-two-groups",
+    "href": "00-recommendation.html#part-v-comparing-two-groups",
+    "title": "Recommended paths",
+    "section": "Part V: Comparing Two Groups",
+    "text": "Part V: Comparing Two Groups\n\nChapter 17: Comparing Two Proportions\n\n\nChapter 18: Comparing Two Independent Means\n\n\nChapter 19: Paired Data and Matched Pairs\n(Each with the same pattern: model → distribution-based → simulation-based → Bayesian → nonparametric → comparison.)",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-vi-linear-models",
+    "href": "00-recommendation.html#part-vi-linear-models",
+    "title": "Recommended paths",
+    "section": "Part VI: Linear Models",
+    "text": "Part VI: Linear Models\n\nChapter 20: Simple Linear Regression\n\nModel: \\(Y_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i\\)\nDistribution-based inference for \\(\\beta_0, \\beta_1\\)\nSimulation-based (bootstrap, permutation)\nBayesian regression with priors on \\((\\beta_0, \\beta_1)\\)\nModel interpretation and prediction\n\n\n\nChapter 21: One-way ANOVA as a Linear Model\n\nModel: categorical predictor with \\(k\\) levels\n\n\\(Y_{ij} = \\mu + \\alpha_j + \\varepsilon_{ij}\\)\nor equivalently regression with dummy variables\n\nConnection to comparing more than two means\nDistribution-based:\n\nF test, group mean comparisons, multiple comparisons (brief)\n\nSimulation-based:\n\nRandomization/perm permutation ANOVA, bootstrap for group means\n\nBayesian:\n\nPriors on group means or effects; posterior for differences\n\nNonparametric:\n\nKruskal–Wallis as distribution-free analogue\n\nComparison with two-sample methods\n\n\n\nChapter 22: Two-way ANOVA and Interactions\n\nModel: factors A and B, interaction terms\n\n\\(Y_{ijk} = \\mu + \\alpha_i + \\beta_j + (\\alpha\\beta)_{ij} + \\varepsilon_{ijk}\\)\n\nInterpretation of main effects and interactions\nDistribution-based F tests\nSimulation-based checks (permutation for factor labels)\nBayesian view (conceptual; priors on effects)\nLink to multiple regression formulation\n\n\n\nChapter 23: Multiple Linear Regression\n\nModel: \\(Y_i = \\beta_0 + \\beta_1 x_{i1} + \\cdots + \\beta_p x_{ip} + \\varepsilon_i\\)\nCategorical predictors as special case (ANOVA in regression form)\nDistribution-based inference for regression coefficients\nSimulation-based:\n\nBootstrap for regression, permutation tests for predictors\n\nBayesian multiple regression (conceptual; priors on \\(\\beta\\))\nModel selection and interpretation (light)\n\n\n\nChapter 24: Logistic Regression and Binary Outcomes (Optional)\n\nBinary \\(Y\\), logit link\nInterpretation of coefficients, odds ratios\nFrequentist vs Bayesian perspectives (conceptual)\nSimulation-based understanding of uncertainty",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-vii-nonparametric-methods-robustness-and-model-checking",
+    "href": "00-recommendation.html#part-vii-nonparametric-methods-robustness-and-model-checking",
+    "title": "Recommended paths",
+    "section": "Part VII: Nonparametric Methods, Robustness, and Model Checking",
+    "text": "Part VII: Nonparametric Methods, Robustness, and Model Checking\n\nChapter 25: Nonparametric and Distribution-free Methods\n\n\nChapter 26: Checking Model Assumptions and Model Fit",
+    "crumbs": [
+      "Recommended paths"
+    ]
+  },
+  {
+    "objectID": "00-recommendation.html#part-viii-design-power-and-practice",
+    "href": "00-recommendation.html#part-viii-design-power-and-practice",
+    "title": "Recommended paths",
+    "section": "Part VIII: Design, Power, and Practice",
+    "text": "Part VIII: Design, Power, and Practice\n\nChapter 27: Sample Size, Power, and Study Planning\n\n\nChapter 28: Reproducible Data Analysis and Communication\n\n\nAppendices\n\nAppendix A: R basics\nAppendix B: Python basics\nAppendix C: Mathematical details (optional)",
+    "crumbs": [
+      "Recommended paths"
     ]
   }
 ]

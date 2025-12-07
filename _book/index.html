@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Norah Jones">
-<meta name="dcterms.date" content="2025-12-06">
+<meta name="author" content="Dr.&nbsp;Cheng-Han Yu">
+<meta name="dcterms.date" content="2025-12-07">
 
-<title>book</title>
+<title>Introduction to Model-based Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -67,7 +32,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./00-recommendation.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -107,6 +72,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -119,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -136,7 +130,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="./index.html" class="sidebar-logo-link">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">book</a> 
+      <a href="./">Introduction to Model-based Statistics</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/chenghanyustats/fbi" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -149,7 +146,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-recommendation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recommended paths</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -180,7 +183,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
+  <li><a href="#three-ways-to-think-about-inference" id="toc-three-ways-to-think-about-inference" class="nav-link" data-scroll-target="#three-ways-to-think-about-inference">Three ways to think about inference</a></li>
+  <li><a href="#what-is-different-about-this-book" id="toc-what-is-different-about-this-book" class="nav-link" data-scroll-target="#what-is-different-about-this-book">What is different about this book</a></li>
+  <li><a href="#who-this-book-is-for" id="toc-who-this-book-is-for" class="nav-link" data-scroll-target="#who-this-book-is-for">Who this book is for</a></li>
+  <li><a href="#using-this-book-in-different-courses" id="toc-using-this-book-in-different-courses" class="nav-link" data-scroll-target="#using-this-book-in-different-courses">Using this book in different courses</a></li>
   </ul>
 </nav>
     </div>
@@ -189,7 +196,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">book</h1>
+<h1 class="title">Introduction to Model-based Statistics</h1>
+<p class="subtitle lead">Frequentist and Bayesian Reasoning with Simulation</p>
 </div>
 
 
@@ -199,14 +207,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Norah Jones </p>
+             <p>Dr.&nbsp;Cheng-Han Yu </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 6, 2025</p>
+      <p class="date">December 7, 2025</p>
     </div>
   </div>
   
@@ -218,16 +226,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<section id="welcome" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="welcome">Welcome</h2>
+<p>This book offers an introduction to statistics built around a model based view of data and uncertainty. Rather than treating descriptive statistics, probability, and inference as separate topics, we will return again and again to a simple organizing idea:</p>
+<p><span class="math display">\[
+Y_i = f(x_i) + \varepsilon_i .
+\]</span></p>
+<p>In words, we assume that each observation <span class="math inline">\(Y_i\)</span> can be described by</p>
+<ul>
+<li>information about the unit <span class="math inline">\(x_i\)</span> (such as group membership or a predictor),</li>
+<li>a systematic part <span class="math inline">\(f(x_i)\)</span> that links <span class="math inline">\(x_i\)</span> to the typical value of <span class="math inline">\(Y_i\)</span>,</li>
+<li>a random error term <span class="math inline">\(\varepsilon_i\)</span> that captures variability we do not explain.</li>
+</ul>
+<p>Even the basic problem of estimating a single population mean fits into this framework: it is the case where <span class="math inline">\(f(x_i)\)</span> is a constant. More complex tasks such as comparing groups or fitting a regression line simply enrich the form of <span class="math inline">\(f(x)\)</span> and the information available in <span class="math inline">\(x\)</span>.</p>
+<p>This model based perspective is the backbone of the entire book. It allows us to present classical frequentist methods, simulation based methods, and Bayesian methods as three complementary ways to answer the same inferential questions.</p>
+</section>
+<section id="three-ways-to-think-about-inference" class="level2">
+<h2 class="anchored" data-anchor-id="three-ways-to-think-about-inference">Three ways to think about inference</h2>
+<p>For almost every inferential problem in this book, you will see three approaches side by side.</p>
+<ul>
+<li><p><strong>Distribution-based methods</strong></p>
+<p>We treat the parameters in the model as fixed but unknown quantities and study the long run behavior of procedures. This leads to familiar ideas such as standard errors, confidence intervals, hypothesis tests, and p values. Distribution based methods use mathematical results about sampling distributions, such as the Central Limit Theorem and the <span class="math inline">\(t\)</span> distribution.</p></li>
+<li><p><strong>Simulation-based methods</strong></p>
+<p>We use the computer to mimic what could have happened under repeated sampling. Bootstrap methods approximate the sampling distribution of statistics directly from the data. Permutation and randomization tests approximate the distribution of test statistics under a null hypothesis. Simulation provides intuition for frequentist ideas and is often easier to extend to new situations than purely algebraic formulas.</p></li>
+<li><p><strong>Bayesian methods</strong></p>
+<p>We treat the unknown parameters in the model as random quantities and specify prior distributions that represent our initial beliefs or information. The data update these priors through the likelihood to produce posterior distributions. From the posterior we obtain point estimates, credible intervals, and probability statements about parameters and predictions that have a direct and intuitive interpretation.</p></li>
+</ul>
+<p>The same model <span class="math inline">\(Y_i = f(x_i) + \varepsilon_i\)</span> underlies all three perspectives. What differs is how we treat the unknown parts of the model and how we quantify uncertainty.</p>
+</section>
+<section id="what-is-different-about-this-book" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-different-about-this-book">What is different about this book</h2>
+<p>Many introductory statistics texts focus almost entirely on distribution based frequentist methods and mention simulation or Bayesian ideas only briefly, if at all. This book aims to be different in several ways.</p>
+<ul>
+<li><p><strong>Model based from the start</strong></p>
+<p>One sample problems, two sample comparisons, analysis of variance, and regression are all presented as special cases of a common model based framework. This makes it easier to see connections between topics and to transition to more advanced modeling.</p></li>
+<li><p><strong>Frequentist and Bayesian reasoning at the introductory level</strong></p>
+<p>Bayesian thinking is introduced early in simple settings, such as proportions and means, using graphical and computational tools rather than heavy algebra. Students see both confidence intervals and credible intervals, and they learn how to interpret each clearly.</p></li>
+<li><p><strong>Simulation as a first class tool</strong></p>
+<p>Bootstrap intervals and permutation tests are not add ons at the end of the course. They are used throughout to build intuition for sampling variability, to check the behavior of classical methods, and to extend inference to situations where standard formulas do not apply.</p></li>
+<li><p><strong>Comparisons across methods</strong></p>
+<p>For key inferential tasks, such as inference for one mean, differences in means, proportions, and simple regression, the book presents distribution based, simulation based, and Bayesian approaches in a common structure. Each method is described in terms of its assumptions, interpretation, and strengths and limitations. Students see how the answers are similar, how they differ, and why.</p></li>
+</ul>
+</section>
+<section id="who-this-book-is-for" class="level2">
+<h2 class="anchored" data-anchor-id="who-this-book-is-for">Who this book is for</h2>
+<p>This book is designed for</p>
+<ul>
+<li>students in a first course in statistics or data analysis who want a conceptually rich and modern introduction,</li>
+<li>instructors who wish to integrate simulation and Bayesian ideas into an introductory course without giving up core frequentist content,</li>
+<li>readers in fields such as the social sciences, health sciences, and data science who want a unified model based view of statistical inference.</li>
+</ul>
+<p>The mathematical level assumes familiarity with high school algebra. Calculus is not required, although some optional sections sketch connections for interested readers. Programming experience is not required too.</p>
+</section>
+<section id="using-this-book-in-different-courses" class="level2">
+<h2 class="anchored" data-anchor-id="using-this-book-in-different-courses">Using this book in different courses</h2>
+<p>The book is intentionally more comprehensive than a typical one term course. It is written to support several different paths:</p>
+<ul>
+<li>a short quarter course that emphasizes data, visualization, and a gentle introduction to inference,</li>
+<li>a one semester course that focuses mainly on frequentist methods, supported by simulation and brief Bayesian examples,</li>
+<li>a one semester course that uses frequentist methods as a starting point and emphasizes Bayesian reasoning,</li>
+<li>a two semester sequence in which a first term covers frequentist and simulation based inference and a second term develops Bayesian modeling more deeply.</li>
+</ul>
+<p>In the next section, “Recommended paths,” we outline concrete chapter selections for these different uses and indicate which sections are core, which are extensions, and which are more advanced.</p>
+<p>Throughout the book, recurring visual conventions and section labels will help you recognize which material is frequentist, which is simulation based, which is Bayesian, and which is more advanced. This is intended to make the text flexible for instructors while giving students a coherent and connected experience.</p>
 
 
 </section>
@@ -305,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/chenghanyu-fbi\.netlify\.app\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -636,8 +697,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./00-recommendation.html" class="pagination-link" aria-label="Recommended paths">
+        <span class="nav-page-text">Recommended paths</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
