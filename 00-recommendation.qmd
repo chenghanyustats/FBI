@@ -306,7 +306,7 @@
 
 ### Chapter 1: Why Statistics? Data, Variation, and Decisions
 ### Chapter 2: Data, Studies, and Causality
-### Chapter 3: A First Look at Model-based Thinking: $Y = f(x) + \varepsilon$
+### Chapter 3: A First Look at Model-based Thinking: $Y = f(x) + \epsilon$
 ### Chapter 4: Working with Data in R / Python
 ### Chapter 5: Visualizing One and Two Variables
 ### Chapter 6: Numerical Descriptions of Data
@@ -342,7 +342,7 @@
 - Comparison
 
 ### Chapter 16: Inference for One Population Mean
-- Model: $Y_i = \mu + \varepsilon_i$
+- Model: $Y_i = \mu + \epsilon_i$
 - Distribution-based: $t$ CI and tests
 - Simulation-based: bootstrap, randomization
 - Bayesian: Normal prior for $\mu$
@@ -364,7 +364,7 @@
 ## Part VI: Linear Models
 
 ### Chapter 20: Simple Linear Regression
-- Model: $Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$
+- Model: $Y_i = \beta_0 + \beta_1 x_i + \epsilon_i$
 - Distribution-based inference for $\beta_0, \beta_1$
 - Simulation-based (bootstrap, permutation)
 - Bayesian regression with priors on $(\beta_0, \beta_1)$
@@ -372,7 +372,7 @@
 
 ### Chapter 21: One-way ANOVA as a Linear Model
 - Model: categorical predictor with $k$ levels
-  - $Y_{ij} = \mu + \alpha_j + \varepsilon_{ij}$  
+  - $Y_{ij} = \mu + \alpha_j + \epsilon_{ij}$  
   or equivalently regression with dummy variables
 - Connection to comparing more than two means
 - Distribution-based:
@@ -387,7 +387,7 @@
 
 ### Chapter 22: Two-way ANOVA and Interactions
 - Model: factors A and B, interaction terms
-  - $Y_{ijk} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \varepsilon_{ijk}$
+  - $Y_{ijk} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \epsilon_{ijk}$
 - Interpretation of main effects and interactions
 - Distribution-based F tests
 - Simulation-based checks (permutation for factor labels)
@@ -395,7 +395,7 @@
 - Link to multiple regression formulation
 
 ### Chapter 23: Multiple Linear Regression
-- Model: $Y_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_p x_{ip} + \varepsilon_i$
+- Model: $Y_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_p x_{ip} + \epsilon_i$
 - Categorical predictors as special case (ANOVA in regression form)
 - Distribution-based inference for regression coefficients
 - Simulation-based:
