@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: fe5595e1-9a41-435e-bc19-9323fb23b4a4
+      url: https://funny-lily-9f5558.netlify.app
