@@ -10,7 +10,7 @@ book:
   repo-url: https://github.com/chenghanyustats/fbi
   chapters:
     - index.qmd
-    - 00-recommendation.qmd
+    # - 00-recommendation.qmd
     - part1.qmd
     # - intro.qmd
     - summary.qmd
