@@ -70,26 +70,6 @@
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
-    ]
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "References"
-    ]
-  },
-  {
     "objectID": "part1.html#footnotes",
     "href": "part1.html#footnotes",
     "title": "Statistics and Data",
@@ -104,7 +84,7 @@
     "href": "part1-01-stats.html",
     "title": "1  Science of Data and Data Science",
     "section": "",
-    "text": "1.1 What is Statistics?\nThe first question we ask in this book is “What is Statistics?”\nStatistics can be defined in a variety of ways, and there doesn’t seem to be one definition that describes it best. For our purposes, statistics can be generally divided into two overarching categories: - Statistics as a set of numeric records - Statistics as a discipline\nStatistics as a Set of Numeric Records\nIn ordinary conversations, the word statistics is used as a term to indicate a set or collection of numeric records. For example, ?fig-mj-stats below shows Michael Jordan’s career statistics from his time in the NBA. However, this is just one way of defining statistics.",
+    "text": "1.1 What is Statistics?\nThe first question we ask in this book is “What is Statistics?”\nStatistics can be defined in a variety of ways, and there doesn’t seem to be one definition that describes it best. For our purposes, statistics can be generally divided into two overarching categories: - Statistics as a set of numeric records - Statistics as a discipline\nStatistics as a Set of Numeric Records\nIn ordinary conversations, the word statistics is used as a term to indicate a set or collection of numeric records. For example, fig-mj-stats below shows Michael Jordan’s career statistics from his time in the NBA. However, this is just one way of defining statistics.",
     "crumbs": [
       "Statistics and Data",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Science of Data and Data Science</span>"
@@ -163,6 +143,105 @@
     "crumbs": [
       "Statistics and Data",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Data Numerics</span>"
+    ]
+  },
+  {
+    "objectID": "part1-07-model.html",
+    "href": "part1-07-model.html",
+    "title": "7  Model-based Thinking",
+    "section": "",
+    "text": "7.1 3.1 Data, units, variables, and variation\nIn this chapter, we introduce a simple but powerful way to think about data:\n\\[\nY_i = f(x_i) + \\varepsilon_i.\n\\]\nThis equation will show up throughout the book. It is the backbone of how we describe patterns in data, differences between groups, and relationships between variables.\nEven the simplest statistical questions, such as “What is the average number of hours students sleep per night?” can be written in this form. More complex questions, like “How does income relate to years of education?” or “Do different treatments lead to different average outcomes?” are all variations on the same theme.\nOur goal in this chapter is not to master all the details, but to build intuition for this model-based view so that later chapters feel like variations on a familiar pattern rather than a long list of new procedures.\nBefore we talk about models, we recall some key ideas from earlier chapters.\nModels are about describing and explaining this variation in a structured way.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
+    ]
+  },
+  {
+    "objectID": "part1-07-model.html#data-units-variables-and-variation",
+    "href": "part1-07-model.html#data-units-variables-and-variation",
+    "title": "7  Model-based Thinking",
+    "section": "",
+    "text": "A unit is one object or individual in the study (a person, a school, a machine, a plot of land).\nA variable records some characteristic for each unit (height, weight, test score, treatment group).\nA dataset is a collection of measurements on one or more variables for many units.\nVariation means that not all units have the same values. Even within a single group, people’s test scores or hours of sleep are not identical.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
+    ]
+  },
+  {
+    "objectID": "part1-07-model.html#a-constant-model-one-population-mean",
+    "href": "part1-07-model.html#a-constant-model-one-population-mean",
+    "title": "7  Model-based Thinking",
+    "section": "7.2 3.2 A constant model: one population mean",
+    "text": "7.2 3.2 A constant model: one population mean\nConsider a simple example.\n\nExample: Hours of sleep\nWe record the average number of hours slept last night for a random sample of \\(n\\) students at a university. Let \\(Y_i\\) be the hours of sleep for student \\(i\\).\n\nWe are interested in the population mean number of hours slept, which we denote by \\(\\mu\\).\nA model-based way to write this situation is:\n\\[\nY_i = \\mu + \\varepsilon_i.\n\\]\nHere:\n\n\\(\\mu\\) is a single number, the same for all students in the population.\nThe error term \\(\\varepsilon_i\\) captures how much student \\(i\\)’s sleep deviates from the population mean.\n\nThis is called a constant model or an intercept-only model. It is the simplest possible model in our framework.\nLater, when we study “Inference for One Population Mean,” we will learn how to use data to learn about \\(\\mu\\) using frequentist, simulation-based, and Bayesian methods. For now, focus on the structure:\n\nWe are separating a typical value (\\(\\mu\\)) from random variation (\\(\\varepsilon_i\\)).",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
+    ]
+  },
+  {
+    "objectID": "part1-07-model.html#adding-groups-two-means-as-a-simple-linear-model",
+    "href": "part1-07-model.html#adding-groups-two-means-as-a-simple-linear-model",
+    "title": "7  Model-based Thinking",
+    "section": "7.3 3.3 Adding groups: two means as a simple linear model",
+    "text": "7.3 3.3 Adding groups: two means as a simple linear model\nNow suppose we have two groups.\n\nExample: Sleep in two majors\nWe record hours of sleep for \\(n_1\\) students majoring in STEM fields and \\(n_2\\) students majoring in non-STEM fields.\n\nWe might wonder whether the average sleep time differs between these two groups.\nLet\n\n\\(x_i = 0\\) if student \\(i\\) is in a non-STEM major,\n\\(x_i = 1\\) if student \\(i\\) is in a STEM major.\n\nWe can write a model:\n\\[\nY_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i.\n\\]\nHere:\n\n\\(\\beta_0\\) is the mean sleep time for non-STEM majors (\\(x_i = 0\\)).\n\\(\\beta_1\\) is the difference in mean sleep between STEM and non-STEM majors.\n\\(\\varepsilon_i\\) again captures individual variation not explained by the group indicator.\n\nWhen \\(x_i = 0\\) (non-STEM):\n\\[\nY_i = \\beta_0 + \\varepsilon_i.\n\\]\nWhen \\(x_i = 1\\) (STEM):\n\\[\nY_i = \\beta_0 + \\beta_1 + \\varepsilon_i.\n\\]\nSo the two group means are:\n\nnon-STEM: \\(\\mu_{\\text{non-STEM}} = \\beta_0\\),\nSTEM: \\(\\mu_{\\text{STEM}} = \\beta_0 + \\beta_1\\).\n\nThe question “Is there a difference between the two group means?” becomes the model-based question “Is \\(\\beta_1\\) equal to zero?”\nLater, we will see that:\n\ntwo-sample \\(t\\) tests,\nbootstrap intervals for \\(\\mu_{\\text{STEM}} - \\mu_{\\text{non-STEM}}\\),\nBayesian models for group means,\n\nare all ways of learning about \\(\\beta_1\\) in this simple model.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
+    ]
+  },
+  {
+    "objectID": "part1-07-model.html#adding-a-quantitative-predictor-simple-linear-regression",
+    "href": "part1-07-model.html#adding-a-quantitative-predictor-simple-linear-regression",
+    "title": "7  Model-based Thinking",
+    "section": "7.4 3.4 Adding a quantitative predictor: simple linear regression",
+    "text": "7.4 3.4 Adding a quantitative predictor: simple linear regression\nNow consider a quantitative predictor.\n\nExample: Income and years of education\nFor each person in a sample, we record annual income (in dollars) and years of education completed.\n\nLet \\(x_i\\) be years of education for person \\(i\\) and \\(Y_i\\) be income.\nA common model is:\n\\[\nY_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i.\n\\]\n\n\\(\\beta_0\\) is the intercept: the expected income when \\(x_i = 0\\) (conceptually, the baseline).\n\\(\\beta_1\\) is the slope: the expected change in income for each additional year of education.\n\\(\\varepsilon_i\\) is the unexplained variation.\n\nThis is a simple linear regression model, and it has the same general form as the two-group model above. The only difference is how we interpret \\(x_i\\) and the parameters.\nAgain, our inferential questions are about the parameters:\n\nWhat is a plausible range of values for \\(\\beta_1\\)?\nIs there evidence that \\(\\beta_1\\) is positive?\nHow well does the model describe the data?\n\nThese will be answered using the different inferential approaches introduced later.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
+    ]
+  },
+  {
+    "objectID": "part1-07-model.html#the-role-of-varepsilon-unexplained-variation-and-assumptions",
+    "href": "part1-07-model.html#the-role-of-varepsilon-unexplained-variation-and-assumptions",
+    "title": "7  Model-based Thinking",
+    "section": "7.5 3.5 The role of \\(\\varepsilon\\): unexplained variation and assumptions",
+    "text": "7.5 3.5 The role of \\(\\varepsilon\\): unexplained variation and assumptions\nIn all of these examples, the term \\(\\varepsilon_i\\) plays an important role:\n\nIt captures individual-to-individual variation that our model does not explain.\nIt allows the model to be flexible: not everyone with the same \\(x_i\\) has the same \\(Y_i\\).\n\nIn many classical models we will assume that:\n\nthe \\(\\varepsilon_i\\) are independent,\nthey have mean zero,\nthey have the same variance \\(\\sigma^2\\) for all \\(i\\),\nand sometimes that they follow a Normal distribution.\n\nThese assumptions are simplifications that make it possible to develop mathematical results and to use standard procedures. Later chapters will:\n\nshow how to check these assumptions with residual plots and diagnostics,\nexplore nonparametric and robust methods when assumptions are doubtful,\nand show how Bayesian models can relax or modify some of these assumptions.\n\nFor now, it is enough to keep in mind:\n\nThe error term \\(\\varepsilon_i\\) is where randomness lives.\nThe parameters in \\(f(x_i)\\) are what we want to learn about.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
+    ]
+  },
+  {
+    "objectID": "part1-07-model.html#frequentist-simulation-based-and-bayesian-views-of-the-same-model",
+    "href": "part1-07-model.html#frequentist-simulation-based-and-bayesian-views-of-the-same-model",
+    "title": "7  Model-based Thinking",
+    "section": "7.6 3.6 Frequentist, simulation-based, and Bayesian views of the same model",
+    "text": "7.6 3.6 Frequentist, simulation-based, and Bayesian views of the same model\nThe equation\n\\[\nY_i = f(x_i) + \\varepsilon_i\n\\]\nis the same in all three paradigms we will study:\n\nFrequentist view\n\nThe parameters inside \\(f\\) (such as \\(\\mu\\), \\(\\beta_0\\), \\(\\beta_1\\)) are fixed but unknown.\nThe randomness comes from the data (from the \\(\\varepsilon_i\\)).\nWe study long-run properties of procedures (confidence intervals, hypothesis tests).\n\nSimulation-based view\n\nWe use the computer to mimic repeated sampling from the model or from the data.\nWe approximate the sampling distribution of statistics by resampling (bootstrap) or randomization.\nThis gives us approximate intervals and p values without relying entirely on formulas.\n\nBayesian view\n\nWe place a probability distribution (a prior) on the unknown parameters inside \\(f\\).\nThe data update this prior to a posterior distribution via the likelihood implied by the model.\nWe make probability statements about parameters and predictions based on the posterior.\n\n\nThe model itself does not change. What changes is:\n\nhow we treat the unknown parameters, and\nhow we define and measure uncertainty.\n\nLater, when we reach chapters such as “Inference for One Population Mean” and “Inference for Two Means,” you will see all three perspectives applied to the same model.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
+    ]
+  },
+  {
+    "objectID": "part1-07-model.html#why-a-model-based-approach-is-helpful",
+    "href": "part1-07-model.html#why-a-model-based-approach-is-helpful",
+    "title": "7  Model-based Thinking",
+    "section": "7.7 3.7 Why a model-based approach is helpful",
+    "text": "7.7 3.7 Why a model-based approach is helpful\nThere are two main reasons we take this model-based approach from the beginning.\n\nUnification of topics\nMany traditional courses present:\n\none-sample \\(t\\) tests,\ntwo-sample \\(t\\) tests,\nANOVA,\nsimple regression,\n\nas different procedures with different formulas and conditions. In this book, these all become special cases of linear models built from the same template \\(Y = f(x) + \\varepsilon\\).\nThis helps you see connections:\n\nANOVA is regression with categorical predictors.\nTwo-sample tests are ANOVA with two groups.\nRegression is an extension of these ideas, not a completely new topic.\n\nBetter match to modern practice\nIn applied statistics and data science, analysts almost always begin by specifying a model for how the data might have been generated, then use software to fit the model and summarize uncertainty.\nBy thinking in terms of models from the start, you will be better prepared to:\n\nunderstand the output of statistical software,\nextend basic ideas to more complex models later,\nand read research papers that use regression, generalized linear models, and Bayesian methods.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
+    ]
+  },
+  {
+    "objectID": "part1-07-model.html#summary-and-looking-ahead",
+    "href": "part1-07-model.html#summary-and-looking-ahead",
+    "title": "7  Model-based Thinking",
+    "section": "7.8 3.8 Summary and looking ahead",
+    "text": "7.8 3.8 Summary and looking ahead\nIn this chapter we:\n\nintroduced the model-based template \\(Y_i = f(x_i) + \\varepsilon_i\\),\nsaw how one-sample, two-sample, and regression problems can all be written in this form,\ndiscussed the role of the error term \\(\\varepsilon_i\\) and basic assumptions,\nand previewed how frequentist, simulation-based, and Bayesian methods all work with the same model but treat parameters and uncertainty differently.\n\nIn the next part of the book, we will study randomness and data-generating processes. We will learn about probability, random variables, and sampling distributions, which provide the foundation for understanding why our inferential methods work and how they relate to the model-based view introduced here.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
     ]
   },
   {
@@ -284,25 +363,25 @@
     ]
   },
   {
-    "objectID": "part4-01-onepopulation.html",
-    "href": "part4-01-onepopulation.html",
-    "title": "15  Introduction",
+    "objectID": "part4-01-onemean.html",
+    "href": "part4-01-onemean.html",
+    "title": "16  Inference for One Population Mean",
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Introduction</span>"
+      "Inference for Normal Data",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Inference for One Population Mean</span>"
     ]
   },
   {
-    "objectID": "part4-02-twopopulation.html",
-    "href": "part4-02-twopopulation.html",
-    "title": "16  Introduction",
+    "objectID": "part4-02-twomean.html",
+    "href": "part4-02-twomean.html",
+    "title": "17  Comparing Two Groups",
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introduction</span>"
+      "Inference for Normal Data",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Comparing Two Groups</span>"
     ]
   },
   {
@@ -335,160 +414,6 @@
     "crumbs": [
       "Linear Models for Normal Data",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>One-Way Analysis of Variance</span>"
-    ]
-  },
-  {
-    "objectID": "part5-03-twoway.html",
-    "href": "part5-03-twoway.html",
-    "title": "19  Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "part5-04-mlr.html",
-    "href": "part5-04-mlr.html",
-    "title": "20  Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "part5-05-logistic.html",
-    "href": "part5-05-logistic.html",
-    "title": "21  Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "part1-07-model.html",
-    "href": "part1-07-model.html",
-    "title": "7  Model-based Thinking",
-    "section": "",
-    "text": "7.1 3.1 Data, units, variables, and variation\nIn this chapter, we introduce a simple but powerful way to think about data:\n\\[\nY_i = f(x_i) + \\varepsilon_i.\n\\]\nThis equation will show up throughout the book. It is the backbone of how we describe patterns in data, differences between groups, and relationships between variables.\nEven the simplest statistical questions, such as “What is the average number of hours students sleep per night?” can be written in this form. More complex questions, like “How does income relate to years of education?” or “Do different treatments lead to different average outcomes?” are all variations on the same theme.\nOur goal in this chapter is not to master all the details, but to build intuition for this model-based view so that later chapters feel like variations on a familiar pattern rather than a long list of new procedures.\nBefore we talk about models, we recall some key ideas from earlier chapters.\nModels are about describing and explaining this variation in a structured way.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
-    ]
-  },
-  {
-    "objectID": "part1-07-model.html#data-units-variables-and-variation",
-    "href": "part1-07-model.html#data-units-variables-and-variation",
-    "title": "7  Model-based Thinking",
-    "section": "",
-    "text": "A unit is one object or individual in the study (a person, a school, a machine, a plot of land).\nA variable records some characteristic for each unit (height, weight, test score, treatment group).\nA dataset is a collection of measurements on one or more variables for many units.\nVariation means that not all units have the same values. Even within a single group, people’s test scores or hours of sleep are not identical.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
-    ]
-  },
-  {
-    "objectID": "part1-07-model.html#a-constant-model-one-population-mean",
-    "href": "part1-07-model.html#a-constant-model-one-population-mean",
-    "title": "7  Model-based Thinking",
-    "section": "7.2 3.2 A constant model: one population mean",
-    "text": "7.2 3.2 A constant model: one population mean\nConsider a simple example.\n\nExample: Hours of sleep\nWe record the average number of hours slept last night for a random sample of \\(n\\) students at a university. Let \\(Y_i\\) be the hours of sleep for student \\(i\\).\n\nWe are interested in the population mean number of hours slept, which we denote by \\(\\mu\\).\nA model-based way to write this situation is:\n\\[\nY_i = \\mu + \\varepsilon_i.\n\\]\nHere:\n\n\\(\\mu\\) is a single number, the same for all students in the population.\nThe error term \\(\\varepsilon_i\\) captures how much student \\(i\\)’s sleep deviates from the population mean.\n\nThis is called a constant model or an intercept-only model. It is the simplest possible model in our framework.\nLater, when we study “Inference for One Population Mean,” we will learn how to use data to learn about \\(\\mu\\) using frequentist, simulation-based, and Bayesian methods. For now, focus on the structure:\n\nWe are separating a typical value (\\(\\mu\\)) from random variation (\\(\\varepsilon_i\\)).",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
-    ]
-  },
-  {
-    "objectID": "part1-07-model.html#adding-groups-two-means-as-a-simple-linear-model",
-    "href": "part1-07-model.html#adding-groups-two-means-as-a-simple-linear-model",
-    "title": "7  Model-based Thinking",
-    "section": "7.3 3.3 Adding groups: two means as a simple linear model",
-    "text": "7.3 3.3 Adding groups: two means as a simple linear model\nNow suppose we have two groups.\n\nExample: Sleep in two majors\nWe record hours of sleep for \\(n_1\\) students majoring in STEM fields and \\(n_2\\) students majoring in non-STEM fields.\n\nWe might wonder whether the average sleep time differs between these two groups.\nLet\n\n\\(x_i = 0\\) if student \\(i\\) is in a non-STEM major,\n\\(x_i = 1\\) if student \\(i\\) is in a STEM major.\n\nWe can write a model:\n\\[\nY_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i.\n\\]\nHere:\n\n\\(\\beta_0\\) is the mean sleep time for non-STEM majors (\\(x_i = 0\\)).\n\\(\\beta_1\\) is the difference in mean sleep between STEM and non-STEM majors.\n\\(\\varepsilon_i\\) again captures individual variation not explained by the group indicator.\n\nWhen \\(x_i = 0\\) (non-STEM):\n\\[\nY_i = \\beta_0 + \\varepsilon_i.\n\\]\nWhen \\(x_i = 1\\) (STEM):\n\\[\nY_i = \\beta_0 + \\beta_1 + \\varepsilon_i.\n\\]\nSo the two group means are:\n\nnon-STEM: \\(\\mu_{\\text{non-STEM}} = \\beta_0\\),\nSTEM: \\(\\mu_{\\text{STEM}} = \\beta_0 + \\beta_1\\).\n\nThe question “Is there a difference between the two group means?” becomes the model-based question “Is \\(\\beta_1\\) equal to zero?”\nLater, we will see that:\n\ntwo-sample \\(t\\) tests,\nbootstrap intervals for \\(\\mu_{\\text{STEM}} - \\mu_{\\text{non-STEM}}\\),\nBayesian models for group means,\n\nare all ways of learning about \\(\\beta_1\\) in this simple model.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
-    ]
-  },
-  {
-    "objectID": "part1-07-model.html#adding-a-quantitative-predictor-simple-linear-regression",
-    "href": "part1-07-model.html#adding-a-quantitative-predictor-simple-linear-regression",
-    "title": "7  Model-based Thinking",
-    "section": "7.4 3.4 Adding a quantitative predictor: simple linear regression",
-    "text": "7.4 3.4 Adding a quantitative predictor: simple linear regression\nNow consider a quantitative predictor.\n\nExample: Income and years of education\nFor each person in a sample, we record annual income (in dollars) and years of education completed.\n\nLet \\(x_i\\) be years of education for person \\(i\\) and \\(Y_i\\) be income.\nA common model is:\n\\[\nY_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i.\n\\]\n\n\\(\\beta_0\\) is the intercept: the expected income when \\(x_i = 0\\) (conceptually, the baseline).\n\\(\\beta_1\\) is the slope: the expected change in income for each additional year of education.\n\\(\\varepsilon_i\\) is the unexplained variation.\n\nThis is a simple linear regression model, and it has the same general form as the two-group model above. The only difference is how we interpret \\(x_i\\) and the parameters.\nAgain, our inferential questions are about the parameters:\n\nWhat is a plausible range of values for \\(\\beta_1\\)?\nIs there evidence that \\(\\beta_1\\) is positive?\nHow well does the model describe the data?\n\nThese will be answered using the different inferential approaches introduced later.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
-    ]
-  },
-  {
-    "objectID": "part1-07-model.html#the-role-of-varepsilon-unexplained-variation-and-assumptions",
-    "href": "part1-07-model.html#the-role-of-varepsilon-unexplained-variation-and-assumptions",
-    "title": "7  Model-based Thinking",
-    "section": "7.5 3.5 The role of \\(\\varepsilon\\): unexplained variation and assumptions",
-    "text": "7.5 3.5 The role of \\(\\varepsilon\\): unexplained variation and assumptions\nIn all of these examples, the term \\(\\varepsilon_i\\) plays an important role:\n\nIt captures individual-to-individual variation that our model does not explain.\nIt allows the model to be flexible: not everyone with the same \\(x_i\\) has the same \\(Y_i\\).\n\nIn many classical models we will assume that:\n\nthe \\(\\varepsilon_i\\) are independent,\nthey have mean zero,\nthey have the same variance \\(\\sigma^2\\) for all \\(i\\),\nand sometimes that they follow a Normal distribution.\n\nThese assumptions are simplifications that make it possible to develop mathematical results and to use standard procedures. Later chapters will:\n\nshow how to check these assumptions with residual plots and diagnostics,\nexplore nonparametric and robust methods when assumptions are doubtful,\nand show how Bayesian models can relax or modify some of these assumptions.\n\nFor now, it is enough to keep in mind:\n\nThe error term \\(\\varepsilon_i\\) is where randomness lives.\nThe parameters in \\(f(x_i)\\) are what we want to learn about.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
-    ]
-  },
-  {
-    "objectID": "part1-07-model.html#frequentist-simulation-based-and-bayesian-views-of-the-same-model",
-    "href": "part1-07-model.html#frequentist-simulation-based-and-bayesian-views-of-the-same-model",
-    "title": "7  Model-based Thinking",
-    "section": "7.6 3.6 Frequentist, simulation-based, and Bayesian views of the same model",
-    "text": "7.6 3.6 Frequentist, simulation-based, and Bayesian views of the same model\nThe equation\n\\[\nY_i = f(x_i) + \\varepsilon_i\n\\]\nis the same in all three paradigms we will study:\n\nFrequentist view\n\nThe parameters inside \\(f\\) (such as \\(\\mu\\), \\(\\beta_0\\), \\(\\beta_1\\)) are fixed but unknown.\nThe randomness comes from the data (from the \\(\\varepsilon_i\\)).\nWe study long-run properties of procedures (confidence intervals, hypothesis tests).\n\nSimulation-based view\n\nWe use the computer to mimic repeated sampling from the model or from the data.\nWe approximate the sampling distribution of statistics by resampling (bootstrap) or randomization.\nThis gives us approximate intervals and p values without relying entirely on formulas.\n\nBayesian view\n\nWe place a probability distribution (a prior) on the unknown parameters inside \\(f\\).\nThe data update this prior to a posterior distribution via the likelihood implied by the model.\nWe make probability statements about parameters and predictions based on the posterior.\n\n\nThe model itself does not change. What changes is:\n\nhow we treat the unknown parameters, and\nhow we define and measure uncertainty.\n\nLater, when we reach chapters such as “Inference for One Population Mean” and “Inference for Two Means,” you will see all three perspectives applied to the same model.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
-    ]
-  },
-  {
-    "objectID": "part1-07-model.html#why-a-model-based-approach-is-helpful",
-    "href": "part1-07-model.html#why-a-model-based-approach-is-helpful",
-    "title": "7  Model-based Thinking",
-    "section": "7.7 3.7 Why a model-based approach is helpful",
-    "text": "7.7 3.7 Why a model-based approach is helpful\nThere are two main reasons we take this model-based approach from the beginning.\n\nUnification of topics\nMany traditional courses present:\n\none-sample \\(t\\) tests,\ntwo-sample \\(t\\) tests,\nANOVA,\nsimple regression,\n\nas different procedures with different formulas and conditions. In this book, these all become special cases of linear models built from the same template \\(Y = f(x) + \\varepsilon\\).\nThis helps you see connections:\n\nANOVA is regression with categorical predictors.\nTwo-sample tests are ANOVA with two groups.\nRegression is an extension of these ideas, not a completely new topic.\n\nBetter match to modern practice\nIn applied statistics and data science, analysts almost always begin by specifying a model for how the data might have been generated, then use software to fit the model and summarize uncertainty.\nBy thinking in terms of models from the start, you will be better prepared to:\n\nunderstand the output of statistical software,\nextend basic ideas to more complex models later,\nand read research papers that use regression, generalized linear models, and Bayesian methods.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
-    ]
-  },
-  {
-    "objectID": "part1-07-model.html#summary-and-looking-ahead",
-    "href": "part1-07-model.html#summary-and-looking-ahead",
-    "title": "7  Model-based Thinking",
-    "section": "7.8 3.8 Summary and looking ahead",
-    "text": "7.8 3.8 Summary and looking ahead\nIn this chapter we:\n\nintroduced the model-based template \\(Y_i = f(x_i) + \\varepsilon_i\\),\nsaw how one-sample, two-sample, and regression problems can all be written in this form,\ndiscussed the role of the error term \\(\\varepsilon_i\\) and basic assumptions,\nand previewed how frequentist, simulation-based, and Bayesian methods all work with the same model but treat parameters and uncertainty differently.\n\nIn the next part of the book, we will study randomness and data-generating processes. We will learn about probability, random variables, and sampling distributions, which provide the foundation for understanding why our inferential methods work and how they relate to the model-based view introduced here.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model-based Thinking</span>"
-    ]
-  },
-  {
-    "objectID": "part4-01-onemean.html",
-    "href": "part4-01-onemean.html",
-    "title": "16  Inference for One Population Mean",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "Inference for Normal Data",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Inference for One Population Mean</span>"
-    ]
-  },
-  {
-    "objectID": "part4-02-twomean.html",
-    "href": "part4-02-twomean.html",
-    "title": "17  Comparing Two Groups",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "Inference for Normal Data",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Comparing Two Groups</span>"
     ]
   },
   {
@@ -554,6 +479,16 @@
     "crumbs": [
       "Inference and Linear Models for Binary Data",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>Binary Logistic Regression</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
     ]
   },
   {
@@ -715,10 +650,186 @@
     "href": "a-r_prog.html#loops",
     "title": "Appendix A — R programming",
     "section": "A.15 Loops",
-    "text": "A.15 Loops\n\nA.15.1 for loops\n\n## Syntax\nfor (value in that) {\n    this\n}\n\n\nfor (i in 1:5) {\n    print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\n\nfor (x in c(\"My\", \"1st\", \"for\", \"loop\")) {\n    print(x)\n}\n\n[1] \"My\"\n[1] \"1st\"\n[1] \"for\"\n[1] \"loop\"\n\n\n\n\nA.15.2 while loops\n\nwhile (condition) {\n    # body\n}\n\n\nYou can rewrite any for loop as a while loop, but you can’t rewrite every while loop as a for loop.\n\n\nfor (i in seq_along(x)) {\n    # body\n}\n\n# Equivalent to\ni &lt;- 1\nwhile (i &lt;= length(x)) {\n    # body\n    i &lt;- i + 1 \n}\n\n\n\n\n\n\n\n\nWe find how many tries it takes to get 5 heads in a row:\n\n\n## a function that sample one from \"T\" or \"H\"\nflip &lt;- function() sample(c(\"T\", \"H\"), 1)\n\nflips &lt;- 0; nheads &lt;- 0\n\nwhile (nheads &lt; 5) {\n    if (flip() == \"H\") {\n        nheads &lt;- nheads + 1\n    } else {\n        nheads &lt;- 0\n    }\n    flips &lt;- flips + 1\n}\n\nflips\n\n[1] 126",
+    "text": "A.15 Loops\n\nA.15.1 for loops\n\n## Syntax\nfor (value in that) {\n    this\n}\n\n\nfor (i in 1:5) {\n    print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\n\nfor (x in c(\"My\", \"1st\", \"for\", \"loop\")) {\n    print(x)\n}\n\n[1] \"My\"\n[1] \"1st\"\n[1] \"for\"\n[1] \"loop\"\n\n\n\n\nA.15.2 while loops\n\nwhile (condition) {\n    # body\n}\n\n\nYou can rewrite any for loop as a while loop, but you can’t rewrite every while loop as a for loop.\n\n\nfor (i in seq_along(x)) {\n    # body\n}\n\n# Equivalent to\ni &lt;- 1\nwhile (i &lt;= length(x)) {\n    # body\n    i &lt;- i + 1 \n}\n\n\n\n\n\n\n\n\nWe find how many tries it takes to get 5 heads in a row:\n\n\n## a function that sample one from \"T\" or \"H\"\nflip &lt;- function() sample(c(\"T\", \"H\"), 1)\n\nflips &lt;- 0; nheads &lt;- 0\n\nwhile (nheads &lt; 5) {\n    if (flip() == \"H\") {\n        nheads &lt;- nheads + 1\n    } else {\n        nheads &lt;- 0\n    }\n    flips &lt;- flips + 1\n}\n\nflips\n\n[1] 74",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>R programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html",
+    "href": "a-py_prog.html",
+    "title": "Appendix B — Python Programming",
+    "section": "",
+    "text": "B.1 Arithmetic and Logical Operators\n2 + 3 / (5 * 4) ** 2\n\n2.0075\n\n5 == 5.00\n\nTrue\n\n5 == int(5)\n\nTrue\n\ntype(int(5))\n\n&lt;class 'int'&gt;\n\nnot True == False\n\nTrue\nbool() converts nonzero numbers to True and zero to False\n-5 | 0\n\n-5\n\n1 & 1\n\n1\n\nbool(2) | bool(0)\n\nTrue",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#math-functions",
+    "href": "a-py_prog.html#math-functions",
+    "title": "Appendix B — Python Programming",
+    "section": "B.2 Math Functions",
+    "text": "B.2 Math Functions\nNeed to import math library in Python.\n\nimport math\nmath.sqrt(144)\n\n12.0\n\nmath.exp(1)\n\n2.718281828459045\n\nmath.sin(math.pi/2)\n\n1.0\n\nmath.log(32, 2)\n\n5.0\n\nabs(-7)\n\n7\n\n\n\n# python comment",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#variables-and-assignment",
+    "href": "a-py_prog.html#variables-and-assignment",
+    "title": "Appendix B — Python Programming",
+    "section": "B.3 Variables and Assignment",
+    "text": "B.3 Variables and Assignment\n\nx = 5\nx\n\n5\n\nx = x + 6\nx\n\n11\n\nx == 5\n\nFalse\n\nmath.log(x)\n\n2.3978952727983707",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#object-types",
+    "href": "a-py_prog.html#object-types",
+    "title": "Appendix B — Python Programming",
+    "section": "B.4 Object Types",
+    "text": "B.4 Object Types\nstr, float, int and bool.\n\ntype(5.0)\n\n&lt;class 'float'&gt;\n\ntype(5)\n\n&lt;class 'int'&gt;\n\ntype(\"I_love_data_science!\")\n\n&lt;class 'str'&gt;\n\ntype(1 &gt; 3)\n\n&lt;class 'bool'&gt;\n\ntype(5) is float\n\nFalse",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#data-structure---lists",
+    "href": "a-py_prog.html#data-structure---lists",
+    "title": "Appendix B — Python Programming",
+    "section": "B.5 Data Structure - Lists",
+    "text": "B.5 Data Structure - Lists\n\nB.5.1 Lists\n\nPython has numbers and strings, but no built-in vector structure.\nTo create a sequence type of structure, we can use a list that can save several elements in an single object.\nTo create a list in Python, we use [].\n\n\nlst_num = [0, 2, 4] \nlst_num\n\n[0, 2, 4]\n\ntype(lst_num)\n\n&lt;class 'list'&gt;\n\nlen(lst_num)\n\n3\n\n\nList elements can have different types!\n\n\nB.5.2 Subsetting lists\n\nlst = ['data', 'math', 34, True]\nlst\n\n['data', 'math', 34, True]\n\n\n\nIndexing in Python always starts at 0!\n0: the 1st element\n\n\nlst\n\n['data', 'math', 34, True]\n\nlst[0]\n\n'data'\n\ntype(lst[0]) ## not a list\n\n&lt;class 'str'&gt;\n\n\n\n-1: the last element\n\n\nlst[-2]\n\n34\n\n\n\n[a:b]: the (a+1)-th to b-th elements\n\n\nlst[1:4]\n\n['math', 34, True]\n\ntype(lst[1:4]) ## a list\n\n&lt;class 'list'&gt;\n\n\n\n[a:]: elements from the (a+1)-th to the last\n\n\nlst[2:]\n\n[34, True]\n\n\nWhat does lst[0:1] return? Is it a list?\n\n\nB.5.3 Lists are mutable\n\nLists are changed in place!\n\n\nlst[1]\n\n'math'\n\nlst[1] = \"stats\"\nlst\n\n['data', 'stats', 34, True]\n\n\n\nlst[2:] = [False, 77]\nlst\n\n['data', 'stats', False, 77]\n\n\nIf we change any element value in a list, the list itself will be changed as well.\n\n\nB.5.4 List operations and methods list.method()\nThis is a common syntax in Python. We start with a Python object of some type, then type dot followed by any method specifically for this particular data type or structure for operations.\n\n## Concatenation\nlst_num + lst\n\n[0, 2, 4, 'data', 'stats', False, 77]\n\n\n\n## Repetition\nlst_num * 3 \n\n[0, 2, 4, 0, 2, 4, 0, 2, 4]\n\n\n\n## Membership\n34 in lst\n\nFalse\n\n\n\n## Appends \"cat\" to lst\nlst.append(\"cat\")\nlst\n\n['data', 'stats', False, 77, 'cat']\n\n\n\n## Removes and returns last object from list\nlst.pop()\n\n'cat'\n\nlst\n\n['data', 'stats', False, 77]\n\n\n\n## Removes object from list\nlst.remove(\"stats\")\nlst\n\n['data', False, 77]\n\n\n\n## Reverses objects of list in place\nlst.reverse()\nlst\n\n[77, False, 'data']",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#data-structure---tuples",
+    "href": "a-py_prog.html#data-structure---tuples",
+    "title": "Appendix B — Python Programming",
+    "section": "B.6 Data Structure - Tuples",
+    "text": "B.6 Data Structure - Tuples\n\nTuples work exactly like lists except they are immutable, i.e., they can’t be changed in place.\nTo create a tuple, we use ().\n\n\ntup = ('data', 'math', 34, True)\ntup\n\n('data', 'math', 34, True)\n\ntype(tup)\n\n&lt;class 'tuple'&gt;\n\nlen(tup)\n\n4\n\n\n\ntup[2:]\n\n(34, True)\n\ntup[-2]\n\n34\n\n\n\ntup[1] = \"stats\"  ## does not work!\n# TypeError: 'tuple' object does not support item assignment\n\n\ntup\n\n('data', 'math', 34, True)\n\n\n\nB.6.1 Tuples functions and methods\nLists have more methods than tuples because lists are more flexible.\n\n# Converts a list into tuple\ntuple(lst_num)\n\n(0, 2, 4)\n\n\n\n# number of occurance of \"data\"\ntup.count(\"data\")\n\n1\n\n\n\n# first index of \"data\"\ntup.index(\"data\")\n\n0",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#data-structure---dictionaries",
+    "href": "a-py_prog.html#data-structure---dictionaries",
+    "title": "Appendix B — Python Programming",
+    "section": "B.7 Data Structure - Dictionaries",
+    "text": "B.7 Data Structure - Dictionaries\n\nA dictionary consists of key-value pairs.\nA dictionary is mutable, i.e., the values can be changed in place and more key-value pairs can be added.\nTo create a dictionary, we use {\"key name\": value}.\nThe value can be accessed by the key in the dictionary.\n\n\ndic = {'Name': 'Ivy', 'Age': 7, 'Class': 'First'}\n\n\ndic['Age']\n\n7\n\n\n\ndic['age']  ## does not work\n\n\ndic['Age'] = 9\ndic['Class'] = 'Third'\ndic\n\n{'Name': 'Ivy', 'Age': 9, 'Class': 'Third'}\n\n\n\nB.7.1 Properties of dictionaries\n\nPython will use the last assignment!\n\n\ndic1 = {'Name': 'Ivy', 'Age': 7, 'Name': 'Liya'}\ndic1['Name']\n\n'Liya'\n\n\n\nKeys are unique and immutable.\nA key can be a tuple, but CANNOT be a list.\n\n\n## The first key is a tuple!\ndic2 = {('First', 'Last'): 'Ivy Lee', 'Age': 7}\ndic2[('First', 'Last')]\n\n'Ivy Lee'\n\n\n\n## does not work\ndic2 = {['First', 'Last']: 'Ivy Lee', 'Age': 7}\ndic2[['First', 'Last']]\n\n\n\nB.7.2 Disctionary methods\n\ndic\n\n{'Name': 'Ivy', 'Age': 9, 'Class': 'Third'}\n\n\n\n## Returns list of dictionary dict's keys\ndic.keys()\n\ndict_keys(['Name', 'Age', 'Class'])\n\n\n\n## Returns list of dictionary dict's values\ndic.values()\n\ndict_values(['Ivy', 9, 'Third'])\n\n\n\n## Returns a list of dict's (key, value) tuple pairs\ndic.items()\n\ndict_items([('Name', 'Ivy'), ('Age', 9), ('Class', 'Third')])\n\n\n\n## Adds dictionary dic2's key-values pairs in to dic\ndic2 = {'Gender': 'female'}\ndic.update(dic2)\ndic\n\n{'Name': 'Ivy', 'Age': 9, 'Class': 'Third', 'Gender': 'female'}\n\n\n\n## Removes all elements of dictionary dict\ndic.clear()\ndic\n\n{}",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#python-data-structures-for-data-science",
+    "href": "a-py_prog.html#python-data-structures-for-data-science",
+    "title": "Appendix B — Python Programming",
+    "section": "B.8 Python Data Structures for Data Science",
+    "text": "B.8 Python Data Structures for Data Science\n\nPython built-in data structures are not specifically for data science.\nTo use more data science friendly functions and structures, such as array or data frame, Python relies on packages NumPy and pandas.\n\n\nB.8.1 Installing NumPy and pandas\nIn your RStudio project, run\n\nlibrary(reticulate)\nvirtualenv_create(\"myenv\")\n\nGo to Tools &gt; Global Options &gt; Python &gt; Select &gt; Virtual Environments\n\n\n\n\nYou may need to restart R session. Do it, and in the new R session, run\n\nlibrary(reticulate)\npy_install(c(\"numpy\", \"pandas\", \"matplotlib\"))\n\nRun the following Python code, and make sure everything goes well.\n\nimport numpy as np\nimport pandas as pd\nv1 = np.array([3, 8])\nv1\ndf = pd.DataFrame({\"col\": ['red', 'blue', 'green']})\ndf",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#pandas",
+    "href": "a-py_prog.html#pandas",
+    "title": "Appendix B — Python Programming",
+    "section": "B.9 Pandas",
+    "text": "B.9 Pandas\npandas is a Python library that provides data structures, manipulation and analysis tools for data science.\n\nimport numpy as np\nimport pandas as pd\n\n\nB.9.1 Pandas series from a list\n\n# import pandas as pd\na = [1, 7, 2]\ns = pd.Series(a)\nprint(s)\n\n0    1\n1    7\n2    2\ndtype: int64\n\n\n\nprint(s[0])\n\n1\n\n\n\n## index used as naming \ns = pd.Series(a, index = [\"x\", \"y\", \"z\"])\nprint(s)\n\nx    1\ny    7\nz    2\ndtype: int64\n\n\n\nprint(s[\"y\"])\n\n7\n\n\n\n\nB.9.2 Pandas series from a dictionary\n\ngrade = {\"math\": 99, \"stats\": 97, \"cs\": 66}\ns = pd.Series(grade)\nprint(s)\n\nmath     99\nstats    97\ncs       66\ndtype: int64\n\n\n\ngrade = {\"math\": 99, \"stats\": 97, \"cs\": 66}\n\n## index used as subsetting \ns = pd.Series(grade, index = [\"stats\", \"cs\"])\nprint(s)\n\nstats    97\ncs       66\ndtype: int64\n\n\n\nHow do we create a named vector in R?\n\n\ngrade &lt;- c(\"math\" = 99, \"stats\" = 97, \"cs\" = 66)\n\n\n\nB.9.3 Pandas data frame\n\nCreate a data frame from a dictionary\n\n\ndata = {\"math\": [99, 65, 87], \"stats\": [92, 48, 88], \"cs\": [50, 88, 94]}\n\ndf = pd.DataFrame(data)\nprint(df) \n\n   math  stats  cs\n0    99     92  50\n1    65     48  88\n2    87     88  94\n\n\n\nRow and column names\n\n\ndf.index = [\"s1\", \"s2\", \"s3\"]\ndf.columns = [\"Math\", \"Stat\", \"CS\"]\ndf\n\n    Math  Stat  CS\ns1    99    92  50\ns2    65    48  88\ns3    87    88  94\n\n\n\n\nB.9.4 Subsetting columns\n\nIn Python, [] returns Series, [[]] returns DataFrame!\nIn R, [] returns tibble/data frame, [[]] returns vector!\n\nBy Names\n\n## Series\ndf[\"Math\"]\n\ns1    99\ns2    65\ns3    87\nName: Math, dtype: int64\n\ntype(df[\"Math\"])\n\n&lt;class 'pandas.core.series.Series'&gt;\n\n\nBy Index\n\n# ## DataFrame\ndf[[\"Math\"]]\n\n    Math\ns1    99\ns2    65\ns3    87\n\ntype(df[[\"Math\"]])\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\n\n\n\ndf[[\"Math\", \"CS\"]]\n\n    Math  CS\ns1    99  50\ns2    65  88\ns3    87  94\n\n\n\nisinstance(df[[“Math”]], pd.DataFrame)\n\n\n\nB.9.5 Subsetting rows DataFrame.iloc\n\ninteger-location based indexing for selection by position\n\n\ndf \n\n    Math  Stat  CS\ns1    99    92  50\ns2    65    48  88\ns3    87    88  94\n\n\n\n## first row Series\ndf.iloc[0] \n\nMath    99\nStat    92\nCS      50\nName: s1, dtype: int64\n\n\n\n## first row DataFrame\ndf.iloc[[0]]\n\n    Math  Stat  CS\ns1    99    92  50\n\n\n\n## first 2 rows\ndf.iloc[[0, 1]]\n\n    Math  Stat  CS\ns1    99    92  50\ns2    65    48  88\n\n\n\n## 1st and 3rd row\ndf.iloc[[True, False, True]]\n\n    Math  Stat  CS\ns1    99    92  50\ns3    87    88  94\n\n\n\n\nB.9.6 Subsetting rows and columns DataFrame.iloc\n\ndf \n\n    Math  Stat  CS\ns1    99    92  50\ns2    65    48  88\ns3    87    88  94\n\n\n\n## (1, 3) row and (1, 3) col\ndf.iloc[[0, 2], [0, 2]]\n\n    Math  CS\ns1    99  50\ns3    87  94\n\n\n\n## all rows and 1st col\ndf.iloc[:, [True, False, False]]\n\n    Math\ns1    99\ns2    65\ns3    87\n\n\n\ndf.iloc[0:2, 1:3]\n\n    Stat  CS\ns1    92  50\ns2    48  88\n\n\n\n\nB.9.7 Subsetting rows and columns DataFrame.loc\nAccess a group of rows and columns by label(s)\n\ndf \n\n    Math  Stat  CS\ns1    99    92  50\ns2    65    48  88\ns3    87    88  94\n\n\n\ndf.loc['s1', \"CS\"]\n\n50\n\n\n\n## all rows and 1st col\ndf.loc['s1':'s3', [True, False, False]]\n\n    Math\ns1    99\ns2    65\ns3    87\n\n\n\ndf.loc['s2', ['Math', 'Stat']]\n\nMath    65\nStat    48\nName: s2, dtype: int64\n\n\n\n\nB.9.8 Obtaining a single cell value DataFrame.iat/ DataFrame.at\n\ndf \n\n    Math  Stat  CS\ns1    99    92  50\ns2    65    48  88\ns3    87    88  94\n\n\n\ndf.iat[1, 2]\n\n88\n\n\n\ndf.iloc[0].iat[1]\n\n92\n\n\n\ndf.at['s2', 'Stat']\n\n48\n\n\n\ndf.loc['s1'].at['Stat']\n\n92\n\n\n\n\nB.9.9 New columns DataFrame.insert and new rows pd.concat\n\ndf \n\n    Math  Stat  CS\ns1    99    92  50\ns2    65    48  88\ns3    87    88  94\n\n\n\ndf.insert(loc = 2, \n          column = \"Chem\", \n          value = [77, 89, 76])\ndf\n\n    Math  Stat  Chem  CS\ns1    99    92    77  50\ns2    65    48    89  88\ns3    87    88    76  94\n\n\n\ndf1 = pd.DataFrame({\n    \"Math\": 88, \n    \"Stat\": 99, \n    \"Chem\": 0, \n    \"CS\": 100\n    }, index = ['s4'])\n\n\npd.concat(objs = [df, df1])\n\n    Math  Stat  Chem   CS\ns1    99    92    77   50\ns2    65    48    89   88\ns3    87    88    76   94\ns4    88    99     0  100\n\n\n\n\npd.concat(objs = [df, df1], \n          ignore_index = True)",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#numpy",
+    "href": "a-py_prog.html#numpy",
+    "title": "Appendix B — Python Programming",
+    "section": "B.10 NumPy",
+    "text": "B.10 NumPy\n\nB.10.1 NumPy for arrays/matrices\nNumPy is used to work with arrays/matrices.\n\nThe array object in NumPy is called ndarray.\nUse array() to create an array.\n\n\nrange(0, 5, 1) # a seq of number from 0 to 4 with increment of 1\n\nrange(0, 5)\n\nlist(range(0, 5, 1))\n\n[0, 1, 2, 3, 4]\n\n\n\nimport numpy as np\narr = np.array(range(0, 5, 1)) ## One-dim array \narr\n\narray([0, 1, 2, 3, 4])\n\ntype(arr)\n\n&lt;class 'numpy.ndarray'&gt;\n\n\n\n\nB.10.2 1D array (vector) and 2D array (matrix)\n\nnp.arange: Efficient way to create a one-dim array of sequence of numbers\n\n\nnp.arange(2, 5)\n\narray([2, 3, 4])\n\nnp.arange(6, 0, -1)\n\narray([6, 5, 4, 3, 2, 1])\n\n\n\n2D array\n\n\nnp.array([[1, 2, 3], [4, 5, 6]])\n\narray([[1, 2, 3],\n       [4, 5, 6]])\n\n\n\nnp.array([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]])\n\narray([[[1, 2, 3],\n        [4, 5, 6]],\n\n       [[1, 2, 3],\n        [4, 5, 6]]])\n\n\n\n\nB.10.3 np.reshape()\n\narr2 = np.arange(8).reshape(2, 4)\narr2\n\narray([[0, 1, 2, 3],\n       [4, 5, 6, 7]])\n\narr2.shape  \n\n(2, 4)\n\n\n\narr2.ndim\n\n2\n\n\n\narr2.size\n\n8\n\n\n\n\nB.10.4 Stacking arrays\n\na = np.array([1, 2, 3, 4]).reshape(2, 2)\nb = np.array([5, 6, 7, 8]).reshape(2, 2)\n\nnp.vstack((a, b))\n\narray([[1, 2],\n       [3, 4],\n       [5, 6],\n       [7, 8]])\n\n\n\nnp.hstack((a, b))\n\narray([[1, 2, 5, 6],\n       [3, 4, 7, 8]])",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#plotting",
+    "href": "a-py_prog.html#plotting",
+    "title": "Appendix B — Python Programming",
+    "section": "B.11 Plotting",
+    "text": "B.11 Plotting\nmatplotlib.markers\n\npch = np.array(['.', ',', 'o', 'v', '^', '&lt;', '&gt;', '1', '2', '3', '4', '8', 's', 'p', 'P', '*', 'h', 'H', '+', 'x', 'X', 'D', 'd', '|', '_'])\n#all types of maker\npch_len = pch.shape[0]\nx = np.array([i for i in range(1, pch_len+1)])\ny = np.ones(pch_len)\n\n\nplt.figure(0)\nfor i in range(0, pch_len):\n    plt.plot(x[i],y[i],pch[i])\n\n\n\n\n\n\n\n\n\nB.11.1 Scatterplot\n\n\nCode\nmtcars = pd.read_csv('./data/mtcars.csv')\nmtcars.iloc[0:15,0:4]\n\n\n     mpg  cyl   disp   hp\n0   21.0    6  160.0  110\n1   21.0    6  160.0  110\n2   22.8    4  108.0   93\n3   21.4    6  258.0  110\n4   18.7    8  360.0  175\n5   18.1    6  225.0  105\n6   14.3    8  360.0  245\n7   24.4    4  146.7   62\n8   22.8    4  140.8   95\n9   19.2    6  167.6  123\n10  17.8    6  167.6  123\n11  16.4    8  275.8  180\n12  17.3    8  275.8  180\n13  15.2    8  275.8  180\n14  10.4    8  472.0  205\n\n\n\nimport matplotlib.pyplot as plt\nplt.scatter(x = mtcars.mpg, y = mtcars.hp, color = \"r\")\nplt.xlabel(\"Miles per gallon\")\nplt.ylabel(\"Horsepower\")\nplt.title(\"Scatter plot\")\n\n\n\n\n\n\n\n\n\n\nB.11.2 Subplots\nThe command plt.scatter() is used for creating one single plot. If multiple subplots are wanted in one single call, one can use the format\n\nfig, (ax1, ax2) = plt.subplots(1, 2)\nax1.scatter(x, y)\nax2.plot(x, y)\n\n\nfig, (ax1, ax2) = plt.subplots(1, 2)\nax1.scatter(x = mtcars.mpg, y = mtcars.hp)\nax2.scatter(x = mtcars.hp, y = mtcars.disp)\n\n\n\n\n\n\n\n\n\nCheck Creating multiple subplots using plt.subplots for more details.\n\n\n\nB.11.3 Boxplot\n\n\nCode\ncyl_index = np.sort(np.unique(np.array(mtcars.cyl)))\ncyl_shape = cyl_index.shape[0]\ncyl_list = []\nfor i in range (0, cyl_shape):\n    cyl_list.append(np.array(mtcars[mtcars.cyl == cyl_index[i]].mpg))\n\n\n\nplt.boxplot(cyl_list, vert=False, tick_labels=[4, 6, 8])\n\n{'whiskers': [&lt;matplotlib.lines.Line2D object at 0x16945d820&gt;, &lt;matplotlib.lines.Line2D object at 0x16945dac0&gt;, &lt;matplotlib.lines.Line2D object at 0x16945eb40&gt;, &lt;matplotlib.lines.Line2D object at 0x16945ee10&gt;, &lt;matplotlib.lines.Line2D object at 0x16945fe60&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a41d0&gt;], 'caps': [&lt;matplotlib.lines.Line2D object at 0x16945dd30&gt;, &lt;matplotlib.lines.Line2D object at 0x16945e060&gt;, &lt;matplotlib.lines.Line2D object at 0x16945f080&gt;, &lt;matplotlib.lines.Line2D object at 0x16945f380&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a4470&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a4710&gt;], 'boxes': [&lt;matplotlib.lines.Line2D object at 0x16944ee40&gt;, &lt;matplotlib.lines.Line2D object at 0x16945e870&gt;, &lt;matplotlib.lines.Line2D object at 0x16945fbf0&gt;], 'medians': [&lt;matplotlib.lines.Line2D object at 0x16945e330&gt;, &lt;matplotlib.lines.Line2D object at 0x16945f680&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a49e0&gt;], 'fliers': [&lt;matplotlib.lines.Line2D object at 0x16945e600&gt;, &lt;matplotlib.lines.Line2D object at 0x16945f950&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a4c20&gt;], 'means': []}\n\nplt.xlabel(\"Miles per gallon\")\nplt.ylabel(\"Number of cylinders\")\n\n\n\n\n\n\n\n\n\n\nB.11.4 Histogram\n\nplt.hist(mtcars.wt, \n         bins = 19, \n         color=\"#003366\",\n         edgecolor=\"#FFCC00\")\nplt.xlabel(\"weights\")\nplt.title(\"Histogram of weights\")\n\n\n\n\n\n\n\n\n\n\nB.11.5 Barplot\n\ncount_py = mtcars.value_counts('gear')\ncount_py\n\ngear\n3    15\n4    12\n5     5\nName: count, dtype: int64\n\n\n\nplt.bar(count_py.index, count_py)\nplt.xlabel(\"Number of Gears\")\nplt.title(\"Car Distribution\")\n\n\n\n\n\n\n\n\n\n\nB.11.6 Pie chart\n\npercent = round(count_py / sum(count_py) * 100, 2)\ntexts = [str(percent.index[k]) + \" gear \" + str(percent.array[k]) + \"%\" for k in range(0,3)]\n\n\nplt.pie(count_py, labels = texts, colors = ['r', 'g', 'b'])\n\n([&lt;matplotlib.patches.Wedge object at 0x16958c950&gt;, &lt;matplotlib.patches.Wedge object at 0x1694d1370&gt;, &lt;matplotlib.patches.Wedge object at 0x169612090&gt;], [Text(0.10781885436251686, 1.0947031993394165, '3 gear 46.88%'), Text(-0.6111272563215624, -0.9146165735327998, '4 gear 37.5%'), Text(0.9701133907831904, -0.5185364105085978, '5 gear 15.62%')])\n\nplt.title(\"Pie Charts\")\n\n\n\n\n\n\n\n\n\n\nB.11.7 2D Imaging\nIn Python,\n\nmat_img = np.reshape(np.array(range(1,31)), [6,5], \"F\")\nmat_img\n\narray([[ 1,  7, 13, 19, 25],\n       [ 2,  8, 14, 20, 26],\n       [ 3,  9, 15, 21, 27],\n       [ 4, 10, 16, 22, 28],\n       [ 5, 11, 17, 23, 29],\n       [ 6, 12, 18, 24, 30]])\n\nplt.imshow(mat_img, cmap = 'Oranges')\n\n\n\n\n\n\n\n\n\nvolcano = pd.read_csv('./data/volcano.csv', index_col=0)\nx = 10*np.arange(1,volcano.shape[0]+1)\ny = 10*np.arange(1,volcano.shape[1]+1)\nX,Y = np. meshgrid(x,y)\nvt = volcano.transpose()\nprint(vt.shape)\n\n(61, 87)\n\nprint(X.shape)\n\n(61, 87)\n\nprint(Y.shape)\n\n(61, 87)\n\n\n\nfig, ax = plt.subplots()\nIM = ax.matshow(vt, alpha =1, cmap='terrain')\nCS = ax.contour(vt, levels=np.arange(90,200,5))\nax.clabel(CS, inline=True, fontsize=10)\nax.set_title('Maunga Whau Volcano')\n\n\n\n\n\n\n\n\n\n\nB.11.8 3D scatterplot\nIn Python,\n\nfig = plt.figure(figsize=(12, 12))\nax = fig.add_subplot(projection='3d')\n\nax.scatter(xs = mtcars.wt, ys = mtcars.disp, zs = mtcars.mpg)\nax.set_xlabel('Weights')\nax.set_ylabel(\"Displacement\")\nax.set_zlabel(\"Miles per gallon\")\nax.set_title(\"3D Scatter Plot\")\n\n\n\n\n\n\n\n\n\n\nB.11.9 Perspective plot\nIn Python,\n\nx = 10*np.arange(1,volcano.shape[0]+1)\ny = 10*np.arange(1,volcano.shape[1]+1)\nvt = volcano.transpose()\nZ = 10*vt\nX,Y = np. meshgrid(x,y)\n\nprint(Z.shape)\n\n(61, 87)\n\nprint(X.shape)\n\n(61, 87)\n\nprint(Y.shape)\n\n(61, 87)\n\n\n\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"3d\"})\n# Plot the surface.\nax.plot_surface(X, Y, Z, cmap = 'Greens')",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#special-objects",
+    "href": "a-py_prog.html#special-objects",
+    "title": "Appendix B — Python Programming",
+    "section": "B.12 Special Objects",
+    "text": "B.12 Special Objects\nIn python, NA, NaN and NULL are not that distinguishable, comparing to R.\n\nNaN can be used as a numerical value on mathematical operations, while None cannot (or at least shouldn’t).\nNaN is a numeric value, as defined in IEEE 754 floating-point standard.\nNone is an internal Python type (NoneType) and would be more like “inexistent” or “empty” than “numerically invalid” in this context.\n\n\na = np.array([None, 0.9, 10])\ntype(a)\n\n&lt;class 'numpy.ndarray'&gt;\n\na == None\n\narray([ True, False, False])\n\nlen(a)\n\n3\n\nprint(type(a[0]))\n\n&lt;class 'NoneType'&gt;\n\n\n\nNone == None\n\nTrue\n\n'' == None\n\nFalse\n\n\n\na1 = np.array([-1,0,1])/0\n\n&lt;string&gt;:1: RuntimeWarning: divide by zero encountered in divide\n&lt;string&gt;:1: RuntimeWarning: invalid value encountered in divide\n\na1\n\narray([-inf,  nan,  inf])\n\n\n\nmath.isfinite(0)\n\nTrue\n\nmath.isnan(float(\"nan\"))\n\nTrue\n\npd.isna(float(\"nan\"))\n\nTrue\n\nnp.isnan(float(\"nan\"))\n\nTrue\n\n\n\nmath.isfinite(7.8/1e-307)\n\nTrue\n\nmath.isfinite(7.8/1e-308)\n\nFalse\n\n\n\ntype(None)\n\n&lt;class 'NoneType'&gt;\n\n\n\n## TypeError: '&gt;' not supported between instances of 'NoneType' and 'int'\nNone &gt; 5\n\n\n## TypeError: object of type 'NoneType' has no len()\nlen(None)\n\n\nfloat(\"NaN\") &gt; 5\n\nFalse\n\n\n\nv_none = np.array([3, None, 5])\nv_none\n\narray([3, None, 5], dtype=object)\n\nv_nan = np.array([3, float(\"NaN\"), 5])\nv_nan\n\narray([ 3., nan,  5.])\n\n\n\n# TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'\nsum(v_none)\n\n\nsum(v_nan)\n\nnan",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#conditions",
+    "href": "a-py_prog.html#conditions",
+    "title": "Appendix B — Python Programming",
+    "section": "B.13 Conditions",
+    "text": "B.13 Conditions\n\nif condition:\n    # code executed when condition is true\nelse:\n    # code executed when condition is false\n\n\na = 5\nb = 20\nif a &gt; 4 or b &gt; 4:\n    print('a &gt; 4 or b &gt; 4')\n\na &gt; 4 or b &gt; 4\n\nif a &gt; 4 and b &gt; 4:\n    print('a &gt; 4 and b &gt; 4')\n\na &gt; 4 and b &gt; 4\n\n\n\nif (a &gt; 4) | (b &gt; 4):\n    print('a &gt; 4 or b &gt; 4')\n\na &gt; 4 or b &gt; 4\n\nif (a &gt; 4) & (b &gt; 4):\n    print('a &gt; 4 and b &gt; 4')\n\na &gt; 4 and b &gt; 4",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#multiple-conditions",
+    "href": "a-py_prog.html#multiple-conditions",
+    "title": "Appendix B — Python Programming",
+    "section": "B.14 Multiple conditions",
+    "text": "B.14 Multiple conditions\n\nif condition A:\n    # do that\nelif condition B:\n    # do something else\nelse:\n    # \n\n\nrd = np.random.randint(100)\nprint(rd)\n\n95\n\nif rd &lt;= 20:\n    print(\"rd &lt;= 20\")\nelif rd &gt; 20 and rd &lt;= 40:\n    print('rd &gt; 20 and rd &lt;= 40')\nelif rd &gt; 40 and rd &lt;= 60:\n    print('rd &gt; 40 and rd &lt;= 60')\nelif rd &gt; 60 and rd &lt;= 80:\n    print('rd &gt; 60 and rd &lt;= 80')\nelif rd &gt; 80 and rd &lt;= 100:\n    print('rd &gt; 80 and rd &lt;= 100')\n\nrd &gt; 80 and rd &lt;= 100",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#functions",
+    "href": "a-py_prog.html#functions",
+    "title": "Appendix B — Python Programming",
+    "section": "B.15 Functions",
+    "text": "B.15 Functions\n\ndef function_name(arg1, arg2, ...):\n    ## body\n    return(something)\n\n\ndef add_number(a, b):\n    c = a + b\n    return c\n\nn1 = 9\nn2 = 18\nadd_number(n1, n2)\n\n27",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
+    ]
+  },
+  {
+    "objectID": "a-py_prog.html#loops",
+    "href": "a-py_prog.html#loops",
+    "title": "Appendix B — Python Programming",
+    "section": "B.16 Loops",
+    "text": "B.16 Loops\n\nB.16.1 for loops\n\nPython\nfor value in that:\n    # do this\n\n\nfor i in range(5):\n    print('for', i)\n\nfor 0\nfor 1\nfor 2\nfor 3\nfor 4\n\n\n\nfor i in ['My', '1st', 'for', 'loop']:\n    print(i)\n\nMy\n1st\nfor\nloop\n\n\n\n\nB.16.2 while loops\n\nwhile (condition):\n    # do this\n\n\ni = 1\nwhile(i &lt; 5):\n    print('while',i)\n    i = i + 1\n\nwhile 1\nwhile 2\nwhile 3\nwhile 4\n\n\n\nnp.random.seed(86)\ndef flip():\n    return np.random.choice(['T','H'], 1)\n    \nflips = 0\nnheads = 0\n\nwhile(nheads &lt; 3):\n    if flip() == \"H\":\n        nheads += 1\n    else:\n        nheads = 0\n    flips += 1\n    \nflips\n\n9",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
     ]
   }
 ]

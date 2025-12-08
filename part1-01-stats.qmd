@@ -11,4 +11,4 @@ Statistics can be defined in a variety of ways, and there doesn't seem to be one
 
 <span style="color:blue"> **Statistics as a Set of Numeric Records** </span>
 
-In ordinary conversations, the word **statistics** is used as a term to indicate a set or collection of **numeric records**. For example, @fig-mj-stats below shows Michael Jordan's career statistics from his time in the NBA.  However, this is just one way of defining statistics.
+In ordinary conversations, the word **statistics** is used as a term to indicate a set or collection of **numeric records**. For example, fig-mj-stats below shows Michael Jordan's career statistics from his time in the NBA.  However, this is just one way of defining statistics.

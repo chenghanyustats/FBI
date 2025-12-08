@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A modern introductory statistical data science book for STEM students.">
 
-<title>a-py_prog</title>
+<title>Appendix B — Python Programming – Introduction to Model-based Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,33 +59,437 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="a-py_prog_files/libs/clipboard/clipboard.min.js"></script>
-<script src="a-py_prog_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="a-py_prog_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="a-py_prog_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="a-py_prog_files/libs/quarto-html/popper.min.js"></script>
-<script src="a-py_prog_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="a-py_prog_files/libs/quarto-html/anchor.min.js"></script>
-<link href="a-py_prog_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="a-py_prog_files/libs/quarto-html/quarto-syntax-highlighting-46eeb4c476de49ef7df495821a6125d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="a-py_prog_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="a-py_prog_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="a-py_prog_files/libs/bootstrap/bootstrap-76bc00ab12f34705138908a94282ea05.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./a-r_prog.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-46eeb4c476de49ef7df495821a6125d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4c479992bb904f29b0e09e54a2e64e51.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-r_prog.html">Appendices</a></li><li class="breadcrumb-item"><a href="./a-py_prog.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Python Programming</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introduction to Model-based Statistics</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/chenghanyustats/fbi" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistics and Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-01-stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Science of Data and Data Science</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-02-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data, Studies, and Causality</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-03-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ready fo<em>R</em> data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-04-py.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title"><em>P</em>repare <em>Y</em>ourself for data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-05-graphics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-06-numerics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Numerics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-07-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Model-based Thinking</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomness and Data Generating Process</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-01-prob.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability: Meanings and Rules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-02-dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-03-sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Sampling and Simulation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-04-llnclt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Law of Large Numbers and Central Limit Theorem</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Learning from Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part3-01-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">What Is Statistical Inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part3-02-frequentist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Frequentist Reasoning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part3-03-bayesian.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bayesian Reasoning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part3-04-compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Distribution-based vs Simulation-based Inference</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inference for Normal Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part4-01-onemean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Inference for One Population Mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part4-02-twomean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Comparing Two Groups</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Models for Normal Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part5-01-slr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part5-02-anova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">One-Way Analysis of Variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part5-03-mlr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part5-04-twoway.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Two-Way ANOVA</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inference and Linear Models for Binary Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part6-01-oneproportion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Inference for One Population Proportion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part6-02-twoproportion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Comparing Two Proportions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part6-03-logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Binary Logistic Regression</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">References</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a-r_prog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">R programming</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a-py_prog.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Python Programming</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#arithmetic-and-logical-operators" id="toc-arithmetic-and-logical-operators" class="nav-link active" data-scroll-target="#arithmetic-and-logical-operators"><span class="header-section-number">B.1</span> Arithmetic and Logical Operators</a></li>
+  <li><a href="#math-functions" id="toc-math-functions" class="nav-link" data-scroll-target="#math-functions"><span class="header-section-number">B.2</span> Math Functions</a></li>
+  <li><a href="#variables-and-assignment" id="toc-variables-and-assignment" class="nav-link" data-scroll-target="#variables-and-assignment"><span class="header-section-number">B.3</span> Variables and Assignment</a></li>
+  <li><a href="#object-types" id="toc-object-types" class="nav-link" data-scroll-target="#object-types"><span class="header-section-number">B.4</span> Object Types</a></li>
+  <li><a href="#data-structure---lists" id="toc-data-structure---lists" class="nav-link" data-scroll-target="#data-structure---lists"><span class="header-section-number">B.5</span> Data Structure - Lists</a>
+  <ul class="collapse">
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">B.5.1</span> Lists</a></li>
+  <li><a href="#subsetting-lists" id="toc-subsetting-lists" class="nav-link" data-scroll-target="#subsetting-lists"><span class="header-section-number">B.5.2</span> Subsetting lists</a></li>
+  <li><a href="#lists-are-mutable" id="toc-lists-are-mutable" class="nav-link" data-scroll-target="#lists-are-mutable"><span class="header-section-number">B.5.3</span> Lists are mutable</a></li>
+  <li><a href="#list-operations-and-methods-list.method" id="toc-list-operations-and-methods-list.method" class="nav-link" data-scroll-target="#list-operations-and-methods-list.method"><span class="header-section-number">B.5.4</span> List operations and methods <code>list.method()</code></a></li>
+  </ul></li>
+  <li><a href="#data-structure---tuples" id="toc-data-structure---tuples" class="nav-link" data-scroll-target="#data-structure---tuples"><span class="header-section-number">B.6</span> Data Structure - Tuples</a>
+  <ul class="collapse">
+  <li><a href="#tuples-functions-and-methods" id="toc-tuples-functions-and-methods" class="nav-link" data-scroll-target="#tuples-functions-and-methods"><span class="header-section-number">B.6.1</span> Tuples functions and methods</a></li>
+  </ul></li>
+  <li><a href="#data-structure---dictionaries" id="toc-data-structure---dictionaries" class="nav-link" data-scroll-target="#data-structure---dictionaries"><span class="header-section-number">B.7</span> Data Structure - Dictionaries</a>
+  <ul class="collapse">
+  <li><a href="#properties-of-dictionaries" id="toc-properties-of-dictionaries" class="nav-link" data-scroll-target="#properties-of-dictionaries"><span class="header-section-number">B.7.1</span> Properties of dictionaries</a></li>
+  <li><a href="#disctionary-methods" id="toc-disctionary-methods" class="nav-link" data-scroll-target="#disctionary-methods"><span class="header-section-number">B.7.2</span> Disctionary methods</a></li>
+  </ul></li>
+  <li><a href="#python-data-structures-for-data-science" id="toc-python-data-structures-for-data-science" class="nav-link" data-scroll-target="#python-data-structures-for-data-science"><span class="header-section-number">B.8</span> Python Data Structures for Data Science</a>
+  <ul class="collapse">
+  <li><a href="#installing-numpy-and-pandas" id="toc-installing-numpy-and-pandas" class="nav-link" data-scroll-target="#installing-numpy-and-pandas"><span class="header-section-number">B.8.1</span> Installing NumPy and pandas</a></li>
+  </ul></li>
+  <li><a href="#pandas" id="toc-pandas" class="nav-link" data-scroll-target="#pandas"><span class="header-section-number">B.9</span> Pandas</a>
+  <ul class="collapse">
+  <li><a href="#pandas-series-from-a-list" id="toc-pandas-series-from-a-list" class="nav-link" data-scroll-target="#pandas-series-from-a-list"><span class="header-section-number">B.9.1</span> Pandas series from a list</a></li>
+  <li><a href="#pandas-series-from-a-dictionary" id="toc-pandas-series-from-a-dictionary" class="nav-link" data-scroll-target="#pandas-series-from-a-dictionary"><span class="header-section-number">B.9.2</span> Pandas series from a dictionary</a></li>
+  <li><a href="#pandas-data-frame" id="toc-pandas-data-frame" class="nav-link" data-scroll-target="#pandas-data-frame"><span class="header-section-number">B.9.3</span> Pandas data frame</a></li>
+  <li><a href="#subsetting-columns" id="toc-subsetting-columns" class="nav-link" data-scroll-target="#subsetting-columns"><span class="header-section-number">B.9.4</span> Subsetting columns</a></li>
+  <li><a href="#subsetting-rows-dataframe.iloc" id="toc-subsetting-rows-dataframe.iloc" class="nav-link" data-scroll-target="#subsetting-rows-dataframe.iloc"><span class="header-section-number">B.9.5</span> Subsetting rows <code>DataFrame.iloc</code></a></li>
+  <li><a href="#subsetting-rows-and-columns-dataframe.iloc" id="toc-subsetting-rows-and-columns-dataframe.iloc" class="nav-link" data-scroll-target="#subsetting-rows-and-columns-dataframe.iloc"><span class="header-section-number">B.9.6</span> Subsetting rows and columns <code>DataFrame.iloc</code></a></li>
+  <li><a href="#subsetting-rows-and-columns-dataframe.loc" id="toc-subsetting-rows-and-columns-dataframe.loc" class="nav-link" data-scroll-target="#subsetting-rows-and-columns-dataframe.loc"><span class="header-section-number">B.9.7</span> Subsetting rows and columns <code>DataFrame.loc</code></a></li>
+  <li><a href="#obtaining-a-single-cell-value-dataframe.iat-dataframe.at" id="toc-obtaining-a-single-cell-value-dataframe.iat-dataframe.at" class="nav-link" data-scroll-target="#obtaining-a-single-cell-value-dataframe.iat-dataframe.at"><span class="header-section-number">B.9.8</span> Obtaining a single cell value <code>DataFrame.iat</code>/ <code>DataFrame.at</code></a></li>
+  <li><a href="#new-columns-dataframe.insert-and-new-rows-pd.concat" id="toc-new-columns-dataframe.insert-and-new-rows-pd.concat" class="nav-link" data-scroll-target="#new-columns-dataframe.insert-and-new-rows-pd.concat"><span class="header-section-number">B.9.9</span> New columns <code>DataFrame.insert</code> and new rows <code>pd.concat</code></a></li>
+  </ul></li>
+  <li><a href="#numpy" id="toc-numpy" class="nav-link" data-scroll-target="#numpy"><span class="header-section-number">B.10</span> NumPy</a>
+  <ul class="collapse">
+  <li><a href="#numpy-for-arraysmatrices" id="toc-numpy-for-arraysmatrices" class="nav-link" data-scroll-target="#numpy-for-arraysmatrices"><span class="header-section-number">B.10.1</span> NumPy for arrays/matrices</a></li>
+  <li><a href="#d-array-vector-and-2d-array-matrix" id="toc-d-array-vector-and-2d-array-matrix" class="nav-link" data-scroll-target="#d-array-vector-and-2d-array-matrix"><span class="header-section-number">B.10.2</span> 1D array (vector) and 2D array (matrix)</a></li>
+  <li><a href="#np.reshape" id="toc-np.reshape" class="nav-link" data-scroll-target="#np.reshape"><span class="header-section-number">B.10.3</span> <code>np.reshape()</code></a></li>
+  <li><a href="#stacking-arrays" id="toc-stacking-arrays" class="nav-link" data-scroll-target="#stacking-arrays"><span class="header-section-number">B.10.4</span> Stacking arrays</a></li>
+  </ul></li>
+  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting"><span class="header-section-number">B.11</span> Plotting</a>
+  <ul class="collapse">
+  <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot"><span class="header-section-number">B.11.1</span> Scatterplot</a></li>
+  <li><a href="#subplots" id="toc-subplots" class="nav-link" data-scroll-target="#subplots"><span class="header-section-number">B.11.2</span> Subplots</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot"><span class="header-section-number">B.11.3</span> Boxplot</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">B.11.4</span> Histogram</a></li>
+  <li><a href="#barplot" id="toc-barplot" class="nav-link" data-scroll-target="#barplot"><span class="header-section-number">B.11.5</span> Barplot</a></li>
+  <li><a href="#pie-chart" id="toc-pie-chart" class="nav-link" data-scroll-target="#pie-chart"><span class="header-section-number">B.11.6</span> Pie chart</a></li>
+  <li><a href="#d-imaging" id="toc-d-imaging" class="nav-link" data-scroll-target="#d-imaging"><span class="header-section-number">B.11.7</span> 2D Imaging</a></li>
+  <li><a href="#d-scatterplot" id="toc-d-scatterplot" class="nav-link" data-scroll-target="#d-scatterplot"><span class="header-section-number">B.11.8</span> 3D scatterplot</a></li>
+  <li><a href="#perspective-plot" id="toc-perspective-plot" class="nav-link" data-scroll-target="#perspective-plot"><span class="header-section-number">B.11.9</span> Perspective plot</a></li>
+  </ul></li>
+  <li><a href="#special-objects" id="toc-special-objects" class="nav-link" data-scroll-target="#special-objects"><span class="header-section-number">B.12</span> Special Objects</a></li>
+  <li><a href="#conditions" id="toc-conditions" class="nav-link" data-scroll-target="#conditions"><span class="header-section-number">B.13</span> Conditions</a></li>
+  <li><a href="#multiple-conditions" id="toc-multiple-conditions" class="nav-link" data-scroll-target="#multiple-conditions"><span class="header-section-number">B.14</span> Multiple conditions</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">B.15</span> Functions</a></li>
+  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops"><span class="header-section-number">B.16</span> Loops</a>
+  <ul class="collapse">
+  <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><span class="header-section-number">B.16.1</span> for loops</a></li>
+  <li><a href="#while-loops" id="toc-while-loops" class="nav-link" data-scroll-target="#while-loops"><span class="header-section-number">B.16.2</span> while loops</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-r_prog.html">Appendices</a></li><li class="breadcrumb-item"><a href="./a-py_prog.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Python Programming</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-py-prog" class="quarto-section-identifier">Appendix B — Python Programming</span></h1>
+</div>
 
 
 
-<section id="sec-py-prog" class="level1">
-<h1>Python Programming</h1>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -101,8 +506,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="arithmetic-and-logical-operators" class="level2">
-<h2 class="anchored" data-anchor-id="arithmetic-and-logical-operators">Arithmetic and Logical Operators</h2>
+<section id="arithmetic-and-logical-operators" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="arithmetic-and-logical-operators"><span class="header-section-number">B.1</span> Arithmetic and Logical Operators</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">/</span> (<span class="dv">5</span> <span class="op">*</span> <span class="dv">4</span>) <span class="op">**</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -141,8 +546,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="math-functions" class="level2">
-<h2 class="anchored" data-anchor-id="math-functions">Math Functions</h2>
+<section id="math-functions" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="math-functions"><span class="header-section-number">B.2</span> Math Functions</h2>
 <p>Need to import <code>math</code> library in Python.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
@@ -171,8 +576,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python comment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="variables-and-assignment" class="level2">
-<h2 class="anchored" data-anchor-id="variables-and-assignment">Variables and Assignment</h2>
+<section id="variables-and-assignment" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="variables-and-assignment"><span class="header-section-number">B.3</span> Variables and Assignment</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -194,8 +599,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="object-types" class="level2">
-<h2 class="anchored" data-anchor-id="object-types">Object Types</h2>
+<section id="object-types" class="level2" data-number="B.4">
+<h2 data-number="B.4" class="anchored" data-anchor-id="object-types"><span class="header-section-number">B.4</span> Object Types</h2>
 <p><strong><code>str</code></strong>, <strong><code>float</code></strong>, <strong><code>int</code></strong> and <strong><code>bool</code></strong>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="fl">5.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -221,10 +626,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <!-- python long (long integers, they can also be represented in octal and hexadecimal) -->
 </section>
-<section id="data-structure---lists" class="level2">
-<h2 class="anchored" data-anchor-id="data-structure---lists">Data Structure - Lists</h2>
-<section id="lists" class="level3">
-<h3 class="anchored" data-anchor-id="lists">Lists</h3>
+<section id="data-structure---lists" class="level2" data-number="B.5">
+<h2 data-number="B.5" class="anchored" data-anchor-id="data-structure---lists"><span class="header-section-number">B.5</span> Data Structure - Lists</h2>
+<section id="lists" class="level3" data-number="B.5.1">
+<h3 data-number="B.5.1" class="anchored" data-anchor-id="lists"><span class="header-section-number">B.5.1</span> Lists</h3>
 <ul>
 <li>Python has <em>numbers</em> and <em>strings</em>, but no built-in vector structure.</li>
 <li>To create a sequence type of structure, we can use a <strong>list</strong> that can save several elements in an single object.</li>
@@ -247,8 +652,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>List elements can have <span style="color:green"><em>different types</em></span>!</p>
 </section>
-<section id="subsetting-lists" class="level3">
-<h3 class="anchored" data-anchor-id="subsetting-lists">Subsetting lists</h3>
+<section id="subsetting-lists" class="level3" data-number="B.5.2">
+<h3 data-number="B.5.2" class="anchored" data-anchor-id="subsetting-lists"><span class="header-section-number">B.5.2</span> Subsetting lists</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="st">'data'</span>, <span class="st">'math'</span>, <span class="dv">34</span>, <span class="va">True</span>]</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>lst</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -307,8 +712,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>What does <code>lst[0:1]</code> return? Is it a list?</p>
 </section>
-<section id="lists-are-mutable" class="level3">
-<h3 class="anchored" data-anchor-id="lists-are-mutable">Lists are mutable</h3>
+<section id="lists-are-mutable" class="level3" data-number="B.5.3">
+<h3 data-number="B.5.3" class="anchored" data-anchor-id="lists-are-mutable"><span class="header-section-number">B.5.3</span> Lists are mutable</h3>
 <ul>
 <li>Lists are <strong>changed in place</strong>!</li>
 </ul>
@@ -332,8 +737,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>If we change any element value in a list, the list itself will be changed as well.</p>
 </section>
-<section id="list-operations-and-methods-list.method" class="level3">
-<h3 class="anchored" data-anchor-id="list-operations-and-methods-list.method">List operations and methods <code>list.method()</code></h3>
+<section id="list-operations-and-methods-list.method" class="level3" data-number="B.5.4">
+<h3 data-number="B.5.4" class="anchored" data-anchor-id="list-operations-and-methods-list.method"><span class="header-section-number">B.5.4</span> List operations and methods <code>list.method()</code></h3>
 <p>This is a common syntax in Python. We start with a Python object of some type, then type dot followed by any method specifically for this particular data type or structure for operations.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Concatenation</span></span>
@@ -393,8 +798,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="data-structure---tuples" class="level2">
-<h2 class="anchored" data-anchor-id="data-structure---tuples">Data Structure - Tuples</h2>
+<section id="data-structure---tuples" class="level2" data-number="B.6">
+<h2 data-number="B.6" class="anchored" data-anchor-id="data-structure---tuples"><span class="header-section-number">B.6</span> Data Structure - Tuples</h2>
 <ul>
 <li><p><strong>Tuples</strong> work exactly like lists except they are <strong>immutable</strong>, i.e., they can’t be changed in place.</p></li>
 <li><p>To create a tuple, we use <code>()</code>.</p></li>
@@ -434,8 +839,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>('data', 'math', 34, True)</code></pre>
 </div>
 </div>
-<section id="tuples-functions-and-methods" class="level3">
-<h3 class="anchored" data-anchor-id="tuples-functions-and-methods">Tuples functions and methods</h3>
+<section id="tuples-functions-and-methods" class="level3" data-number="B.6.1">
+<h3 data-number="B.6.1" class="anchored" data-anchor-id="tuples-functions-and-methods"><span class="header-section-number">B.6.1</span> Tuples functions and methods</h3>
 <p>Lists have more methods than tuples because lists are more flexible.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converts a list into tuple</span></span>
@@ -460,8 +865,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="data-structure---dictionaries" class="level2">
-<h2 class="anchored" data-anchor-id="data-structure---dictionaries">Data Structure - Dictionaries</h2>
+<section id="data-structure---dictionaries" class="level2" data-number="B.7">
+<h2 data-number="B.7" class="anchored" data-anchor-id="data-structure---dictionaries"><span class="header-section-number">B.7</span> Data Structure - Dictionaries</h2>
 <ul>
 <li><p>A <strong>dictionary</strong> consists of <span style="color:green"><em>key-value pairs</em></span>.</p></li>
 <li><p>A dictionary is mutable, i.e., the values can be changed in place and more key-value pairs can be added.</p></li>
@@ -488,8 +893,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>{'Name': 'Ivy', 'Age': 9, 'Class': 'Third'}</code></pre>
 </div>
 </div>
-<section id="properties-of-dictionaries" class="level3">
-<h3 class="anchored" data-anchor-id="properties-of-dictionaries">Properties of dictionaries</h3>
+<section id="properties-of-dictionaries" class="level3" data-number="B.7.1">
+<h3 data-number="B.7.1" class="anchored" data-anchor-id="properties-of-dictionaries"><span class="header-section-number">B.7.1</span> Properties of dictionaries</h3>
 <ul>
 <li>Python will use the last assignment!</li>
 </ul>
@@ -518,8 +923,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>dic2[[<span class="st">'First'</span>, <span class="st">'Last'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="disctionary-methods" class="level3">
-<h3 class="anchored" data-anchor-id="disctionary-methods">Disctionary methods</h3>
+<section id="disctionary-methods" class="level3" data-number="B.7.2">
+<h3 data-number="B.7.2" class="anchored" data-anchor-id="disctionary-methods"><span class="header-section-number">B.7.2</span> Disctionary methods</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>dic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -566,14 +971,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="python-data-structures-for-data-science" class="level2">
-<h2 class="anchored" data-anchor-id="python-data-structures-for-data-science">Python Data Structures for Data Science</h2>
+<section id="python-data-structures-for-data-science" class="level2" data-number="B.8">
+<h2 data-number="B.8" class="anchored" data-anchor-id="python-data-structures-for-data-science"><span class="header-section-number">B.8</span> Python Data Structures for Data Science</h2>
 <ul>
 <li><p>Python built-in data structures are not specifically for data science.</p></li>
 <li><p>To use more data science friendly functions and structures, such as array or data frame, Python relies on packages <a href="https://numpy.org/"><code>NumPy</code></a> and <a href="https://pandas.pydata.org/"><code>pandas</code></a>.</p></li>
 </ul>
-<section id="installing-numpy-and-pandas" class="level3">
-<h3 class="anchored" data-anchor-id="installing-numpy-and-pandas">Installing NumPy and pandas</h3>
+<section id="installing-numpy-and-pandas" class="level3" data-number="B.8.1">
+<h3 data-number="B.8.1" class="anchored" data-anchor-id="installing-numpy-and-pandas"><span class="header-section-number">B.8.1</span> Installing NumPy and pandas</h3>
 <p>In your RStudio project, run</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
@@ -600,15 +1005,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="pandas" class="level2">
-<h2 class="anchored" data-anchor-id="pandas">Pandas</h2>
+<section id="pandas" class="level2" data-number="B.9">
+<h2 data-number="B.9" class="anchored" data-anchor-id="pandas"><span class="header-section-number">B.9</span> Pandas</h2>
 <p><strong>pandas</strong> is a Python library that provides data structures, manipulation and analysis tools for data science.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="pandas-series-from-a-list" class="level3">
-<h3 class="anchored" data-anchor-id="pandas-series-from-a-list">Pandas series from a list</h3>
+<section id="pandas-series-from-a-list" class="level3" data-number="B.9.1">
+<h3 data-number="B.9.1" class="anchored" data-anchor-id="pandas-series-from-a-list"><span class="header-section-number">B.9.1</span> Pandas series from a list</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import pandas as pd</span></span>
 <span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">2</span>]</span>
@@ -645,8 +1050,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="pandas-series-from-a-dictionary" class="level3">
-<h3 class="anchored" data-anchor-id="pandas-series-from-a-dictionary">Pandas series from a dictionary</h3>
+<section id="pandas-series-from-a-dictionary" class="level3" data-number="B.9.2">
+<h3 data-number="B.9.2" class="anchored" data-anchor-id="pandas-series-from-a-dictionary"><span class="header-section-number">B.9.2</span> Pandas series from a dictionary</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>grade <span class="op">=</span> {<span class="st">"math"</span>: <span class="dv">99</span>, <span class="st">"stats"</span>: <span class="dv">97</span>, <span class="st">"cs"</span>: <span class="dv">66</span>}</span>
 <span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series(grade)</span>
@@ -677,8 +1082,8 @@ dtype: int64</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"math"</span> <span class="ot">=</span> <span class="dv">99</span>, <span class="st">"stats"</span> <span class="ot">=</span> <span class="dv">97</span>, <span class="st">"cs"</span> <span class="ot">=</span> <span class="dv">66</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="pandas-data-frame" class="level3">
-<h3 class="anchored" data-anchor-id="pandas-data-frame"><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">Pandas data frame</a></h3>
+<section id="pandas-data-frame" class="level3" data-number="B.9.3">
+<h3 data-number="B.9.3" class="anchored" data-anchor-id="pandas-data-frame"><span class="header-section-number">B.9.3</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">Pandas data frame</a></h3>
 <ul>
 <li>Create a data frame from a dictionary</li>
 </ul>
@@ -709,8 +1114,8 @@ s3    87    88  94</code></pre>
 </div>
 </div>
 </section>
-<section id="subsetting-columns" class="level3">
-<h3 class="anchored" data-anchor-id="subsetting-columns">Subsetting columns</h3>
+<section id="subsetting-columns" class="level3" data-number="B.9.4">
+<h3 data-number="B.9.4" class="anchored" data-anchor-id="subsetting-columns"><span class="header-section-number">B.9.4</span> Subsetting columns</h3>
 <ul>
 <li>In Python, <code>[]</code> returns <em>Series</em>, <code>[[]]</code> returns <em>DataFrame</em>!</li>
 <li>In R, <code>[]</code> returns <em>tibble/data frame</em>, <code>[[]]</code> returns <em>vector</em>!</li>
@@ -758,8 +1163,8 @@ s3    87  94</code></pre>
 <p>isinstance(df[[“Math”]], pd.DataFrame)</p>
 </div>
 </section>
-<section id="subsetting-rows-dataframe.iloc" class="level3">
-<h3 class="anchored" data-anchor-id="subsetting-rows-dataframe.iloc"><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html">Subsetting rows <code>DataFrame.iloc</code></a></h3>
+<section id="subsetting-rows-dataframe.iloc" class="level3" data-number="B.9.5">
+<h3 data-number="B.9.5" class="anchored" data-anchor-id="subsetting-rows-dataframe.iloc"><span class="header-section-number">B.9.5</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html">Subsetting rows <code>DataFrame.iloc</code></a></h3>
 <ul>
 <li><strong>integer-location</strong> based indexing for selection by position</li>
 </ul>
@@ -809,8 +1214,8 @@ s3    87    88  94</code></pre>
 </div>
 </div>
 </section>
-<section id="subsetting-rows-and-columns-dataframe.iloc" class="level3">
-<h3 class="anchored" data-anchor-id="subsetting-rows-and-columns-dataframe.iloc">Subsetting rows and columns <code>DataFrame.iloc</code></h3>
+<section id="subsetting-rows-and-columns-dataframe.iloc" class="level3" data-number="B.9.6">
+<h3 data-number="B.9.6" class="anchored" data-anchor-id="subsetting-rows-and-columns-dataframe.iloc"><span class="header-section-number">B.9.6</span> Subsetting rows and columns <code>DataFrame.iloc</code></h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb177"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a>df </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -848,8 +1253,8 @@ s2    48  88</code></pre>
 </div>
 </div>
 </section>
-<section id="subsetting-rows-and-columns-dataframe.loc" class="level3">
-<h3 class="anchored" data-anchor-id="subsetting-rows-and-columns-dataframe.loc">Subsetting rows and columns <code>DataFrame.loc</code></h3>
+<section id="subsetting-rows-and-columns-dataframe.loc" class="level3" data-number="B.9.7">
+<h3 data-number="B.9.7" class="anchored" data-anchor-id="subsetting-rows-and-columns-dataframe.loc"><span class="header-section-number">B.9.7</span> Subsetting rows and columns <code>DataFrame.loc</code></h3>
 <p>Access a group of rows and columns by <strong>label(s)</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb185"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a>df </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -885,8 +1290,8 @@ Name: s2, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="obtaining-a-single-cell-value-dataframe.iat-dataframe.at" class="level3">
-<h3 class="anchored" data-anchor-id="obtaining-a-single-cell-value-dataframe.iat-dataframe.at">Obtaining a single cell value <code>DataFrame.iat</code>/ <code>DataFrame.at</code></h3>
+<section id="obtaining-a-single-cell-value-dataframe.iat-dataframe.at" class="level3" data-number="B.9.8">
+<h3 data-number="B.9.8" class="anchored" data-anchor-id="obtaining-a-single-cell-value-dataframe.iat-dataframe.at"><span class="header-section-number">B.9.8</span> Obtaining a single cell value <code>DataFrame.iat</code>/ <code>DataFrame.at</code></h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb193"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a>df </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -921,8 +1326,8 @@ s3    87    88  94</code></pre>
 </div>
 </div>
 </section>
-<section id="new-columns-dataframe.insert-and-new-rows-pd.concat" class="level3">
-<h3 class="anchored" data-anchor-id="new-columns-dataframe.insert-and-new-rows-pd.concat">New columns <code>DataFrame.insert</code> and new rows <code>pd.concat</code></h3>
+<section id="new-columns-dataframe.insert-and-new-rows-pd.concat" class="level3" data-number="B.9.9">
+<h3 data-number="B.9.9" class="anchored" data-anchor-id="new-columns-dataframe.insert-and-new-rows-pd.concat"><span class="header-section-number">B.9.9</span> New columns <code>DataFrame.insert</code> and new rows <code>pd.concat</code></h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb203"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a>df </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -970,10 +1375,10 @@ s4    88    99     0  100</code></pre>
 </div>
 </section>
 </section>
-<section id="numpy" class="level2">
-<h2 class="anchored" data-anchor-id="numpy">NumPy</h2>
-<section id="numpy-for-arraysmatrices" class="level3">
-<h3 class="anchored" data-anchor-id="numpy-for-arraysmatrices">NumPy for arrays/matrices</h3>
+<section id="numpy" class="level2" data-number="B.10">
+<h2 data-number="B.10" class="anchored" data-anchor-id="numpy"><span class="header-section-number">B.10</span> NumPy</h2>
+<section id="numpy-for-arraysmatrices" class="level3" data-number="B.10.1">
+<h3 data-number="B.10.1" class="anchored" data-anchor-id="numpy-for-arraysmatrices"><span class="header-section-number">B.10.1</span> NumPy for arrays/matrices</h3>
 <p><strong>NumPy</strong> is used to work with arrays/matrices.</p>
 <ul>
 <li><p>The array object in NumPy is called <code>ndarray</code>.</p></li>
@@ -1002,8 +1407,8 @@ s4    88    99     0  100</code></pre>
 </div>
 </div>
 </section>
-<section id="d-array-vector-and-2d-array-matrix" class="level3">
-<h3 class="anchored" data-anchor-id="d-array-vector-and-2d-array-matrix">1D array (vector) and 2D array (matrix)</h3>
+<section id="d-array-vector-and-2d-array-matrix" class="level3" data-number="B.10.2">
+<h3 data-number="B.10.2" class="anchored" data-anchor-id="d-array-vector-and-2d-array-matrix"><span class="header-section-number">B.10.2</span> 1D array (vector) and 2D array (matrix)</h3>
 <ul>
 <li><code>np.arange</code>: Efficient way to create a one-dim array of sequence of numbers</li>
 </ul>
@@ -1038,8 +1443,8 @@ s4    88    99     0  100</code></pre>
 </div>
 </div>
 </section>
-<section id="np.reshape" class="level3">
-<h3 class="anchored" data-anchor-id="np.reshape"><code>np.reshape()</code></h3>
+<section id="np.reshape" class="level3" data-number="B.10.3">
+<h3 data-number="B.10.3" class="anchored" data-anchor-id="np.reshape"><span class="header-section-number">B.10.3</span> <code>np.reshape()</code></h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb227"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb227-1"><a href="#cb227-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">=</span> np.arange(<span class="dv">8</span>).reshape(<span class="dv">2</span>, <span class="dv">4</span>)</span>
 <span id="cb227-2"><a href="#cb227-2" aria-hidden="true" tabindex="-1"></a>arr2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1065,8 +1470,8 @@ s4    88    99     0  100</code></pre>
 </div>
 </div>
 </section>
-<section id="stacking-arrays" class="level3">
-<h3 class="anchored" data-anchor-id="stacking-arrays">Stacking arrays</h3>
+<section id="stacking-arrays" class="level3" data-number="B.10.4">
+<h3 data-number="B.10.4" class="anchored" data-anchor-id="stacking-arrays"><span class="header-section-number">B.10.4</span> Stacking arrays</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb235"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb235-1"><a href="#cb235-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]).reshape(<span class="dv">2</span>, <span class="dv">2</span>)</span>
 <span id="cb235-2"><a href="#cb235-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]).reshape(<span class="dv">2</span>, <span class="dv">2</span>)</span>
@@ -1125,8 +1530,8 @@ s4    88    99     0  100</code></pre>
 <!-- - [pandas](https://pandas.pydata.org/docs/user_guide/index.html) -->
 </section>
 </section>
-<section id="plotting" class="level2">
-<h2 class="anchored" data-anchor-id="plotting">Plotting</h2>
+<section id="plotting" class="level2" data-number="B.11">
+<h2 data-number="B.11" class="anchored" data-anchor-id="plotting"><span class="header-section-number">B.11</span> Plotting</h2>
 <p><a href="https://matplotlib.org/stable/api/markers_api.html">matplotlib.markers</a></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb239"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb239-1"><a href="#cb239-1" aria-hidden="true" tabindex="-1"></a>pch <span class="op">=</span> np.array([<span class="st">'.'</span>, <span class="st">','</span>, <span class="st">'o'</span>, <span class="st">'v'</span>, <span class="st">'^'</span>, <span class="st">'&lt;'</span>, <span class="st">'&gt;'</span>, <span class="st">'1'</span>, <span class="st">'2'</span>, <span class="st">'3'</span>, <span class="st">'4'</span>, <span class="st">'8'</span>, <span class="st">'s'</span>, <span class="st">'p'</span>, <span class="st">'P'</span>, <span class="st">'*'</span>, <span class="st">'h'</span>, <span class="st">'H'</span>, <span class="st">'+'</span>, <span class="st">'x'</span>, <span class="st">'X'</span>, <span class="st">'D'</span>, <span class="st">'d'</span>, <span class="st">'|'</span>, <span class="st">'_'</span>])</span>
@@ -1147,8 +1552,8 @@ s4    88    99     0  100</code></pre>
 </div>
 </div>
 </div>
-<section id="scatterplot" class="level3">
-<h3 class="anchored" data-anchor-id="scatterplot">Scatterplot</h3>
+<section id="scatterplot" class="level3" data-number="B.11.1">
+<h3 data-number="B.11.1" class="anchored" data-anchor-id="scatterplot"><span class="header-section-number">B.11.1</span> Scatterplot</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1189,8 +1594,8 @@ s4    88    99     0  100</code></pre>
 </div>
 </div>
 </section>
-<section id="subplots" class="level3">
-<h3 class="anchored" data-anchor-id="subplots">Subplots</h3>
+<section id="subplots" class="level3" data-number="B.11.2">
+<h3 data-number="B.11.2" class="anchored" data-anchor-id="subplots"><span class="header-section-number">B.11.2</span> Subplots</h3>
 <p>The command <code>plt.scatter()</code> is used for creating one single plot. If multiple subplots are wanted in one single call, one can use the format</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb244"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb244-1"><a href="#cb244-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
@@ -1213,8 +1618,8 @@ s4    88    99     0  100</code></pre>
 <li>Check <a href="https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html">Creating multiple subplots using <code>plt.subplots</code></a> for more details.</li>
 </ul>
 </section>
-<section id="boxplot" class="level3">
-<h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>
+<section id="boxplot" class="level3" data-number="B.11.3">
+<h3 data-number="B.11.3" class="anchored" data-anchor-id="boxplot"><span class="header-section-number">B.11.3</span> Boxplot</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1228,7 +1633,7 @@ s4    88    99     0  100</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb247"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb247-1"><a href="#cb247-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(cyl_list, vert<span class="op">=</span><span class="va">False</span>, tick_labels<span class="op">=</span>[<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'whiskers': [&lt;matplotlib.lines.Line2D object at 0x338780140&gt;, &lt;matplotlib.lines.Line2D object at 0x338780440&gt;, &lt;matplotlib.lines.Line2D object at 0x338781520&gt;, &lt;matplotlib.lines.Line2D object at 0x338781820&gt;, &lt;matplotlib.lines.Line2D object at 0x338782930&gt;, &lt;matplotlib.lines.Line2D object at 0x338782c60&gt;], 'caps': [&lt;matplotlib.lines.Line2D object at 0x338780740&gt;, &lt;matplotlib.lines.Line2D object at 0x338780a10&gt;, &lt;matplotlib.lines.Line2D object at 0x338781af0&gt;, &lt;matplotlib.lines.Line2D object at 0x338781df0&gt;, &lt;matplotlib.lines.Line2D object at 0x338782f30&gt;, &lt;matplotlib.lines.Line2D object at 0x338783260&gt;], 'boxes': [&lt;matplotlib.lines.Line2D object at 0x33874fe90&gt;, &lt;matplotlib.lines.Line2D object at 0x3387811f0&gt;, &lt;matplotlib.lines.Line2D object at 0x338782630&gt;], 'medians': [&lt;matplotlib.lines.Line2D object at 0x338780d40&gt;, &lt;matplotlib.lines.Line2D object at 0x3387820c0&gt;, &lt;matplotlib.lines.Line2D object at 0x3387834a0&gt;], 'fliers': [&lt;matplotlib.lines.Line2D object at 0x338781010&gt;, &lt;matplotlib.lines.Line2D object at 0x338782390&gt;, &lt;matplotlib.lines.Line2D object at 0x338783740&gt;], 'means': []}</code></pre>
+<pre><code>{'whiskers': [&lt;matplotlib.lines.Line2D object at 0x16945d820&gt;, &lt;matplotlib.lines.Line2D object at 0x16945dac0&gt;, &lt;matplotlib.lines.Line2D object at 0x16945eb40&gt;, &lt;matplotlib.lines.Line2D object at 0x16945ee10&gt;, &lt;matplotlib.lines.Line2D object at 0x16945fe60&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a41d0&gt;], 'caps': [&lt;matplotlib.lines.Line2D object at 0x16945dd30&gt;, &lt;matplotlib.lines.Line2D object at 0x16945e060&gt;, &lt;matplotlib.lines.Line2D object at 0x16945f080&gt;, &lt;matplotlib.lines.Line2D object at 0x16945f380&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a4470&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a4710&gt;], 'boxes': [&lt;matplotlib.lines.Line2D object at 0x16944ee40&gt;, &lt;matplotlib.lines.Line2D object at 0x16945e870&gt;, &lt;matplotlib.lines.Line2D object at 0x16945fbf0&gt;], 'medians': [&lt;matplotlib.lines.Line2D object at 0x16945e330&gt;, &lt;matplotlib.lines.Line2D object at 0x16945f680&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a49e0&gt;], 'fliers': [&lt;matplotlib.lines.Line2D object at 0x16945e600&gt;, &lt;matplotlib.lines.Line2D object at 0x16945f950&gt;, &lt;matplotlib.lines.Line2D object at 0x1694a4c20&gt;], 'means': []}</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb249"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb249-1"><a href="#cb249-1" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Miles per gallon"</span>)</span>
 <span id="cb249-2"><a href="#cb249-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of cylinders"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1241,8 +1646,8 @@ s4    88    99     0  100</code></pre>
 </div>
 </div>
 </section>
-<section id="histogram" class="level3">
-<h3 class="anchored" data-anchor-id="histogram">Histogram</h3>
+<section id="histogram" class="level3" data-number="B.11.4">
+<h3 data-number="B.11.4" class="anchored" data-anchor-id="histogram"><span class="header-section-number">B.11.4</span> Histogram</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb250"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb250-1"><a href="#cb250-1" aria-hidden="true" tabindex="-1"></a>plt.hist(mtcars.wt, </span>
 <span id="cb250-2"><a href="#cb250-2" aria-hidden="true" tabindex="-1"></a>         bins <span class="op">=</span> <span class="dv">19</span>, </span>
@@ -1259,8 +1664,8 @@ s4    88    99     0  100</code></pre>
 </div>
 </div>
 </section>
-<section id="barplot" class="level3">
-<h3 class="anchored" data-anchor-id="barplot">Barplot</h3>
+<section id="barplot" class="level3" data-number="B.11.5">
+<h3 data-number="B.11.5" class="anchored" data-anchor-id="barplot"><span class="header-section-number">B.11.5</span> Barplot</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb251"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb251-1"><a href="#cb251-1" aria-hidden="true" tabindex="-1"></a>count_py <span class="op">=</span> mtcars.value_counts(<span class="st">'gear'</span>)</span>
 <span id="cb251-2"><a href="#cb251-2" aria-hidden="true" tabindex="-1"></a>count_py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1285,8 +1690,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="pie-chart" class="level3">
-<h3 class="anchored" data-anchor-id="pie-chart">Pie chart</h3>
+<section id="pie-chart" class="level3" data-number="B.11.6">
+<h3 data-number="B.11.6" class="anchored" data-anchor-id="pie-chart"><span class="header-section-number">B.11.6</span> Pie chart</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb254"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb254-1"><a href="#cb254-1" aria-hidden="true" tabindex="-1"></a>percent <span class="op">=</span> <span class="bu">round</span>(count_py <span class="op">/</span> <span class="bu">sum</span>(count_py) <span class="op">*</span> <span class="dv">100</span>, <span class="dv">2</span>)</span>
 <span id="cb254-2"><a href="#cb254-2" aria-hidden="true" tabindex="-1"></a>texts <span class="op">=</span> [<span class="bu">str</span>(percent.index[k]) <span class="op">+</span> <span class="st">" gear "</span> <span class="op">+</span> <span class="bu">str</span>(percent.array[k]) <span class="op">+</span> <span class="st">"%"</span> <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">3</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1294,7 +1699,7 @@ Name: count, dtype: int64</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb255"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb255-1"><a href="#cb255-1" aria-hidden="true" tabindex="-1"></a>plt.pie(count_py, labels <span class="op">=</span> texts, colors <span class="op">=</span> [<span class="st">'r'</span>, <span class="st">'g'</span>, <span class="st">'b'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>([&lt;matplotlib.patches.Wedge object at 0x33860a3c0&gt;, &lt;matplotlib.patches.Wedge object at 0x33a0bf920&gt;, &lt;matplotlib.patches.Wedge object at 0x33a118fe0&gt;], [Text(0.10781885436251686, 1.0947031993394165, '3 gear 46.88%'), Text(-0.6111272563215624, -0.9146165735327998, '4 gear 37.5%'), Text(0.9701133907831904, -0.5185364105085978, '5 gear 15.62%')])</code></pre>
+<pre><code>([&lt;matplotlib.patches.Wedge object at 0x16958c950&gt;, &lt;matplotlib.patches.Wedge object at 0x1694d1370&gt;, &lt;matplotlib.patches.Wedge object at 0x169612090&gt;], [Text(0.10781885436251686, 1.0947031993394165, '3 gear 46.88%'), Text(-0.6111272563215624, -0.9146165735327998, '4 gear 37.5%'), Text(0.9701133907831904, -0.5185364105085978, '5 gear 15.62%')])</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb257"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb257-1"><a href="#cb257-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Pie Charts"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -1306,8 +1711,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="d-imaging" class="level3">
-<h3 class="anchored" data-anchor-id="d-imaging">2D Imaging</h3>
+<section id="d-imaging" class="level3" data-number="B.11.7">
+<h3 data-number="B.11.7" class="anchored" data-anchor-id="d-imaging"><span class="header-section-number">B.11.7</span> 2D Imaging</h3>
 <p>In <a href="https://matplotlib.org/stable/plot_types/arrays/imshow.html#sphx-glr-plot-types-arrays-imshow-py">Python</a>,</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb258"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb258-1"><a href="#cb258-1" aria-hidden="true" tabindex="-1"></a>mat_img <span class="op">=</span> np.reshape(np.array(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">31</span>)), [<span class="dv">6</span>,<span class="dv">5</span>], <span class="st">"F"</span>)</span>
@@ -1363,8 +1768,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="d-scatterplot" class="level3">
-<h3 class="anchored" data-anchor-id="d-scatterplot">3D scatterplot</h3>
+<section id="d-scatterplot" class="level3" data-number="B.11.8">
+<h3 data-number="B.11.8" class="anchored" data-anchor-id="d-scatterplot"><span class="header-section-number">B.11.8</span> 3D scatterplot</h3>
 <p>In <a href="https://matplotlib.org/stable/plot_types/3D/scatter3d_simple.html">Python</a>,</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb268"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb268-1"><a href="#cb268-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>))</span>
@@ -1384,8 +1789,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="perspective-plot" class="level3">
-<h3 class="anchored" data-anchor-id="perspective-plot">Perspective plot</h3>
+<section id="perspective-plot" class="level3" data-number="B.11.9">
+<h3 data-number="B.11.9" class="anchored" data-anchor-id="perspective-plot"><span class="header-section-number">B.11.9</span> Perspective plot</h3>
 <p>In <a href="https://matplotlib.org/stable/plot_types/3D/surface3d_simple.html">Python</a>,</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb269"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb269-1"><a href="#cb269-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span><span class="op">*</span>np.arange(<span class="dv">1</span>,volcano.shape[<span class="dv">0</span>]<span class="op">+</span><span class="dv">1</span>)</span>
@@ -1421,8 +1826,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 </section>
 </section>
-<section id="special-objects" class="level2">
-<h2 class="anchored" data-anchor-id="special-objects">Special Objects</h2>
+<section id="special-objects" class="level2" data-number="B.12">
+<h2 data-number="B.12" class="anchored" data-anchor-id="special-objects"><span class="header-section-number">B.12</span> Special Objects</h2>
 <p>In python, <code>NA</code>, <code>NaN</code> and <code>NULL</code> are not that distinguishable, comparing to R.</p>
 <ul>
 <li><p><code>NaN</code> can be used as a numerical value on mathematical operations, while <code>None</code> cannot (or at least shouldn’t).</p></li>
@@ -1540,8 +1945,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="conditions" class="level2">
-<h2 class="anchored" data-anchor-id="conditions">Conditions</h2>
+<section id="conditions" class="level2" data-number="B.13">
+<h2 data-number="B.13" class="anchored" data-anchor-id="conditions"><span class="header-section-number">B.13</span> Conditions</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb317"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb317-1"><a href="#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> condition:</span>
 <span id="cb317-2"><a href="#cb317-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># code executed when condition is true</span></span>
@@ -1575,8 +1980,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="multiple-conditions" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-conditions">Multiple conditions</h2>
+<section id="multiple-conditions" class="level2" data-number="B.14">
+<h2 data-number="B.14" class="anchored" data-anchor-id="multiple-conditions"><span class="header-section-number">B.14</span> Multiple conditions</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb326"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb326-1"><a href="#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> condition A:</span>
 <span id="cb326-2"><a href="#cb326-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># do that</span></span>
@@ -1589,7 +1994,7 @@ Name: count, dtype: int64</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb327"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb327-1"><a href="#cb327-1" aria-hidden="true" tabindex="-1"></a>rd <span class="op">=</span> np.random.randint(<span class="dv">100</span>)</span>
 <span id="cb327-2"><a href="#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>70</code></pre>
+<pre><code>95</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb329"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb329-1"><a href="#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rd <span class="op">&lt;=</span> <span class="dv">20</span>:</span>
 <span id="cb329-2"><a href="#cb329-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"rd &lt;= 20"</span>)</span>
@@ -1602,12 +2007,12 @@ Name: count, dtype: int64</code></pre>
 <span id="cb329-9"><a href="#cb329-9" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> rd <span class="op">&gt;</span> <span class="dv">80</span> <span class="kw">and</span> rd <span class="op">&lt;=</span> <span class="dv">100</span>:</span>
 <span id="cb329-10"><a href="#cb329-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'rd &gt; 80 and rd &lt;= 100'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>rd &gt; 60 and rd &lt;= 80</code></pre>
+<pre><code>rd &gt; 80 and rd &lt;= 100</code></pre>
 </div>
 </div>
 </section>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<section id="functions" class="level2" data-number="B.15">
+<h2 data-number="B.15" class="anchored" data-anchor-id="functions"><span class="header-section-number">B.15</span> Functions</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb331"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb331-1"><a href="#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> function_name(arg1, arg2, ...):</span>
 <span id="cb331-2"><a href="#cb331-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## body</span></span>
@@ -1626,10 +2031,10 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="loops" class="level2">
-<h2 class="anchored" data-anchor-id="loops">Loops</h2>
-<section id="for-loops" class="level3">
-<h3 class="anchored" data-anchor-id="for-loops">for loops</h3>
+<section id="loops" class="level2" data-number="B.16">
+<h2 data-number="B.16" class="anchored" data-anchor-id="loops"><span class="header-section-number">B.16</span> Loops</h2>
+<section id="for-loops" class="level3" data-number="B.16.1">
+<h3 data-number="B.16.1" class="anchored" data-anchor-id="for-loops"><span class="header-section-number">B.16.1</span> for loops</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb334"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb334-1"><a href="#cb334-1" aria-hidden="true" tabindex="-1"></a>Python</span>
 <span id="cb334-2"><a href="#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> that:</span>
@@ -1657,8 +2062,8 @@ loop</code></pre>
 </div>
 </div>
 </section>
-<section id="while-loops" class="level3">
-<h3 class="anchored" data-anchor-id="while-loops">while loops</h3>
+<section id="while-loops" class="level3" data-number="B.16.2">
+<h3 data-number="B.16.2" class="anchored" data-anchor-id="while-loops"><span class="header-section-number">B.16.2</span> while loops</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb339"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb339-1"><a href="#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (condition):</span>
 <span id="cb339-2"><a href="#cb339-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># do this</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1695,12 +2100,12 @@ while 4</code></pre>
 <pre><code>9</code></pre>
 </div>
 </div>
-</section>
+
+
 </section>
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1773,7 +2178,7 @@ while 4</code></pre>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/chenghanyu-fbi\.netlify\.app\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -2100,6 +2505,15 @@ while 4</code></pre>
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./a-r_prog.html" class="pagination-link" aria-label="R programming">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">R programming</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
