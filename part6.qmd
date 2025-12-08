@@ -1,4 +1,4 @@
-# Introduction
+# Inference and Linear Models for Binary Data {#sec-part6}
 
 This is a book created from markdown and executable code.
 

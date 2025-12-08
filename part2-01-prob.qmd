@@ -1,4 +1,4 @@
-# Introduction
+# Probability: Meanings and Rules {#sec-part2-prob}
 
 This is a book created from markdown and executable code.
 

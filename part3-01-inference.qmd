@@ -1,4 +1,4 @@
-# Introduction
+# What Is Statistical Inference {#sec-part3-inference}
 
 This is a book created from markdown and executable code.
 

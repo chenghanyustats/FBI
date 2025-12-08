@@ -1,0 +1,252 @@
+# Model-based Thinking {#sec-part1-model}
+
+In this chapter, we introduce a simple but powerful way to think about data:
+
+$$
+Y_i = f(x_i) + \varepsilon_i.
+$$
+
+This equation will show up throughout the book. It is the backbone of how we describe patterns in data, differences between groups, and relationships between variables.
+
+- $Y_i$ is the outcome (or response) we observe for unit $i$.
+- $x_i$ is information about unit $i$ (for example, group membership, a predictor, or a set of predictors).
+- $f(x_i)$ is the part we can explain or predict using $x_i$.
+- $\varepsilon_i$ is the random error that captures variation we do not explain.
+
+Even the simplest statistical questions, such as “What is the average number of hours students sleep per night?” can be written in this form. More complex questions, like “How does income relate to years of education?” or “Do different treatments lead to different average outcomes?” are all variations on the same theme.
+
+Our goal in this chapter is not to master all the details, but to build intuition for this model-based view so that later chapters feel like variations on a familiar pattern rather than a long list of new procedures.
+
+---
+
+## 3.1 Data, units, variables, and variation
+
+Before we talk about models, we recall some key ideas from earlier chapters.
+
+- A **unit** is one object or individual in the study (a person, a school, a machine, a plot of land).
+- A **variable** records some characteristic for each unit (height, weight, test score, treatment group).
+- A **dataset** is a collection of measurements on one or more variables for many units.
+- **Variation** means that not all units have the same values. Even within a single group, people’s test scores or hours of sleep are not identical.
+
+Models are about describing and explaining this variation in a structured way.
+
+---
+
+## 3.2 A constant model: one population mean
+
+Consider a simple example.
+
+> Example: Hours of sleep  
+> We record the average number of hours slept last night for a random sample of $n$ students at a university. Let $Y_i$ be the hours of sleep for student $i$.
+
+We are interested in the population mean number of hours slept, which we denote by $\mu$.
+
+A model-based way to write this situation is:
+
+$$
+Y_i = \mu + \varepsilon_i.
+$$
+
+Here:
+
+- $\mu$ is a single number, the same for all students in the population.
+- The error term $\varepsilon_i$ captures how much student $i$’s sleep deviates from the population mean.
+
+This is called a **constant model** or an **intercept-only model**. It is the simplest possible model in our framework.
+
+Later, when we study “Inference for One Population Mean,” we will learn how to use data to learn about $\mu$ using frequentist, simulation-based, and Bayesian methods. For now, focus on the structure:
+
+- We are separating a typical value ($\mu$) from random variation ($\varepsilon_i$).
+
+---
+
+## 3.3 Adding groups: two means as a simple linear model
+
+Now suppose we have two groups.
+
+> Example: Sleep in two majors  
+> We record hours of sleep for $n_1$ students majoring in STEM fields and $n_2$ students majoring in non-STEM fields.
+
+We might wonder whether the average sleep time differs between these two groups.
+
+Let
+
+- $x_i = 0$ if student $i$ is in a non-STEM major,
+- $x_i = 1$ if student $i$ is in a STEM major.
+
+We can write a model:
+
+$$
+Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i.
+$$
+
+Here:
+
+- $\beta_0$ is the mean sleep time for non-STEM majors ($x_i = 0$).
+- $\beta_1$ is the difference in mean sleep between STEM and non-STEM majors.
+- $\varepsilon_i$ again captures individual variation not explained by the group indicator.
+
+When $x_i = 0$ (non-STEM):
+
+$$
+Y_i = \beta_0 + \varepsilon_i.
+$$
+
+When $x_i = 1$ (STEM):
+
+$$
+Y_i = \beta_0 + \beta_1 + \varepsilon_i.
+$$
+
+So the two group means are:
+
+- non-STEM: $\mu_{\text{non-STEM}} = \beta_0$,
+- STEM: $\mu_{\text{STEM}} = \beta_0 + \beta_1$.
+
+The question “Is there a difference between the two group means?” becomes the model-based question “Is $\beta_1$ equal to zero?”
+
+Later, we will see that:
+
+- two-sample $t$ tests,
+- bootstrap intervals for $\mu_{\text{STEM}} - \mu_{\text{non-STEM}}$,
+- Bayesian models for group means,
+
+are all ways of learning about $\beta_1$ in this simple model.
+
+---
+
+## 3.4 Adding a quantitative predictor: simple linear regression
+
+Now consider a quantitative predictor.
+
+> Example: Income and years of education  
+> For each person in a sample, we record annual income (in dollars) and years of education completed.
+
+Let $x_i$ be years of education for person $i$ and $Y_i$ be income.
+
+A common model is:
+
+$$
+Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i.
+$$
+
+- $\beta_0$ is the intercept: the expected income when $x_i = 0$ (conceptually, the baseline).
+- $\beta_1$ is the slope: the expected change in income for each additional year of education.
+- $\varepsilon_i$ is the unexplained variation.
+
+This is a **simple linear regression model**, and it has the same general form as the two-group model above. The only difference is how we interpret $x_i$ and the parameters.
+
+Again, our inferential questions are about the parameters:
+
+- What is a plausible range of values for $\beta_1$?
+- Is there evidence that $\beta_1$ is positive?
+- How well does the model describe the data?
+
+These will be answered using the different inferential approaches introduced later.
+
+---
+
+## 3.5 The role of $\varepsilon$: unexplained variation and assumptions
+
+In all of these examples, the term $\varepsilon_i$ plays an important role:
+
+- It captures individual-to-individual variation that our model does not explain.
+- It allows the model to be flexible: not everyone with the same $x_i$ has the same $Y_i$.
+
+In many classical models we will assume that:
+
+- the $\varepsilon_i$ are independent,
+- they have mean zero,
+- they have the same variance $\sigma^2$ for all $i$,
+- and sometimes that they follow a Normal distribution.
+
+These assumptions are *simplifications* that make it possible to develop mathematical results and to use standard procedures. Later chapters will:
+
+- show how to check these assumptions with residual plots and diagnostics,
+- explore nonparametric and robust methods when assumptions are doubtful,
+- and show how Bayesian models can relax or modify some of these assumptions.
+
+For now, it is enough to keep in mind:
+
+> The error term $\varepsilon_i$ is where randomness lives.  
+> The parameters in $f(x_i)$ are what we want to learn about.
+
+---
+
+## 3.6 Frequentist, simulation-based, and Bayesian views of the same model
+
+The equation
+
+$$
+Y_i = f(x_i) + \varepsilon_i
+$$
+
+is the same in all three paradigms we will study:
+
+- **Frequentist view**
+  - The parameters inside $f$ (such as $\mu$, $\beta_0$, $\beta_1$) are fixed but unknown.
+  - The randomness comes from the data (from the $\varepsilon_i$).
+  - We study long-run properties of procedures (confidence intervals, hypothesis tests).
+
+- **Simulation-based view**
+  - We use the computer to mimic repeated sampling from the model or from the data.
+  - We approximate the sampling distribution of statistics by resampling (bootstrap) or randomization.
+  - This gives us approximate intervals and p values without relying entirely on formulas.
+
+- **Bayesian view**
+  - We place a probability distribution (a prior) on the unknown parameters inside $f$.
+  - The data update this prior to a posterior distribution via the likelihood implied by the model.
+  - We make probability statements about parameters and predictions based on the posterior.
+
+The **model** itself does not change. What changes is:
+
+- how we treat the unknown parameters, and
+- how we define and measure uncertainty.
+
+Later, when we reach chapters such as “Inference for One Population Mean” and “Inference for Two Means,” you will see all three perspectives applied to the same model.
+
+---
+
+## 3.7 Why a model-based approach is helpful
+
+There are two main reasons we take this model-based approach from the beginning.
+
+1. **Unification of topics**
+
+   Many traditional courses present:
+
+   - one-sample $t$ tests,
+   - two-sample $t$ tests,
+   - ANOVA,
+   - simple regression,
+
+   as different procedures with different formulas and conditions. In this book, these all become special cases of linear models built from the same template $Y = f(x) + \varepsilon$.
+
+   This helps you see connections:
+
+   - ANOVA is regression with categorical predictors.
+   - Two-sample tests are ANOVA with two groups.
+   - Regression is an extension of these ideas, not a completely new topic.
+
+2. **Better match to modern practice**
+
+   In applied statistics and data science, analysts almost always begin by specifying a model for how the data might have been generated, then use software to fit the model and summarize uncertainty.
+
+   By thinking in terms of models from the start, you will be better prepared to:
+
+   - understand the output of statistical software,
+   - extend basic ideas to more complex models later,
+   - and read research papers that use regression, generalized linear models, and Bayesian methods.
+
+---
+
+## 3.8 Summary and looking ahead
+
+In this chapter we:
+
+- introduced the model-based template $Y_i = f(x_i) + \varepsilon_i$,
+- saw how one-sample, two-sample, and regression problems can all be written in this form,
+- discussed the role of the error term $\varepsilon_i$ and basic assumptions,
+- and previewed how frequentist, simulation-based, and Bayesian methods all work with the same model but treat parameters and uncertainty differently.
+
+In the next part of the book, we will study **randomness and data-generating processes**. We will learn about probability, random variables, and sampling distributions, which provide the foundation for understanding why our inferential methods work and how they relate to the model-based view introduced here.

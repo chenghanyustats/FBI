@@ -1,4 +1,4 @@
-# Introduction
+# Distribution-based vs Simulation-based Inference {#sec-part4-compare}
 
 This is a book created from markdown and executable code.
 

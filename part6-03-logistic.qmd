@@ -1,4 +1,4 @@
-# Introduction
+# Binary Logistic Regression {#sec-part6-logistic}
 
 This is a book created from markdown and executable code.
 

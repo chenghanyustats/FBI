@@ -1,4 +1,4 @@
-# Introduction
+# Data Numerics {#sec-part1-numeric}
 
 This is a book created from markdown and executable code.
 

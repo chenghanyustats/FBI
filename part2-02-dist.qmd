@@ -1,4 +1,4 @@
-# Introduction
+# Probability Distributions {#sec-part2-dist}
 
 This is a book created from markdown and executable code.
 

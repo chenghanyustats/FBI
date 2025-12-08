@@ -1,0 +1,78 @@
+## Related textbooks and influences
+
+This book is part of a broader movement toward model-based and conceptually unified approaches to statistics, and it is influenced by several important texts.
+
+On the **model-based side**, books such as *Regression and Other Stories* by Gelman, Hill, and Vehtari present regression as a general framework for statistical modeling and emphasize careful model specification, checking, and interpretation. :contentReference[oaicite:0]{index=0}  At a more advanced level, *The Elements of Statistical Learning* and related machine learning texts take a strongly model-based view of prediction and function estimation, though they are not aimed at introductory audiences.
+
+On the **Bayesian side**, *Statistical Rethinking* by McElreath is a widely admired introduction to Bayesian data analysis and causal reasoning that is explicitly model-based and pedagogically innovative, but it assumes a dedicated Bayesian course and does not attempt parallel frequentist development. :contentReference[oaicite:1]{index=1}  Other books, such as Russo’s *Statistics for the Behavioural Sciences: An Introduction to Frequentist and Bayesian Approaches*, introduce both paradigms in the context of psychology and related fields but generally retain a more traditional organization and treat Bayesian material as a complement to a primarily frequentist course. :contentReference[oaicite:2]{index=2}  Wakefield’s *Bayesian and Frequentist Regression Methods* offers a modern and genuinely parallel treatment of both paradigms, but it focuses on regression and is not intended as a first course in statistics. :contentReference[oaicite:3]{index=3}  
+
+To the best of our knowledge, there is currently **no single introductory statistics textbook** that:
+
+- is explicitly **model-based from the simplest one-mean problem onward**, using a common representation such as  
+  \[
+  Y_i = f(x_i) + \varepsilon_i
+  \]
+  to connect one-sample problems, group comparisons, ANOVA, and regression;
+- treats **distribution-based frequentist**, **simulation-based**, and **Bayesian** methods as *co-equal approaches* to the same inferential questions (for example, one mean, two means, one proportion, two proportions, simple regression), within the same chapter; and
+- systematically includes **nonparametric or distribution-free** methods as robustness tools within that same unified framework.
+
+Most existing texts either focus almost entirely on classical frequentist procedures, include simulation only as a supporting or optional tool, or are fully Bayesian with only brief references to frequentist ideas. When both paradigms appear in the same volume, they are typically separated into different chapters or courses and are not consistently applied side by side to each canonical inferential scenario.
+
+### Why this approach is valuable for introductory statistics
+
+A model-based, multi-paradigm introduction has several important benefits for introductory statistics courses.
+
+1. **A unified conceptual framework**
+
+   By framing every inferential problem in terms of a simple model such as \(Y = f(x) + \varepsilon\), students see that:
+
+   - one-sample means are intercept-only models,
+   - two-sample comparisons are regression with a binary predictor,
+   - ANOVA is regression with categorical predictors,
+   - regression itself is an extension rather than a new topic.
+
+   This reduces the sense that statistics is a collection of unrelated “tests” and instead highlights a small number of recurring ideas about signal, noise, and structure.
+
+2. **Parallel development of frequentist and Bayesian reasoning**
+
+   Presenting frequentist and Bayesian methods as responses to the *same* model and *same* question helps students understand:
+
+   - what is shared (the data, model, and likelihood), and  
+   - what differs (how parameters are treated, how uncertainty is quantified, how probability statements are interpreted).
+
+   This clarity is especially important as Bayesian methods become more common in applied research, allowing students to read and critique both kinds of analyses rather than being locked into a single framework.
+
+3. **Simulation as a bridge, not an afterthought**
+
+   Simulation-based methods (bootstrap, permutation/randomization, posterior simulation) serve as a common computational language that:
+
+   - builds intuition for sampling variability and the idea of a sampling distribution,
+   - makes abstract theoretical results more concrete,
+   - extends naturally to models and situations where closed-form formulas are unavailable.
+
+   For many students, simulation is more intuitive than algebraic derivations, and it aligns well with modern data science practice.
+
+4. **Early and honest discussion of assumptions and robustness**
+
+   By juxtaposing:
+
+   - distribution-based methods that rely on specific parametric assumptions,
+   - nonparametric distribution-free procedures, and
+   - Bayesian methods that make prior assumptions explicit,
+
+   the book encourages students to ask:
+   - “What assumptions am I making?”
+   - “How sensitive are my conclusions to these assumptions?”
+   - “What alternatives do I have if assumptions are doubtful?”
+
+   This supports better scientific practice and prepares students to handle messy real-world data.
+
+5. **Alignment with modern statistical practice and research**
+
+   In many applied fields, analysts routinely move between frequentist, simulation-based, and Bayesian tools. An introductory course that reflects this reality:
+
+   - better prepares students for advanced coursework in statistics, data science, and machine learning,
+   - makes it easier for them to read contemporary research articles, and
+   - reduces the conceptual gap between introductory material and the methods they will actually see in practice.
+
+In summary, the goal of this book is not simply to “add some Bayes” to a traditional frequentist curriculum, but to provide a **coherent, model-based introduction** in which frequentist, simulation-based, and Bayesian reasoning are presented as complementary ways of learning about unknown parameters from data. This structure aims to give students a deeper and more flexible understanding of statistical inference, right from their first course.

@@ -8,14 +8,50 @@ book:
   date: today
   site-url: https://chenghanyu-fbi.netlify.app/
   repo-url: https://github.com/chenghanyustats/fbi
+  description: A modern introductory statistical data science book for STEM students.
   chapters:
     - index.qmd
-    # - 00-recommendation.qmd
-    - part1.qmd
-    # - intro.qmd
-    - summary.qmd
-    - references.qmd
-
+    - part: part1.qmd
+      chapters:
+        - part1-01-stats.qmd
+        - part1-02-data.qmd
+        - part1-03-r.qmd
+        - part1-04-py.qmd
+        - part1-05-graphics.qmd
+        - part1-06-numerics.qmd
+        - part1-07-model.qmd
+    - part: part2.qmd
+      chapters:
+        - part2-01-prob.qmd
+        - part2-02-dist.qmd
+        - part2-03-sampling.qmd
+        - part2-04-llnclt.qmd
+    - part: part3.qmd
+      chapters:
+        - part3-01-inference.qmd
+        - part3-02-frequentist.qmd
+        - part3-03-bayesian.qmd
+        - part3-04-compare.qmd
+    - part: part4.qmd
+      chapters:
+        - part4-01-onemean.qmd
+        - part4-02-twomean.qmd
+    - part: part5.qmd
+      chapters:
+        - part5-01-slr.qmd
+        - part5-02-anova.qmd
+        - part5-03-mlr.qmd
+        - part5-04-twoway.qmd
+    - part: part6.qmd
+      chapters:
+        - part6-01-oneproportion.qmd
+        - part6-02-twoproportion.qmd
+        - part6-03-logistic.qmd
+    # - summary.qmd
+    - part: references.qmd
+  appendices:
+    - a-r_prog.qmd
+    - a-py_prog.qmd
 bibliography: references.bib
 
 format:

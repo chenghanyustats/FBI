@@ -1,0 +1,12 @@
+# Inference for One Population Mean {#sec-part4-onepopulation}
+
+
+This is a book created from markdown and executable code.
+
+See @knuth84 for additional discussion of literate programming.
+
+```{r}
+1 + 1
+```
+
+add new words here

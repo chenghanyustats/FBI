@@ -1,4 +1,5 @@
-# Introduction
+# Comparing Two Groups {#sec-part4-twopopulation}
+
 
 This is a book created from markdown and executable code.
 

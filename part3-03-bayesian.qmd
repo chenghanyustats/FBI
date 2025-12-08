@@ -1,4 +1,4 @@
-# Introduction
+# Bayesian Reasoning {#sec-part3-bayesian}
 
 This is a book created from markdown and executable code.
 

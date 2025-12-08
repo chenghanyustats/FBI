@@ -1,11 +1,14 @@
-# Introduction
+# Science of Data and Data Science {#sec-part1-stats}
 
-This is a book created from markdown and executable code.
 
-See @knuth84 for additional discussion of literate programming.
+## What is Statistics?
 
-```{r}
-1 + 1
-```
+The first question we ask in this book is "What is Statistics?"
 
-add new words here
+Statistics can be defined in a variety of ways, and there doesn't seem to be one definition that describes it best. For our purposes, statistics can be generally divided into two overarching categories:
+  - Statistics as a set of numeric records
+  - Statistics as a discipline
+
+<span style="color:blue"> **Statistics as a Set of Numeric Records** </span>
+
+In ordinary conversations, the word **statistics** is used as a term to indicate a set or collection of **numeric records**. For example, @fig-mj-stats below shows Michael Jordan's career statistics from his time in the NBA.  However, this is just one way of defining statistics.

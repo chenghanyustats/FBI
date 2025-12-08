@@ -1,4 +1,4 @@
-# Introduction
+# Sampling and Simulation {#sec-part2-sampling}
 
 This is a book created from markdown and executable code.
 

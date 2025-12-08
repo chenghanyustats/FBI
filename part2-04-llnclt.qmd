@@ -1,4 +1,5 @@
-# Introduction
+# Law of Large Numbers and Central Limit Theorem {#sec-part2-sampling}
+
 
 This is a book created from markdown and executable code.
 
