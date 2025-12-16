@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Introduction to Model-based Statistics"
+  title: "Model-based Statistics"
   subtitle: "Frequentist and Bayesian Reasoning with Simulation"
   author: "Dr. Cheng-Han Yu"
   date: today

@@ -3,7 +3,7 @@
 This book offers an introduction to statistics built around a model based view of data and uncertainty. Rather than treating descriptive statistics, probability, and inference as separate topics, we will return again and again to a simple organizing idea:
 
 $$
-Y_i = f(x_i) + \varepsilon_i .
+Y_i = \text{Model with random noises} 
 $$
 
 In words, we assume that each observation $Y_i$ can be described by

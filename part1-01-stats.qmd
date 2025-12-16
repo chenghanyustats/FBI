@@ -1,14 +1,136 @@
 # Science of Data and Data Science {#sec-part1-stats}
 
 
+```{r}
+#| echo: false
+source("./_common.R")
+```
+
+
+
 ## What is Statistics?
 
 The first question we ask in this book is "What is Statistics?"
 
 Statistics can be defined in a variety of ways, and there doesn't seem to be one definition that describes it best. For our purposes, statistics can be generally divided into two overarching categories:
+
   - Statistics as a set of numeric records
+  
   - Statistics as a discipline
 
 <span style="color:blue"> **Statistics as a Set of Numeric Records** </span>
 
-In ordinary conversations, the word **statistics** is used as a term to indicate a set or collection of **numeric records**. For example, fig-mj-stats below shows Michael Jordan's career statistics from his time in the NBA.  However, this is just one way of defining statistics.
+In ordinary conversations, the word **statistics** is used as a term to indicate a set or collection of **numeric records**. For example, @fig-mj-stats below shows Michael Jordan's career statistics from his time in the NBA.  However, this is just one way of defining statistics.
+
+```{r}
+#| label: fig-mj-stats
+#| fig-cap: "Example of statistics as a set of numeric records. Source: https://www.nba.com/stats/player/893/career"
+knitr::include_graphics("./images/img-part1/mj_stats.png")
+```
+
+------------------------------------------------------------------------
+
+<span style="color:blue"> **Statistics as a Discipline** </span>
+
+As previously stated, other definitions of statistics exist including the one shown in @fig-stats-shirt.
+
+```{r}
+#| label: fig-stats-shirt
+#| fig-cap: "Statistics Shirt. Source: shorturl.at/vEMNS"
+knitr::include_graphics("./images/img-part1/statistics.jpg")
+```
+
+This definition emphasizes the idea that with the same data, different statistical methods may produce different results and lead to different conclusions. This is true in some sense, and later we'll see why in the book. 
+
+
+Forget about that useless definition. Wiki lists a more formal definition of statistics in @fig-wiki-quote below.
+
+```{r}
+#| label: fig-wiki-quote
+#| fig-cap: "More formal definition of statistics. Source: https://en.wikipedia.org/wiki/Statistics"
+knitr::include_graphics("./images/img-part1/stats_wiki.png")
+```
+
+Statistics is the discipline that concerns the collection, organization, analysis, interpretation, and presentation of data. Without doubt, **Statistics** is a discipline dealing with data. Being viewed as a field or branch of mathematics, Statistics is a **Science of Data**. I am not saying statistics is THE science of data. There might be another science of data. Statistics is a science of data that uses *statistical thinking, methods and models*.
+
+<center>
+`r emoji('thinking')` But wait, if statistics is a science of data, then what is **DATA SCIENCE**`r emoji('question')`
+</center>
+
+
+## Difference between Statistics and Data Science
+
+<!-- ![The RStudio environment pane keeps track of the R objects you create.](images/hopr_0102.png){#fig-environment} -->
+
+<span style="color:blue"> **Data Science** </span>
+
+Because of their shared attributes, many find it hard to differentiate between statistics and data science. The tweets below poke fun at the lack of clarity surrounding the definition of data science/data scientists (@fig-twit-borat).
+
+
+![](./images/img-part1/data_science_stats.png){#fig-twit-josh}
+
+![](./images/img-part1/data_science_sf.png){#fig-twit-jeremy}
+
+![Tweets about what Data Science is](./images/img-part1/data_science_mac.png){#fig-twit-borat}
+
+A more formal definition of data science can be found on [Investopedia](https://www.investopedia.com/terms/d/data-science.asp). This site defines Data Science as a field of applied mathematics and statistics that provides useful information based on large amounts of complex data or **big data**. Although this definition is helpful for understanding data science, Dan Ariely, a famous behavioral economist at Duke, joked about their use of the term big data in his tweet below (@fig-bigdata).
+
+![Professor Ariely on Big Data](./images/img-part1/big_data.png){#fig-bigdata}
+
+More information can be gathered about the differences between these two fields from looking at the courses offered in the Statistics Department at UC Santa Cruz, my alma mater. From @fig-courses below, one can see that statistics primarily focuses on data analysis, methods and models. 
+
+
+<!-- Update the image. -->
+```{r}
+#| label: fig-courses
+#| fig-cap: "Courses offered by the Department of Statistics at UC Santa Cruz. Source: https://courses.engineering.ucsc.edu/courses/department/24"
+knitr::include_graphics("./images/img-part1/ucsc_courses.png")
+```
+
+This statistics department, in particular, doesn't talk a lot about data collection, organization, data presentation or data visualization. In typical statistics departments, there isn't much instruction or research done on data collection, cleaning, storage, database management, and data visualization. Because statistics continues to focus on data analysis and modeling, Data Science now addresses these other processes that statistics passes over. The data science process includes the collection, organization, analysis, interpretation and presentation of data (@fig-process). Although statistics does not focus on these concepts, they are encompassed within the field of data science.
+
+
+```{r}
+#| label: fig-process
+#| fig-cap: "The data science process created at Harvard by Joe Blitzstein and Hanspeter Pfister"
+knitr::include_graphics("./images/img-part1/ds_process.jpeg")
+```
+
+
+## What Will We Learn In this Course?
+Below the main topics of this book are listed in the order in which they will be covered.
+
+```{r}
+#| out-width: 30%
+knitr::include_graphics("./images/img-part1/bookchapter.png")
+```
+
+We do touch data collection and data visualization and data summary, but we will spend most of our time talking about probability and statistical inference methods that are circled on the list above. This book focuses on the *statistical methods for analyzing data*.
+
+
+In summary, we will learn useful information
+
+  - about the **population** we are interested in
+  
+  - from our **sample data**
+  
+  - through **statistical inferential** methods, including **estimation** and **testing**
+
+```{r}
+#| label: fig-sampling
+#| fig-cap: Illustration of obtaining sample data from a population
+par(mar = c(0, 0, 0, 0))
+plot(0, 0, type = "n", axes = FALSE, xlab = "", ylab = "")
+plotrix::draw.ellipse(x = -0.3, y = 0.5, a = 0.65, b = 0.55, lwd = 2)
+plotrix::draw.ellipse(x = -0.3, y = 0.4, a = 0.35, b = 0.25, lwd = 2, lty = 2)
+text(x = -0.3, y = 0.7, labels = "Set of all measurements: Population", cex = 1.2)
+plotrix::draw.ellipse(x = 0.5, y = -0.4, a = 0.36, b = 0.26, lwd = 2, lty = 1)
+diagram::curvedarrow(from = c(-0.3, 0.4), to = c(0.5, -0.2),
+                     curve = -0.2, arr.pos = 0.98)
+text(x = 0.5, y = -0.5, labels = "Sample", cex = 1.2)
+text(x = 0, y = -0.3, labels = "Set of data selected from the population:", cex = 1.2)
+```
+
+
+
+Don't worry if you have no idea of these terms. These are what we will discuss throughout the book, and I'll explain each term in detail.
