@@ -1,120 +1,89 @@
-# Science of Data and Data Science {#sec-part1-stats}
-
+# Statistics as a Science of Data
 
 ```{r}
 #| echo: false
 source("./_common.R")
 ```
 
-
-
-## What is Statistics?
+## What is statistics?
 
 The first question we ask in this book is "What is Statistics?"
 
-Statistics can be defined in a variety of ways, and there doesn't seem to be one definition that describes it best. For our purposes, statistics can be generally divided into two overarching categories:
+Statistics can be defined in a variety of ways, and there doesn't seem to be one definition that describes it best. In everyday language, people use the word *statistics* in two common ways.
 
-  - Statistics as a set of numeric records
-  
-  - Statistics as a discipline
-
-<span style="color:blue"> **Statistics as a Set of Numeric Records** </span>
-
-In ordinary conversations, the word **statistics** is used as a term to indicate a set or collection of **numeric records**. For example, @fig-mj-stats below shows Michael Jordan's career statistics from his time in the NBA.  However, this is just one way of defining statistics.
+1. **Statistics as numeric records.**  
+   A news story might report unemployment statistics, or a sports site might list a player’s career statistics. For example, @fig-mj-stats below shows Michael Jordan's career statistics from his time in the NBA.
 
 ```{r}
 #| label: fig-mj-stats
-#| fig-cap: "Example of statistics as a set of numeric records. Source: https://www.nba.com/stats/player/893/career"
+#| out-width: 100%
+#| fig-cap: "Example of statistics as numeric records: Michael Jordan’s career statistics. Source: https://www.nba.com/stats/player/893/career"
+#| fig-link: https://www.nba.com/stats/player/893/career
 knitr::include_graphics("./images/img-part1/mj_stats.png")
 ```
 
-------------------------------------------------------------------------
-
-<span style="color:blue"> **Statistics as a Discipline** </span>
-
-As previously stated, other definitions of statistics exist including the one shown in @fig-stats-shirt.
-
-```{r}
-#| label: fig-stats-shirt
-#| fig-cap: "Statistics Shirt. Source: shorturl.at/vEMNS"
-knitr::include_graphics("./images/img-part1/statistics.jpg")
-```
-
-This definition emphasizes the idea that with the same data, different statistical methods may produce different results and lead to different conclusions. This is true in some sense, and later we'll see why in the book. 
+2. **Statistics as a discipline.**  
+   In this book, statistics is **a way of thinking that uses data to learn about what we are interested while explicitly accounting for uncertainty**.
 
 
-Forget about that useless definition. Wiki lists a more formal definition of statistics in @fig-wiki-quote below.
 
-```{r}
-#| label: fig-wiki-quote
-#| fig-cap: "More formal definition of statistics. Source: https://en.wikipedia.org/wiki/Statistics"
-knitr::include_graphics("./images/img-part1/stats_wiki.png")
-```
+::: callout-note
+## A practical definition we will use
 
-Statistics is the discipline that concerns the collection, organization, analysis, interpretation, and presentation of data. Without doubt, **Statistics** is a discipline dealing with data. Being viewed as a field or branch of mathematics, Statistics is a **Science of Data**. I am not saying statistics is THE science of data. There might be another science of data. Statistics is a science of data that uses *statistical thinking, methods and models*.
+The American Statistical Association describes statistics as **the science of learning from data and of measuring, controlling, and communicating uncertainty**. [^asa]
 
-<center>
-`r emoji('thinking')` But wait, if statistics is a science of data, then what is **DATA SCIENCE**`r emoji('question')`
-</center>
+This definition matches the main theme of this textbook: we learn from data by building and using *statistical models*.
+:::
 
+## Data are numbers with context
 
-## Difference between Statistics and Data Science
+A key idea for modern statistics is that **data are not just numbers**. Data can be numbers, labels, images, text, and other records **with a context** such as how they were produced, what they measure, and what they represent in the real world. Cobb and Moore famously summarized this as “data are numbers with a context.”[^cobb]
 
-<!-- ![The RStudio environment pane keeps track of the R objects you create.](images/hopr_0102.png){#fig-environment} -->
+When you look at a dataset, you should be able to answer:
 
-<span style="color:blue"> **Data Science** </span>
+- **Who or what subject was measured?** (people, schools, products, days, patients)
+- **What attributes or characteristics of the subject were recorded?** (height, income, blood pressure, response time)
+- **How were the data generated?** (survey, observational study, experiment, administrative records)
+<!-- - **What is the goal?** (describe, compare, explain, predict, decide) -->
 
-Because of their shared attributes, many find it hard to differentiate between statistics and data science. The tweets below poke fun at the lack of clarity surrounding the definition of data science/data scientists (@fig-twit-borat).
+## Populations, samples, and statistics
 
+Statistics is often about learning something about a **population** using a **sample**.
 
-![](./images/img-part1/data_science_stats.png){#fig-twit-josh}
+- A **population** is the full set of individuals or situations you care about.
 
-![](./images/img-part1/data_science_sf.png){#fig-twit-jeremy}
+- A **sample** is a subset of the target population.
 
-![Tweets about what Data Science is](./images/img-part1/data_science_mac.png){#fig-twit-borat}
-
-A more formal definition of data science can be found on [Investopedia](https://www.investopedia.com/terms/d/data-science.asp). This site defines Data Science as a field of applied mathematics and statistics that provides useful information based on large amounts of complex data or **big data**. Although this definition is helpful for understanding data science, Dan Ariely, a famous behavioral economist at Duke, joked about their use of the term big data in his tweet below (@fig-bigdata).
-
-![Professor Ariely on Big Data](./images/img-part1/big_data.png){#fig-bigdata}
-
-More information can be gathered about the differences between these two fields from looking at the courses offered in the Statistics Department at UC Santa Cruz, my alma mater. From @fig-courses below, one can see that statistics primarily focuses on data analysis, methods and models. 
+Usually, the data we have is from a subset of the target population, and hence we call the data **sample data**. When the data include all subjects in the population, such data set is called **census data**.
 
 
-<!-- Update the image. -->
-```{r}
-#| label: fig-courses
-#| fig-cap: "Courses offered by the Department of Statistics at UC Santa Cruz. Source: https://courses.engineering.ucsc.edu/courses/department/24"
-knitr::include_graphics("./images/img-part1/ucsc_courses.png")
-```
+<!-- # ```{r} -->
+<!-- # #| label: fig-sampling -->
+<!-- # #| fig-cap: "Illustration of obtaining sample data from a population." -->
+<!-- # par(mar = c(0, 0, 0, 0)) -->
+<!-- # plot(0, 0, type = "n", axes = FALSE, xlab = "", ylab = "", xlim = c(-1, 1.2), ylim = c(-1, 1.2)) -->
+<!-- #  -->
+<!-- # # population ellipse -->
+<!-- # symbols(x = -0.35, y = 0.55, ellipses = matrix(c(0.9, 0.75), ncol = 2), -->
+<!-- #         inches = FALSE, add = TRUE, lwd = 2) -->
+<!-- # # highlighted subset inside population -->
+<!-- # symbols(x = -0.35, y = 0.45, ellipses = matrix(c(0.45, 0.32), ncol = 2), -->
+<!-- #         inches = FALSE, add = TRUE, lwd = 2, lty = 2) -->
+<!-- #  -->
+<!-- # text(x = -0.35, y = 0.8, labels = "Population", cex = 1.2, font = 2) -->
+<!-- # text(x = -0.35, y = 0.7, labels = "All individuals of interest", cex = 1.0) -->
+<!-- #  -->
+<!-- # # sample ellipse -->
+<!-- # symbols(x = 0.65, y = -0.35, ellipses = matrix(c(0.5, 0.35), ncol = 2), -->
+<!-- #         inches = FALSE, add = TRUE, lwd = 2) -->
+<!-- # text(x = 0.65, y = -0.55, labels = "Sample", cex = 1.2, font = 2) -->
+<!-- # text(x = 0.65, y = -0.67, labels = "Observed data", cex = 1.0) -->
+<!-- #  -->
+<!-- # # arrow -->
+<!-- # arrows(x0 = -0.1, y0 = 0.25, x1 = 0.45, y1 = -0.1, length = 0.08, lwd = 2) -->
+<!-- # text(x = 0.2, y = 0.05, labels = "sampling / data collection", cex = 1.0) -->
+<!-- # ``` -->
 
-This statistics department, in particular, doesn't talk a lot about data collection, organization, data presentation or data visualization. In typical statistics departments, there isn't much instruction or research done on data collection, cleaning, storage, database management, and data visualization. Because statistics continues to focus on data analysis and modeling, Data Science now addresses these other processes that statistics passes over. The data science process includes the collection, organization, analysis, interpretation and presentation of data (@fig-process). Although statistics does not focus on these concepts, they are encompassed within the field of data science.
-
-
-```{r}
-#| label: fig-process
-#| fig-cap: "The data science process created at Harvard by Joe Blitzstein and Hanspeter Pfister"
-knitr::include_graphics("./images/img-part1/ds_process.jpeg")
-```
-
-
-## What Will We Learn In this Course?
-Below the main topics of this book are listed in the order in which they will be covered.
-
-```{r}
-#| out-width: 30%
-knitr::include_graphics("./images/img-part1/bookchapter.png")
-```
-
-We do touch data collection and data visualization and data summary, but we will spend most of our time talking about probability and statistical inference methods that are circled on the list above. This book focuses on the *statistical methods for analyzing data*.
-
-
-In summary, we will learn useful information
-
-  - about the **population** we are interested in
-  
-  - from our **sample data**
-  
-  - through **statistical inferential** methods, including **estimation** and **testing**
 
 ```{r}
 #| label: fig-sampling
@@ -123,14 +92,198 @@ par(mar = c(0, 0, 0, 0))
 plot(0, 0, type = "n", axes = FALSE, xlab = "", ylab = "")
 plotrix::draw.ellipse(x = -0.3, y = 0.5, a = 0.65, b = 0.55, lwd = 2)
 plotrix::draw.ellipse(x = -0.3, y = 0.4, a = 0.35, b = 0.25, lwd = 2, lty = 2)
-text(x = -0.3, y = 0.7, labels = "Set of all measurements: Population", cex = 1.2)
+text(x = -0.3, y = 0.7, labels = "Set of all individuals of interest:", cex = 1.2)
+text(x = 0.3, y = 0.5, labels = 'Population', cex = 1.2, font = 2)
 plotrix::draw.ellipse(x = 0.5, y = -0.4, a = 0.36, b = 0.26, lwd = 2, lty = 1)
 diagram::curvedarrow(from = c(-0.3, 0.4), to = c(0.5, -0.2),
                      curve = -0.2, arr.pos = 0.98)
-text(x = 0.5, y = -0.5, labels = "Sample", cex = 1.2)
-text(x = 0, y = -0.3, labels = "Set of data selected from the population:", cex = 1.2)
+text(x = 0.5, y = -0.5, labels = 'Sample', cex = 1.2, font = 2)
+text(x = 0, y = -0.3, labels = "Subset selected from the population:", cex = 1.2)
 ```
 
 
+A **statistic** is any numerical summary computed from the sample (for example, a sample mean). A **parameter** is a number that describes the population or the data generating process (for example, a population mean).
 
-Don't worry if you have no idea of these terms. These are what we will discuss throughout the book, and I'll explain each term in detail.
+
+
+## How are data generated? [PUT IN NEXT CHAPTER]
+
+Data are produced by a process, and that process determines what kinds of conclusions are reasonable.
+
+Common data sources include:
+
+- **Surveys and questionnaires**
+  We ask questions and record responses. Survey design affects bias and variability.
+
+- **Observational studies**
+  We record variables as they naturally occur. Observational data can reveal association but do not automatically justify cause and effect claims.
+
+- **Experiments**
+  We actively assign a treatment or condition. Random assignment is the key tool for supporting causal conclusions.
+
+- **Administrative and digital records**
+  These include logs, transactions, medical records, sensors, and digital traces. These datasets can be large, but they still require careful thinking about measurement and selection.
+
+A useful phrase is **data generating process**: the real world mechanism that produces the values we observe. In a model-based approach, we build a probability model as an approximation to that process.
+
+## Statistics and data science
+
+Statistics and data science overlap heavily. Both aim to learn from data, and both use modeling. 
+
+Wiki lists a more formal definition of statistics in @fig-wiki-quote below.
+
+```{r}
+#| label: fig-wiki-quote
+#| fig-cap: "More formal definition of statistics. Source: https://en.wikipedia.org/wiki/Statistics"
+knitr::include_graphics("./images/img-part1/stats_wiki.png")
+```
+
+Statistics is the discipline that concerns the collection, organization, analysis, interpretation, and presentation of data. Without doubt, statistics is a discipline dealing with data. However, in typical statistics departments, there isn't much instruction or research done on data collection, cleaning, storage, database management, and data visualization. Because statistics continues to focus on data analysis and modeling, Data Science now addresses these other processes that statistics passes over.
+
+A common way to describe the difference is emphasis.
+
+- **Statistics** emphasizes study design, uncertainty quantification, and inference from data to a broader target (a population, a process, or future outcomes).
+
+- **Data science** includes those statistical goals but also emphasizes data acquisition, data management, computing, and deployment of models in real systems.
+
+A helpful reference point is the National Academies report on undergraduate data science, which treats data science as an emerging discipline related to, but not identical to, statistics and computer science.[^nasem]
+
+This book is not a complete data science handbook. It focuses on the part that statistics has historically done best and that modern data work still needs: **model-based reasoning with uncertainty**.
+
+## Describing data vs learning from data
+
+A good analysis usually starts with **descriptive summaries** and then moves toward **inference**.
+
+- **Descriptive statistics** organizes and summarizes the observed data.
+  Examples include tables, graphs, and numerical summaries such as means and medians.
+
+- **Inferential statistics** (statistical inference) uses data to learn about something you did not fully observe. Examples include estimating an unknown parameter, predicting a future outcome, or comparing groups while quantifying uncertainty. When doing statistical inference we usually build a **probability model** to account for data variability, and quantify uncertainty. We assume the sample data are realizations of values generated from that model. Therefore, the model works as a **data-generating process** or mechanism.
+
+```{r}
+#| label: fig-statistics-types
+#| fig-cap: "Two broad goals in statistics: describing data and learning from data."
+par(mar = c(0, 0, 0, 0))
+plot(c(-0.1, 1.2), c(0.42, 1.0), type = "n", axes = FALSE, xlab = "", ylab = "")
+# plot(c(-0.15, 1.15), c(0, 0.9), type = 'n', axes = FALSE)
+# top box
+rect(xleft = 0.35, ybottom = 0.85, xright = 0.85, ytop = 0.97, lwd = 2)
+text(0.6, 0.91, "Statistics", font = 2, cex = 1.2)
+
+# left: descriptive
+rect(xleft = -0.05, ybottom = 0.58, xright = 0.55, ytop = 0.73, lwd = 2)
+text(0.25, 0.65, "Descriptive Statistics", font = 2, cex = 1.15, col = 2)
+# text(0.25, 0.59, "data summaries", font = 2, cex = 1.15)
+arrows(x0 = 0.48, y0 = 0.85, x1 = 0.32, y1 = 0.74, length = 0.08, lwd = 2)
+
+text(0.02, 0.42, "Tables", font = 2)
+text(0.20, 0.42, "Graphs", font = 2)
+text(0.42, 0.42, "Numbers", font = 2)
+arrows(x0 = 0.10, y0 = 0.58, x1 = 0.02, y1 = 0.46, length = 0.08)
+arrows(x0 = 0.25, y0 = 0.58, x1 = 0.20, y1 = 0.46, length = 0.08)
+arrows(x0 = 0.40, y0 = 0.58, x1 = 0.42, y1 = 0.46, length = 0.08)
+
+# right: inferential
+rect(xleft = 0.65, ybottom = 0.58, xright = 1.25, ytop = 0.73, lwd = 2)
+text(0.95, 0.65, "Inferential Statistics", font = 2, cex = 1.15, col = 2)
+# text(0.95, 0.59, "through models", font = 2, cex = 1.15)
+arrows(x0 = 0.72, y0 = 0.85, x1 = 0.90, y1 = 0.74, length = 0.08, lwd = 2)
+
+text(0.74, 0.42, "Estimation", font = 2)
+text(1.05, 0.42, "Testing", font = 2)
+arrows(x0 = 0.80, y0 = 0.58, x1 = 0.74, y1 = 0.46, length = 0.08)
+arrows(x0 = 1.05, y0 = 0.58, x1 = 1.05, y1 = 0.46, length = 0.08)
+
+# probability model
+# rect(xleft = 0.78, ybottom = 0.23, xright = 1.18, ytop = 0.35, lwd = 2)
+# text(0.98, 0.29, "Probability", font = 2, cex = 1.05)
+# text(0.98, 0.24, "model", font = 2, cex = 1.05)
+# arrows(x0 = 0.95, y0 = 0.55, x1 = 0.90, y1 = 0.36, length = 0.08, lwd = 2)
+
+rect(xleft = .95, ybottom = 0.85, xright = 1.25, ytop = 0.97, lwd = 2)
+text(1.1, 0.94, 'Probability', font = 2, col = 4)
+text(1.1, 0.89, 'Models', font = 2, col = 4)
+arrows(x0 = 1.18, y0 = 0.85, x1 = 1.02, y1 = 0.74, length = 0.08, lwd = 2)
+# text(1.1, 0.75, 'Probability', font = 2, col = "green4")
+# rect(0.9, 0.7, 1.3, 0.8)
+# arrows(1.05, 0.73, 0.9, 0.61, length = 0.08)
+```
+
+## Model-based statistical thinking [CHAPTER 7]
+
+Model-based statistics starts from a basic idea.
+
+1. **Data vary.** Even repeated measurements under similar conditions do not produce identical values.
+2. **We represent that variation with probability.**
+   We treat data as outcomes of random variables and write down a probability model.
+3. **We learn about unknowns through the model.**
+   Unknown quantities are usually model parameters (such as a mean difference, a rate, or a regression slope).
+
+A *statistical model* is a set of assumptions that connects:
+
+- the **data** we observe,
+- the **chance variation** we expect, and
+- the **unknown quantities** we want to learn about.
+
+### A model-based workflow
+
+In this book, we will repeatedly follow a workflow like this.
+
+1. **State the question** in plain language.
+2. **Identify the data and variables** (and how they were generated).
+3. **Propose a probability model** for the data generating process.
+4. **Fit the model** (estimate unknown parameters).
+5. **Check the model** (does it capture important patterns and variability?).
+6. **Draw conclusions** with uncertainty clearly communicated.
+
+## Frequentist and Bayesian paradigms [CHAPTER 8]
+
+Model-based inference can be done in both frequentist and Bayesian ways. The two paradigms share a common starting point:
+
+- a probability model for the data (often expressed through a likelihood)
+
+They differ mainly in how they treat unknown parameters and how they interpret probability statements.
+
+### Frequentist inference
+
+In a frequentist approach:
+
+- the parameter is treated as a fixed (but unknown) constant
+- uncertainty is described by what would happen under repeated sampling
+
+Typical outputs include point estimates, confidence intervals, and hypothesis tests.
+
+### Bayesian inference
+
+In a Bayesian approach:
+
+- the parameter is treated as an unknown quantity with a probability distribution
+- we update prior beliefs using the data to obtain a posterior distribution
+
+Typical outputs include posterior means or medians, credible intervals, and posterior probabilities of scientific statements.
+
+::: callout-tip
+## How this book will connect them
+
+You will see frequentist and Bayesian tools side by side, using the same underlying probability models whenever possible. The goal is to build one coherent story:
+
+- probability models describe variation
+- inference is parameter learning from data
+- different paradigms provide different summaries of uncertainty
+:::
+
+## Where we are going next
+
+This chapter sets the stage: statistics is a science of data because it turns data into knowledge while managing uncertainty.
+
+In the next chapters of Part 1, you will:
+
+- learn how data are produced and how design affects conclusions
+- practice describing single variables and relationships between variables
+- introduce probability as a language for modeling data
+- develop the logic of inference through model-based thinking in both frequentist and Bayesian forms
+
+[^asa]: American Statistical Association, ASA Newsroom. “Statistics is the science of learning from data and of measuring, controlling, and communicating uncertainty.” <https://www.amstat.org/asa-newsroom>
+
+[^cobb]: Cobb, G. W., and Moore, D. S. (1997). “Mathematics, Statistics, and Teaching.” *The American Mathematical Monthly*, 104(9), 801–823. The quote “Data are numbers with a context” is widely attributed to this paper. See, for example, the CRAN *statquotes* vignette: <https://cran.r-project.org/web/packages/statquotes/vignettes/statquotes.html>
+
+[^nasem]: National Academies of Sciences, Engineering, and Medicine (2018). *Data Science for Undergraduates: Opportunities and Options.* Washington, DC: The National Academies Press. <https://nap.nationalacademies.org/catalog/25104/data-science-for-undergraduates-opportunities-and-options>

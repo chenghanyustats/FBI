@@ -1,4 +1,4 @@
-# Inference for Normal Data {#sec-part4}
+# Inference for Models of Normal Data {#sec-part4}
 
 This is a book created from markdown and executable code.
 

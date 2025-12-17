@@ -36,8 +36,8 @@ book:
       chapters:
         - part4-01-onemean.qmd
         - part4-02-twomean.qmd
-    - part: part5.qmd
-      chapters:
+    # - part: part5.qmd
+    #   chapters:
         - part5-01-slr.qmd
         - part5-02-anova.qmd
         - part5-03-mlr.qmd
