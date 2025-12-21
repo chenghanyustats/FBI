@@ -32,66 +32,174 @@ In everyday language, people use the word data to mean facts, numbers, or inform
 
 Two details matter immediately.
 
-* Data are not only the values. Data also include context: who or what was measured, when and where the measurement happened, and how the measurement was taken.
-* Data come from a process. Even if the same procedure is repeated, the recorded values will typically vary. Statistics treats that variability as a central feature, not as an inconvenience.
+* *Data are not only the values*. Data also include context: who or what was measured, when and where the measurement happened, and how the measurement was taken.
 
-### Some key terms
+* *Data come from a hypothesized process or mechanism that randomly produces data values*. Even if the same procedure is repeated, the recorded values will typically vary. Statistics treats that variability as a central feature, not as an inconvenience.
 
-**Observational unit (or case).** The object being described by a row of data. In the coffee shop story, an observational unit might be a single order, a single student visit, or a single hour, depending on how the data set is defined.
+### Key terms
 
-**Variable.** A characteristic recorded for each observational unit. In statistics, we often treat a variable as something that can vary across units and across repetitions of data collection.
+To make the coffee shop story concrete, suppose we want to understand two outcomes:
+
+1. How long students wait for a drink.
+2. Whether longer waits are associated with lower satisfaction.
+
+To study this, we decide what the observational units are, what variables to record for each unit, and how to document those variables.
+
+<!-- **Observational unit (or case).** The object being described in a statistical study. In the coffee shop story, an observational unit might be a single order, a single student visit, or a single hour, depending on how the data are defined and our research goal. -->
+
+**Observational unit (or case).** The object being described in statistical studies. In the coffee shop story, an observational unit might be a single order, a single student visit, or a single hour, depending on how the data are defined and our research goal.
+
+**Variable.** A characteristic or attribute recorded for each observational unit. A variable is a characteristic that can *vary* across units and across repetitions of data collection.
 
 **Data set.** A collection of variables measured on a collection of observational units, together with documentation that explains what each variable means and how it was recorded.
 
 **Data dictionary (or codebook).** A document that defines each variable, its units, allowed values, and any special codes for missing or unknown values.
 
+
+
+
 ::: {.callout-tip icon=false}
 ## Why this matters for model-based statistics
 
-Model-based statistics starts from a simple idea: the data you see are one possible outcome of a data generating process. Later in the book, we will describe that process using probability models. In this chapter, we stay at the level of careful description, because a probability model cannot rescue a poorly defined variable or a poorly collected data set.
+Model-based statistics starts from a simple idea: the data you see are one possible outcome of a **data generating process**, our hypothesized mechanism that produces data. Later in the book, we will describe that process using probability models. In this chapter, we stay at the level of careful description, because a probability model cannot rescue a poorly defined variable or a poorly collected data set.
 :::
 
-## Variables and data sets
+#### Example data set from the coffee shop story
 
-Most data sets you will work with in this book have this structure.
-
-* Each row corresponds to an observational unit
-* Each column corresponds to a variable
-* Each cell is the recorded value of one variable for one unit
-
-This structure is often called a tidy or rectangular data set. It is not the only possible format, but it is the most common starting point for statistical work in R.
-
-### Example: a small data set from the coffee shop story
-
-The following table is a toy example. It is small on purpose so we can talk about meaning, collection, and type.
+In this example, the observational unit is a single order. Each row is one order, and each column is a variable recorded for that order.
 
 ```{r}
-#| label: tbl-coffee-toy
-#| echo: true
-#| message: false
-#| warning: false
-
-coffee <- data.frame(
-  order_id     = 1:12,
-  time_block   = c("8 to 9", "8 to 9", "8 to 9", "9 to 10", "9 to 10", "9 to 10",
-                   "10 to 11", "10 to 11", "10 to 11", "11 to 12", "11 to 12", "11 to 12"),
-  mobile_order = c("yes","no","no","yes","no","yes","no","no","yes","yes","no","no"),
-  wait_min     = c(4, 11, 9, 5, 10, 6, 8, 7, 5, 4, 6, 7),
-  items        = c(1, 2, 1, 1, 3, 2, 2, 1, 1, 1, 2, 1),
-  rating       = c(5, 2, 3, 4, 2, 4, 3, 3, 4, 5, 4, 3)
+coffee_orders <- data.frame(
+  order_id = 101:108,
+  order_time = c("08:12", "08:15", "08:18", "09:05", "09:10", "12:02", "12:05", "15:41"),
+  pickup_time = c("08:19", "08:25", "08:27", "09:12", NA,      "12:08", "12:21", "15:47"),
+  wait_time_min = c(7, 10, 9, 7, NA, 6, 16, 6),
+  drink_type = c("Latte", "Cold brew", "Tea", "Latte", "Espresso", "Tea", "Latte", "Cold brew"),
+  mobile_order = c("Yes", "Yes", "No", "No", "Yes", "Yes", "No", "Yes"),
+  satisfaction_1to10 = c(8, 6, 7, 8, NA, 9, 4, 8),
+  day_of_week = c("Mon", "Mon", "Mon", "Tue", "Tue", "Wed", "Wed", "Thu"),
+  stringsAsFactors = FALSE
 )
 
-knitr::kable(coffee, caption = "Toy example data from the coffee shop story.")
+knitr::kable(coffee_orders, caption = "Example data: each row is one coffee shop order.")
 ```
 
-Even this small table raises questions you must answer before analysis.
+We usually store a data set in a matrix form that has rows and columns. Sometimes we call such data set **data matrix** or **data frame**. Each row corresponds to a unique observational unit. Each column represents a characteristic or variable. Each cell is the recorded value of one variable for one unit. This data matrix structure allows new cases to be added as rows or new variables to be added as columns.
 
-* What is the observational unit: an order, a student visit, or a person
-* What is the meaning of wait time: from payment to pickup, or from joining the line to pickup
-* How was rating collected: asked immediately, or later by email, or only for app users
-* Are mobile orders counted differently from in person orders
+How the terms connect in this example:
 
-Those questions are not technicalities. They determine what conclusions are credible.
+- Observational unit: one coffee shop order
+
+- Variables: `wait_time_min`, `drink_type`, `mobile_order`, `satisfaction_1to10`, and so on
+
+- Data set: the full table of orders and variables
+
+- Data dictionary: the documentation below that explains what each variable means
+
+A data dictionary makes the data usable by other people and by your future self. It also reduces ambiguity, for example whether wait_time_min is measured from order submission or from payment time.
+
+```{r}
+coffee_codebook <- data.frame(
+variable = c(
+"order_id",
+"order_time",
+"pickup_time",
+"wait_time_min",
+"drink_type",
+"mobile_order",
+"satisfaction_1to10",
+"day_of_week"
+),
+meaning = c(
+"Unique identifier for each order",
+"Time the order was placed",
+"Time the drink was marked ready for pickup",
+"Minutes from order_time to pickup_time",
+"Main drink category for the order",
+"Whether the order was placed using the mobile app",
+"Student rating of the experience for that order",
+"Day of the week when the order was placed"
+),
+units = c(
+"id",
+"HH:MM",
+"HH:MM",
+"minutes",
+"category",
+"Yes or No",
+"1 to 10",
+"category"
+),
+allowed_values = c(
+"integer",
+"00:00 to 23:59",
+"00:00 to 23:59",
+"0 to 60 (typical range for this shop)",
+"Latte, Cold brew, Espresso, Tea, Other",
+"Yes, No",
+"1 to 10 (integers)",
+"Mon, Tue, Wed, Thu, Fri, Sat, Sun"
+),
+missing_codes = c(
+"NA",
+"NA",
+"NA if pickup time not recorded",
+"NA if pickup_time is missing",
+"NA",
+"NA",
+"NA if the student did not respond",
+"NA"
+),
+stringsAsFactors = FALSE
+)
+
+knitr::kable(coffee_codebook, caption = "Example codebook for the coffee shop data set.")
+
+```
+
+In a model implied approach, the codebook matters because it tells us what the variables actually represent in the real world. If we misunderstand the measurement process, any statistical model built on these variables can answer the wrong question.
+
+<!-- ## Variables and data sets -->
+
+<!-- Most data sets you will work with in this book have this structure. -->
+
+<!-- * Each row corresponds to an observational unit -->
+<!-- * Each column corresponds to a variable -->
+<!-- * Each cell is the recorded value of one variable for one unit -->
+
+<!-- This structure is often called a tidy or rectangular data set. It is not the only possible format, but it is the most common starting point for statistical work in R. -->
+
+<!-- ### Example: a small data set from the coffee shop story -->
+
+<!-- The following table is a toy example. It is small on purpose so we can talk about meaning, collection, and type. -->
+
+<!-- ```{r} -->
+<!-- #| label: tbl-coffee-toy -->
+<!-- #| echo: true -->
+<!-- #| message: false -->
+<!-- #| warning: false -->
+
+<!-- coffee <- data.frame( -->
+<!--   order_id     = 1:12, -->
+<!--   time_block   = c("8 to 9", "8 to 9", "8 to 9", "9 to 10", "9 to 10", "9 to 10", -->
+<!--                    "10 to 11", "10 to 11", "10 to 11", "11 to 12", "11 to 12", "11 to 12"), -->
+<!--   mobile_order = c("yes","no","no","yes","no","yes","no","no","yes","yes","no","no"), -->
+<!--   wait_min     = c(4, 11, 9, 5, 10, 6, 8, 7, 5, 4, 6, 7), -->
+<!--   items        = c(1, 2, 1, 1, 3, 2, 2, 1, 1, 1, 2, 1), -->
+<!--   rating       = c(5, 2, 3, 4, 2, 4, 3, 3, 4, 5, 4, 3) -->
+<!-- ) -->
+
+<!-- knitr::kable(coffee, caption = "Toy example data from the coffee shop story.") -->
+<!-- ``` -->
+
+<!-- Even this small table raises questions you must answer before analysis. -->
+
+<!-- * What is the observational unit: an order, a student visit, or a person -->
+<!-- * What is the meaning of wait time: from payment to pickup, or from joining the line to pickup -->
+<!-- * How was rating collected: asked immediately, or later by email, or only for app users -->
+<!-- * Are mobile orders counted differently from in person orders -->
+
+<!-- Those questions are not technicalities. They determine what conclusions are credible. -->
 
 ## How data are generated
 
@@ -115,14 +223,513 @@ In the coffee shop story, several populations are possible.
 
 The population should be defined by the question, not by convenience. The sample is determined by the collection method and practical constraints.
 
+
+```{r}
+#| label: fig-sampling
+#| fig-cap: Sampling from the population reduces the number of objects from which to collect data.
+par(mar = 0.1*c(1,1,1,1))
+plot(c(0, 2),
+     c(0, 1.1),
+     type = 'n',
+     axes = FALSE, xlab = "", ylab = "")
+temp <- seq(0, 2 * pi, 2 * pi / 100)
+x <- 0.5 + 0.5 * cos(temp)
+y <- 0.5 + 0.5 * sin(temp)
+lines(x, y)
+
+s <- matrix(runif(700), ncol = 2)
+S <- matrix(NA, 350, 2)
+j <- 0
+for (i in 1:nrow(s)) {
+  if(sum((s[i, ] - 0.5)^2) < 0.23){
+    j <- j + 1
+    S[j, ] <- s[i, ]
+  }
+}
+points(S, col = COL[1, 3], pch = 20)
+text(0.5, 1, 'Population', pos = 3)
+
+set.seed(50)
+N <- sample(j, 25)
+lines((x - 0.5) / 2 + 1.5, (y - 0.5) / 2 +  0.5, pch = 20)
+
+SS <- (S[N, ] - 0.5) / 2 + 0.5
+these <- c(2, 5, 11, 10, 12)
+points(SS[these, 1] + 1,
+       SS[these, 2],
+       col = COL[4, 2],
+       pch = 20,
+       cex = 1.5)
+text(1.5, 0.75, 'Sample', pos = 3)
+
+for (i in these) {
+  arrows(S[N[i], 1], S[N[i], 2],
+         SS[i, 1] + 1 - 0.03, SS[i, 2],
+         length = 0.08, col = COL[5], lwd = 1.5)
+}
+```
+
+
 ### Representation and bias
 
-A sample is most useful when it represents the population for the question being asked. Two common reasons a sample does not represent the population are:
+A sample is most useful when it represents the population for the question being asked.
+
+- **Population** means the full group you want to learn about.
+- **Sample** means the smaller group you actually observe.
+
+Representation is about whether the sample behaves like the population for the variables you care about.
+
+Two common reasons a sample does not represent the population are:
 
 * **Selection bias.** Some units are more likely to be included than others, in a way related to the variables of interest.
 * **Nonresponse or missingness.** Some units are included, but some variables are not recorded, in a way related to the outcomes.
 
-In model-based work, we often describe selection and missingness as parts of the data generating process. If they are severe, they can dominate any later modeling step.
+In model-based work, we treat selection and missingness as part of the data generating process: the data we observe are shaped by what happened in the world and by what we managed to record. If selection or missingness is severe, it can dominate any later modeling step.
+
+#### Example 1: Coffee shop data (selection bias in practice)
+
+In the coffee shop story, imagine the question is:
+
+> What is a typical wait time for all orders during the semester?
+
+- **Population for the question:** all coffee shop orders between 8 am and 4 pm
+- **Convenient data source:** the mobile ordering app log
+
+If the app is used mostly during busy times (for example, right before class), then app orders can over represent rush periods. If we analyze only app orders, we can exaggerate the wait time compared with all orders. That is selection bias: the chance an order appears in our data is related to the outcome we care about (wait time).
+
+#### Example 2: GPA data (a numeric example we can visualize)
+
+Suppose the question is:
+
+> What is a typical GPA of first year students this semester?
+
+A common summary for “typical” is the **average** (also called the **mean**): add the GPAs and divide by how many students you have.
+
+- A **representative sample** (for example, a random sample from the registrar list) tends to reflect the population.
+- A **biased sample** (for example, volunteers from an honors forum) can over represent higher GPAs.
+
+The figure below uses a computer generated example to illustrate the idea. The exact numbers are not important. The pattern is the key.
+
+```{r}
+#| label: fig-selection-bias-gpa
+#| fig-cap: "Selection bias can shift what you observe. Each histogram shows counts of GPAs in three groups: a large population, a representative sample, and a biased sample."
+#| warning: false
+#| message: false
+
+set.seed(2026)
+
+# Simulated "population" of GPAs (the full group we want to learn about)
+N <- 10000
+gpa_pop <- pmin(pmax(rnorm(N, mean = 3.0, sd = 0.45), 0), 4)
+# gpa_pop <- pmin(pmax(rnorm(N, mean = 3.0, sd = 0.45), 0), 4)
+pop <- data.frame(gpa = gpa_pop)
+# A representative sample: select students without favoring any GPA values
+n <- 400
+gpa_srs <- sample(gpa_pop, size = n, replace = FALSE)
+
+# A biased sample: higher GPAs are more likely to be included (like volunteer bias)
+# Here we implement this by sampling with weights that increase with GPA.
+weights <- 0.2 + 0.8 * (gpa_pop / 4)   # small weight for low GPA, larger for high GPA
+gpa_biased <- sample(gpa_pop, size = n, replace = FALSE, prob = weights)
+
+# Helper for consistent histograms
+plot_hist <- function(x, main) {
+  hist(x, breaks = seq(0, 4, by = 0.25), main = main, xlab = "GPA", ylab = "Count")
+  abline(v = mean(x), lwd = 2)
+  mtext(paste0("average ≈ ", round(mean(x), 2)), side = 3, line = 0.2)
+}
+
+op <- par(mfrow = c(1, 3))
+plot_hist(gpa_pop,   "Population (all first year students)")
+plot_hist(gpa_srs,   "Representative sample")
+plot_hist(gpa_biased,"Biased sample (more high GPA students)")
+par(op)
+```
+
+Interpretation. The representative sample histogram tends to look like the population histogram. The biased sample histogram is shifted toward higher GPAs, so its average is higher. That difference is not a modeling issue. It is a data generation issue.
+
+
+Example 3: Missingness (nonresponse can shift what you observe)
+
+Now suppose you take a representative sample of students, but some students do not report their GPA. If students with lower GPAs are less likely to respond, then the GPAs you observe can be shifted upward, even though your original sampling plan was reasonable.
+
+The figure below shows the same idea with a random sample where some GPAs become missing.
+
+```{r}
+set.seed(2027)
+
+# Start with a new simple random sample
+
+srs2 <- pop[sample.int(N, n), , drop = FALSE]
+
+# Nonresponse mechanism: lower GPA students respond less often (for illustration)
+
+p_respond <- plogis(-0.2 + 1.6 * (srs2$gpa - 3.0))
+respond <- rbinom(n, size = 1, prob = p_respond) == 1
+
+srs2$respond <- respond
+srs2$gpa_observed <- ifelse(respond, srs2$gpa, NA)
+
+# Plot response rate by GPA bins
+
+srs2$gpa_bin <- cut(srs2$gpa, breaks = seq(0, 4, by = 0.5), include.lowest = TRUE)
+
+resp_rate <- aggregate(respond ~ gpa_bin, data = srs2, FUN = mean)
+resp_rate$gpa_mid <- seq(1.75, 3.75, by = 0.5)
+
+p1 <- ggplot(resp_rate, aes(x = gpa_mid, y = respond)) +
+geom_point() +
+geom_line() +
+labs(x = "GPA (bin midpoint)", y = "Response rate")
+p1
+```
+
+
+```{r}
+
+#| label: fig-missingness-gpa
+#| fig-cap: "Missing values can distort summaries when missingness is related to the outcome. Left: all sampled students. Right: only the GPAs that were actually observed."
+#| warning: false
+#| message: false
+
+set.seed(2027)
+
+# Start with a representative sample
+
+gpa_sample <- sample(gpa_pop, size = n, replace = FALSE)
+
+# Create missing GPAs in a way that is related to GPA:
+
+# lower GPAs are more likely to be missing (illustration of nonresponse)
+
+missing_prob <- ifelse(gpa_sample < 2.6, 0.50,
+ifelse(gpa_sample < 3.0, 0.25, 0.10))
+is_missing <- runif(n) < missing_prob
+
+gpa_observed <- gpa_sample
+gpa_observed[is_missing] <- NA
+
+op <- par(mfrow = c(1, 2))
+hist(gpa_sample, breaks = seq(0, 4, by = 0.25),
+main = "All sampled GPAs", xlab = "GPA", ylab = "Count")
+abline(v = mean(gpa_sample), lwd = 2)
+mtext(paste0("average ≈ ", round(mean(gpa_sample), 2)), side = 3, line = 0.2)
+
+hist(gpa_observed[!is.na(gpa_observed)], breaks = seq(0, 4, by = 0.25),
+main = "Observed GPAs (after missingness)", xlab = "GPA", ylab = "Count")
+abline(v = mean(gpa_observed, na.rm = TRUE), lwd = 2)
+mtext(paste0("average ≈ ", round(mean(gpa_observed, na.rm = TRUE), 2)), side = 3, line = 0.2)
+par(op)
+
+c(
+average_all_sampled = mean(gpa_sample),
+average_observed_only = mean(gpa_observed, na.rm = TRUE),
+missing_rate = mean(is_missing)
+)
+```
+
+Interpretation. When missingness is related to GPA, the observed GPAs are not a fair reflection of the sampled GPAs. The average based only on observed values can be misleading.
+
+<!-- Model implied takeaway -->
+
+Selection bias and missingness are not only technical details. They describe how the data were produced and recorded. If the observed data do not represent the population for the question, then even a sophisticated model can confidently answer the wrong question.
+
+
+
+### Sampling methods
+
+When you cannot measure the whole population, you take a sample. The sampling method is part of the data generating process, because it determines which units enter the data set.
+
+A useful sample usually comes from a **probability sampling** plan, meaning that units are selected by a random mechanism (so that selection is not driven by the outcome you care about). A key practical ingredient is the **sampling frame**, which is the list or process you use to reach units (for example, a registrar list, a list of dorm rooms, or a stream of students entering the dining hall).
+
+Here are common sampling methods you will see in practice.
+
+* **Simple random sampling.** Select units at random from the sampling frame, so each unit has the same chance of being selected.
+* **Stratified sampling.** Divide the population into groups called strata (for example, class year), then sample within each group. This is useful when you want each group represented.
+* **Cluster sampling.** Divide the population into clusters (for example, dorm buildings), randomly select clusters, then include units within selected clusters. This is useful when it is expensive to reach individuals scattered across campus.
+* **Systematic sampling.** Select every kth unit from an ordered list or stream (for example, every 10th student who walks into the dining hall). This can work well if the ordering is not related to the outcome.
+
+Non probability approaches such as convenience samples and voluntary response samples are common, but they often create selection bias because who gets included is related to variables of interest.
+
+<span style="color:blue"> **Types of Random Samples** </span>
+
+As previously mentioned, many statistical methods are based on the *randomness assumption*. It's important to understand what a random sample is and how to collect it. In a **random sample**, each member of a population is *equally likely* to be selected.
+
+<span style="color:red"> ***Simple Random Sample*** </span>
+
+For a **simple random sample (SRS)**, every possible sample of sample size $n$ has the same chance to be chosen.
+
+- **Example**: If I were to sample 100 students from all 10,000 Marquette students, I would *randomly* assign each student a number (from 1 to 10,000) and then *randomly* select 100 numbers. 
+
+::::{.columns}
+:::{.column width="50%"}
+```{r}
+#| label: fig-random-sample
+#| fig-cap: Simple Random Sample
+set.seed(3)
+N   <- 108
+n   <- 18
+colSamp <- COL[4]
+PCH <- rep(c(1, 3, 20)[3], 3)
+col <- rep(COL[1], N)
+pch <- PCH[match(col, COL)]
+
+par(mar = c(0,0,0,0))
+plot(0, xlim=c(0,2), ylim=0:1, type='n', axes=FALSE)
+box()
+x   <- runif(N, 0, 2)
+y   <- runif(N)
+inc <- n
+points(x, y, col=col, pch=pch)
+
+these <- sample(N, n)
+points(x[these], y[these], pch=20, cex=0.8, col=colSamp)
+points(x[these], y[these], cex=1.4, col=colSamp)
+```
+:::
+
+:::{.column width="50%"}
+```{r}
+#| label: fig-random-sampling
+#| fig-cap: "Simple random sample from a population of 15 (https://research-methodology.net/sampling-in-primary-data-collection/random-sampling/)"
+knitr::include_graphics("./images/img-part1/srs.png")
+```
+:::
+::::
+
+<span style="color:red"> ***Stratified Random Sample*** </span>
+
+For **stratified sampling**, we subdivide the population into different subgroups (**strata**) that share the *same* characteristics, then draw a simple random sample from each subgroup. Stratified sampling has a property: *Homogeneous within strata; Non-homogeneous between strata*. (@fig-stratified)
+
+```{r}
+#| label: fig-stratified
+#| fig-cap: "Stratified Sampling. Source: https://www.datasciencemadesimple.com/stratified-random-sampling-in-r-dataframe-2/"
+#| out-width: 100%
+knitr::include_graphics("./images/img-part1/stratified_sampling.png")
+```
+
+- **Example**: Divide Marquette students into groups by colleges, then perform a SRS for each group (@fig-stratified-marquette). In this case, subjects within strata are homogeneous because people in the same stratum belong to the same college. Subjects are non-homogeneous between strata because students in one college is not a student in another college.
+
+```{r}
+#| label: fig-stratified-marquette
+#| fig-cap: Stratified sampling of Marquette Students
+par(mar = c(0,0,0,0))
+PCH <- rep(c(1, 3, 20)[3], 3)
+plot(0, xlim=c(0,2), ylim=0:1, type='n', axes=FALSE, xlab = "", ylab = "")
+box()
+X    <- c(0.18, 0.3, 0.68, 1.18, 1.4, 1.74)
+Y    <- c(0.2, 0.78, 0.44, 0.7, 0.25, 0.65)
+locs <- c(1, 4, 5, 3, 6, 2)
+gps  <- list()
+N    <- 1.1*c(15, 12, 35, 22, 13, 28)
+R    <- sqrt(N/500)
+p    <- matrix(c(12, 2, NA,
+				 1,  2, NA,
+				 4,  30, NA,
+				 19, 1, NA,
+				 11, 0, NA,
+				 3, 24, NA), 3)
+p     <- round(p*1.1)
+p[3,] <- N - p[1,] - p[2,]
+above <- c(1, 1, 1, 1, -1, 1)
+for(i in 1:6){
+	hold <- seq(0, 2*pi, len=99)
+	x    <- X[i] + (R[i]+0.01)*cos(hold)
+	y    <- Y[i] + (R[i]+0.01)*sin(hold)
+	polygon(x, y, border=COL[5,4])
+	x    <- rep(NA, N[i])
+	y    <- rep(NA, N[i])
+	for(j in 1:N[i]){
+		inside <- FALSE
+		while(!inside){
+			xx <- runif(1, -R[i], R[i])
+			yy <- runif(1, -R[i], R[i])
+			if(sqrt(xx^2 + yy^2) < R[i]){
+				inside <- TRUE
+				x[j]   <- xx
+				y[j]   <- yy
+			}
+		}
+	}
+	type <- sample(1, N[i], TRUE)
+	pch  <- PCH[type]
+	col  <- COL[type]
+	x    <- X[i]+x
+	y    <- Y[i]+y
+	points(x, y, pch=pch, col=col)
+	these  <- sample(N[i], 3)
+	points(x[these], y[these], pch=20, cex=0.8, col=colSamp)
+	points(x[these], y[these], cex=1.4, col=colSamp)
+}
+college <- c("Arts/Sciences", "Business", "Engineering", "Law", "Nursing", "Health Sciences")
+text(X, Y+above*(R+0.01), college, pos=2+above, cex=1.1, font = 2)
+```
+
+
+<span style="color:red"> ***Cluster Sampling*** </span>
+
+For **cluster sampling**, divide the population into clusters, then randomly select some of those clusters, and then keep *all* the members from those selected clusters. Cluster sampling has a property: *Homogeneous between clusters; Non-homogeneous within clusters* (@fig-cluster). Clusters look similar each other, but members in a cluster are not very alike. They have different characteristics.
+
+```{r}
+#| label: fig-cluster
+#| fig-cap: "Cluster Sampling Source: https://research-methodology.net/sampling-in-primary-data-collection/cluster-sampling/"
+knitr::include_graphics("./images/img-part1/cluster_sampling.png")
+```
+
+- **Example**: Study 4720 students' drinking habits by dividing the students into 9 groups, and then randomly selecting 3 and interviewing all of the students in each of those clusters (@fig-cluster-marquette). Subjects are homogeneous between clusters because clusters are like random partitions, and each one is a representative subset of the entire population. Subjects are non-homogeneous within clusters because everyone has their own characteristics, and subjects are not divided based on any characteristic such as major or college.
+
+```{r}
+#| label: fig-cluster-marquette
+#| fig-cap: Cluster sampling of Marquette students
+par(mar = c(0,0,0,0))
+PCH <- rep(c(1, 3, 20)[3], 3)
+plot(0, xlim=c(0,2), ylim=0:1, type='n', axes=FALSE)
+box()
+X    <- c(0.17, 0.19, 0.52, 0.85, 1, 1.22, 1.49, 1.79, 1.85)
+Y    <- c(0.3, 0.75, 0.5, 0.26, 0.73, 0.38, 0.67, 0.3, 0.8)
+locs <- c(1, 4, 5, 3, 6, 2)
+gps  <- list()
+N    <- c(18, 12, 11, 13, 16, 14, 15, 16, 12)
+R    <- sqrt(N/500)
+p    <- matrix(c(6,  8, NA,
+				 4,  4, NA,
+				 4,  4, NA,
+				 5,  4, NA,
+				 8,  5, NA,
+				 4,  5, NA,
+				 5,  9, NA,
+				 6,  5, NA,
+				 4,  5, NA), 3)
+p[3,] <- N - p[1,] - p[2,]
+above <- c(-1, 1, 1, 1, 1, -1, 1, 1, 1)
+for(i in 1:length(X)){
+	hold <- seq(0, 2*pi, len=99)
+	x    <- X[i] + (R[i]+0.02)*cos(hold)
+	y    <- Y[i] + (R[i]+0.02)*sin(hold)
+	polygon(x, y, border=COL[5,4])
+	if(i %in% c(3, 4, 8)){
+		polygon(x, y, border=COL[4], lty=2, lwd=1.5)
+	}
+	x    <- rep(NA, N[i])
+	y    <- rep(NA, N[i])
+	for(j in 1:N[i]){
+		inside <- FALSE
+		while(!inside){
+			xx <- runif(1, -R[i], R[i])
+			yy <- runif(1, -R[i], R[i])
+			if(sqrt(xx^2 + yy^2) < R[i]){
+				inside <- TRUE
+				x[j]   <- xx
+				y[j]   <- yy
+			}
+		}
+	}
+	type <- sample(1, N[i], TRUE)
+	pch  <- PCH[type]
+	col  <- COL[type]
+	x    <- X[i]+x
+	y    <- Y[i]+y
+	points(x, y, pch=pch, col=col)
+	these  <- sample(N[i], N[i])
+	# these  <- N[i]
+	if(i %in% c(3, 4, 8)){
+	points(x[these], y[these], pch=20, cex=0.8, col=colSamp)
+	points(x[these], y[these], cex=1.4, col=colSamp)
+		#points(x[these], y[these], pch=19, col=colSamp)
+	}
+}
+class_name <- c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4",
+                "Cluster 5", "Cluster 6",
+                "Cluster 7", "Cluster 8", "Cluster 9")
+text(X, Y+above*(R+0.01), class_name, 
+     pos=2+above, cex=1.1, font = 2)
+# text(X, Y+above*(R+0.01), paste("Cluster", 1:length(X)), 
+#      pos=2+above, cex=1.1, font = 2)
+```
+
+
+<!-- #### A sampling illustration -->
+
+<!-- Suppose the question is: What is a typical number of sleep hours for undergraduates this semester. You decide to sample students and ask them for their sleep hours last night. The figure below shows three sampling designs on a stylized campus map. The full set of points represents the population, and the darker points represent the sampled students. -->
+
+<!-- ```{r} -->
+<!-- #| label: fig-sampling-methods -->
+<!-- #| fig-cap: "Illustration of three sampling methods. Each panel shows the same population (light points) and a different sample (dark points)." -->
+<!-- #| warning: false -->
+<!-- #| message: false -->
+
+<!-- set.seed(2031) -->
+
+<!-- # Create a stylized campus population of students -->
+<!-- N_pop <- 260 -->
+<!-- years <- c("First year", "Sophomore", "Junior", "Senior") -->
+<!-- year <- sample(years, size = N_pop, replace = TRUE) -->
+
+<!-- # Ten dorm clusters with centers on a 2D map -->
+<!-- K <- 10 -->
+<!-- dorm <- sample(1:K, size = N_pop, replace = TRUE) -->
+<!-- centers <- data.frame( -->
+<!--   dorm = 1:K, -->
+<!--   cx = runif(K, 0, 10), -->
+<!--   cy = runif(K, 0, 10) -->
+<!-- ) -->
+
+<!-- # Student locations are jittered around dorm centers -->
+<!-- cx <- centers$cx[dorm] -->
+<!-- cy <- centers$cy[dorm] -->
+<!-- x <- rnorm(N_pop, mean = cx, sd = 0.45) -->
+<!-- y <- rnorm(N_pop, mean = cy, sd = 0.45) -->
+
+<!-- pop <- data.frame(id = 1:N_pop, year = year, dorm = dorm, x = x, y = y) -->
+
+<!-- n <- 60  # target sample size -->
+
+<!-- # 1) Simple random sample -->
+<!-- srs_id <- sample(pop$id, size = n, replace = FALSE) -->
+
+<!-- # 2) Stratified sample: take about the same number from each class year -->
+<!-- n_per <- floor(n / length(years)) -->
+<!-- strat_id <- unlist(lapply(years, function(g) { -->
+<!--   ids <- pop$id[pop$year == g] -->
+<!--   sample(ids, size = min(n_per, length(ids)), replace = FALSE) -->
+<!-- })) -->
+<!-- # If rounding left us short, top up at random from remaining units -->
+<!-- if (length(strat_id) < n) { -->
+<!--   remaining <- setdiff(pop$id, strat_id) -->
+<!--   strat_id <- c(strat_id, sample(remaining, size = n - length(strat_id), replace = FALSE)) -->
+<!-- } -->
+
+<!-- # 3) Cluster sample: randomly select dorms until we reach (or slightly exceed) n students -->
+<!-- chosen_dorms <- sample(1:K, size = 1) -->
+<!-- cluster_id <- pop$id[pop$dorm %in% chosen_dorms] -->
+<!-- while (length(cluster_id) < n) { -->
+<!--   new_dorm <- sample(setdiff(1:K, chosen_dorms), size = 1) -->
+<!--   chosen_dorms <- c(chosen_dorms, new_dorm) -->
+<!--   cluster_id <- pop$id[pop$dorm %in% chosen_dorms] -->
+<!-- } -->
+<!-- # If we overshot, keep a random subset so the visual sample sizes match -->
+<!-- if (length(cluster_id) > n) { -->
+<!--   cluster_id <- sample(cluster_id, size = n, replace = FALSE) -->
+<!-- } -->
+
+<!-- plot_panel <- function(sample_id, main) { -->
+<!--   plot(pop$x, pop$y, -->
+<!--        pch = 16, cex = 0.7, col = "gray80", -->
+<!--        xlab = "Campus map (stylized)", ylab = "Campus map (stylized)", -->
+<!--        main = main) -->
+<!--   points(pop$x[pop$id %in% sample_id], -->
+<!--          pop$y[pop$id %in% sample_id], -->
+<!--          pch = 16, cex = 0.9, col = "gray10") -->
+<!-- } -->
+
+<!-- op <- par(mfrow = c(1, 3), mar = c(4, 4, 3, 1)) -->
+<!-- plot_panel(srs_id,   "Simple random sample") -->
+<!-- plot_panel(strat_id, "Stratified sample by year") -->
+<!-- plot_panel(cluster_id, "Cluster sample by dorm") -->
+<!-- par(op) -->
+<!-- ``` -->
+
+<!-- Each method can be reasonable. The right method depends on the question, the costs of data collection, and what kinds of bias you can tolerate. -->
 
 ## How data are collected
 
@@ -145,6 +752,85 @@ An **observational study** records variables as they naturally occur, without as
 
 In the coffee shop story, using transaction logs to compare wait times for mobile versus non mobile orders is observational unless orders were assigned by design. Students choose whether to use the app, and that choice may be related to other factors such as schedule or patience.
 
+#### Confounding and why it matters
+
+A **confounder** is a variable that is related to both:
+
+* the explanatory variable you care about (for example, mobile ordering), and
+* the outcome you measure (for example, wait time).
+
+When confounding is present, a comparison between groups can mix together multiple effects.
+
+In the coffee shop story, **time of day** is a natural confounder.
+
+* Time of day affects wait time, because the rush period tends to be busier.
+* Time of day can also be related to ordering method, because mobile ordering might be used more often right before class.
+
+The figure below illustrates how this can mislead. We use simulated data to show a common pattern: overall, mobile orders can look slower, even if within the same time period mobile orders are faster. The point is the logic, not the exact numbers.
+
+An **average** (also called the **mean**) is one way to describe a typical value: add the values and divide by how many values you have.
+
+```{r}
+#| label: fig-confounding
+#| fig-cap: "Confounding illustration. Left: an overall comparison can be misleading. Right: comparing within time periods reveals a different story."
+#| warning: false
+#| message: false
+
+set.seed(2032)
+
+n_orders <- 600
+order_type <- sample(c("Mobile", "In person"), size = n_orders, replace = TRUE, prob = c(0.55, 0.45))
+
+# Mobile orders are more common during rush (a confounding pattern)
+rush <- ifelse(order_type == "Mobile",
+               rbinom(n_orders, 1, 0.70),
+               rbinom(n_orders, 1, 0.40))
+time_period <- ifelse(rush == 1, "Rush period", "Not rush")
+
+# Wait times are longer during rush.
+# Within each time period, mobile ordering reduces wait time a bit.
+base_mean <- ifelse(time_period == "Rush period", 12, 6)
+effect_mobile <- ifelse(order_type == "Mobile", -1.5, 0)
+
+wait_time <- base_mean + effect_mobile + rnorm(n_orders, mean = 0, sd = 2.2)
+wait_time <- pmax(wait_time, 0.5)  # keep wait times positive
+
+df <- data.frame(order_type = order_type, time_period = time_period, wait_time = wait_time)
+
+overall <- tapply(df$wait_time, df$order_type, mean)
+by_period <- with(df, tapply(wait_time, list(time_period, order_type), mean))
+
+op <- par(mfrow = c(1, 2), mar = c(5, 4, 3, 1))
+
+barplot(overall,
+        ylab = "Average wait time (minutes)",
+        main = "Overall comparison")
+
+barplot(t(by_period),
+        beside = TRUE,
+        ylab = "Average wait time (minutes)",
+        main = "Comparison within time periods",
+        legend.text = colnames(by_period),
+        args.legend = list(x = "topleft", bty = "n"))
+
+par(op)
+```
+
+**How to read the figure.**
+
+* The left panel compares all mobile orders to all in person orders, without paying attention to time of day.
+* The right panel compares mobile versus in person orders within the same time period.
+
+When time of day is a confounder, the overall comparison can reflect differences in who uses the app and when, not only the effect of mobile ordering.
+
+**What you can do about confounding.**
+
+* Design: run an experiment when possible (see the next section).
+* Measurement: record likely confounders (time of day, day of week, store staffing), so you can compare more fairly.
+* Summary: make stratified summaries like the right panel before making strong conclusions.
+
+This is model implied because it encourages you to think explicitly about what variables drive the outcome and what variables determine who ends up in each group. Later chapters will build on this idea by treating the data as arising from a probabilistic model that includes the key variables you measure.
+
 ### Experiments
 
 An **experiment** assigns an intervention to units, such as a treatment, policy, or feature change, and then measures outcomes. Random assignment is a powerful tool because it helps separate the intervention effect from other differences between groups.
@@ -157,49 +843,231 @@ In a campus setting, a small experiment might randomly assign some time blocks t
 Many real data sets combine collection approaches. A data set might include administrative records plus a survey, or sensor data plus a short experiment. When sources are combined, documentation becomes even more important.
 :::
 
-## Where data come from
+<!-- ## Where data come from -->
 
-Modern data work often begins by asking not only how the data were collected, but where the data originate. Here are common sources.
+<!-- Modern data work often begins by asking not only how the data were collected, but where the data originate. Here are common sources. -->
 
-### Primary collection
+<!-- ### Primary collection -->
 
-You or your team collect the data for a specific question, such as a class survey or a designed experiment. Primary collection offers control, but it requires effort and planning.
+<!-- You or your team collect the data for a specific question, such as a class survey or a designed experiment. Primary collection offers control, but it requires effort and planning. -->
 
-### Administrative and transaction records
+<!-- ### Administrative and transaction records -->
 
-These are records created as part of running an organization: course registrations, dining swipes, library checkouts, or purchases. They can be large and detailed, but the variables were not originally designed for your research question.
+<!-- These are records created as part of running an organization: course registrations, dining swipes, library checkouts, or purchases. They can be large and detailed, but the variables were not originally designed for your research question. -->
 
-### Digital traces and platform logs
+<!-- ### Digital traces and platform logs -->
 
-Apps and websites generate timestamped logs: clicks, views, location pings, and usage patterns. These data can be informative, but they raise privacy and consent issues and they often require careful cleaning.
+<!-- Apps and websites generate timestamped logs: clicks, views, location pings, and usage patterns. These data can be informative, but they raise privacy and consent issues and they often require careful cleaning. -->
 
-### Sensors and instruments
+<!-- ### Sensors and instruments -->
 
-Wearables, lab instruments, and environmental sensors produce streams of measurements. These data can be high frequency and high volume, which makes data type and data structure especially important.
+<!-- Wearables, lab instruments, and environmental sensors produce streams of measurements. These data can be high frequency and high volume, which makes data type and data structure especially important. -->
 
-### Public and open data
+<!-- ### Public and open data -->
 
-Governments, research groups, and organizations release public data sets. Open data can be valuable for learning and research, but you still must understand the original collection process and limitations.
+<!-- Governments, research groups, and organizations release public data sets. Open data can be valuable for learning and research, but you still must understand the original collection process and limitations. -->
 
 ## Data types
 
-Data type is about what values a variable can take and what operations make sense on those values. Data type shapes:
 
-* How you summarize a variable in Chapter 3
-* What kinds of relationships you look for in Chapter 4
-* What probability models are reasonable later in the book
+OK. We learn data collection and sampling methods. Now's let's learn some data types. Data type is about what values a variable can take and what operations make sense on those values. Data type shapes:
 
-### Two broad families
+- How you summarize a variable
 
-**Categorical variables.** Values are labels for categories.
+- What kinds of relationships you look for
 
-* Nominal categorical: categories have no natural order (major, residence hall)
-* Ordinal categorical: categories have a natural order (rating from 1 to 5)
+- What probability models are reasonable
 
-**Quantitative variables.** Values are numbers where arithmetic meaning is appropriate.
+Usually a statistical method is only for some type of data or variables. Knowing data types is important because it helps us choose the correct or appropriate statistical methods for analysis. It also helps us interprets the analysis result correctly.  @fig-data-type tells us everything about data type. We are going to learn each data type in the figure.
 
-* Discrete quantitative: counts (number of items ordered)
-* Continuous quantitative: measurements on a scale (wait time in minutes)
+
+```{r}
+#| label: fig-data-type
+#| fig-cap: Types of Data
+par(mar = c(0,0,0,0))
+plot(c(-0.15, 1.3),
+     c(0, 1),
+     type = 'n',
+     axes = FALSE)
+
+text(0.6, 0.9, 'Variables/Data', font = 2)
+rect(0.4, 0.8, 0.8, 1)
+
+text(0.25, 0.55, 'Categorical', font = 2)
+text(0.25, 0.45, '(Qualitative)', font = 2)
+rect(0.1, 0.4, 0.4, 0.6)
+arrows(0.45, 0.78, 0.34, 0.62, length = 0.08)
+
+text(0.9, 0.55, 'Numerical', font = 2)
+text(0.9, 0.45, '(Quantitative)', font = 2)
+rect(0.73, 0.4, 1.07, 0.6)
+arrows(0.76, 0.78, 0.85, 0.62, length = 0.08)
+
+text(0, 0.1, 'Nominal', font = 2, col = "blue")
+rect(-0.1, 0.05, 0.1, 0.15)
+arrows(0.13, 0.38, 0.05, 0.22, length = 0.08)
+
+text(0.4, 0.1, 'Ordinal', font = 2, col = "blue")
+rect(0.3, 0.05, 0.5, 0.15)
+arrows(0.35, 0.38, 0.4, 0.22, length = 0.1)
+
+text(0.6, 0.19, 'Level of measurements', font = 2, col = "lightblue")
+
+text(0.75, 0.1, 'Interval', font = 2, col = "blue")
+# text(0.77, 0.05, '(unordered categorical)',
+#      col = COL[6],
+#      cex = 0.5, font = 2)
+rect(0.65, 0.05, 0.85, 0.15)
+arrows(0.82, 0.38, 0.77, 0.22, length = 0.08)
+
+text(1.1, 0.1, 'Ratio', font = 2, col = "blue")
+# text(1.14, 0.05, '(ordered categorical)', col = COL[6], cex = 0.5, font = 2)
+rect(1, 0.05, 1.2, 0.15)
+arrows(1, 0.38, 1.05, 0.22, length = 0.08)
+
+text(1.18, 0.32, 'Continuous', font = 2, col = "red")
+rect(1.05, 0.25, 1.3, 0.38)
+arrows(1.07, 0.5, 1.15, 0.4, length = 0.08)
+
+text(1.18, 0.73, 'Discrete', font = 2, col = "red")
+rect(1.05, 0.65, 1.3, 0.8)
+arrows(1.07, 0.5, 1.15, 0.64, length = 0.08)
+```
+
+
+
+<span style="color:blue"> **Categorical vs. Numerical Variables** </span>
+
+A **categorical** variable provides *non-numerical* information which can be placed in *one (and only one)* category from two or more categories. Here are some examples.
+
+  + <span style="color:blue">Gender (Male  `r emoji('man')`, Female  `r emoji('woman')`,  Trans  `r emoji('rainbow_flag')`) </span> 
+  + <span style="color:blue">Class (Freshman, Sophomore, Junior, Senior, Graduate) </span>
+  + <span style="color:blue">Country (USA `r emoji('us')`, Canada `r emoji('canada')`, UK `r emoji('uk')`, Germany `r emoji('de')`, Japan `r emoji('jp')`, Korea `r emoji('kr')`) </span> 
+  
+Gender, Class, and Country are all categorical variables because they provide *non-numerical* information. Their possible "values" are "categories". Keep in mind that a data object can only belong to one category of that variable. You cannot be a freshman and sophomore.
+  
+  
+A **numerical** variable is recorded in a *numerical* value representing counts or measurements. Some examples are
+
+  + <span style="color:blue"> GPA </span> 
+  + <span style="color:blue"> The number of relationships you've had </span>
+  + <span style="color:blue"> Height </span> 
+  
+The possible values of the three variables are all numerical or numbers. You are a 6'2" tall student who had eight girlfriends and your GPA is 3.98.
+
+
+  
+<span style="color:red"> ***Numerical Variables*** </span>
+
+Numerical variables can be discrete or continuous. A **discrete** variable takes on values of a *finite* or *countable* number, while a **continuous** variable takes on values *anywhere* over a particular range *without gaps or jumps*.
+
+
+  + <span style="color:blue"> GPA is **continuous** because theoretically it can be any value between 0 and 4. </span> 
+  
+  + <span style="color:blue"> The number of relationships you've had is **discrete** because you can count the number and it is finite.</span> The possible values are 0, 1, 2, 3, and so on. Can you have a 0.5 relationship?
+  
+  + <span style="color:blue"> Height is **continuous** because it can be any number within a range. </span> 
+
+
+<span style="color:red"> ***Categorical Variables*** </span> 
+
+For convenience, categorical variables are usually recorded as numbers in a data set. For example, we can have
+
+- <span style="color:blue">Gender (Male = 0, Female = 1, Trans = 2) </span>
+
+- <span style="color:blue">Class (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5) </span> 
+
+- <span style="color:blue">Country (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301) </span> 
+
+Even <span style="color:blue">United Airlines boarding group</span> is categorical. The group number does provide *non-numerical* information, which is the order of boarding. You cannot be in both boarding zone one and zone two for the same ticket. You can only be in one group.
+
+Please note that *the numbers represent categories only; taking differences of these numbers is meaningless.* If we use the coding scheme in the examples, 
+
+  - Canada - USA = 101 - 100 = 1???
+  - Graduate - Sophomore = 5 - 2 = 3 = Junior???
+  
+The arithmetic operations do not make sense. For any data or variables, we need to learn the **level of measurements** to know which arithmetic operations are meaningful for what type of data.
+
+------------------------------------------------------------------------
+
+<span style="color:blue"> **Levels of Measurements** </span>
+
+<span style="color:red"> ***Nominal and Ordinal for Categorical Variables*** </span>
+
+A categorical variable can be of nominal or ordinal level of measurement.
+
+The data is **nominal** if can *not be ordered* in a meaningful or natural way. For example,
+
+  + <span style="color:blue">Gender (Male = 0, Female = 1, Trans = 2) </span> is **nominal** because Male, Female and Trans cannot be ordered, even the numbering coding has an ordering.
+  
+  + <span style="color:blue">Country (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301) </span> is **nominal**. There is no reason to put any country before any other country unless there is another variable giving those countries another attribute that can be ordered.
+
+
+**Ordinal** data can be arranged in some meaningful order, but differences between data values can NOT be determined or are meaningless.
+
+  + <span style="color:blue">Class (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5) </span> is **ordinal** because Sophomore is one class higher than Freshman, and so on. Here the difference is still meaningless. It seems that Junior is one year higher than Sophomore, and Junior - Sophomore = 1 kind of makes sense. However, "1" does not mean one year higher; instead "1" means Freshman. Moreover, we could even use the numbering (Freshman = 1, Sophomore = 10, Junior = 33, Senior = 44, Graduate = 50) for the Class variable.
+
+<span style="color:red"> ***Interval and Ratio for Numerical Variables*** </span>
+
+Numerical data can be interval or ratio level of measurement.
+
+**Interval** data have meaningful differences between any two values but the data do NOT have a *natural zero or starting point*. The data can do $\color{red} +$ and $\color{red} -$, but can't reasonably do $\color{red} \times$ and $\color{red} \div$.
+
+  + <span style="color:blue">Temperature</span> is **interval** because $80^{\circ}$F is 40 degrees higher than $40^{\circ}$F $(80-40=40)$, but $0^{\circ}$ does not mean NO heat or NO temperature, but a specific temperature. Also, $80^{\circ}$F is NOT twice as hot as $40^{\circ}$F.
+  
+  
+**Ratio** data have both meaningful differences and ratios, and there is a natural zero starting point that indicates none of the quantity. The data can do $\color{red} +$, $\color{red} -$,  $\color{red} \times$ and $\color{red} \div$.
+
+  + <span style="color:blue">Distance</span> is **ratio** level of measurement because $80$ miles is twice as far as $40$ miles $(80/40 = 2)$, and $0$ mile means NO distance.
+
+------------------------------------------------------------------------
+
+<span style="color:blue"> **Data type depends on decisions** </span>
+
+Sometimes research purpose we may want to convert a numerical variable into a categorical variable. @fig-grading is an example of turning a 100% percentage grade into a letter grade which is categorical. Another is example is turning annual salary (numerical) into income level (categorical). We can say salary between \$0 and \$50,000 is "low" income level, salary between \$50,000 and \$120,000 is "middle" income level, and above \$120,000 is "high" income level.
+
+```{r}
+#| label: fig-grading
+#| fig-cap: Grading scale for this class
+letter <- c("A", "A-", "B+", "B", "B-", "C+", "C", "C-",
+                       "D+", "D", "F")
+percentage <- c("[94, 100]", "[90, 94)", "[87, 90)", "[83, 87)", "[80, 83)",
+                "[77, 80)", "[73, 77)", "[70, 73)", 
+                "[65, 70)", "[60, 65)", "[0, 60)")
+grade_dist <- data.frame(Grade = letter, Percentage = percentage)
+knitr::kable(grade_dist, longtable = TRUE, format = "html", align = 'l') %>% kable_styling(position = "center", font_size = 25)
+```
+
+
+The same underlying idea can be recorded in different ways.
+
+* A rating of 1 to 5 is ordinal categorical, but you might treat it as quantitative when computing an average. That choice has consequences.
+
+* Age can be recorded as a number, or grouped into categories. Grouping can simplify summaries, but it discards information.
+
+* A continuous measurement can be rounded to an integer, which changes the type and may change the model.
+
+Good practice is to document these decisions and to align them with the goals of the analysis.
+
+<!-- ### Data type depends on decisions -->
+
+<!-- Data type is about what values a variable can take and what operations make sense on those values. Data type shapes: -->
+
+<!-- * How you summarize a variable in Chapter 3 -->
+<!-- * What kinds of relationships you look for in Chapter 4 -->
+<!-- * What probability models are reasonable later in the book -->
+
+<!-- ### Two broad families -->
+
+<!-- **Categorical variables.** Values are labels for categories. -->
+
+<!-- * Nominal categorical: categories have no natural order (major, residence hall) -->
+<!-- * Ordinal categorical: categories have a natural order (rating from 1 to 5) -->
+
+<!-- **Quantitative variables.** Values are numbers where arithmetic meaning is appropriate. -->
+
+<!-- * Discrete quantitative: counts (number of items ordered) -->
+<!-- * Continuous quantitative: measurements on a scale (wait time in minutes) -->
 
 ### Common data types and model building blocks
 
@@ -214,16 +1082,6 @@ Later chapters will introduce probability models carefully. For now, it is enoug
 | Continuous | wait time | Normal, log normal, or other continuous models |
 | Proportion | fraction of correct answers | Binomial or Beta type models |
 
-### Data type depends on decisions
-
-The same underlying idea can be recorded in different ways.
-
-* A rating of 1 to 5 is ordinal categorical, but you might treat it as quantitative when computing an average. That choice has consequences.
-* Age can be recorded as a number, or grouped into categories. Grouping can simplify summaries, but it discards information.
-* A continuous measurement can be rounded to an integer, which changes the type and may change the model.
-
-Good practice is to document these decisions and to align them with the goals of the analysis.
-
 ## Practice
 
 ::: {.callout-warning icon=false}
@@ -234,7 +1092,7 @@ Return to the coffee shop story and answer these questions.
 1. What is a reasonable observational unit if the goal is to study wait time
 2. List four variables you would want, and describe how each would be measured
 3. Identify which variables are categorical and which are quantitative
-4. For one categorical and one quantitative variable, describe a sensible summary you might use in Chapter 3
+4. For one categorical and one quantitative variable, describe a sensible summary you might use.
 :::
 
 ## Chapter summary
@@ -245,781 +1103,36 @@ In this chapter, you learned how statisticians interpret data and why data meani
 * A data set has observational units and variables, supported by documentation
 * Data are generated by a real world process and a measurement process
 * Collection approaches include surveys, observational studies, and experiments
-* Modern data sources include administrative records, digital traces, sensors, and open data
+* Common sampling methods include simple random sampling, stratified sampling, cluster sampling, and systematic sampling.
 * Data types guide both summaries and later probability modeling
+
+<!-- Modern data sources include administrative records, digital traces, sensors, and open data -->
 
 ## Where we are going next
 
-Chapter 3 focuses on summarizing one variable at a time. You will learn how to use graphs and numerical summaries to describe patterns and variability, and how those summaries prepare you for model-based inference later in the book.
-
-<!-- # Data, Studies, and Causality {#sec-part1-data} -->
-
-<!-- <!-- # Data Collection and Data Type {#sec-intro-data} --> -->
-
-<!-- ```{r} -->
-<!-- #| echo: false -->
-<!-- source("./_common.R") -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- data(COL) -->
-<!-- source("./sample_method_fcns.R") -->
-<!-- ``` -->
-
-<!-- Statistics is a science of data. If statistics should be viewed as a subset of the boarder data science, I would call it "statistical data science". As the name suggests, data is the core of modern statistics. In this chapter, we define data, and talk about data collection and data type. -->
-
-<!-- ## Data -->
-
-<!-- <span style="color:blue"> **What is Data?** </span> -->
-
-<!-- Because statistics is a science of data, we first understand what data is. **Data** can be described as a set of **objects** on which we observe or measure one or more **characteristics**. **Objects** are individuals, observations, subjects or cases in statistical studies. For example, if you are studying the Marquette students' heights and weights, your objects will be human beings, specifically the Marquette students. If you are interested in SUV car price, your subjects will be cars. A **characteristic or attribute** is also called a **variable** because it *varies* from one object to another. Your car data set may contain 10 car objects and 5 different characteristics or variables associated with each object, such as color, brand, weight, price, etc. Each car has its own value of those variables. -->
-
-
-<!-- We usually store a data set in a matrix form that has rows and columns. Sometimes we call such data set data matrix or data frame. Each row corresponds to a unique case or observational unit. Each column represents a characteristic or variable. This data matrix structure allows new cases to be added as rows or new variables to be added as columns. -->
-
-<!-- ---------------------------------------------------------------------- -->
-
-<!-- <span style="color:blue"> **Example** </span> -->
-
-<!-- @fig-marquette-data below is a data set of Marquette basketball players stored in matrix form. The objects are individuals or players in the data and each have their own associated row. Each player has several characteristics or attributes shown in the columns associated with them. These include jersey number, class, position, height, weight, hometown and high school. These characteristics can also be referred to as variables because they vary from one player to another. -->
-
-<!-- ```{r} -->
-<!-- #| label: fig-marquette-data -->
-<!-- #| fig-cap: "Data set of 2019 Marquette men's basketball players." -->
-
-<!-- knitr::include_graphics("./images/img-part1/mu_data.png") -->
-<!-- ``` -->
-
-<!-- ## Population and Sample -->
-
-
-
-
-<!-- <span style="color:blue"> **Target Population** </span> -->
-
-<!-- The data set we collect for analysis is usually a **sample** of some target population in the study. The first step in conducting a study is to *identify questions* to be investigated. A clear research question is helpful in identifying -->
-
-<!--   + what *cases* should be studied (row) -->
-<!--   + what *variables* are important (column) -->
-
-<!-- Once the research question is determined, it is important to identify the target population to be investigated. The **target population** is the *complete* collection of data we'd like to make inference about. Look at the following examples. -->
-
-<!-- <span style="color:red"> ***GPA Example*** </span> -->
-
-<!-- :::: {.columns} -->
-<!-- ::: {.column width="79%"} -->
-<!-- Suppose a Marquette professor has a research question: *What is the average GPA of currently enrolled Marquette undergraduate students?* -->
-
-<!-- The *target population* in this study is  <span style="color:blue"> *All Marquette undergraduate students that are currently enrolled.*</span> because all Marquette undergrads that are currently enrolled are the *complete* collection of data we'd like to make inference about or we are interested in some property or characteristic of these group of people. Each currently enrolled Marquette undergraduate student is an object in the population. Average GPA is the variable or population property we would like to make an inference about. -->
-<!-- ::: -->
-
-<!-- :::{.column width="19%"} -->
-
-
-<!-- ```{r} -->
-<!-- #| fig-cap: "Source: Upslash-Sarah Noltner" -->
-<!-- knitr::include_graphics("./images/img-part1/study.jpeg") -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- :::: -->
-
-<!-- :::{.callout-note} -->
-<!-- Students who are *not* currently enrolled or students that *have already graduated* are not our interest, so they shouldn't be a part of target population. -->
-<!-- ::: -->
-
-
-
-<!-- <span style="color:red"> ***Heart Disease Example*** </span> -->
-
-<!-- ::::{.columns} -->
-<!-- ::: {.column width="79%"} -->
-<!-- *Does a new drug reduce mortality in patients with severe heart disease?* If this is our research question, the target population is <span style="color:blue"> All people with severe heart disease. </span> Mortality is the variable or population property we would like to make an inference about. -->
-
-<!-- Do you think it is possible the apply the new drug to all the patients with severe heart disease, and obtain the mortality we are interested? -->
-<!-- ::: -->
-
-<!-- ::: {.column width="19%"} -->
-
-<!-- ```{r} -->
-<!-- #| fig-cap: "Source: Upslash-National Cancer Institute" -->
-<!-- knitr::include_graphics("./images/img-part1/heart_disease.jpeg") -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- :::: -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- <span style="color:blue"> **Sample Data** </span> -->
-
-<!-- In some cases it's possible to collect data of all the cases we are interested in. However, most of the time it is either too expensive or too time consuming to collect data for every case in a population. What if we tried to collect data on the average GPA of *all students in Illinois? The U.S.? The world?* `r emoji('scream')` `r emoji('scream')` `r emoji('scream')` -->
-
-<!-- <!-- :::: {.columns} --> -->
-<!-- <!-- ::: {.column width="49%"} --> -->
-<!-- When we are not able to collect all the cases in the target population due to some budget or time constraint, but we still want to learn about the population property, our solution is **sampling** cases from the target population. A **sample** is a **subset** of cases selected from a population. -->
-
-<!-- We are not able to collect the average GPA of every member of the population, but we can collect a sample from that population which has fewer objects (@fig-sampling). We can then compute the average GPA of the sample data. -->
-<!-- <!-- ::: --> -->
-
-<!-- <!-- :::{.column width="2%"} --> -->
-<!-- <!-- ::: --> -->
-
-<!-- <!-- ::: {.column width="49%"} --> -->
-<!-- ```{r} -->
-<!-- #| label: fig-sampling -->
-<!-- #| fig-cap: "Sampling from the population reduces the number of objects from which to collect data." -->
-<!-- #| echo: false -->
-<!-- #| out-width: 100% -->
-<!-- par(mar = 0.1*c(1,1,1,1)) -->
-<!-- plot(c(0, 2), -->
-<!--      c(0, 1.1), -->
-<!--      type = 'n', -->
-<!--      axes = FALSE, xlab = "", ylab = "") -->
-<!-- temp <- seq(0, 2 * pi, 2 * pi / 100) -->
-<!-- x <- 0.5 + 0.5 * cos(temp) -->
-<!-- y <- 0.5 + 0.5 * sin(temp) -->
-<!-- lines(x, y) -->
-
-<!-- s <- matrix(runif(700), ncol = 2) -->
-<!-- S <- matrix(NA, 350, 2) -->
-<!-- j <- 0 -->
-<!-- for (i in 1:nrow(s)) { -->
-<!--   if(sum((s[i, ] - 0.5)^2) < 0.23){ -->
-<!--     j <- j + 1 -->
-<!--     S[j, ] <- s[i, ] -->
-<!--   } -->
-<!-- } -->
-<!-- points(S, col = COL[1, 3], pch = 20) -->
-<!-- text(0.5, 1, 'All current students', pos = 3) -->
-
-<!-- set.seed(50) -->
-<!-- N <- sample(j, 25) -->
-<!-- lines((x - 0.5) / 2 + 1.5, (y - 0.5) / 2 +  0.5, pch = 20) -->
-
-<!-- SS <- (S[N, ] - 0.5) / 2 + 0.5 -->
-<!-- these <- c(2, 5, 11, 10, 12) -->
-<!-- points(SS[these, 1] + 1, -->
-<!--        SS[these, 2], -->
-<!--        col = COL[4, 2], -->
-<!--        pch = 20, -->
-<!--        cex = 1.5) -->
-<!-- text(1.5, 0.75, 'Sample', pos = 3) -->
-
-<!-- for (i in these) { -->
-<!--   arrows(S[N[i], 1], S[N[i], 2], -->
-<!--          SS[i, 1] + 1 - 0.03, SS[i, 2], -->
-<!--          length = 0.08, col = COL[5], lwd = 1.5) -->
-<!-- } -->
-<!-- ``` -->
-<!-- <!-- ::: --> -->
-<!-- <!-- :::: --> -->
-
-<!-- We hope that the average GPA of the sample is close to the average GPA of the population, which is our main interest. For the sample's average GPA to be close to population's average GPA, we want the sample to look like the population such that they share similar attributes including GPA. In other words, we hope the sample is a small size of everything in the population, and the sample is representative of the population. Ideally, a sample is the small size of some dish and the population is the large size of that dish. -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- <span style="color:blue"> **Good Sample vs. Bad Sample** </span> -->
-
-<!-- :::{.callout-note icon=false} -->
-<!-- ## Is **this 4720/5720 class** a sample of the target population Marquette students? -->
-<!-- ::: -->
-
-<!-- Of course, every member in the class is a Marquette student, so the class is a subset of the population Marquette students. Let me ask you another question. -->
-
-<!-- :::{.callout-note icon=false} -->
-<!-- ## Is this 4720/5720 class a *"good"* sample of the target population? -->
-<!-- ::: -->
-
-<!-- Remember a good sample should well represent the target population. Do you think the class is generally a small version of the entire Marquette student body? The sample is convenient to be collected, but as @fig-chart shows, it is *NOT representative* of the population. Because this class is primarily composed of STEM majors, it may not share the attributes necessary with the target population for the two to share a similar average GPA. We call this kind of sample a **biased sample**. The average GPA of the class may differ greatly from the average GPA of all Marquette undergrads.  -->
-
-
-<!-- ```{r} -->
-<!-- #| label: fig-chart -->
-<!-- #| fig-cap: Majors of students in this 4720/5720 class -->
-<!-- #| echo: false -->
-<!-- par(mar = c(0,0,2,0)) -->
-<!-- major <- c("CS" = 14, "Engineering" = 29, "Math" = 9, "DS" = 4, -->
-<!--            "Chem/Bio" = 5, "Business" = 5, "Other" = 4) -->
-<!-- pie(major, col = 1:7, main = "Majors of 4720/5720 class") -->
-<!-- ``` -->
-
-
-<!-- ```{r} -->
-<!-- #| label: fig-biased-sample -->
-<!-- #| fig-cap: Sampling from a class of mostly STEM students is not representative of the entire population. -->
-<!-- par(mar = c(0,0,0,0)) -->
-<!-- plot(c(0, 2), -->
-<!--      c(0, 1.1), -->
-<!--      type = 'n', -->
-<!--      axes = FALSE, xlab = "", ylab = "") -->
-<!-- temp <- seq(0, 2 * pi, 2 * pi / 100) -->
-<!-- x <- 0.5 + 0.5 * cos(temp) -->
-<!-- y <- 0.5 + 0.5 * sin(temp) -->
-<!-- lines(x, y) -->
-
-<!-- s <- matrix(runif(700), ncol = 2) -->
-<!-- S <- matrix(NA, 350, 2) -->
-<!-- j <- 0 -->
-<!-- sub <- rep(FALSE, 1000) -->
-<!-- for (i in 1:nrow(s)) { -->
-<!--   if(sum((s[i,] - 0.5)^2) < 0.23){ -->
-<!--     j <- j+1 -->
-<!--     S[j,] <- s[i,] -->
-<!--   } -->
-<!--   if(sum((s[i, ] - c(0.05, 0.18) - 0.5)^2) < 0.07){ -->
-<!--     sub[j] <- TRUE -->
-<!--   } -->
-<!-- } -->
-<!-- points(S, col = COL[1, 4 - 2 * sub], pch = 20) -->
-<!-- text(0.5, 1, 'All students', pos = 3) -->
-<!-- lines((x - 0.5) * 2 * sqrt(0.07) + 0.55, -->
-<!--       (y - 0.5) * 2 * sqrt(0.07) + 0.68) -->
-
-<!-- set.seed(7) -->
-<!-- N <- sample((1:j)[sub], 25) -->
-<!-- lines((x - 0.5) / 2 + 1.5, -->
-<!--       (y - 0.5) / 2 + 0.5, -->
-<!--       pch = 20) -->
-
-<!-- SS <- (S[N, ] - 0.5) / 2 + 0.5 -->
-<!-- these <- c(2, 5, 7, 12, 15) -->
-<!-- points(SS[these, 1] + 1, -->
-<!--        SS[these, 2], -->
-<!--        col = COL[4, 2], -->
-<!--        pch = 20, -->
-<!--        cex = 1.5) -->
-<!-- text(1.5, 0.75, 'Sample', pos = 3) -->
-
-<!-- for (i in these)  { -->
-<!--   arrows(S[N[i], 1], S[N[i], 2], -->
-<!--          SS[i, 1] + 1 - 0.03, SS[i, 2], -->
-<!--          length = 0.08, -->
-<!--          col = COL[5], -->
-<!--          lwd = 1.5) -->
-<!-- } -->
-<!-- rect(0.143, 0.2, 0.952, 0.301, -->
-<!--      border = "#00000000", -->
-<!--      col = "#FFFFFF88") -->
-<!-- rect(0.236, 0.301, 0.858, 0.403, -->
-<!--      border = "#00000000", -->
-<!--      col = "#FFFFFF88") -->
-<!-- text(0.55, 0.5 + 0.18 - sqrt(0.07), -->
-<!--      'Students from \n STEM fields', -->
-<!--      pos = 1) -->
-<!-- ``` -->
-
-<!-- <!-- ::::{.columns} --> -->
-
-<!-- <!-- :::{.column width="39%"} --> -->
-<!-- If the biased sample has no or tiny impact on the population attribute we'd like to discover, we are lucky, and the issue is not serious. However, if the sample is biased in a way that the attribute we get from the sample is quite different from that of the population, then we miss the mark. In the GPA example, if the average GPA depends on students major, the sample that is biased in students' major causes a trouble. -->
-
-<!-- As shown in @fig-major-gpa, the average GPA differs based on students' majors. Because this class consists of mostly STEM majors, it is likely that the average GPA of its students is not the same as the average GPA of all Marquette undergraduates. @fig-biased-sample depicts that sampling needs to be done appropriately to ensure the sample is representative of the population.  -->
-<!-- <!-- ::: --> -->
-
-<!-- <!-- :::{.column width="2%"} --> -->
-<!-- <!-- ::: --> -->
-
-<!-- <!-- :::{.column width="59%"} --> -->
-<!-- ```{r} -->
-<!-- #| label: fig-major-gpa -->
-<!-- #| fig-cap: UC Berkeley average GPAs by major -->
-<!-- #| out-width: 100% -->
-<!-- knitr::include_graphics("./images/img-part1/gpa.png") -->
-<!-- ``` -->
-<!-- <!-- ::: --> -->
-<!-- <!-- :::: --> -->
-
-<!-- <!-- ------------------------------------------------------------------------ --> -->
-
-<!-- <!-- <span style="color:blue"> **How do we collect and why do we need a representative sample?** </span> --> -->
-
-<!-- How do we collect a representative sample? We always seek to **randomly** select a sample from a population. Every member in the target population should be treated equally, and preferably has equal chance to be chosen in the sample. If you just collect data from STEM fields, we miss the information provided by students from arts, humanities, and other non-STEM majors. Random sampling usually give us a representative sample, as long as the sample size, the number of objects in the sample, is not too small. It is important to collect samples this way because many statistical methods are based on the *random sampling assumption*. -->
-
-<!-- <!-- # ```{r, ref.label="sample", echo=FALSE, fig.align='center', out.width="75%"} --> -->
-<!-- <!-- #  --> -->
-<!-- <!-- # ``` --> -->
-
-<!-- ## Data Collection  -->
-
-<!-- In this section, we briefly discuss how data can be collected. -->
-
-<!-- <span style="color:blue"> **Two Types of Studies to Collect Sample Data** </span> -->
-
-<!-- There are two types of studies that are used to collect data: observational studies and experimental studies. -->
-
-<!-- An **observational study** is a study in which those collecting the data observe and measure characteristics/variables, but do *NOT* attempt to modify or intervene with the subjects being studied. -->
-
-<!--   + <span style="color:blue"> Example: Sample from `r emoji('one')` the *heart disease* and `r emoji('two')` *heart disease-free* populations and record the fat content of the diets for the two groups. </span> In this type of study, the researchers do not modify or intervene with the the subjects either with or without heart disease. They just record the fat content in their diets. -->
-
-
-<!-- The other type of study is called the **experimental study**. In an experimental study, some **treatment(s)** is applied and then those collecting data proceed to observe its responses or effects on the individuals, the experimental units in such study. -->
-
-<!--   + <span style="color:blue"> Example: Assign volunteers to one of several diets with different levels of dietary fat and compare the fat levels with respect to the incidence of heart disease after a period of time. </span> In this experimental study, the treatment is the fat level in diets. The researchers do not just observe the subjects behavior. Instead, they ask the subjects to take a specific diet they design for a period of time. -->
-
-
-<!-- :::{.callout-note icon=false} -->
-<!-- ## Observational or Experimental?  -->
-<!-- - Randomly select 40 males and 40 females to see the difference in blood pressure levels between male and female.  -->
-<!-- - Test the effects of a new drug by randomly dividing patients into 3 groups (high dosage, low dosage, placebo). -->
-<!-- ::: -->
-
-<!-- <span style="color:red"> ***Limitation of Observational Studies: Confounding Variables*** </span> -->
-
-<!-- One limitation of observational studies is **confounding**. A **confounder** is a variable that is *not* included in a study, but affects the variables in the study. For example, a person observes past data showing that increases in ice cream sales are associated with increases in drownings and concludes that **eating ice cream causes drownings**. `r emoji('scream')``r emoji('confused')``r emoji('interrobang')` -->
-
-<!-- ::::{.columns} -->
-<!-- :::{.column width="49%"} -->
-<!-- ```{r} -->
-<!-- #| fig-cap: "Source: Unsplash-Brooke Lark" -->
-<!-- knitr::include_graphics("./images/img-part1/icecream.jpeg") -->
-<!-- ``` -->
-<!-- ::: -->
-
-<!-- :::{.column width="2%"} -->
-<!-- ::: -->
-
-<!-- :::{.column width="49%"} -->
-<!-- ```{r} -->
-<!-- #| fig-cap: "Source: Unsplash-Nate Neelson" -->
-<!-- knitr::include_graphics("./images/img-part1/drowning.jpeg") -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- :::: -->
-
-<!-- :::{.callout-note icon=false} -->
-<!-- ## What is the confounder that is not in the data but affects ice cream sales and the number of drownings? -->
-<!-- - **Temperature** -->
-<!-- ::: -->
-
-<!-- - As temperature increases, ice cream sales increase and the number of drownings also rises because more people go swimming (@fig-temperature). -->
-
-
-
-<!-- ```{r} -->
-<!-- #| label: fig-temperature -->
-<!-- #| fig-cap: Temperature acting as a confounder -->
-<!-- par(mar = c(0,0,0,0)) -->
-<!-- plot(c(-0.05, 1.2), c(0.39, 1), -->
-<!--      type = 'n', xlab = "", ylab = "", axes = FALSE) -->
-<!-- text(0.59, 0.89, 'temperature', font = 2) -->
-<!-- rect(0.4, 0.8, 0.78, 1) -->
-<!-- text(0.3, 0.49, 'ice cream sales', font = 2) -->
-<!-- rect(0.1, 0.4, 0.48, 0.6) -->
-<!-- arrows(0.49, 0.78, 0.38, 0.62, -->
-<!--        length = 0.08, lwd = 1.5) -->
-<!-- text(0.87, 0.5, 'drowning cases', font = 2) -->
-<!-- rect(0.71,0.4, 1.01, 0.6) -->
-<!-- arrows(0.67, 0.78, 0.8, 0.62, -->
-<!--        length = 0.08, lwd = 1.5) -->
-<!-- arrows(0.5, 0.5, 0.69, 0.5, -->
-<!--        length = 0.08, col = COL[6,2]) -->
-<!-- text(0.595, 0.565, "?", font = 2, -->
-<!--      cex = 1.5, col = COL[4]) -->
-<!-- ``` -->
-
-
-<!-- <!-- <span style="color:red"> ***Causal Relationships*** </span> --> -->
-
-<!-- Making causal conclusions based on *experimental* data is often more reasonable than making the same causal conclusions based on *observational* data. Observational studies are generally only sufficient to show **associations**, not **causality**. -->
-
-
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- <span style="color:blue"> **Types of Random Samples** </span> -->
-
-<!-- As previously mentioned, many statistical methods are based on the *randomness assumption*. It's important to understand what a random sample is and how to collect it. In a **random sample**, each member of a population is *equally likely* to be selected. -->
-
-<!-- <span style="color:red"> ***Simple Random Sample*** </span> -->
-
-<!-- For a **simple random sample (SRS)**, every possible sample of sample size $n$ has the same chance to be chosen. -->
-
-<!-- - **Example**: If I were to sample 100 students from all 10,000 Marquette students, I would *randomly* assign each student a number (from 1 to 10,000) and then *randomly* select 100 numbers.  -->
-
-<!-- ::::{.columns} -->
-<!-- :::{.column width="50%"} -->
-<!-- ```{r} -->
-<!-- #| label: fig-random-sample -->
-<!-- #| fig-cap: Simple Random Sample -->
-<!-- set.seed(3) -->
-<!-- N   <- 108 -->
-<!-- n   <- 18 -->
-<!-- colSamp <- COL[4] -->
-<!-- PCH <- rep(c(1, 3, 20)[3], 3) -->
-<!-- col <- rep(COL[1], N) -->
-<!-- pch <- PCH[match(col, COL)] -->
-
-<!-- par(mar = c(0,0,0,0)) -->
-<!-- plot(0, xlim=c(0,2), ylim=0:1, type='n', axes=FALSE) -->
-<!-- box() -->
-<!-- x   <- runif(N, 0, 2) -->
-<!-- y   <- runif(N) -->
-<!-- inc <- n -->
-<!-- points(x, y, col=col, pch=pch) -->
-
-<!-- these <- sample(N, n) -->
-<!-- points(x[these], y[these], pch=20, cex=0.8, col=colSamp) -->
-<!-- points(x[these], y[these], cex=1.4, col=colSamp) -->
-<!-- ``` -->
-<!-- ::: -->
-
-<!-- :::{.column width="50%"} -->
-<!-- ```{r} -->
-<!-- #| label: fig-random-sampling -->
-<!-- #| fig-cap: "Simple random sample from a population of 15 (https://research-methodology.net/sampling-in-primary-data-collection/random-sampling/)" -->
-<!-- knitr::include_graphics("./images/img-part1/srs.png") -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- :::: -->
-
-<!-- <span style="color:red"> ***Stratified Random Sample*** </span> -->
-
-<!-- For **stratified sampling**, we subdivide the population into different subgroups (**strata**) that share the *same* characteristics, then draw a simple random sample from each subgroup. Stratified sampling has a property: *Homogeneous within strata; Non-homogeneous between strata*. (@fig-stratified) -->
-
-<!-- ```{r} -->
-<!-- #| label: fig-stratified -->
-<!-- #| fig-cap: "Stratified Sampling. Source: https://www.datasciencemadesimple.com/stratified-random-sampling-in-r-dataframe-2/" -->
-<!-- #| out-width: 100% -->
-<!-- knitr::include_graphics("./images/img-part1/stratified_sampling.png") -->
-<!-- ``` -->
-
-<!-- - **Example**: Divide Marquette students into groups by colleges, then perform a SRS for each group (@fig-stratified-marquette). In this case, subjects within strata are homogeneous because people in the same stratum belong to the same college. Subjects are non-homogeneous between strata because students in one college is not a student in another college. -->
-
-<!-- ```{r} -->
-<!-- #| label: fig-stratified-marquette -->
-<!-- #| fig-cap: Stratified sampling of Marquette Students -->
-<!-- par(mar = c(0,0,0,0)) -->
-<!-- PCH <- rep(c(1, 3, 20)[3], 3) -->
-<!-- plot(0, xlim=c(0,2), ylim=0:1, type='n', axes=FALSE, xlab = "", ylab = "") -->
-<!-- box() -->
-<!-- X    <- c(0.18, 0.3, 0.68, 1.18, 1.4, 1.74) -->
-<!-- Y    <- c(0.2, 0.78, 0.44, 0.7, 0.25, 0.65) -->
-<!-- locs <- c(1, 4, 5, 3, 6, 2) -->
-<!-- gps  <- list() -->
-<!-- N    <- 1.1*c(15, 12, 35, 22, 13, 28) -->
-<!-- R    <- sqrt(N/500) -->
-<!-- p    <- matrix(c(12, 2, NA, -->
-<!-- 				 1,  2, NA, -->
-<!-- 				 4,  30, NA, -->
-<!-- 				 19, 1, NA, -->
-<!-- 				 11, 0, NA, -->
-<!-- 				 3, 24, NA), 3) -->
-<!-- p     <- round(p*1.1) -->
-<!-- p[3,] <- N - p[1,] - p[2,] -->
-<!-- above <- c(1, 1, 1, 1, -1, 1) -->
-<!-- for(i in 1:6){ -->
-<!-- 	hold <- seq(0, 2*pi, len=99) -->
-<!-- 	x    <- X[i] + (R[i]+0.01)*cos(hold) -->
-<!-- 	y    <- Y[i] + (R[i]+0.01)*sin(hold) -->
-<!-- 	polygon(x, y, border=COL[5,4]) -->
-<!-- 	x    <- rep(NA, N[i]) -->
-<!-- 	y    <- rep(NA, N[i]) -->
-<!-- 	for(j in 1:N[i]){ -->
-<!-- 		inside <- FALSE -->
-<!-- 		while(!inside){ -->
-<!-- 			xx <- runif(1, -R[i], R[i]) -->
-<!-- 			yy <- runif(1, -R[i], R[i]) -->
-<!-- 			if(sqrt(xx^2 + yy^2) < R[i]){ -->
-<!-- 				inside <- TRUE -->
-<!-- 				x[j]   <- xx -->
-<!-- 				y[j]   <- yy -->
-<!-- 			} -->
-<!-- 		} -->
-<!-- 	} -->
-<!-- 	type <- sample(1, N[i], TRUE) -->
-<!-- 	pch  <- PCH[type] -->
-<!-- 	col  <- COL[type] -->
-<!-- 	x    <- X[i]+x -->
-<!-- 	y    <- Y[i]+y -->
-<!-- 	points(x, y, pch=pch, col=col) -->
-<!-- 	these  <- sample(N[i], 3) -->
-<!-- 	points(x[these], y[these], pch=20, cex=0.8, col=colSamp) -->
-<!-- 	points(x[these], y[these], cex=1.4, col=colSamp) -->
-<!-- } -->
-<!-- college <- c("Arts/Sciences", "Business", "Engineering", "Law", "Nursing", "Health Sciences") -->
-<!-- text(X, Y+above*(R+0.01), college, pos=2+above, cex=1.1, font = 2) -->
-<!-- ``` -->
-
-
-<!-- <span style="color:red"> ***Cluster Sampling*** </span> -->
-
-<!-- For **cluster sampling**, divide the population into clusters, then randomly select some of those clusters, and then keep *all* the members from those selected clusters. Cluster sampling has a property: *Homogeneous between clusters; Non-homogeneous within clusters* (@fig-cluster). Clusters look similar each other, but members in a cluster are not very alike. They have different characteristics. -->
-
-<!-- ```{r} -->
-<!-- #| label: fig-cluster -->
-<!-- #| fig-cap: "Cluster Sampling Source: https://research-methodology.net/sampling-in-primary-data-collection/cluster-sampling/" -->
-<!-- knitr::include_graphics("./images/img-part1/cluster_sampling.png") -->
-<!-- ``` -->
-
-<!-- - **Example**: Study 4720 students' drinking habits by dividing the students into 9 groups, and then randomly selecting 3 and interviewing all of the students in each of those clusters (@fig-cluster-marquette). Subjects are homogeneous between clusters because clusters are like random partitions, and each one is a representative subset of the entire population. Subjects are non-homogeneous within clusters because everyone has their own characteristics, and subjects are not divided based on any characteristic such as major or college. -->
-
-<!-- ```{r} -->
-<!-- #| label: fig-cluster-marquette -->
-<!-- #| fig-cap: Cluster sampling of Marquette students -->
-<!-- par(mar = c(0,0,0,0)) -->
-<!-- PCH <- rep(c(1, 3, 20)[3], 3) -->
-<!-- plot(0, xlim=c(0,2), ylim=0:1, type='n', axes=FALSE) -->
-<!-- box() -->
-<!-- X    <- c(0.17, 0.19, 0.52, 0.85, 1, 1.22, 1.49, 1.79, 1.85) -->
-<!-- Y    <- c(0.3, 0.75, 0.5, 0.26, 0.73, 0.38, 0.67, 0.3, 0.8) -->
-<!-- locs <- c(1, 4, 5, 3, 6, 2) -->
-<!-- gps  <- list() -->
-<!-- N    <- c(18, 12, 11, 13, 16, 14, 15, 16, 12) -->
-<!-- R    <- sqrt(N/500) -->
-<!-- p    <- matrix(c(6,  8, NA, -->
-<!-- 				 4,  4, NA, -->
-<!-- 				 4,  4, NA, -->
-<!-- 				 5,  4, NA, -->
-<!-- 				 8,  5, NA, -->
-<!-- 				 4,  5, NA, -->
-<!-- 				 5,  9, NA, -->
-<!-- 				 6,  5, NA, -->
-<!-- 				 4,  5, NA), 3) -->
-<!-- p[3,] <- N - p[1,] - p[2,] -->
-<!-- above <- c(-1, 1, 1, 1, 1, -1, 1, 1, 1) -->
-<!-- for(i in 1:length(X)){ -->
-<!-- 	hold <- seq(0, 2*pi, len=99) -->
-<!-- 	x    <- X[i] + (R[i]+0.02)*cos(hold) -->
-<!-- 	y    <- Y[i] + (R[i]+0.02)*sin(hold) -->
-<!-- 	polygon(x, y, border=COL[5,4]) -->
-<!-- 	if(i %in% c(3, 4, 8)){ -->
-<!-- 		polygon(x, y, border=COL[4], lty=2, lwd=1.5) -->
-<!-- 	} -->
-<!-- 	x    <- rep(NA, N[i]) -->
-<!-- 	y    <- rep(NA, N[i]) -->
-<!-- 	for(j in 1:N[i]){ -->
-<!-- 		inside <- FALSE -->
-<!-- 		while(!inside){ -->
-<!-- 			xx <- runif(1, -R[i], R[i]) -->
-<!-- 			yy <- runif(1, -R[i], R[i]) -->
-<!-- 			if(sqrt(xx^2 + yy^2) < R[i]){ -->
-<!-- 				inside <- TRUE -->
-<!-- 				x[j]   <- xx -->
-<!-- 				y[j]   <- yy -->
-<!-- 			} -->
-<!-- 		} -->
-<!-- 	} -->
-<!-- 	type <- sample(1, N[i], TRUE) -->
-<!-- 	pch  <- PCH[type] -->
-<!-- 	col  <- COL[type] -->
-<!-- 	x    <- X[i]+x -->
-<!-- 	y    <- Y[i]+y -->
-<!-- 	points(x, y, pch=pch, col=col) -->
-<!-- 	these  <- sample(N[i], N[i]) -->
-<!-- 	# these  <- N[i] -->
-<!-- 	if(i %in% c(3, 4, 8)){ -->
-<!-- 	points(x[these], y[these], pch=20, cex=0.8, col=colSamp) -->
-<!-- 	points(x[these], y[these], cex=1.4, col=colSamp) -->
-<!-- 		#points(x[these], y[these], pch=19, col=colSamp) -->
-<!-- 	} -->
-<!-- } -->
-<!-- class_name <- c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4", -->
-<!--                 "Cluster 5", "Cluster 6", -->
-<!--                 "Cluster 7", "Cluster 8", "Cluster 9") -->
-<!-- text(X, Y+above*(R+0.01), class_name,  -->
-<!--      pos=2+above, cex=1.1, font = 2) -->
-<!-- # text(X, Y+above*(R+0.01), paste("Cluster", 1:length(X)),  -->
-<!-- #      pos=2+above, cex=1.1, font = 2) -->
-<!-- ``` -->
-
-
-<!-- ## Data Type  -->
-
-<!-- OK. We learn data collection and sampling methods. Now's let's learn some data types. Usually a statistical method is only for some type of data or variables. Knowing data types is important because it helps us choose the correct or appropriate statistical methods for analysis. It also helps us interprets the analysis result correctly.  @fig-data-type tells us everything about data type. We are going to learn each data type in the figure. -->
-
-
-<!-- ```{r} -->
-<!-- #| label: fig-data-type -->
-<!-- #| fig-cap: Types of Data -->
-<!-- par(mar = c(0,0,0,0)) -->
-<!-- plot(c(-0.15, 1.3), -->
-<!--      c(0, 1), -->
-<!--      type = 'n', -->
-<!--      axes = FALSE) -->
-
-<!-- text(0.6, 0.9, 'Variables/Data', font = 2) -->
-<!-- rect(0.4, 0.8, 0.8, 1) -->
-
-<!-- text(0.25, 0.55, 'Categorical', font = 2) -->
-<!-- text(0.25, 0.45, '(Qualitative)', font = 2) -->
-<!-- rect(0.1, 0.4, 0.4, 0.6) -->
-<!-- arrows(0.45, 0.78, 0.34, 0.62, length = 0.08) -->
-
-<!-- text(0.9, 0.55, 'Numerical', font = 2) -->
-<!-- text(0.9, 0.45, '(Quantitative)', font = 2) -->
-<!-- rect(0.73, 0.4, 1.07, 0.6) -->
-<!-- arrows(0.76, 0.78, 0.85, 0.62, length = 0.08) -->
-
-<!-- text(0, 0.1, 'Nominal', font = 2, col = "blue") -->
-<!-- rect(-0.1, 0.05, 0.1, 0.15) -->
-<!-- arrows(0.13, 0.38, 0.05, 0.22, length = 0.08) -->
-
-<!-- text(0.4, 0.1, 'Ordinal', font = 2, col = "blue") -->
-<!-- rect(0.3, 0.05, 0.5, 0.15) -->
-<!-- arrows(0.35, 0.38, 0.4, 0.22, length = 0.1) -->
-
-<!-- text(0.6, 0.19, 'Level of measurements', font = 2, col = "lightblue") -->
-
-<!-- text(0.75, 0.1, 'Interval', font = 2, col = "blue") -->
-<!-- # text(0.77, 0.05, '(unordered categorical)', -->
-<!-- #      col = COL[6], -->
-<!-- #      cex = 0.5, font = 2) -->
-<!-- rect(0.65, 0.05, 0.85, 0.15) -->
-<!-- arrows(0.82, 0.38, 0.77, 0.22, length = 0.08) -->
-
-<!-- text(1.1, 0.1, 'Ratio', font = 2, col = "blue") -->
-<!-- # text(1.14, 0.05, '(ordered categorical)', col = COL[6], cex = 0.5, font = 2) -->
-<!-- rect(1, 0.05, 1.2, 0.15) -->
-<!-- arrows(1, 0.38, 1.05, 0.22, length = 0.08) -->
-
-<!-- text(1.18, 0.32, 'Continuous', font = 2, col = "red") -->
-<!-- rect(1.05, 0.25, 1.3, 0.38) -->
-<!-- arrows(1.07, 0.5, 1.15, 0.4, length = 0.08) -->
-
-<!-- text(1.18, 0.73, 'Discrete', font = 2, col = "red") -->
-<!-- rect(1.05, 0.65, 1.3, 0.8) -->
-<!-- arrows(1.07, 0.5, 1.15, 0.64, length = 0.08) -->
-<!-- ``` -->
-
-
-
-<!-- <span style="color:blue"> **Categorical vs. Numerical Variables** </span> -->
-
-<!-- A **categorical** variable provides *non-numerical* information which can be placed in *one (and only one)* category from two or more categories. Here are some examples. -->
-
-<!--   + <span style="color:blue">Gender (Male  `r emoji('man')`, Female  `r emoji('woman')`,  Trans  `r emoji('rainbow_flag')`) </span>  -->
-<!--   + <span style="color:blue">Class (Freshman, Sophomore, Junior, Senior, Graduate) </span> -->
-<!--   + <span style="color:blue">Country (USA `r emoji('us')`, Canada `r emoji('canada')`, UK `r emoji('uk')`, Germany `r emoji('de')`, Japan `r emoji('jp')`, Korea `r emoji('kr')`) </span>  -->
-
-<!-- Gender, Class, and Country are all categorical variables because they provide *non-numerical* information. Their possible "values" are "categories". Keep in mind that a data object can only belong to one category of that variable. You cannot be a freshman and sophomore. -->
-
-
-<!-- A **numerical** variable is recorded in a *numerical* value representing counts or measurements. Some examples are -->
-
-<!--   + <span style="color:blue"> GPA </span>  -->
-<!--   + <span style="color:blue"> The number of relationships you've had </span> -->
-<!--   + <span style="color:blue"> Height </span>  -->
-
-<!-- The possible values of the three variables are all numerical or numbers. You are a 6'2" tall student who had eight girlfriends and your GPA is 3.98. -->
-
-
-
-<!-- <span style="color:red"> ***Numerical Variables*** </span> -->
-
-<!-- Numerical variables can be discrete or continuous. A **discrete** variable takes on values of a *finite* or *countable* number, while a **continuous** variable takes on values *anywhere* over a particular range *without gaps or jumps*. -->
-
-
-<!--   + <span style="color:blue"> GPA is **continuous** because theoretically it can be any value between 0 and 4. </span>  -->
-
-<!--   + <span style="color:blue"> The number of relationships you've had is **discrete** because you can count the number and it is finite.</span> The possible values are 0, 1, 2, 3, and so on. Can you have a 0.5 relationship? -->
-
-<!--   + <span style="color:blue"> Height is **continuous** because it can be any number within a range. </span>  -->
-
-
-<!-- <span style="color:red"> ***Categorical Variables*** </span>  -->
-
-<!-- For convenience, categorical variables are usually recorded as numbers in a data set. For example, we can have -->
-
-<!-- - <span style="color:blue">Gender (Male = 0, Female = 1, Trans = 2) </span> -->
-
-<!-- - <span style="color:blue">Class (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5) </span>  -->
-
-<!-- - <span style="color:blue">Country (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301) </span>  -->
-
-<!-- Even <span style="color:blue">United Airlines boarding group</span> is categorical. The group number does provide *non-numerical* information, which is the order of boarding. You cannot be in both boarding zone one and zone two for the same ticket. You can only be in one group. -->
-
-<!-- Please note that *the numbers represent categories only; taking differences of these numbers is meaningless.* If we use the coding scheme in the examples,  -->
-
-<!--   - Canada - USA = 101 - 100 = 1??? -->
-<!--   - Graduate - Sophomore = 5 - 2 = 3 = Junior??? -->
-
-<!-- The arithmetic operations do not make sense. For any data or variables, we need to learn the **level of measurements** to know which arithmetic operations are meaningful for what type of data. -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- <span style="color:blue"> **Levels of Measurements** </span> -->
-
-<!-- <span style="color:red"> ***Nominal and Ordinal for Categorical Variables*** </span> -->
-
-<!-- A categorical variable can be of nominal or ordinal level of measurement. -->
-
-<!-- The data is **nominal** if can *not be ordered* in a meaningful or natural way. For example, -->
-
-<!--   + <span style="color:blue">Gender (Male = 0, Female = 1, Trans = 2) </span> is **nominal** because Male, Female and Trans cannot be ordered, even the numbering coding has an ordering. -->
-
-<!--   + <span style="color:blue">Country (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301) </span> is **nominal**. There is no reason to put any country before any other country unless there is another variable giving those countries another attribute that can be ordered. -->
-
-
-<!-- **Ordinal** data can be arranged in some meaningful order, but differences between data values can NOT be determined or are meaningless. -->
-
-<!--   + <span style="color:blue">Class (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5) </span> is **ordinal** because Sophomore is one class higher than Freshman, and so on. Here the difference is still meaningless. It seems that Junior is one year higher than Sophomore, and Junior - Sophomore = 1 kind of makes sense. However, "1" does not mean one year higher; instead "1" means Freshman. Moreover, we could even use the numbering (Freshman = 1, Sophomore = 10, Junior = 33, Senior = 44, Graduate = 50) for the Class variable. -->
-
-<!-- <span style="color:red"> ***Interval and Ratio for Numerical Variables*** </span> -->
-
-<!-- Numerical data can be interval or ratio level of measurement. -->
-
-<!-- **Interval** data have meaningful differences between any two values but the data do NOT have a *natural zero or starting point*. The data can do $\color{red} +$ and $\color{red} -$, but can't reasonably do $\color{red} \times$ and $\color{red} \div$. -->
-
-<!--   + <span style="color:blue">Temperature</span> is **interval** because $80^{\circ}$F is 40 degrees higher than $40^{\circ}$F $(80-40=40)$, but $0^{\circ}$ does not mean NO heat or NO temperature, but a specific temperature. Also, $80^{\circ}$F is NOT twice as hot as $40^{\circ}$F. -->
-
-
-<!-- **Ratio** data have both meaningful differences and ratios, and there is a natural zero starting point that indicates none of the quantity. The data can do $\color{red} +$, $\color{red} -$,  $\color{red} \times$ and $\color{red} \div$. -->
-
-<!--   + <span style="color:blue">Distance</span> is **ratio** level of measurement because $80$ miles is twice as far as $40$ miles $(80/40 = 2)$, and $0$ mile means NO distance. -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- <span style="color:blue"> **Converting Numerical to Categorical** </span> -->
-
-<!-- Sometimes research purpose we may want to convert a numerical variable into a categorical variable. @fig-grading is an example of turning a 100% percentage grade into a letter grade which is categorical. Another is example is turning annual salary (numerical) into income level (categorical). We can say salary between \$0 and \$50,000 is "low" income level, salary between \$50,000 and \$120,000 is "middle" income level, and above \$120,000 is "high" income level. -->
-
-<!-- ```{r} -->
-<!-- #| label: fig-grading -->
-<!-- #| fig-cap: Grading scale for this class -->
-<!-- letter <- c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", -->
-<!--                        "D+", "D", "F") -->
-<!-- percentage <- c("[94, 100]", "[90, 94)", "[87, 90)", "[83, 87)", "[80, 83)", -->
-<!--                 "[77, 80)", "[73, 77)", "[70, 73)",  -->
-<!--                 "[65, 70)", "[60, 65)", "[0, 60)") -->
-<!-- grade_dist <- data.frame(Grade = letter, Percentage = percentage) -->
-<!-- knitr::kable(grade_dist, longtable = TRUE, format = "html", align = 'l') %>% kable_styling(position = "center", font_size = 25) -->
-<!-- ``` -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- <span style="color:blue"> **Practice** </span>  -->
-
-<!-- :::{.callout-warning icon=false} -->
-<!-- ## Your turn! -->
-<!-- Identify the data type of each variable in the Marquette men's basketball player data -->
-<!-- ::: -->
-
-<!-- ```{r} -->
-<!-- #| label: fig-marquette-basketball -->
-<!-- #| fig-cap: 2019 Marquette men's basketball player data set. -->
-<!-- knitr::include_graphics("./images/img-part1/mu_data.png") -->
-<!-- ``` -->
-
-<!-- ## Exercises -->
-
-<!-- 1. **Data Type**: Identify each of the following as numerical or categorical data. -->
-<!--     (a) The names of the companies that manufacture paper towels -->
-<!--     (b) The colors of cars -->
-<!--     (c) The heights of football players -->
-<!-- 2. **Level of Measurements**: Identify the level of measurement used in each of the following. -->
-<!--     (a) The weights of people in a sample of people living in Milwaukee. -->
-<!--     (b) A physician's descriptions of "abstains from smoking, light smoker, moderate smoker, heavy smoker." -->
-<!--     (c) Flower classifications of "rose, tulip, daisy." -->
-<!--     (d) Suzy measures time in days, with 0 corresponding to her birth date. The day before her birth is -1, the day after her birth is +1, and so on. Suzy has converted the dates of major historical events to her numbering system. What is the level of measurement of these numbers? -->
-<!-- 3. **Discrete vs Continuous**: Determine whether the data are discrete or continuous. -->
-<!--     (a) The length of stay (in days) for each COVID patient in Wisconsin. -->
-<!--     (b) Several subjects are randomly selected and their heights are recorded. -->
-<!--     (c) From a data set, we see that a male had an arm circumference of 31.28 cm. -->
-<!--     (d) A sample of married couples is randomly selected and the number of animals in each family is recorded. -->
-<!-- 4. **Sampling Method**: Identify which of these types of sampling is used: random, stratified, or cluster. -->
-<!--     (a) Dr. Yu surveys his statistics class by identifying groups of males and females, then randomly selecting 7 students from each of those two groups. -->
-<!--     (b) Dr. Yu conducts a survey by randomly selecting 5 different sports teams at Marquette and surveying all of the student-athletes on those teams. -->
-<!--     (c) 427 subjects were randomly assigned to (1) meditation or (2) no mediation group to study the effectiveness of this mindfulness activity on lowering blood pressure. -->
-<!-- 5. **Study Type**: Determine whether the study is an experiment or an observational study, then identify a major problem with this study. -->
-<!--     (a) In a survey conducted by *USA Today*, 998 Internet users chose to respond to the question:"How often do you seek medical advice online?" 42% of the respondents said "frequently." -->
-<!--     (b) The Physicians' Health Study involved 21,045 female physicians. Based on random selections, 11,224 of them were treated with aspirin and other other 9,821 were given placebos. The study was stopped early because it became clear that aspirin did not reduce the risk of myocardial infarctions by a substantial amount. -->
+Chapter 3 and 4 set up the computing tools you need for doing data analysis. Chapter 5 and 6 focus on summarizing one variable at a time. You will learn how to use graphs and numerical summaries to describe patterns and variability, and how those summaries prepare you for model-based inference later in the book.
+
+## Exercises
+
+1. **Data Type**: Identify each of the following as numerical or categorical data.
+    (a) The names of the companies that manufacture paper towels
+    (b) The colors of cars
+    (c) The heights of football players
+2. **Level of Measurements**: Identify the level of measurement used in each of the following.
+    (a) The weights of people in a sample of people living in Milwaukee.
+    (b) A physician's descriptions of "abstains from smoking, light smoker, moderate smoker, heavy smoker."
+    (c) Flower classifications of "rose, tulip, daisy."
+    (d) Suzy measures time in days, with 0 corresponding to her birth date. The day before her birth is -1, the day after her birth is +1, and so on. Suzy has converted the dates of major historical events to her numbering system. What is the level of measurement of these numbers?
+3. **Discrete vs Continuous**: Determine whether the data are discrete or continuous.
+    (a) The length of stay (in days) for each COVID patient in Wisconsin.
+    (b) Several subjects are randomly selected and their heights are recorded.
+    (c) From a data set, we see that a male had an arm circumference of 31.28 cm.
+    (d) A sample of married couples is randomly selected and the number of animals in each family is recorded.
+4. **Sampling Method**: Identify which of these types of sampling is used: random, stratified, or cluster.
+    (a) Dr. Yu surveys his statistics class by identifying groups of males and females, then randomly selecting 7 students from each of those two groups.
+    (b) Dr. Yu conducts a survey by randomly selecting 5 different sports teams at Marquette and surveying all of the student-athletes on those teams.
+    (c) 427 subjects were randomly assigned to (1) meditation or (2) no mediation group to study the effectiveness of this mindfulness activity on lowering blood pressure.
+5. **Study Type**: Determine whether the study is an experiment or an observational study, then identify a major problem with this study.
+    (a) In a survey conducted by *USA Today*, 998 Internet users chose to respond to the question:"How often do you seek medical advice online?" 42% of the respondents said "frequently."
+    (b) The Physicians' Health Study involved 21,045 female physicians. Based on random selections, 11,224 of them were treated with aspirin and other other 9,821 were given placebos. The study was stopped early because it became clear that aspirin did not reduce the risk of myocardial infarctions by a substantial amount.
 

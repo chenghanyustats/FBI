@@ -70,6 +70,16 @@
     ]
   },
   {
+    "objectID": "part1.html#big-ideas-in-this-part",
+    "href": "part1.html#big-ideas-in-this-part",
+    "title": "Statistics and Data",
+    "section": "",
+    "text": "What is data\nIn statistics, data are recorded values that represent information about individuals, objects, or events of interest. We will discuss:\n\nHow statistics views data as measurements with variability\nHow data are generated, including studies, surveys, and experiments\nWhere data come from, including observation, administrative records, sensors, and digital traces\n\n\n\nWhy we need data\nStatistics, machine learning, and data science all rely on data because data provide information about what we are curious about, and connect questions to evidence. We will discuss:\n\nWhy data are necessary for description, comparison, explanation, prediction, and decision making\nHow the purpose of the analysis shapes what data we need and how we collect them\n\n\n\nSummarizing data\nRaw data are often too detailed to interpret directly, so we use summaries to reveal patterns and variability. We will discuss:\n\nWhy we summarize data\nWhy we choose particular summaries, such as graphs and numerical summaries\nHow summaries support our goals, such as comparing groups or understanding relationships\n\n\n\nModel-based thinking\nThe book is model-based statistics. We will discuss:\n\nWhat it means to treat data as coming from a probabilistic model, or a data-generating process.\nHow models help us separate signal from noise, quantify uncertainty, and generalize beyond a sample",
+    "crumbs": [
+      "Statistics and Data"
+    ]
+  },
+  {
     "objectID": "part1.html#footnotes",
     "href": "part1.html#footnotes",
     "title": "Statistics and Data",
@@ -102,22 +112,99 @@
     ]
   },
   {
-    "objectID": "part1-01-stats.html#difference-between-statistics-and-data-science",
-    "href": "part1-01-stats.html#difference-between-statistics-and-data-science",
+    "objectID": "part1-01-stats.html#data-are-numbers-with-context",
+    "href": "part1-01-stats.html#data-are-numbers-with-context",
     "title": "1  Statistics as a Science of Data",
-    "section": "1.2 Difference between Statistics and Data Science",
-    "text": "1.2 Difference between Statistics and Data Science\n\n Data Science \nBecause of their shared attributes, many find it hard to differentiate between statistics and data science. The tweets below poke fun at the lack of clarity surrounding the definition of data science/data scientists (Figure 1.6).\n\n\n\n\n\n\nFigure 1.4\n\n\n\n\n\n\n\n\n\nFigure 1.5\n\n\n\n\n\n\n\n\n\nFigure 1.6: Tweets about what Data Science is\n\n\n\nA more formal definition of data science can be found on Investopedia. This site defines Data Science as a field of applied mathematics and statistics that provides useful information based on large amounts of complex data or big data. Although this definition is helpful for understanding data science, Dan Ariely, a famous behavioral economist at Duke, joked about their use of the term big data in his tweet below (Figure 1.7).\n\n\n\n\n\n\nFigure 1.7: Professor Ariely on Big Data\n\n\n\nMore information can be gathered about the differences between these two fields from looking at the courses offered in the Statistics Department at UC Santa Cruz, my alma mater. From Figure 1.8 below, one can see that statistics primarily focuses on data analysis, methods and models.\n\n\n\n\n\n\n\n\n\nFigure 1.8: Courses offered by the Department of Statistics at UC Santa Cruz. Source: https://courses.engineering.ucsc.edu/courses/department/24\n\n\n\n\n\nThis statistics department, in particular, doesn’t talk a lot about data collection, organization, data presentation or data visualization. In typical statistics departments, there isn’t much instruction or research done on data collection, cleaning, storage, database management, and data visualization. Because statistics continues to focus on data analysis and modeling, Data Science now addresses these other processes that statistics passes over. The data science process includes the collection, organization, analysis, interpretation and presentation of data (Figure 1.9). Although statistics does not focus on these concepts, they are encompassed within the field of data science.\n\n\n\n\n\n\n\n\nFigure 1.9: The data science process created at Harvard by Joe Blitzstein and Hanspeter Pfister",
+    "section": "1.2 Data are numbers with context",
+    "text": "1.2 Data are numbers with context\nA key idea for modern statistics is that data are not just numbers. Data can be numbers, labels, images, text, and other records with a context such as how they were produced, what they measure, and what they represent in the real world. Cobb and Moore famously summarized this as “data are numbers with a context.”2\nWhen you look at a dataset, you should be able to answer:\n\nWho or what subject was measured? (people, schools, products, days, patients)\nWhat attributes or characteristics of the subject were recorded? (height, income, blood pressure, response time)\nHow were the data generated? (survey, observational study, experiment, administrative records)",
     "crumbs": [
       "Statistics and Data",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
     ]
   },
   {
-    "objectID": "part1-01-stats.html#what-will-we-learn-in-this-course",
-    "href": "part1-01-stats.html#what-will-we-learn-in-this-course",
+    "objectID": "part1-01-stats.html#populations-samples-and-statistics",
+    "href": "part1-01-stats.html#populations-samples-and-statistics",
     "title": "1  Statistics as a Science of Data",
-    "section": "1.3 What Will We Learn In this Course?",
-    "text": "1.3 What Will We Learn In this Course?\nBelow the main topics of this book are listed in the order in which they will be covered.\n\n\n\n\n\n\n\n\n\nWe do touch data collection and data visualization and data summary, but we will spend most of our time talking about probability and statistical inference methods that are circled on the list above. This book focuses on the statistical methods for analyzing data.\nIn summary, we will learn useful information\n\nabout the population we are interested in\nfrom our sample data\nthrough statistical inferential methods, including estimation and testing\n\n\n\n\n\n\n\n\n\nFigure 1.10: Illustration of obtaining sample data from a population\n\n\n\n\n\nDon’t worry if you have no idea of these terms. These are what we will discuss throughout the book, and I’ll explain each term in detail.",
+    "section": "1.3 Populations, samples, and statistics",
+    "text": "1.3 Populations, samples, and statistics\nStatistics is often about learning something about a population using a sample.\n\nA population is the full set of individuals or situations you care about.\nA sample is a subset of the target population.\n\nUsually, the data we have is from a subset of the target population, and hence we call the data sample data. When the data include all subjects in the population, such data set is called census data.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1.2: Illustration of obtaining sample data from a population\n\n\n\n\n\nA statistic is any numerical summary computed from the sample (for example, a sample mean). A parameter is a number that describes the population or the data generating process (for example, a population mean).",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
+    ]
+  },
+  {
+    "objectID": "part1-01-stats.html#how-are-data-generated-put-in-next-chapter",
+    "href": "part1-01-stats.html#how-are-data-generated-put-in-next-chapter",
+    "title": "1  Statistics as a Science of Data",
+    "section": "1.4 How are data generated? [PUT IN NEXT CHAPTER]",
+    "text": "1.4 How are data generated? [PUT IN NEXT CHAPTER]\nData are produced by a process, and that process determines what kinds of conclusions are reasonable.\nCommon data sources include:\n\nSurveys and questionnaires We ask questions and record responses. Survey design affects bias and variability.\nObservational studies We record variables as they naturally occur. Observational data can reveal association but do not automatically justify cause and effect claims.\nExperiments We actively assign a treatment or condition. Random assignment is the key tool for supporting causal conclusions.\nAdministrative and digital records These include logs, transactions, medical records, sensors, and digital traces. These datasets can be large, but they still require careful thinking about measurement and selection.\n\nA useful phrase is data generating process: the real world mechanism that produces the values we observe. In a model-based approach, we build a probability model as an approximation to that process.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
+    ]
+  },
+  {
+    "objectID": "part1-01-stats.html#statistics-and-data-science",
+    "href": "part1-01-stats.html#statistics-and-data-science",
+    "title": "1  Statistics as a Science of Data",
+    "section": "1.5 Statistics and data science",
+    "text": "1.5 Statistics and data science\nStatistics and data science overlap heavily. Both aim to learn from data, and both use modeling.\nWiki lists a more formal definition of statistics in Figure 1.3 below.\n\n\n\n\n\n\n\n\nFigure 1.3: More formal definition of statistics. Source: https://en.wikipedia.org/wiki/Statistics\n\n\n\n\n\nStatistics is the discipline that concerns the collection, organization, analysis, interpretation, and presentation of data. Without doubt, statistics is a discipline dealing with data. However, in typical statistics departments, there isn’t much instruction or research done on data collection, cleaning, storage, database management, and data visualization. Because statistics continues to focus on data analysis and modeling, Data Science now addresses these other processes that statistics passes over.\nA common way to describe the difference is emphasis.\n\nStatistics emphasizes study design, uncertainty quantification, and inference from data to a broader target (a population, a process, or future outcomes).\nData science includes those statistical goals but also emphasizes data acquisition, data management, computing, and deployment of models in real systems.\n\nA helpful reference point is the National Academies report on undergraduate data science, which treats data science as an emerging discipline related to, but not identical to, statistics and computer science.3\nThis book is not a complete data science handbook. It focuses on the part that statistics has historically done best and that modern data work still needs: model-based reasoning with uncertainty.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
+    ]
+  },
+  {
+    "objectID": "part1-01-stats.html#describing-data-vs-learning-from-data",
+    "href": "part1-01-stats.html#describing-data-vs-learning-from-data",
+    "title": "1  Statistics as a Science of Data",
+    "section": "1.6 Describing data vs learning from data",
+    "text": "1.6 Describing data vs learning from data\nA good analysis usually starts with descriptive summaries and then moves toward inference.\n\nDescriptive statistics organizes and summarizes the observed data. Examples include tables, graphs, and numerical summaries such as means and medians.\nInferential statistics (statistical inference) uses data to learn about something you did not fully observe. Examples include estimating an unknown parameter, predicting a future outcome, or comparing groups while quantifying uncertainty. When doing statistical inference we usually build a probability model to account for data variability, and quantify uncertainty. We assume the sample data are realizations of values generated from that model. Therefore, the model works as a data-generating process or mechanism.\n\n\n\n\n\n\n\n\n\nFigure 1.4: Two broad goals in statistics: describing data and learning from data.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
+    ]
+  },
+  {
+    "objectID": "part1-01-stats.html#model-based-statistical-thinking-chapter-7",
+    "href": "part1-01-stats.html#model-based-statistical-thinking-chapter-7",
+    "title": "1  Statistics as a Science of Data",
+    "section": "1.7 Model-based statistical thinking [CHAPTER 7]",
+    "text": "1.7 Model-based statistical thinking [CHAPTER 7]\nModel-based statistics starts from a basic idea.\n\nData vary. Even repeated measurements under similar conditions do not produce identical values.\nWe represent that variation with probability. We treat data as outcomes of random variables and write down a probability model.\nWe learn about unknowns through the model. Unknown quantities are usually model parameters (such as a mean difference, a rate, or a regression slope).\n\nA statistical model is a set of assumptions that connects:\n\nthe data we observe,\nthe chance variation we expect, and\nthe unknown quantities we want to learn about.\n\n\n1.7.1 A model-based workflow\nIn this book, we will repeatedly follow a workflow like this.\n\nState the question in plain language.\nIdentify the data and variables (and how they were generated).\nPropose a probability model for the data generating process.\nFit the model (estimate unknown parameters).\nCheck the model (does it capture important patterns and variability?).\nDraw conclusions with uncertainty clearly communicated.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
+    ]
+  },
+  {
+    "objectID": "part1-01-stats.html#frequentist-and-bayesian-paradigms-chapter-8",
+    "href": "part1-01-stats.html#frequentist-and-bayesian-paradigms-chapter-8",
+    "title": "1  Statistics as a Science of Data",
+    "section": "1.8 Frequentist and Bayesian paradigms [CHAPTER 8]",
+    "text": "1.8 Frequentist and Bayesian paradigms [CHAPTER 8]\nModel-based inference can be done in both frequentist and Bayesian ways. The two paradigms share a common starting point:\n\na probability model for the data (often expressed through a likelihood)\n\nThey differ mainly in how they treat unknown parameters and how they interpret probability statements.\n\n1.8.1 Frequentist inference\nIn a frequentist approach:\n\nthe parameter is treated as a fixed (but unknown) constant\nuncertainty is described by what would happen under repeated sampling\n\nTypical outputs include point estimates, confidence intervals, and hypothesis tests.\n\n\n1.8.2 Bayesian inference\nIn a Bayesian approach:\n\nthe parameter is treated as an unknown quantity with a probability distribution\nwe update prior beliefs using the data to obtain a posterior distribution\n\nTypical outputs include posterior means or medians, credible intervals, and posterior probabilities of scientific statements.\n\n\n\n\n\n\nTipHow this book will connect them\n\n\n\nYou will see frequentist and Bayesian tools side by side, using the same underlying probability models whenever possible. The goal is to build one coherent story:\n\nprobability models describe variation\ninference is parameter learning from data\ndifferent paradigms provide different summaries of uncertainty",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
+    ]
+  },
+  {
+    "objectID": "part1-01-stats.html#where-we-are-going-next",
+    "href": "part1-01-stats.html#where-we-are-going-next",
+    "title": "1  Statistics as a Science of Data",
+    "section": "1.9 Where we are going next",
+    "text": "1.9 Where we are going next\nThis chapter sets the stage: statistics is a science of data because it turns data into knowledge while managing uncertainty.\nIn the next chapters of Part 1, you will:\n\nlearn how data are produced and how design affects conclusions\npractice describing single variables and relationships between variables\nintroduce probability as a language for modeling data\ndevelop the logic of inference through model-based thinking in both frequentist and Bayesian forms",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
+    ]
+  },
+  {
+    "objectID": "part1-01-stats.html#footnotes",
+    "href": "part1-01-stats.html#footnotes",
+    "title": "1  Statistics as a Science of Data",
+    "section": "",
+    "text": "American Statistical Association, ASA Newsroom. “Statistics is the science of learning from data and of measuring, controlling, and communicating uncertainty.” https://www.amstat.org/asa-newsroom↩︎\nCobb, G. W., and Moore, D. S. (1997). “Mathematics, Statistics, and Teaching.” The American Mathematical Monthly, 104(9), 801–823. The quote “Data are numbers with a context” is widely attributed to this paper. See, for example, the CRAN statquotes vignette: https://cran.r-project.org/web/packages/statquotes/vignettes/statquotes.html↩︎\nNational Academies of Sciences, Engineering, and Medicine (2018). Data Science for Undergraduates: Opportunities and Options. Washington, DC: The National Academies Press. https://nap.nationalacademies.org/catalog/25104/data-science-for-undergraduates-opportunities-and-options↩︎",
     "crumbs": [
       "Statistics and Data",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
@@ -129,6 +216,105 @@
     "title": "2  Data: Meaning, Collection, and Types",
     "section": "",
     "text": "2.1 What data mean in statistics\nIn Chapter 1, we described statistics as a science of data. This chapter takes the next step by clarifying what we mean by data and how data enter statistical work.\nIn everyday language, people use the word data to mean facts, numbers, or information. In statistics, data have a more specific meaning.\nData are recorded values, collected with a purpose, that represent information about individuals, objects, or events of interest.\nTwo details matter immediately.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
+    ]
+  },
+  {
+    "objectID": "part1-02-data.html#what-data-mean-in-statistics",
+    "href": "part1-02-data.html#what-data-mean-in-statistics",
+    "title": "2  Data: Meaning, Collection, and Types",
+    "section": "",
+    "text": "Data are not only the values. Data also include context: who or what was measured, when and where the measurement happened, and how the measurement was taken.\nData come from a hypothesized process or mechanism that randomly produces data values. Even if the same procedure is repeated, the recorded values will typically vary. Statistics treats that variability as a central feature, not as an inconvenience.\n\n\n2.1.1 Key terms\nTo make the coffee shop story concrete, suppose we want to understand two outcomes:\n\nHow long students wait for a drink.\nWhether longer waits are associated with lower satisfaction.\n\nTo study this, we decide what the observational units are, what variables to record for each unit, and how to document those variables.\n\nObservational unit (or case). The object being described in statistical studies. In the coffee shop story, an observational unit might be a single order, a single student visit, or a single hour, depending on how the data are defined and our research goal.\nVariable. A characteristic or attribute recorded for each observational unit. A variable is a characteristic that can vary across units and across repetitions of data collection.\nData set. A collection of variables measured on a collection of observational units, together with documentation that explains what each variable means and how it was recorded.\nData dictionary (or codebook). A document that defines each variable, its units, allowed values, and any special codes for missing or unknown values.\n\n\n\n\n\n\nTipWhy this matters for model-based statistics\n\n\n\nModel-based statistics starts from a simple idea: the data you see are one possible outcome of a data generating process, our hypothesized mechanism that produces data. Later in the book, we will describe that process using probability models. In this chapter, we stay at the level of careful description, because a probability model cannot rescue a poorly defined variable or a poorly collected data set.\n\n\n\n2.1.1.1 Example data set from the coffee shop story\nIn this example, the observational unit is a single order. Each row is one order, and each column is a variable recorded for that order.\n\n\n\nExample data: each row is one coffee shop order.\n\n\n\n\n\n\n\n\n\n\n\n\norder_id\norder_time\npickup_time\nwait_time_min\ndrink_type\nmobile_order\nsatisfaction_1to10\nday_of_week\n\n\n\n\n101\n08:12\n08:19\n7\nLatte\nYes\n8\nMon\n\n\n102\n08:15\n08:25\n10\nCold brew\nYes\n6\nMon\n\n\n103\n08:18\n08:27\n9\nTea\nNo\n7\nMon\n\n\n104\n09:05\n09:12\n7\nLatte\nNo\n8\nTue\n\n\n105\n09:10\nNA\nNA\nEspresso\nYes\nNA\nTue\n\n\n106\n12:02\n12:08\n6\nTea\nYes\n9\nWed\n\n\n107\n12:05\n12:21\n16\nLatte\nNo\n4\nWed\n\n\n108\n15:41\n15:47\n6\nCold brew\nYes\n8\nThu\n\n\n\n\n\nWe usually store a data set in a matrix form that has rows and columns. Sometimes we call such data set data matrix or data frame. Each row corresponds to a unique observational unit. Each column represents a characteristic or variable. Each cell is the recorded value of one variable for one unit. This data matrix structure allows new cases to be added as rows or new variables to be added as columns.\nHow the terms connect in this example:\n\nObservational unit: one coffee shop order\nVariables: wait_time_min, drink_type, mobile_order, satisfaction_1to10, and so on\nData set: the full table of orders and variables\nData dictionary: the documentation below that explains what each variable means\n\nA data dictionary makes the data usable by other people and by your future self. It also reduces ambiguity, for example whether wait_time_min is measured from order submission or from payment time.\n\n\n\nExample codebook for the coffee shop data set.\n\n\n\n\n\n\n\n\n\nvariable\nmeaning\nunits\nallowed_values\nmissing_codes\n\n\n\n\norder_id\nUnique identifier for each order\nid\ninteger\nNA\n\n\norder_time\nTime the order was placed\nHH:MM\n00:00 to 23:59\nNA\n\n\npickup_time\nTime the drink was marked ready for pickup\nHH:MM\n00:00 to 23:59\nNA if pickup time not recorded\n\n\nwait_time_min\nMinutes from order_time to pickup_time\nminutes\n0 to 60 (typical range for this shop)\nNA if pickup_time is missing\n\n\ndrink_type\nMain drink category for the order\ncategory\nLatte, Cold brew, Espresso, Tea, Other\nNA\n\n\nmobile_order\nWhether the order was placed using the mobile app\nYes or No\nYes, No\nNA\n\n\nsatisfaction_1to10\nStudent rating of the experience for that order\n1 to 10\n1 to 10 (integers)\nNA if the student did not respond\n\n\nday_of_week\nDay of the week when the order was placed\ncategory\nMon, Tue, Wed, Thu, Fri, Sat, Sun\nNA\n\n\n\n\n\nIn a model implied approach, the codebook matters because it tells us what the variables actually represent in the real world. If we misunderstand the measurement process, any statistical model built on these variables can answer the wrong question.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
+    ]
+  },
+  {
+    "objectID": "part1-02-data.html#variables-and-data-sets",
+    "href": "part1-02-data.html#variables-and-data-sets",
+    "title": "2  Data: Meaning, Collection, and Types",
+    "section": "2.2 Variables and data sets",
+    "text": "2.2 Variables and data sets\nMost data sets you will work with in this book have this structure.\n\nEach row corresponds to an observational unit\nEach column corresponds to a variable\nEach cell is the recorded value of one variable for one unit\n\nThis structure is often called a tidy or rectangular data set. It is not the only possible format, but it is the most common starting point for statistical work in R.\n\n2.2.1 Example: a small data set from the coffee shop story\nThe following table is a toy example. It is small on purpose so we can talk about meaning, collection, and type.\n\ncoffee &lt;- data.frame(\n  order_id     = 1:12,\n  time_block   = c(\"8 to 9\", \"8 to 9\", \"8 to 9\", \"9 to 10\", \"9 to 10\", \"9 to 10\",\n                   \"10 to 11\", \"10 to 11\", \"10 to 11\", \"11 to 12\", \"11 to 12\", \"11 to 12\"),\n  mobile_order = c(\"yes\",\"no\",\"no\",\"yes\",\"no\",\"yes\",\"no\",\"no\",\"yes\",\"yes\",\"no\",\"no\"),\n  wait_min     = c(4, 11, 9, 5, 10, 6, 8, 7, 5, 4, 6, 7),\n  items        = c(1, 2, 1, 1, 3, 2, 2, 1, 1, 1, 2, 1),\n  rating       = c(5, 2, 3, 4, 2, 4, 3, 3, 4, 5, 4, 3)\n)\n\nknitr::kable(coffee, caption = \"Toy example data from the coffee shop story.\")\n\n\n\nTable 2.1: Toy example data from the coffee shop story.\n\n\n\n\n\n\norder_id\ntime_block\nmobile_order\nwait_min\nitems\nrating\n\n\n\n\n1\n8 to 9\nyes\n4\n1\n5\n\n\n2\n8 to 9\nno\n11\n2\n2\n\n\n3\n8 to 9\nno\n9\n1\n3\n\n\n4\n9 to 10\nyes\n5\n1\n4\n\n\n5\n9 to 10\nno\n10\n3\n2\n\n\n6\n9 to 10\nyes\n6\n2\n4\n\n\n7\n10 to 11\nno\n8\n2\n3\n\n\n8\n10 to 11\nno\n7\n1\n3\n\n\n9\n10 to 11\nyes\n5\n1\n4\n\n\n10\n11 to 12\nyes\n4\n1\n5\n\n\n11\n11 to 12\nno\n6\n2\n4\n\n\n12\n11 to 12\nno\n7\n1\n3\n\n\n\n\n\n\n\n\nEven this small table raises questions you must answer before analysis.\n\nWhat is the observational unit: an order, a student visit, or a person\nWhat is the meaning of wait time: from payment to pickup, or from joining the line to pickup\nHow was rating collected: asked immediately, or later by email, or only for app users\nAre mobile orders counted differently from in person orders\n\nThose questions are not technicalities. They determine what conclusions are credible.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
+    ]
+  },
+  {
+    "objectID": "part1-02-data.html#how-data-are-generated",
+    "href": "part1-02-data.html#how-data-are-generated",
+    "title": "2  Data: Meaning, Collection, and Types",
+    "section": "2.2 How data are generated",
+    "text": "2.2 How data are generated\nA useful way to think about data generation is to separate three layers.\n\nThe real world process (people, behavior, systems)\nThe measurement process (what gets recorded, with what instrument, with what rules)\nThe data set you analyze (rows, columns, codes, and missing values)\n\nA problem can enter at any layer. For example, a campus survey might have a well written question but a poor response rate, or it might have a high response rate but a confusing question.\n\n2.2.1 Population and sample\nA population is the larger group you want to learn about. A sample is the group you actually observe.\nIn the coffee shop story, several populations are possible.\n\nAll coffee shop visits on campus this semester\nAll student visits during weekday mornings\nAll students who buy coffee on campus\n\nThe population should be defined by the question, not by convenience. The sample is determined by the collection method and practical constraints.\n\n\n\n\n\n\n\n\nFigure 2.1: Sampling from the population reduces the number of objects from which to collect data.\n\n\n\n\n\n\n\n2.2.2 Representation and bias\nA sample is most useful when it represents the population for the question being asked.\n\nPopulation means the full group you want to learn about.\nSample means the smaller group you actually observe.\n\nRepresentation is about whether the sample behaves like the population for the variables you care about.\nTwo common reasons a sample does not represent the population are:\n\nSelection bias. Some units are more likely to be included than others, in a way related to the variables of interest.\nNonresponse or missingness. Some units are included, but some variables are not recorded, in a way related to the outcomes.\n\nIn model-based work, we treat selection and missingness as part of the data generating process: the data we observe are shaped by what happened in the world and by what we managed to record. If selection or missingness is severe, it can dominate any later modeling step.\n\n2.2.2.1 Example 1: Coffee shop data (selection bias in practice)\nIn the coffee shop story, imagine the question is:\n\nWhat is a typical wait time for all orders during the semester?\n\n\nPopulation for the question: all coffee shop orders between 8 am and 4 pm\nConvenient data source: the mobile ordering app log\n\nIf the app is used mostly during busy times (for example, right before class), then app orders can over represent rush periods. If we analyze only app orders, we can exaggerate the wait time compared with all orders. That is selection bias: the chance an order appears in our data is related to the outcome we care about (wait time).\n\n\n2.2.2.2 Example 2: GPA data (a numeric example we can visualize)\nSuppose the question is:\n\nWhat is a typical GPA of first year students this semester?\n\nA common summary for “typical” is the average (also called the mean): add the GPAs and divide by how many students you have.\n\nA representative sample (for example, a random sample from the registrar list) tends to reflect the population.\nA biased sample (for example, volunteers from an honors forum) can over represent higher GPAs.\n\nThe figure below uses a computer generated example to illustrate the idea. The exact numbers are not important. The pattern is the key.\n\n\n\n\n\n\n\n\nFigure 2.2: Selection bias can shift what you observe. Each histogram shows counts of GPAs in three groups: a large population, a representative sample, and a biased sample.\n\n\n\n\n\nInterpretation. The representative sample histogram tends to look like the population histogram. The biased sample histogram is shifted toward higher GPAs, so its average is higher. That difference is not a modeling issue. It is a data generation issue.\nExample 3: Missingness (nonresponse can shift what you observe)\nNow suppose you take a representative sample of students, but some students do not report their GPA. If students with lower GPAs are less likely to respond, then the GPAs you observe can be shifted upward, even though your original sampling plan was reasonable.\nThe figure below shows the same idea with a random sample where some GPAs become missing.\n\n\n\n\n\n\n\n\n\n\n#   average_all_sampled average_observed_only          missing_rate \n#                  2.99                  3.04                  0.19\n\n\n\n\n\n\n\n\nInterpretation. When missingness is related to GPA, the observed GPAs are not a fair reflection of the sampled GPAs. The average based only on observed values can be misleading.\n\nSelection bias and missingness are not only technical details. They describe how the data were produced and recorded. If the observed data do not represent the population for the question, then even a sophisticated model can confidently answer the wrong question.\n\n\n\n2.2.3 Sampling methods\nWhen you cannot measure the whole population, you take a sample. The sampling method is part of the data generating process, because it determines which units enter the data set.\nA useful sample usually comes from a probability sampling plan, meaning that units are selected by a random mechanism (so that selection is not driven by the outcome you care about). A key practical ingredient is the sampling frame, which is the list or process you use to reach units (for example, a registrar list, a list of dorm rooms, or a stream of students entering the dining hall).\nHere are common sampling methods you will see in practice.\n\nSimple random sampling. Select units at random from the sampling frame, so each unit has the same chance of being selected.\nStratified sampling. Divide the population into groups called strata (for example, class year), then sample within each group. This is useful when you want each group represented.\nCluster sampling. Divide the population into clusters (for example, dorm buildings), randomly select clusters, then include units within selected clusters. This is useful when it is expensive to reach individuals scattered across campus.\nSystematic sampling. Select every kth unit from an ordered list or stream (for example, every 10th student who walks into the dining hall). This can work well if the ordering is not related to the outcome.\n\nNon probability approaches such as convenience samples and voluntary response samples are common, but they often create selection bias because who gets included is related to variables of interest.\n Types of Random Samples \nAs previously mentioned, many statistical methods are based on the randomness assumption. It’s important to understand what a random sample is and how to collect it. In a random sample, each member of a population is equally likely to be selected.\n Simple Random Sample \nFor a simple random sample (SRS), every possible sample of sample size \\(n\\) has the same chance to be chosen.\n\nExample: If I were to sample 100 students from all 10,000 Marquette students, I would randomly assign each student a number (from 1 to 10,000) and then randomly select 100 numbers.\n\n\n\n\n\n\n\n\n\n\n\nFigure 2.3: Simple Random Sample\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2.4: Simple random sample from a population of 15 (https://research-methodology.net/sampling-in-primary-data-collection/random-sampling/)\n\n\n\n\n\n\n\n Stratified Random Sample \nFor stratified sampling, we subdivide the population into different subgroups (strata) that share the same characteristics, then draw a simple random sample from each subgroup. Stratified sampling has a property: Homogeneous within strata; Non-homogeneous between strata. (Figure 2.5)\n\n\n\n\n\n\n\n\nFigure 2.5: Stratified Sampling. Source: https://www.datasciencemadesimple.com/stratified-random-sampling-in-r-dataframe-2/\n\n\n\n\n\n\nExample: Divide Marquette students into groups by colleges, then perform a SRS for each group (Figure 2.6). In this case, subjects within strata are homogeneous because people in the same stratum belong to the same college. Subjects are non-homogeneous between strata because students in one college is not a student in another college.\n\n\n\n\n\n\n\n\n\nFigure 2.6: Stratified sampling of Marquette Students\n\n\n\n\n\n Cluster Sampling \nFor cluster sampling, divide the population into clusters, then randomly select some of those clusters, and then keep all the members from those selected clusters. Cluster sampling has a property: Homogeneous between clusters; Non-homogeneous within clusters (Figure 2.7). Clusters look similar each other, but members in a cluster are not very alike. They have different characteristics.\n\n\n\n\n\n\n\n\nFigure 2.7: Cluster Sampling Source: https://research-methodology.net/sampling-in-primary-data-collection/cluster-sampling/\n\n\n\n\n\n\nExample: Study 4720 students’ drinking habits by dividing the students into 9 groups, and then randomly selecting 3 and interviewing all of the students in each of those clusters (Figure 2.8). Subjects are homogeneous between clusters because clusters are like random partitions, and each one is a representative subset of the entire population. Subjects are non-homogeneous within clusters because everyone has their own characteristics, and subjects are not divided based on any characteristic such as major or college.\n\n\n\n\n\n\n\n\n\nFigure 2.8: Cluster sampling of Marquette students",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
+    ]
+  },
+  {
+    "objectID": "part1-02-data.html#how-data-are-collected",
+    "href": "part1-02-data.html#how-data-are-collected",
+    "title": "2  Data: Meaning, Collection, and Types",
+    "section": "2.3 How data are collected",
+    "text": "2.3 How data are collected\nMost introductory examples fall into one of these collection approaches.\n\n2.3.1 Sample surveys\nA sample survey collects data from a subset of a population, typically using a questionnaire or structured measurement plan.\nKey design ideas include:\n\nA sampling frame that defines who can be selected\nA selection method, ideally involving randomization\nClear measurement definitions and units\nA plan for handling nonresponse\n\n\n\n2.3.2 Observational studies\nAn observational study records variables as they naturally occur, without assigning treatments or interventions. Observational studies are common in social science, public health, business analytics, and campus life.\nIn the coffee shop story, using transaction logs to compare wait times for mobile versus non mobile orders is observational unless orders were assigned by design. Students choose whether to use the app, and that choice may be related to other factors such as schedule or patience.\n\n2.3.2.1 Confounding and why it matters\nA confounder is a variable that is related to both:\n\nthe explanatory variable you care about (for example, mobile ordering), and\nthe outcome you measure (for example, wait time).\n\nWhen confounding is present, a comparison between groups can mix together multiple effects.\nIn the coffee shop story, time of day is a natural confounder.\n\nTime of day affects wait time, because the rush period tends to be busier.\nTime of day can also be related to ordering method, because mobile ordering might be used more often right before class.\n\nThe figure below illustrates how this can mislead. We use simulated data to show a common pattern: overall, mobile orders can look slower, even if within the same time period mobile orders are faster. The point is the logic, not the exact numbers.\nAn average (also called the mean) is one way to describe a typical value: add the values and divide by how many values you have.\n\n\n\n\n\n\n\n\nFigure 2.9: Confounding illustration. Left: an overall comparison can be misleading. Right: comparing within time periods reveals a different story.\n\n\n\n\n\nHow to read the figure.\n\nThe left panel compares all mobile orders to all in person orders, without paying attention to time of day.\nThe right panel compares mobile versus in person orders within the same time period.\n\nWhen time of day is a confounder, the overall comparison can reflect differences in who uses the app and when, not only the effect of mobile ordering.\nWhat you can do about confounding.\n\nDesign: run an experiment when possible (see the next section).\nMeasurement: record likely confounders (time of day, day of week, store staffing), so you can compare more fairly.\nSummary: make stratified summaries like the right panel before making strong conclusions.\n\nThis is model implied because it encourages you to think explicitly about what variables drive the outcome and what variables determine who ends up in each group. Later chapters will build on this idea by treating the data as arising from a probabilistic model that includes the key variables you measure.\n\n\n\n2.3.3 Experiments\nAn experiment assigns an intervention to units, such as a treatment, policy, or feature change, and then measures outcomes. Random assignment is a powerful tool because it helps separate the intervention effect from other differences between groups.\nIn a campus setting, a small experiment might randomly assign some time blocks to run the mobile ordering pilot, while keeping staffing levels comparable. Then the comparison of wait times has a clearer causal interpretation.\n\n\n\n\n\n\nWarningA practical warning\n\n\n\nMany real data sets combine collection approaches. A data set might include administrative records plus a survey, or sensor data plus a short experiment. When sources are combined, documentation becomes even more important.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
+    ]
+  },
+  {
+    "objectID": "part1-02-data.html#where-data-come-from",
+    "href": "part1-02-data.html#where-data-come-from",
+    "title": "2  Data: Meaning, Collection, and Types",
+    "section": "2.4 Where data come from",
+    "text": "2.4 Where data come from\nModern data work often begins by asking not only how the data were collected, but where the data originate. Here are common sources.\n\n2.4.1 Primary collection\nYou or your team collect the data for a specific question, such as a class survey or a designed experiment. Primary collection offers control, but it requires effort and planning.\n\n\n2.4.2 Administrative and transaction records\nThese are records created as part of running an organization: course registrations, dining swipes, library checkouts, or purchases. They can be large and detailed, but the variables were not originally designed for your research question.\n\n\n2.4.3 Digital traces and platform logs\nApps and websites generate timestamped logs: clicks, views, location pings, and usage patterns. These data can be informative, but they raise privacy and consent issues and they often require careful cleaning.\n\n\n2.4.4 Sensors and instruments\nWearables, lab instruments, and environmental sensors produce streams of measurements. These data can be high frequency and high volume, which makes data type and data structure especially important.\n\n\n2.4.5 Public and open data\nGovernments, research groups, and organizations release public data sets. Open data can be valuable for learning and research, but you still must understand the original collection process and limitations.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
+    ]
+  },
+  {
+    "objectID": "part1-02-data.html#data-types",
+    "href": "part1-02-data.html#data-types",
+    "title": "2  Data: Meaning, Collection, and Types",
+    "section": "2.4 Data types",
+    "text": "2.4 Data types\nOK. We learn data collection and sampling methods. Now’s let’s learn some data types. Data type is about what values a variable can take and what operations make sense on those values. Data type shapes:\n\nHow you summarize a variable\nWhat kinds of relationships you look for\nWhat probability models are reasonable\n\nUsually a statistical method is only for some type of data or variables. Knowing data types is important because it helps us choose the correct or appropriate statistical methods for analysis. It also helps us interprets the analysis result correctly. Figure 2.10 tells us everything about data type. We are going to learn each data type in the figure.\n\n\n\n\n\n\n\n\nFigure 2.10: Types of Data\n\n\n\n\n\n Categorical vs. Numerical Variables \nA categorical variable provides non-numerical information which can be placed in one (and only one) category from two or more categories. Here are some examples.\n\nGender (Male 👨, Female 👩, Trans 🏳️‍🌈) \nClass (Freshman, Sophomore, Junior, Senior, Graduate) \nCountry (USA 🇺🇸, Canada 🇨🇦, UK 🇬🇧, Germany 🇩🇪, Japan 🇯🇵, Korea 🇰🇷) \n\nGender, Class, and Country are all categorical variables because they provide non-numerical information. Their possible “values” are “categories”. Keep in mind that a data object can only belong to one category of that variable. You cannot be a freshman and sophomore.\nA numerical variable is recorded in a numerical value representing counts or measurements. Some examples are\n\n GPA \n The number of relationships you’ve had \n Height \n\nThe possible values of the three variables are all numerical or numbers. You are a 6’2” tall student who had eight girlfriends and your GPA is 3.98.\n Numerical Variables \nNumerical variables can be discrete or continuous. A discrete variable takes on values of a finite or countable number, while a continuous variable takes on values anywhere over a particular range without gaps or jumps.\n\n GPA is continuous because theoretically it can be any value between 0 and 4. \n The number of relationships you’ve had is discrete because you can count the number and it is finite. The possible values are 0, 1, 2, 3, and so on. Can you have a 0.5 relationship?\n Height is continuous because it can be any number within a range. \n\n Categorical Variables \nFor convenience, categorical variables are usually recorded as numbers in a data set. For example, we can have\n\nGender (Male = 0, Female = 1, Trans = 2) \nClass (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5) \nCountry (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301) \n\nEven United Airlines boarding group is categorical. The group number does provide non-numerical information, which is the order of boarding. You cannot be in both boarding zone one and zone two for the same ticket. You can only be in one group.\nPlease note that the numbers represent categories only; taking differences of these numbers is meaningless. If we use the coding scheme in the examples,\n\nCanada - USA = 101 - 100 = 1???\nGraduate - Sophomore = 5 - 2 = 3 = Junior???\n\nThe arithmetic operations do not make sense. For any data or variables, we need to learn the level of measurements to know which arithmetic operations are meaningful for what type of data.\n\n Levels of Measurements \n Nominal and Ordinal for Categorical Variables \nA categorical variable can be of nominal or ordinal level of measurement.\nThe data is nominal if can not be ordered in a meaningful or natural way. For example,\n\nGender (Male = 0, Female = 1, Trans = 2)  is nominal because Male, Female and Trans cannot be ordered, even the numbering coding has an ordering.\nCountry (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301)  is nominal. There is no reason to put any country before any other country unless there is another variable giving those countries another attribute that can be ordered.\n\nOrdinal data can be arranged in some meaningful order, but differences between data values can NOT be determined or are meaningless.\n\nClass (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5)  is ordinal because Sophomore is one class higher than Freshman, and so on. Here the difference is still meaningless. It seems that Junior is one year higher than Sophomore, and Junior - Sophomore = 1 kind of makes sense. However, “1” does not mean one year higher; instead “1” means Freshman. Moreover, we could even use the numbering (Freshman = 1, Sophomore = 10, Junior = 33, Senior = 44, Graduate = 50) for the Class variable.\n\n Interval and Ratio for Numerical Variables \nNumerical data can be interval or ratio level of measurement.\nInterval data have meaningful differences between any two values but the data do NOT have a natural zero or starting point. The data can do \\(\\color{red} +\\) and \\(\\color{red} -\\), but can’t reasonably do \\(\\color{red} \\times\\) and \\(\\color{red} \\div\\).\n\nTemperature is interval because \\(80^{\\circ}\\)F is 40 degrees higher than \\(40^{\\circ}\\)F \\((80-40=40)\\), but \\(0^{\\circ}\\) does not mean NO heat or NO temperature, but a specific temperature. Also, \\(80^{\\circ}\\)F is NOT twice as hot as \\(40^{\\circ}\\)F.\n\nRatio data have both meaningful differences and ratios, and there is a natural zero starting point that indicates none of the quantity. The data can do \\(\\color{red} +\\), \\(\\color{red} -\\), \\(\\color{red} \\times\\) and \\(\\color{red} \\div\\).\n\nDistance is ratio level of measurement because \\(80\\) miles is twice as far as \\(40\\) miles \\((80/40 = 2)\\), and \\(0\\) mile means NO distance.\n\n\n Data type depends on decisions \nSometimes research purpose we may want to convert a numerical variable into a categorical variable. Figure 2.11 is an example of turning a 100% percentage grade into a letter grade which is categorical. Another is example is turning annual salary (numerical) into income level (categorical). We can say salary between $0 and $50,000 is “low” income level, salary between $50,000 and $120,000 is “middle” income level, and above $120,000 is “high” income level.\n\n\n\n\n\n\n\n\nGrade\n\n\nPercentage\n\n\n\n\n\n\nA\n\n\n[94, 100]\n\n\n\n\nA-\n\n\n[90, 94)\n\n\n\n\nB+\n\n\n[87, 90)\n\n\n\n\nB\n\n\n[83, 87)\n\n\n\n\nB-\n\n\n[80, 83)\n\n\n\n\nC+\n\n\n[77, 80)\n\n\n\n\nC\n\n\n[73, 77)\n\n\n\n\nC-\n\n\n[70, 73)\n\n\n\n\nD+\n\n\n[65, 70)\n\n\n\n\nD\n\n\n[60, 65)\n\n\n\n\nF\n\n\n[0, 60)\n\n\n\n\n\n\nFigure 2.11: Grading scale for this class\n\n\n\n\nThe same underlying idea can be recorded in different ways.\n\nA rating of 1 to 5 is ordinal categorical, but you might treat it as quantitative when computing an average. That choice has consequences.\nAge can be recorded as a number, or grouped into categories. Grouping can simplify summaries, but it discards information.\nA continuous measurement can be rounded to an integer, which changes the type and may change the model.\n\nGood practice is to document these decisions and to align them with the goals of the analysis.\n\n\n\n\n\n\n\n\n\n\n\n\n\n2.4.1 Common data types and model building blocks\nLater chapters will introduce probability models carefully. For now, it is enough to see the connection between variable type and the kind of randomness we might model.\n\n\n\n\n\n\n\n\nVariable type\nExample\nA common probability model family\n\n\n\n\nBinary categorical\nmobile order yes or no\nBernoulli or Binomial\n\n\nNominal categorical\nresidence hall\nCategorical or Multinomial\n\n\nOrdinal categorical\nrating 1 to 5\nOrdered categorical models\n\n\nCount\nitems purchased\nPoisson or Negative Binomial\n\n\nContinuous\nwait time\nNormal, log normal, or other continuous models\n\n\nProportion\nfraction of correct answers\nBinomial or Beta type models",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
+    ]
+  },
+  {
+    "objectID": "part1-02-data.html#practice",
+    "href": "part1-02-data.html#practice",
+    "title": "2  Data: Meaning, Collection, and Types",
+    "section": "2.5 Practice",
+    "text": "2.5 Practice\n\n\n\n\n\n\nWarningYour turn\n\n\n\nReturn to the coffee shop story and answer these questions.\n\nWhat is a reasonable observational unit if the goal is to study wait time\nList four variables you would want, and describe how each would be measured\nIdentify which variables are categorical and which are quantitative\nFor one categorical and one quantitative variable, describe a sensible summary you might use.",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
+    ]
+  },
+  {
+    "objectID": "part1-02-data.html#chapter-summary",
+    "href": "part1-02-data.html#chapter-summary",
+    "title": "2  Data: Meaning, Collection, and Types",
+    "section": "2.6 Chapter summary",
+    "text": "2.6 Chapter summary\nIn this chapter, you learned how statisticians interpret data and why data meaning and data generation matter.\n\nData are recorded values with context and purpose\nA data set has observational units and variables, supported by documentation\nData are generated by a real world process and a measurement process\nCollection approaches include surveys, observational studies, and experiments\nCommon sampling methods include simple random sampling, stratified sampling, cluster sampling, and systematic sampling.\nData types guide both summaries and later probability modeling",
+    "crumbs": [
+      "Statistics and Data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
+    ]
+  },
+  {
+    "objectID": "part1-02-data.html#where-we-are-going-next",
+    "href": "part1-02-data.html#where-we-are-going-next",
+    "title": "2  Data: Meaning, Collection, and Types",
+    "section": "2.7 Where we are going next",
+    "text": "2.7 Where we are going next\nChapter 3 and 4 set up the computing tools you need for doing data analysis. Chapter 5 and 6 focus on summarizing one variable at a time. You will learn how to use graphs and numerical summaries to describe patterns and variability, and how those summaries prepare you for model-based inference later in the book.",
     "crumbs": [
       "Statistics and Data",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
@@ -316,7 +502,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Randomness and Data Generating Process",
+      "Probability Model as Data Generating Process",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Probability: Meanings and Rules</span>"
     ]
   },
@@ -327,7 +513,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Randomness and Data Generating Process",
+      "Probability Model as Data Generating Process",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Probability Distributions</span>"
     ]
   },
@@ -338,7 +524,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Randomness and Data Generating Process",
+      "Probability Model as Data Generating Process",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Sampling and Simulation</span>"
     ]
   },
@@ -349,7 +535,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Randomness and Data Generating Process",
+      "Probability Model as Data Generating Process",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Law of Large Numbers and Central Limit Theorem</span>"
     ]
   },
@@ -424,7 +610,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Inference for Normal Data",
+      "Inference for Models of Normal Data",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Inference for One Population Mean</span>"
     ]
   },
@@ -435,18 +621,8 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Inference for Normal Data",
+      "Inference for Models of Normal Data",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Comparing Two Groups</span>"
-    ]
-  },
-  {
-    "objectID": "part5.html",
-    "href": "part5.html",
-    "title": "Linear Models for Normal Data",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "Linear Models for Normal Data"
     ]
   },
   {
@@ -456,7 +632,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Linear Models for Normal Data",
+      "Inference for Models of Normal Data",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Simple Linear Regression</span>"
     ]
   },
@@ -467,7 +643,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Linear Models for Normal Data",
+      "Inference for Models of Normal Data",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>One-Way Analysis of Variance</span>"
     ]
   },
@@ -478,7 +654,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Linear Models for Normal Data",
+      "Inference for Models of Normal Data",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Multiple Linear Regression</span>"
     ]
   },
@@ -489,7 +665,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Linear Models for Normal Data",
+      "Inference for Models of Normal Data",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Two-Way ANOVA</span>"
     ]
   },
@@ -510,7 +686,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Inference and Linear Models for Binary Data",
+      "Inference for Models of Binary Data",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Inference for One Population Proportion</span>"
     ]
   },
@@ -521,7 +697,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Inference and Linear Models for Binary Data",
+      "Inference for Models of Binary Data",
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>Comparing Two Proportions</span>"
     ]
   },
@@ -532,7 +708,7 @@
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\nadd new words here\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "Inference and Linear Models for Binary Data",
+      "Inference for Models of Binary Data",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>Binary Logistic Regression</span>"
     ]
   },
@@ -705,7 +881,7 @@
     "href": "a-r_prog.html#loops",
     "title": "Appendix A — R programming",
     "section": "A.15 Loops",
-    "text": "A.15 Loops\n\nA.15.1 for loops\n\n## Syntax\nfor (value in that) {\n    this\n}\n\n\nfor (i in 1:5) {\n    print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\n\nfor (x in c(\"My\", \"1st\", \"for\", \"loop\")) {\n    print(x)\n}\n\n[1] \"My\"\n[1] \"1st\"\n[1] \"for\"\n[1] \"loop\"\n\n\n\n\nA.15.2 while loops\n\nwhile (condition) {\n    # body\n}\n\n\nYou can rewrite any for loop as a while loop, but you can’t rewrite every while loop as a for loop.\n\n\nfor (i in seq_along(x)) {\n    # body\n}\n\n# Equivalent to\ni &lt;- 1\nwhile (i &lt;= length(x)) {\n    # body\n    i &lt;- i + 1 \n}\n\n\n\n\n\n\n\n\nWe find how many tries it takes to get 5 heads in a row:\n\n\n## a function that sample one from \"T\" or \"H\"\nflip &lt;- function() sample(c(\"T\", \"H\"), 1)\n\nflips &lt;- 0; nheads &lt;- 0\n\nwhile (nheads &lt; 5) {\n    if (flip() == \"H\") {\n        nheads &lt;- nheads + 1\n    } else {\n        nheads &lt;- 0\n    }\n    flips &lt;- flips + 1\n}\n\nflips\n\n[1] 230",
+    "text": "A.15 Loops\n\nA.15.1 for loops\n\n## Syntax\nfor (value in that) {\n    this\n}\n\n\nfor (i in 1:5) {\n    print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\n\nfor (x in c(\"My\", \"1st\", \"for\", \"loop\")) {\n    print(x)\n}\n\n[1] \"My\"\n[1] \"1st\"\n[1] \"for\"\n[1] \"loop\"\n\n\n\n\nA.15.2 while loops\n\nwhile (condition) {\n    # body\n}\n\n\nYou can rewrite any for loop as a while loop, but you can’t rewrite every while loop as a for loop.\n\n\nfor (i in seq_along(x)) {\n    # body\n}\n\n# Equivalent to\ni &lt;- 1\nwhile (i &lt;= length(x)) {\n    # body\n    i &lt;- i + 1 \n}\n\n\n\n\n\n\n\n\nWe find how many tries it takes to get 5 heads in a row:\n\n\n## a function that sample one from \"T\" or \"H\"\nflip &lt;- function() sample(c(\"T\", \"H\"), 1)\n\nflips &lt;- 0; nheads &lt;- 0\n\nwhile (nheads &lt; 5) {\n    if (flip() == \"H\") {\n        nheads &lt;- nheads + 1\n    } else {\n        nheads &lt;- 0\n    }\n    flips &lt;- flips + 1\n}\n\nflips\n\n[1] 92",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>R programming</span>"
@@ -826,7 +1002,7 @@
     "href": "a-py_prog.html#plotting",
     "title": "Appendix B — Python Programming",
     "section": "B.11 Plotting",
-    "text": "B.11 Plotting\nmatplotlib.markers\n\npch = np.array(['.', ',', 'o', 'v', '^', '&lt;', '&gt;', '1', '2', '3', '4', '8', 's', 'p', 'P', '*', 'h', 'H', '+', 'x', 'X', 'D', 'd', '|', '_'])\n#all types of maker\npch_len = pch.shape[0]\nx = np.array([i for i in range(1, pch_len+1)])\ny = np.ones(pch_len)\n\n\nplt.figure(0)\nfor i in range(0, pch_len):\n    plt.plot(x[i],y[i],pch[i])\n\n\n\n\n\n\n\n\n\nB.11.1 Scatterplot\n\n\nCode\nmtcars = pd.read_csv('./data/mtcars.csv')\nmtcars.iloc[0:15,0:4]\n\n\n     mpg  cyl   disp   hp\n0   21.0    6  160.0  110\n1   21.0    6  160.0  110\n2   22.8    4  108.0   93\n3   21.4    6  258.0  110\n4   18.7    8  360.0  175\n5   18.1    6  225.0  105\n6   14.3    8  360.0  245\n7   24.4    4  146.7   62\n8   22.8    4  140.8   95\n9   19.2    6  167.6  123\n10  17.8    6  167.6  123\n11  16.4    8  275.8  180\n12  17.3    8  275.8  180\n13  15.2    8  275.8  180\n14  10.4    8  472.0  205\n\n\n\nimport matplotlib.pyplot as plt\nplt.scatter(x = mtcars.mpg, y = mtcars.hp, color = \"r\")\nplt.xlabel(\"Miles per gallon\")\nplt.ylabel(\"Horsepower\")\nplt.title(\"Scatter plot\")\n\n\n\n\n\n\n\n\n\n\nB.11.2 Subplots\nThe command plt.scatter() is used for creating one single plot. If multiple subplots are wanted in one single call, one can use the format\n\nfig, (ax1, ax2) = plt.subplots(1, 2)\nax1.scatter(x, y)\nax2.plot(x, y)\n\n\nfig, (ax1, ax2) = plt.subplots(1, 2)\nax1.scatter(x = mtcars.mpg, y = mtcars.hp)\nax2.scatter(x = mtcars.hp, y = mtcars.disp)\n\n\n\n\n\n\n\n\n\nCheck Creating multiple subplots using plt.subplots for more details.\n\n\n\nB.11.3 Boxplot\n\n\nCode\ncyl_index = np.sort(np.unique(np.array(mtcars.cyl)))\ncyl_shape = cyl_index.shape[0]\ncyl_list = []\nfor i in range (0, cyl_shape):\n    cyl_list.append(np.array(mtcars[mtcars.cyl == cyl_index[i]].mpg))\n\n\n\nplt.boxplot(cyl_list, vert=False, tick_labels=[4, 6, 8])\n\n{'whiskers': [&lt;matplotlib.lines.Line2D object at 0x30f85c050&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85d5b0&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85e630&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85e900&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85f890&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85fb60&gt;], 'caps': [&lt;matplotlib.lines.Line2D object at 0x30f85d7f0&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85daf0&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85ebd0&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85eed0&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85fe30&gt;, &lt;matplotlib.lines.Line2D object at 0x30f8a8140&gt;], 'boxes': [&lt;matplotlib.lines.Line2D object at 0x30f848c80&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85e330&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85f5f0&gt;], 'medians': [&lt;matplotlib.lines.Line2D object at 0x30f85ddc0&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85f110&gt;, &lt;matplotlib.lines.Line2D object at 0x30f8a8410&gt;], 'fliers': [&lt;matplotlib.lines.Line2D object at 0x30f85e090&gt;, &lt;matplotlib.lines.Line2D object at 0x30f85f380&gt;, &lt;matplotlib.lines.Line2D object at 0x30f8a8740&gt;], 'means': []}\n\nplt.xlabel(\"Miles per gallon\")\nplt.ylabel(\"Number of cylinders\")\n\n\n\n\n\n\n\n\n\n\nB.11.4 Histogram\n\nplt.hist(mtcars.wt, \n         bins = 19, \n         color=\"#003366\",\n         edgecolor=\"#FFCC00\")\nplt.xlabel(\"weights\")\nplt.title(\"Histogram of weights\")\n\n\n\n\n\n\n\n\n\n\nB.11.5 Barplot\n\ncount_py = mtcars.value_counts('gear')\ncount_py\n\ngear\n3    15\n4    12\n5     5\nName: count, dtype: int64\n\n\n\nplt.bar(count_py.index, count_py)\nplt.xlabel(\"Number of Gears\")\nplt.title(\"Car Distribution\")\n\n\n\n\n\n\n\n\n\n\nB.11.6 Pie chart\n\npercent = round(count_py / sum(count_py) * 100, 2)\ntexts = [str(percent.index[k]) + \" gear \" + str(percent.array[k]) + \"%\" for k in range(0,3)]\n\n\nplt.pie(count_py, labels = texts, colors = ['r', 'g', 'b'])\n\n([&lt;matplotlib.patches.Wedge object at 0x30fa15b20&gt;, &lt;matplotlib.patches.Wedge object at 0x30f946330&gt;, &lt;matplotlib.patches.Wedge object at 0x30fa15cd0&gt;], [Text(0.10781885436251686, 1.0947031993394165, '3 gear 46.88%'), Text(-0.6111272563215624, -0.9146165735327998, '4 gear 37.5%'), Text(0.9701133907831904, -0.5185364105085978, '5 gear 15.62%')])\n\nplt.title(\"Pie Charts\")\n\n\n\n\n\n\n\n\n\n\nB.11.7 2D Imaging\nIn Python,\n\nmat_img = np.reshape(np.array(range(1,31)), [6,5], \"F\")\nmat_img\n\narray([[ 1,  7, 13, 19, 25],\n       [ 2,  8, 14, 20, 26],\n       [ 3,  9, 15, 21, 27],\n       [ 4, 10, 16, 22, 28],\n       [ 5, 11, 17, 23, 29],\n       [ 6, 12, 18, 24, 30]])\n\nplt.imshow(mat_img, cmap = 'Oranges')\n\n\n\n\n\n\n\n\n\nvolcano = pd.read_csv('./data/volcano.csv', index_col=0)\nx = 10*np.arange(1,volcano.shape[0]+1)\ny = 10*np.arange(1,volcano.shape[1]+1)\nX,Y = np. meshgrid(x,y)\nvt = volcano.transpose()\nprint(vt.shape)\n\n(61, 87)\n\nprint(X.shape)\n\n(61, 87)\n\nprint(Y.shape)\n\n(61, 87)\n\n\n\nfig, ax = plt.subplots()\nIM = ax.matshow(vt, alpha =1, cmap='terrain')\nCS = ax.contour(vt, levels=np.arange(90,200,5))\nax.clabel(CS, inline=True, fontsize=10)\nax.set_title('Maunga Whau Volcano')\n\n\n\n\n\n\n\n\n\n\nB.11.8 3D scatterplot\nIn Python,\n\nfig = plt.figure(figsize=(12, 12))\nax = fig.add_subplot(projection='3d')\n\nax.scatter(xs = mtcars.wt, ys = mtcars.disp, zs = mtcars.mpg)\nax.set_xlabel('Weights')\nax.set_ylabel(\"Displacement\")\nax.set_zlabel(\"Miles per gallon\")\nax.set_title(\"3D Scatter Plot\")\n\n\n\n\n\n\n\n\n\n\nB.11.9 Perspective plot\nIn Python,\n\nx = 10*np.arange(1,volcano.shape[0]+1)\ny = 10*np.arange(1,volcano.shape[1]+1)\nvt = volcano.transpose()\nZ = 10*vt\nX,Y = np. meshgrid(x,y)\n\nprint(Z.shape)\n\n(61, 87)\n\nprint(X.shape)\n\n(61, 87)\n\nprint(Y.shape)\n\n(61, 87)\n\n\n\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"3d\"})\n# Plot the surface.\nax.plot_surface(X, Y, Z, cmap = 'Greens')",
+    "text": "B.11 Plotting\nmatplotlib.markers\n\npch = np.array(['.', ',', 'o', 'v', '^', '&lt;', '&gt;', '1', '2', '3', '4', '8', 's', 'p', 'P', '*', 'h', 'H', '+', 'x', 'X', 'D', 'd', '|', '_'])\n#all types of maker\npch_len = pch.shape[0]\nx = np.array([i for i in range(1, pch_len+1)])\ny = np.ones(pch_len)\n\n\nplt.figure(0)\nfor i in range(0, pch_len):\n    plt.plot(x[i],y[i],pch[i])\n\n\n\n\n\n\n\n\n\nB.11.1 Scatterplot\n\n\nCode\nmtcars = pd.read_csv('./data/mtcars.csv')\nmtcars.iloc[0:15,0:4]\n\n\n     mpg  cyl   disp   hp\n0   21.0    6  160.0  110\n1   21.0    6  160.0  110\n2   22.8    4  108.0   93\n3   21.4    6  258.0  110\n4   18.7    8  360.0  175\n5   18.1    6  225.0  105\n6   14.3    8  360.0  245\n7   24.4    4  146.7   62\n8   22.8    4  140.8   95\n9   19.2    6  167.6  123\n10  17.8    6  167.6  123\n11  16.4    8  275.8  180\n12  17.3    8  275.8  180\n13  15.2    8  275.8  180\n14  10.4    8  472.0  205\n\n\n\nimport matplotlib.pyplot as plt\nplt.scatter(x = mtcars.mpg, y = mtcars.hp, color = \"r\")\nplt.xlabel(\"Miles per gallon\")\nplt.ylabel(\"Horsepower\")\nplt.title(\"Scatter plot\")\n\n\n\n\n\n\n\n\n\n\nB.11.2 Subplots\nThe command plt.scatter() is used for creating one single plot. If multiple subplots are wanted in one single call, one can use the format\n\nfig, (ax1, ax2) = plt.subplots(1, 2)\nax1.scatter(x, y)\nax2.plot(x, y)\n\n\nfig, (ax1, ax2) = plt.subplots(1, 2)\nax1.scatter(x = mtcars.mpg, y = mtcars.hp)\nax2.scatter(x = mtcars.hp, y = mtcars.disp)\n\n\n\n\n\n\n\n\n\nCheck Creating multiple subplots using plt.subplots for more details.\n\n\n\nB.11.3 Boxplot\n\n\nCode\ncyl_index = np.sort(np.unique(np.array(mtcars.cyl)))\ncyl_shape = cyl_index.shape[0]\ncyl_list = []\nfor i in range (0, cyl_shape):\n    cyl_list.append(np.array(mtcars[mtcars.cyl == cyl_index[i]].mpg))\n\n\n\nplt.boxplot(cyl_list, vert=False, tick_labels=[4, 6, 8])\n\n{'whiskers': [&lt;matplotlib.lines.Line2D object at 0x317168650&gt;, &lt;matplotlib.lines.Line2D object at 0x3171688c0&gt;, &lt;matplotlib.lines.Line2D object at 0x317169940&gt;, &lt;matplotlib.lines.Line2D object at 0x317169c40&gt;, &lt;matplotlib.lines.Line2D object at 0x31716ad50&gt;, &lt;matplotlib.lines.Line2D object at 0x31716b080&gt;], 'caps': [&lt;matplotlib.lines.Line2D object at 0x317168b60&gt;, &lt;matplotlib.lines.Line2D object at 0x317168e90&gt;, &lt;matplotlib.lines.Line2D object at 0x317169f10&gt;, &lt;matplotlib.lines.Line2D object at 0x31716a1e0&gt;, &lt;matplotlib.lines.Line2D object at 0x31716b380&gt;, &lt;matplotlib.lines.Line2D object at 0x31716b620&gt;], 'boxes': [&lt;matplotlib.lines.Line2D object at 0x3170ea600&gt;, &lt;matplotlib.lines.Line2D object at 0x3171696a0&gt;, &lt;matplotlib.lines.Line2D object at 0x31716aab0&gt;], 'medians': [&lt;matplotlib.lines.Line2D object at 0x3171691c0&gt;, &lt;matplotlib.lines.Line2D object at 0x31716a510&gt;, &lt;matplotlib.lines.Line2D object at 0x31716b8f0&gt;], 'fliers': [&lt;matplotlib.lines.Line2D object at 0x3171694c0&gt;, &lt;matplotlib.lines.Line2D object at 0x31716a810&gt;, &lt;matplotlib.lines.Line2D object at 0x31716bbc0&gt;], 'means': []}\n\nplt.xlabel(\"Miles per gallon\")\nplt.ylabel(\"Number of cylinders\")\n\n\n\n\n\n\n\n\n\n\nB.11.4 Histogram\n\nplt.hist(mtcars.wt, \n         bins = 19, \n         color=\"#003366\",\n         edgecolor=\"#FFCC00\")\nplt.xlabel(\"weights\")\nplt.title(\"Histogram of weights\")\n\n\n\n\n\n\n\n\n\n\nB.11.5 Barplot\n\ncount_py = mtcars.value_counts('gear')\ncount_py\n\ngear\n3    15\n4    12\n5     5\nName: count, dtype: int64\n\n\n\nplt.bar(count_py.index, count_py)\nplt.xlabel(\"Number of Gears\")\nplt.title(\"Car Distribution\")\n\n\n\n\n\n\n\n\n\n\nB.11.6 Pie chart\n\npercent = round(count_py / sum(count_py) * 100, 2)\ntexts = [str(percent.index[k]) + \" gear \" + str(percent.array[k]) + \"%\" for k in range(0,3)]\n\n\nplt.pie(count_py, labels = texts, colors = ['r', 'g', 'b'])\n\n([&lt;matplotlib.patches.Wedge object at 0x317225640&gt;, &lt;matplotlib.patches.Wedge object at 0x3170ea5d0&gt;, &lt;matplotlib.patches.Wedge object at 0x317318e90&gt;], [Text(0.10781885436251686, 1.0947031993394165, '3 gear 46.88%'), Text(-0.6111272563215624, -0.9146165735327998, '4 gear 37.5%'), Text(0.9701133907831904, -0.5185364105085978, '5 gear 15.62%')])\n\nplt.title(\"Pie Charts\")\n\n\n\n\n\n\n\n\n\n\nB.11.7 2D Imaging\nIn Python,\n\nmat_img = np.reshape(np.array(range(1,31)), [6,5], \"F\")\nmat_img\n\narray([[ 1,  7, 13, 19, 25],\n       [ 2,  8, 14, 20, 26],\n       [ 3,  9, 15, 21, 27],\n       [ 4, 10, 16, 22, 28],\n       [ 5, 11, 17, 23, 29],\n       [ 6, 12, 18, 24, 30]])\n\nplt.imshow(mat_img, cmap = 'Oranges')\n\n\n\n\n\n\n\n\n\nvolcano = pd.read_csv('./data/volcano.csv', index_col=0)\nx = 10*np.arange(1,volcano.shape[0]+1)\ny = 10*np.arange(1,volcano.shape[1]+1)\nX,Y = np. meshgrid(x,y)\nvt = volcano.transpose()\nprint(vt.shape)\n\n(61, 87)\n\nprint(X.shape)\n\n(61, 87)\n\nprint(Y.shape)\n\n(61, 87)\n\n\n\nfig, ax = plt.subplots()\nIM = ax.matshow(vt, alpha =1, cmap='terrain')\nCS = ax.contour(vt, levels=np.arange(90,200,5))\nax.clabel(CS, inline=True, fontsize=10)\nax.set_title('Maunga Whau Volcano')\n\n\n\n\n\n\n\n\n\n\nB.11.8 3D scatterplot\nIn Python,\n\nfig = plt.figure(figsize=(12, 12))\nax = fig.add_subplot(projection='3d')\n\nax.scatter(xs = mtcars.wt, ys = mtcars.disp, zs = mtcars.mpg)\nax.set_xlabel('Weights')\nax.set_ylabel(\"Displacement\")\nax.set_zlabel(\"Miles per gallon\")\nax.set_title(\"3D Scatter Plot\")\n\n\n\n\n\n\n\n\n\n\nB.11.9 Perspective plot\nIn Python,\n\nx = 10*np.arange(1,volcano.shape[0]+1)\ny = 10*np.arange(1,volcano.shape[1]+1)\nvt = volcano.transpose()\nZ = 10*vt\nX,Y = np. meshgrid(x,y)\n\nprint(Z.shape)\n\n(61, 87)\n\nprint(X.shape)\n\n(61, 87)\n\nprint(Y.shape)\n\n(61, 87)\n\n\n\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"3d\"})\n# Plot the surface.\nax.plot_surface(X, Y, Z, cmap = 'Greens')",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
@@ -859,7 +1035,7 @@
     "href": "a-py_prog.html#multiple-conditions",
     "title": "Appendix B — Python Programming",
     "section": "B.14 Multiple conditions",
-    "text": "B.14 Multiple conditions\n\nif condition A:\n    # do that\nelif condition B:\n    # do something else\nelse:\n    # \n\n\nrd = np.random.randint(100)\nprint(rd)\n\n24\n\nif rd &lt;= 20:\n    print(\"rd &lt;= 20\")\nelif rd &gt; 20 and rd &lt;= 40:\n    print('rd &gt; 20 and rd &lt;= 40')\nelif rd &gt; 40 and rd &lt;= 60:\n    print('rd &gt; 40 and rd &lt;= 60')\nelif rd &gt; 60 and rd &lt;= 80:\n    print('rd &gt; 60 and rd &lt;= 80')\nelif rd &gt; 80 and rd &lt;= 100:\n    print('rd &gt; 80 and rd &lt;= 100')\n\nrd &gt; 20 and rd &lt;= 40",
+    "text": "B.14 Multiple conditions\n\nif condition A:\n    # do that\nelif condition B:\n    # do something else\nelse:\n    # \n\n\nrd = np.random.randint(100)\nprint(rd)\n\n3\n\nif rd &lt;= 20:\n    print(\"rd &lt;= 20\")\nelif rd &gt; 20 and rd &lt;= 40:\n    print('rd &gt; 20 and rd &lt;= 40')\nelif rd &gt; 40 and rd &lt;= 60:\n    print('rd &gt; 40 and rd &lt;= 60')\nelif rd &gt; 60 and rd &lt;= 80:\n    print('rd &gt; 60 and rd &lt;= 80')\nelif rd &gt; 80 and rd &lt;= 100:\n    print('rd &gt; 80 and rd &lt;= 100')\n\nrd &lt;= 20",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Python Programming</span>"
@@ -888,377 +1064,11 @@
     ]
   },
   {
-    "objectID": "part1.html#what-is-data",
-    "href": "part1.html#what-is-data",
-    "title": "Statistics and Data",
-    "section": "What is data",
-    "text": "What is data\nIn statistics, data are values of variables recorded on a set of units in a specific context.\n\nA unit (also called an observational unit) is the thing you measure, such as a person, a product, a school, a day, a county, or a patient visit.\nA variable is what you record on each unit, such as height, income, blood pressure, a survey response, a click, or a label such as treatment group.\n\nA useful habit is to treat every dataset as a sentence:\n\nWe measured what variables on which units, how and when were the measurements taken, and why were we collecting them.\n\n\nHow statistics views data\nStatistics does not treat data as a pile of numbers. It treats data as a realization of a data generating process, meaning that the values you see depend on how the world produced them and how you measured them.\nThis viewpoint matters because two datasets can look similar but carry very different information. For example, a dataset from a randomized experiment supports stronger causal conclusions than a dataset from an observational study, even if the summary statistics look the same.\n\n\nHow data are generated\nTo do statistics well, you need to know how data were generated. At an introductory level, the most important distinctions are these.\n\nPopulation versus sample\nA population is the full set of units you care about. A sample is the subset you actually observe. Statistics is largely about using a sample to learn about a population.\nObservational study versus experiment\nIn an observational study, you observe what happens without assigning treatments. In an experiment, you intervene and assign treatments, ideally using random assignment.\nMeasurement and recording\nData quality depends on how variables were measured, how missingness occurred, what was rounded or censored, and what errors were introduced during collection and storage.\n\nThese features of data generation are not minor details. They determine what questions you can answer, what assumptions are reasonable, and what kind of uncertainty you should report.\n\n\nWhere data come from\nModern datasets come from many sources. In this book we will repeatedly encounter data from:\n\nsurveys and questionnaires\ndesigned experiments\nobservational studies in medicine, social science, and business\nadministrative and operational records (for example, school records, hospital systems, public health reports)\nsensors and automated measurement systems\ndigital traces (for example, web activity, app usage, transaction logs)\n\nDifferent sources introduce different strengths and weaknesses, especially around bias, missing data, and measurement error.",
-    "crumbs": [
-      "Statistics and Data"
-    ]
-  },
-  {
-    "objectID": "part1.html#why-we-need-data",
-    "href": "part1.html#why-we-need-data",
-    "title": "Statistics and Data",
-    "section": "Why we need data",
-    "text": "Why we need data\nStatistics, machine learning, and data science all start with the same constraint: we cannot answer empirical questions by logic alone. We need data to learn how the world behaves.\nAt a high level, data are used for four recurring goals.\n\nDescription\nWhat happened in this dataset. What patterns are present.\nExplanation and comparison\nHow groups differ, and which variables are associated with an outcome.\nPrediction\nGiven some inputs, what value or category should we predict for a new unit.\nDecision making and policy\nWhat action should we take, given uncertainty and tradeoffs.\n\nEven when the final goal is prediction, statistics remains essential because it provides tools for understanding variability, quantifying uncertainty, and checking whether a model is stable enough to trust. This emphasis on uncertainty is central to the statistical perspective.5",
-    "crumbs": [
-      "Statistics and Data"
-    ]
-  },
-  {
-    "objectID": "part1.html#summarizing-data",
-    "href": "part1.html#summarizing-data",
-    "title": "Statistics and Data",
-    "section": "Summarizing data",
-    "text": "Summarizing data\nRaw data are often too detailed to think with directly. Summaries help you see structure and communicate evidence.\n\nWhy we summarize data\nWe summarize data in order to:\n\nreduce complexity without losing the main story\ncompare groups and detect differences\nidentify unusual observations and potential errors\nsupport later modeling choices (for example, choosing an outcome scale or deciding whether a linear trend is plausible)\n\n\n\nWhy summarize data this way\nNot all summaries are equally informative. Good summaries usually match the type of question you are asking and the type of variable you have.\n\nFor a quantitative variable, we often start with distribution summaries: center, spread, shape, and outliers.\nFor a categorical variable, we often start with counts and proportions.\nFor relationships between variables, we often start with plots that reveal association, trend, and variability.\n\nIn Chapters 5 and 6, you will learn a set of visual and numerical summaries that appear again and again in practice, and you will learn how to interpret them in context.\n\n\nHow summaries help us achieve statistical goals\nSummaries are not an end point. They support the full statistical workflow.\n\nThey help you clarify the question and define variables.\nThey guide model building by revealing patterns that a model should capture.\nThey help you check assumptions and diagnose problems.\nThey help you communicate conclusions clearly and honestly.",
-    "crumbs": [
-      "Statistics and Data"
-    ]
-  },
-  {
-    "objectID": "part1.html#model-based-thinking",
-    "href": "part1.html#model-based-thinking",
-    "title": "Statistics and Data",
-    "section": "Model based thinking",
-    "text": "Model based thinking\nThis book is built around model based thinking, meaning that we treat data analysis as an explicit attempt to connect three pieces:\n\na question about the world\na model that describes how the data could have been generated\na method for learning model parameters from data, with uncertainty\n\nAt the level of this book, the central template is:\n[ Y_i = f(x_i) + _i ]\nYou can read this as: each observation is a combination of a systematic part we want to learn, plus random variation we do not explain.\n\nWhy model based thinking helps\nModel based thinking helps because it forces you to state assumptions in a form that can be checked, criticized, and improved.\n\nIt connects descriptive summaries to inference by treating both as questions about a data generating process.\nIt clarifies what your target is: a parameter, a prediction, a comparison, or a causal effect.\nIt provides a common language that supports frequentist methods, simulation based methods, and Bayesian methods, even when their interpretations of probability differ.\n\nChapter 7 develops this idea carefully and shows how the same model template will organize the rest of the book.",
-    "crumbs": [
-      "Statistics and Data"
-    ]
-  },
-  {
-    "objectID": "part1.html#roadmap-for-chapters-1-through-7",
-    "href": "part1.html#roadmap-for-chapters-1-through-7",
-    "title": "Statistics and Data",
-    "section": "Roadmap for Chapters 1 through 7",
-    "text": "Roadmap for Chapters 1 through 7\nThis part is organized as a progression from broad orientation to concrete skills and then to the model based perspective.\n\nChapter 1: Science of Data and Data Science\nWhat data science is trying to do, where statistics fits, and what a full data analysis workflow looks like.\nChapter 2: Data, Studies, and Causality\nPopulations and samples, observational studies and experiments, and why study design matters for causal claims.\nChapter 3: Ready for R Data\nA practical start on working with data in a modern computing environment, including importing and organizing data.\nChapter 4: Prepare Yourself for Data\nData cleaning and basic data management habits that prevent analysis mistakes.\nChapter 5: Data Visualization\nGraphs as statistical arguments: how to reveal distributions, comparisons, and relationships.\nChapter 6: Data Numerics\nNumerical summaries that complement visualization and support later modeling.\nChapter 7: Model based Thinking\nThe unifying framework of the book: describing data with models, and using models to learn from data under uncertainty.\n\nBy the end of this part, you should be able to describe a dataset clearly, explain how it was produced, create informative summaries, and articulate a first model based description of variability.\n\n\n\n\n\n–&gt;\n\n–&gt;\n\n–&gt;",
-    "crumbs": [
-      "Statistics and Data"
-    ]
-  },
-  {
-    "objectID": "part1.html#statistics-and-data-science",
-    "href": "part1.html#statistics-and-data-science",
-    "title": "Statistics and Data",
-    "section": "",
-    "text": "What is data\nWhy do we need data\nHow do we summarize data\nWhat is model based statistical thinking",
-    "crumbs": [
-      "Statistics and Data"
-    ]
-  },
-  {
-    "objectID": "part1.html#big-ideas-in-this-part",
-    "href": "part1.html#big-ideas-in-this-part",
-    "title": "Statistics and Data",
-    "section": "",
-    "text": "What is data\nIn statistics, data are recorded values that represent information about individuals, objects, or events of interest. We will discuss:\n\nHow statistics views data as measurements with variability\nHow data are generated, including studies, surveys, and experiments\nWhere data come from, including observation, administrative records, sensors, and digital traces\n\n\n\nWhy we need data\nStatistics, machine learning, and data science all rely on data because data provide information about what we are curious about, and connect questions to evidence. We will discuss:\n\nWhy data are necessary for description, comparison, explanation, prediction, and decision making\nHow the purpose of the analysis shapes what data we need and how we collect them\n\n\n\nSummarizing data\nRaw data are often too detailed to interpret directly, so we use summaries to reveal patterns and variability. We will discuss:\n\nWhy we summarize data\nWhy we choose particular summaries, such as graphs and numerical summaries\nHow summaries support our goals, such as comparing groups or understanding relationships\n\n\n\nModel-based thinking\nThe book is model-based statistics. We will discuss:\n\nWhat it means to treat data as coming from a probabilistic model, or a data-generating process.\nHow models help us separate signal from noise, quantify uncertainty, and generalize beyond a sample",
-    "crumbs": [
-      "Statistics and Data"
-    ]
-  },
-  {
-    "objectID": "part1.html#chapter-roadmap",
-    "href": "part1.html#chapter-roadmap",
-    "title": "Statistics and Data",
-    "section": "Chapter roadmap",
-    "text": "Chapter roadmap\nChapter 1: Data, questions, and variability\nWhat data are, what makes a statistical question, and why variability is the key feature that statistics addresses.\nChapter 2: How data are produced\nPopulations and samples, observational studies, surveys, experiments, and how design choices affect what you can conclude.\nChapter 3: Describing one variable\nGraphs and numerical summaries for a single variable, with emphasis on interpreting center, spread, and unusual features.\nChapter 4: Relationships between variables\nTwo variable summaries, group comparisons, association, and how to interpret relationships without overclaiming causation.\nChapter 5: Probability as a model for data\nProbability as a language for describing random variation, including distributions and the meaning of parameters.\nChapter 6: Sampling and randomness\nSampling behavior, sampling distributions, and why statistics can learn from incomplete data.\nChapter 7: A first look at inference through models\nHow we use models to learn about unknown parameters, assess uncertainty, and connect data summaries to conclusions.\n\n\n\n\n\n\n\n\n–&gt;\n\n\n\n–&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n–&gt;\n\n–&gt;\n\n–&gt;",
-    "crumbs": [
-      "Statistics and Data"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#section",
-    "href": "part1-01-stats.html#section",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.4 ",
-    "text": "1.4 \nStatistics can be divided into two parts: descriptive statistics and inferential statistics (statistical inference). Before doing inferential statistics, we usually learn to understand our data because we cannot use appropriate methods, do the analysis and interpret the result correctly without fully understanding our data. Descriptive statistics discusses how to describe and summarize data by frequency/count tables, graphics/visualization or some important numerical measures.\n\n\n\n\n\n\n\n\nFigure 1.11: Branches of statistics",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#descriptive-vs-inferential-statistics",
-    "href": "part1-01-stats.html#descriptive-vs-inferential-statistics",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.4 Descriptive vs Inferential Statistics",
-    "text": "1.4 Descriptive vs Inferential Statistics\nStatistics can be divided into two parts: descriptive statistics and inferential statistics (statistical inference). Before doing inferential statistics, we usually learn to understand our data because we cannot use appropriate methods, do the analysis and interpret the result correctly without fully understanding our data. Descriptive statistics discusses how to describe and summarize data by frequency/count tables, graphics/visualization or some important numerical measures.\n\n\n\n\n\n\n\n\nFigure 1.11: Branches of statistics",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#data-are-numbers-with-context",
-    "href": "part1-01-stats.html#data-are-numbers-with-context",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.2 Data are numbers with context",
-    "text": "1.2 Data are numbers with context\nA key idea for modern statistics is that data are not just numbers. Data can be numbers, labels, images, text, and other records with a context such as how they were produced, what they measure, and what they represent in the real world. Cobb and Moore famously summarized this as “data are numbers with a context.”2\nWhen you look at a dataset, you should be able to answer:\n\nWho or what subject was measured? (people, schools, products, days, patients)\nWhat attributes or characteristics of the subject were recorded? (height, income, blood pressure, response time)\nHow were the data generated? (survey, observational study, experiment, administrative records)",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#populations-samples-and-statistics",
-    "href": "part1-01-stats.html#populations-samples-and-statistics",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.3 Populations, samples, and statistics",
-    "text": "1.3 Populations, samples, and statistics\nStatistics is often about learning something about a population using a sample.\n\nA population is the full set of individuals or situations you care about.\nA sample is a subset of the target population.\n\nUsually, the data we have is from a subset of the target population, and hence we call the data sample data. When the data include all subjects in the population, such data set is called census data.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1.2: Illustration of obtaining sample data from a population\n\n\n\n\n\nA statistic is any numerical summary computed from the sample (for example, a sample mean). A parameter is a number that describes the population or the data generating process (for example, a population mean).",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#how-are-data-generated",
-    "href": "part1-01-stats.html#how-are-data-generated",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.4 How are data generated?",
-    "text": "1.4 How are data generated?\nData are produced by a process, and that process determines what kinds of conclusions are reasonable.\nCommon data sources include:\n\nSurveys and questionnaires We ask questions and record responses. Survey design affects bias and variability.\nObservational studies We record variables as they naturally occur. Observational data can reveal association but do not automatically justify cause and effect claims.\nExperiments We actively assign a treatment or condition. Random assignment is the key tool for supporting causal conclusions.\nAdministrative and digital records These include logs, transactions, medical records, sensors, and digital traces. These datasets can be large, but they still require careful thinking about measurement and selection.\n\nA useful phrase is data generating process: the real world mechanism that produces the values we observe. In a model-based approach, we build a probability model as an approximation to that process.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#statistics-and-data-science",
-    "href": "part1-01-stats.html#statistics-and-data-science",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.5 Statistics and data science",
-    "text": "1.5 Statistics and data science\nStatistics and data science overlap heavily. Both aim to learn from data, and both use modeling.\nWiki lists a more formal definition of statistics in Figure 1.3 below.\n\n\n\n\n\n\n\n\nFigure 1.3: More formal definition of statistics. Source: https://en.wikipedia.org/wiki/Statistics\n\n\n\n\n\nStatistics is the discipline that concerns the collection, organization, analysis, interpretation, and presentation of data. Without doubt, statistics is a discipline dealing with data. However, in typical statistics departments, there isn’t much instruction or research done on data collection, cleaning, storage, database management, and data visualization. Because statistics continues to focus on data analysis and modeling, Data Science now addresses these other processes that statistics passes over.\nA common way to describe the difference is emphasis.\n\nStatistics emphasizes study design, uncertainty quantification, and inference from data to a broader target (a population, a process, or future outcomes).\nData science includes those statistical goals but also emphasizes data acquisition, data management, computing, and deployment of models in real systems.\n\nA helpful reference point is the National Academies report on undergraduate data science, which treats data science as an emerging discipline related to, but not identical to, statistics and computer science.3\nThis book is not a complete data science handbook. It focuses on the part that statistics has historically done best and that modern data work still needs: model-based reasoning with uncertainty.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#describing-data-vs-learning-from-data",
-    "href": "part1-01-stats.html#describing-data-vs-learning-from-data",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.6 Describing data vs learning from data",
-    "text": "1.6 Describing data vs learning from data\nA good analysis usually starts with descriptive summaries and then moves toward inference.\n\nDescriptive statistics organizes and summarizes the observed data. Examples include tables, graphs, and numerical summaries such as means and medians.\nInferential statistics (statistical inference) uses data to learn about something you did not fully observe. Examples include estimating an unknown parameter, predicting a future outcome, or comparing groups while quantifying uncertainty. When doing statistical inference we usually build a probability model to account for data variability, and quantify uncertainty. We assume the sample data are realizations of values generated from that model. Therefore, the model works as a data-generating process or mechanism.\n\n\n\n\n\n\n\n\n\nFigure 1.4: Two broad goals in statistics: describing data and learning from data.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#model-based-statistical-thinking",
-    "href": "part1-01-stats.html#model-based-statistical-thinking",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.7 Model-based statistical thinking",
-    "text": "1.7 Model-based statistical thinking\nModel-based statistics starts from a basic idea.\n\nData vary. Even repeated measurements under similar conditions do not produce identical values.\nWe represent that variation with probability. We treat data as outcomes of random variables and write down a probability model.\nWe learn about unknowns through the model. Unknown quantities are usually model parameters (such as a mean difference, a rate, or a regression slope).\n\nA statistical model is a set of assumptions that connects:\n\nthe data we observe,\nthe chance variation we expect, and\nthe unknown quantities we want to learn about.\n\n\n1.7.1 A model-based workflow\nIn this book, we will repeatedly follow a workflow like this.\n\nState the question in plain language.\nIdentify the data and variables (and how they were generated).\nPropose a probability model for the data generating process.\nFit the model (estimate unknown parameters).\nCheck the model (does it capture important patterns and variability?).\nDraw conclusions with uncertainty clearly communicated.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#frequentist-and-bayesian-paradigms",
-    "href": "part1-01-stats.html#frequentist-and-bayesian-paradigms",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.8 Frequentist and Bayesian paradigms",
-    "text": "1.8 Frequentist and Bayesian paradigms\nModel-based inference can be done in both frequentist and Bayesian ways. The two paradigms share a common starting point:\n\na probability model for the data (often expressed through a likelihood)\n\nThey differ mainly in how they treat unknown parameters and how they interpret probability statements.\n\n1.8.1 Frequentist inference\nIn a frequentist approach:\n\nthe parameter is treated as a fixed (but unknown) constant\nuncertainty is described by what would happen under repeated sampling\n\nTypical outputs include point estimates, confidence intervals, and hypothesis tests.\n\n\n1.8.2 Bayesian inference\nIn a Bayesian approach:\n\nthe parameter is treated as an unknown quantity with a probability distribution\nwe update prior beliefs using the data to obtain a posterior distribution\n\nTypical outputs include posterior means or medians, credible intervals, and posterior probabilities of scientific statements.\n\n\n\n\n\n\nTipHow this book will connect them\n\n\n\nYou will see frequentist and Bayesian tools side by side, using the same underlying probability models whenever possible. The goal is to build one coherent story:\n\nprobability models describe variation\ninference is parameter learning from data\ndifferent paradigms provide different summaries of uncertainty",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#where-we-are-going-next",
-    "href": "part1-01-stats.html#where-we-are-going-next",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.9 Where we are going next",
-    "text": "1.9 Where we are going next\nThis chapter sets the stage: statistics is a science of data because it turns data into knowledge while managing uncertainty.\nIn the next chapters of Part 1, you will:\n\nlearn how data are produced and how design affects conclusions\npractice describing single variables and relationships between variables\nintroduce probability as a language for modeling data\ndevelop the logic of inference through model-based thinking in both frequentist and Bayesian forms",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#footnotes",
-    "href": "part1-01-stats.html#footnotes",
-    "title": "1  Statistics as a Science of Data",
-    "section": "",
-    "text": "American Statistical Association, ASA Newsroom. “Statistics is the science of learning from data and of measuring, controlling, and communicating uncertainty.” https://www.amstat.org/asa-newsroom↩︎\nCobb, G. W., and Moore, D. S. (1997). “Mathematics, Statistics, and Teaching.” The American Mathematical Monthly, 104(9), 801–823. The quote “Data are numbers with a context” is widely attributed to this paper. See, for example, the CRAN statquotes vignette: https://cran.r-project.org/web/packages/statquotes/vignettes/statquotes.html↩︎\nNational Academies of Sciences, Engineering, and Medicine (2018). Data Science for Undergraduates: Opportunities and Options. Washington, DC: The National Academies Press. https://nap.nationalacademies.org/catalog/25104/data-science-for-undergraduates-opportunities-and-options↩︎",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#how-are-data-generated-put-in-next-chapter",
-    "href": "part1-01-stats.html#how-are-data-generated-put-in-next-chapter",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.4 How are data generated? [PUT IN NEXT CHAPTER]",
-    "text": "1.4 How are data generated? [PUT IN NEXT CHAPTER]\nData are produced by a process, and that process determines what kinds of conclusions are reasonable.\nCommon data sources include:\n\nSurveys and questionnaires We ask questions and record responses. Survey design affects bias and variability.\nObservational studies We record variables as they naturally occur. Observational data can reveal association but do not automatically justify cause and effect claims.\nExperiments We actively assign a treatment or condition. Random assignment is the key tool for supporting causal conclusions.\nAdministrative and digital records These include logs, transactions, medical records, sensors, and digital traces. These datasets can be large, but they still require careful thinking about measurement and selection.\n\nA useful phrase is data generating process: the real world mechanism that produces the values we observe. In a model-based approach, we build a probability model as an approximation to that process.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#model-based-statistical-thinking-chapter-7",
-    "href": "part1-01-stats.html#model-based-statistical-thinking-chapter-7",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.7 Model-based statistical thinking [CHAPTER 7]",
-    "text": "1.7 Model-based statistical thinking [CHAPTER 7]\nModel-based statistics starts from a basic idea.\n\nData vary. Even repeated measurements under similar conditions do not produce identical values.\nWe represent that variation with probability. We treat data as outcomes of random variables and write down a probability model.\nWe learn about unknowns through the model. Unknown quantities are usually model parameters (such as a mean difference, a rate, or a regression slope).\n\nA statistical model is a set of assumptions that connects:\n\nthe data we observe,\nthe chance variation we expect, and\nthe unknown quantities we want to learn about.\n\n\n1.7.1 A model-based workflow\nIn this book, we will repeatedly follow a workflow like this.\n\nState the question in plain language.\nIdentify the data and variables (and how they were generated).\nPropose a probability model for the data generating process.\nFit the model (estimate unknown parameters).\nCheck the model (does it capture important patterns and variability?).\nDraw conclusions with uncertainty clearly communicated.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-01-stats.html#frequentist-and-bayesian-paradigms-chapter-8",
-    "href": "part1-01-stats.html#frequentist-and-bayesian-paradigms-chapter-8",
-    "title": "1  Statistics as a Science of Data",
-    "section": "1.8 Frequentist and Bayesian paradigms [CHAPTER 8]",
-    "text": "1.8 Frequentist and Bayesian paradigms [CHAPTER 8]\nModel-based inference can be done in both frequentist and Bayesian ways. The two paradigms share a common starting point:\n\na probability model for the data (often expressed through a likelihood)\n\nThey differ mainly in how they treat unknown parameters and how they interpret probability statements.\n\n1.8.1 Frequentist inference\nIn a frequentist approach:\n\nthe parameter is treated as a fixed (but unknown) constant\nuncertainty is described by what would happen under repeated sampling\n\nTypical outputs include point estimates, confidence intervals, and hypothesis tests.\n\n\n1.8.2 Bayesian inference\nIn a Bayesian approach:\n\nthe parameter is treated as an unknown quantity with a probability distribution\nwe update prior beliefs using the data to obtain a posterior distribution\n\nTypical outputs include posterior means or medians, credible intervals, and posterior probabilities of scientific statements.\n\n\n\n\n\n\nTipHow this book will connect them\n\n\n\nYou will see frequentist and Bayesian tools side by side, using the same underlying probability models whenever possible. The goal is to build one coherent story:\n\nprobability models describe variation\ninference is parameter learning from data\ndifferent paradigms provide different summaries of uncertainty",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics as a Science of Data</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#population-and-sample",
-    "href": "part1-02-data.html#population-and-sample",
-    "title": "2  Data, Studies, and Causality",
-    "section": "2.2 Population and Sample",
-    "text": "2.2 Population and Sample\n Target Population \nThe data set we collect for analysis is usually a sample of some target population in the study. The first step in conducting a study is to identify questions to be investigated. A clear research question is helpful in identifying\n\nwhat cases should be studied (row)\nwhat variables are important (column)\n\nOnce the research question is determined, it is important to identify the target population to be investigated. The target population is the complete collection of data we’d like to make inference about. Look at the following examples.\n GPA Example \n\n\nSuppose a Marquette professor has a research question: What is the average GPA of currently enrolled Marquette undergraduate students?\nThe target population in this study is  All Marquette undergraduate students that are currently enrolled. because all Marquette undergrads that are currently enrolled are the complete collection of data we’d like to make inference about or we are interested in some property or characteristic of these group of people. Each currently enrolled Marquette undergraduate student is an object in the population. Average GPA is the variable or population property we would like to make an inference about.\n\n\n\n\n\n\nSource: Upslash-Sarah Noltner\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nStudents who are not currently enrolled or students that have already graduated are not our interest, so they shouldn’t be a part of target population.\n\n\n Heart Disease Example \n\n\nDoes a new drug reduce mortality in patients with severe heart disease? If this is our research question, the target population is  All people with severe heart disease.  Mortality is the variable or population property we would like to make an inference about.\nDo you think it is possible the apply the new drug to all the patients with severe heart disease, and obtain the mortality we are interested?\n\n\n\n\n\n\nSource: Upslash-National Cancer Institute\n\n\n\n\n\n\n\n Sample Data \nIn some cases it’s possible to collect data of all the cases we are interested in. However, most of the time it is either too expensive or too time consuming to collect data for every case in a population. What if we tried to collect data on the average GPA of all students in Illinois? The U.S.? The world? 😱 😱 😱\n\n\nWhen we are not able to collect all the cases in the target population due to some budget or time constraint, but we still want to learn about the population property, our solution is sampling cases from the target population. A sample is a subset of cases selected from a population.\nWe are not able to collect the average GPA of every member of the population, but we can collect a sample from that population which has fewer objects (Figure 2.2). We can then compute the average GPA of the sample data. \n\n\n\n\n\n\n\n\n\n\n\nFigure 2.2: Sampling from the population reduces the number of objects from which to collect data.\n\n\n\n\n\n\n\nWe hope that the average GPA of the sample is close to the average GPA of the population, which is our main interest. For the sample’s average GPA to be close to population’s average GPA, we want the sample to look like the population such that they share similar attributes including GPA. In other words, we hope the sample is a small size of everything in the population, and the sample is representative of the population. Ideally, a sample is the small size of some dish and the population is the large size of that dish.\n\n Good Sample vs. Bad Sample \n\n\n\n\n\n\nNoteIs this 4720/5720 class a sample of the target population Marquette students?\n\n\n\n\n\n\nOf course, every member in the class is a Marquette student, so the class is a subset of the population Marquette students. Let me ask you another question.\n\n\n\n\n\n\nNoteIs this 4720/5720 class a “good” sample of the target population?\n\n\n\n\n\n\nRemember a good sample should well represent the target population. Do you think the class is generally a small version of the entire Marquette student body? The sample is convenient to be collected, but as Figure 2.3 shows, it is NOT representative of the population. Because this class is primarily composed of STEM majors, it may not share the attributes necessary with the target population for the two to share a similar average GPA. We call this kind of sample a biased sample. The average GPA of the class may differ greatly from the average GPA of all Marquette undergrads.\n\n\n\n\n\n\n\n\nFigure 2.3: Majors of students in this 4720/5720 class\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2.4: Sampling from a class of mostly STEM students is not representative of the entire population.\n\n\n\n\n\n\n\nIf the biased sample has no or tiny impact on the population attribute we’d like to discover, we are lucky, and the issue is not serious. However, if the sample is biased in a way that the attribute we get from the sample is quite different from that of the population, then we miss the mark. In the GPA example, if the average GPA depends on students major, the sample that is biased in students’ major causes a trouble.\nAs shown in Figure 2.5, the average GPA differs based on students’ majors. Because this class consists of mostly STEM majors, it is likely that the average GPA of its students is not the same as the average GPA of all Marquette undergraduates. Figure 2.4 depicts that sampling needs to be done appropriately to ensure the sample is representative of the population. \n\n\n\n\n\n\n\n\n\n\n\nFigure 2.5: UC Berkeley average GPAs by major\n\n\n\n\n\n\n\n\n\nHow do we collect a representative sample? We always seek to randomly select a sample from a population. Every member in the target population should be treated equally, and preferably has equal chance to be chosen in the sample. If you just collect data from STEM fields, we miss the information provided by students from arts, humanities, and other non-STEM majors. Random sampling usually give us a representative sample, as long as the sample size, the number of objects in the sample, is not too small. It is important to collect samples this way because many statistical methods are based on the random sampling assumption.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data, Studies, and Causality</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#data-collection",
-    "href": "part1-02-data.html#data-collection",
-    "title": "2  Data, Studies, and Causality",
-    "section": "2.3 Data Collection",
-    "text": "2.3 Data Collection\nIn this section, we briefly discuss how data can be collected.\n Two Types of Studies to Collect Sample Data \nThere are two types of studies that are used to collect data: observational studies and experimental studies.\nAn observational study is a study in which those collecting the data observe and measure characteristics/variables, but do NOT attempt to modify or intervene with the subjects being studied.\n\n Example: Sample from 1️⃣ the heart disease and 2️⃣ heart disease-free populations and record the fat content of the diets for the two groups.  In this type of study, the researchers do not modify or intervene with the the subjects either with or without heart disease. They just record the fat content in their diets.\n\nThe other type of study is called the experimental study. In an experimental study, some treatment(s) is applied and then those collecting data proceed to observe its responses or effects on the individuals, the experimental units in such study.\n\n Example: Assign volunteers to one of several diets with different levels of dietary fat and compare the fat levels with respect to the incidence of heart disease after a period of time.  In this experimental study, the treatment is the fat level in diets. The researchers do not just observe the subjects behavior. Instead, they ask the subjects to take a specific diet they design for a period of time.\n\n\n\n\n\n\n\nNoteObservational or Experimental?\n\n\n\n\nRandomly select 40 males and 40 females to see the difference in blood pressure levels between male and female.\nTest the effects of a new drug by randomly dividing patients into 3 groups (high dosage, low dosage, placebo).\n\n\n\n Limitation of Observational Studies: Confounding Variables \nOne limitation of observational studies is confounding. A confounder is a variable that is not included in a study, but affects the variables in the study. For example, a person observes past data showing that increases in ice cream sales are associated with increases in drownings and concludes that eating ice cream causes drownings. 😱😕⁉️\n\n\n\n\n\n\n\nSource: Unsplash-Brooke Lark\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Unsplash-Nate Neelson\n\n\n\n\n\n\n\n\n\n\n\n\nNoteWhat is the confounder that is not in the data but affects ice cream sales and the number of drownings?\n\n\n\n\nTemperature\n\n\n\n\nAs temperature increases, ice cream sales increase and the number of drownings also rises because more people go swimming (Figure 2.6).\n\n\n\n\n\n\n\n\n\nFigure 2.6: Temperature acting as a confounder\n\n\n\n\n\n\nMaking causal conclusions based on experimental data is often more reasonable than making the same causal conclusions based on observational data. Observational studies are generally only sufficient to show associations, not causality.\n\n Types of Random Samples \nAs previously mentioned, many statistical methods are based on the randomness assumption. It’s important to understand what a random sample is and how to collect it. In a random sample, each member of a population is equally likely to be selected.\n Simple Random Sample \nFor a simple random sample (SRS), every possible sample of sample size \\(n\\) has the same chance to be chosen.\n\nExample: If I were to sample 100 students from all 10,000 Marquette students, I would randomly assign each student a number (from 1 to 10,000) and then randomly select 100 numbers.\n\n\n\n\n\n\n\n\n\n\n\nFigure 2.7: Simple Random Sample\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2.8: Simple random sample from a population of 15 (https://research-methodology.net/sampling-in-primary-data-collection/random-sampling/)\n\n\n\n\n\n\n\n Stratified Random Sample \nFor stratified sampling, we subdivide the population into different subgroups (strata) that share the same characteristics, then draw a simple random sample from each subgroup. Stratified sampling has a property: Homogeneous within strata; Non-homogeneous between strata. (Figure 2.9)\n\n\n\n\n\n\n\n\nFigure 2.9: Stratified Sampling. Source: https://www.datasciencemadesimple.com/stratified-random-sampling-in-r-dataframe-2/\n\n\n\n\n\n\nExample: Divide Marquette students into groups by colleges, then perform a SRS for each group (Figure 2.10). In this case, subjects within strata are homogeneous because people in the same stratum belong to the same college. Subjects are non-homogeneous between strata because students in one college is not a student in another college.\n\n\n\n\n\n\n\n\n\nFigure 2.10: Stratified sampling of Marquette Students\n\n\n\n\n\n Cluster Sampling \nFor cluster sampling, divide the population into clusters, then randomly select some of those clusters, and then keep all the members from those selected clusters. Cluster sampling has a property: Homogeneous between clusters; Non-homogeneous within clusters (Figure 2.11). Clusters look similar each other, but members in a cluster are not very alike. They have different characteristics.\n\n\n\n\n\n\n\n\nFigure 2.11: Cluster Sampling Source: https://research-methodology.net/sampling-in-primary-data-collection/cluster-sampling/\n\n\n\n\n\n\nExample: Study 4720 students’ drinking habits by dividing the students into 9 groups, and then randomly selecting 3 and interviewing all of the students in each of those clusters (Figure 2.12). Subjects are homogeneous between clusters because clusters are like random partitions, and each one is a representative subset of the entire population. Subjects are non-homogeneous within clusters because everyone has their own characteristics, and subjects are not divided based on any characteristic such as major or college.\n\n\n\n\n\n\n\n\n\nFigure 2.12: Cluster sampling of Marquette students",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data, Studies, and Causality</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#data-type",
-    "href": "part1-02-data.html#data-type",
-    "title": "2  Data, Studies, and Causality",
-    "section": "2.4 Data Type",
-    "text": "2.4 Data Type\nOK. We learn data collection and sampling methods. Now’s let’s learn some data types. Usually a statistical method is only for some type of data or variables. Knowing data types is important because it helps us choose the correct or appropriate statistical methods for analysis. It also helps us interprets the analysis result correctly. Figure 2.13 tells us everything about data type. We are going to learn each data type in the figure.\n\n\n\n\n\n\n\n\nFigure 2.13: Types of Data\n\n\n\n\n\n Categorical vs. Numerical Variables \nA categorical variable provides non-numerical information which can be placed in one (and only one) category from two or more categories. Here are some examples.\n\nGender (Male 👨, Female 👩, Trans 🏳️‍🌈) \nClass (Freshman, Sophomore, Junior, Senior, Graduate) \nCountry (USA 🇺🇸, Canada 🇨🇦, UK 🇬🇧, Germany 🇩🇪, Japan 🇯🇵, Korea 🇰🇷) \n\nGender, Class, and Country are all categorical variables because they provide non-numerical information. Their possible “values” are “categories”. Keep in mind that a data object can only belong to one category of that variable. You cannot be a freshman and sophomore.\nA numerical variable is recorded in a numerical value representing counts or measurements. Some examples are\n\n GPA \n The number of relationships you’ve had \n Height \n\nThe possible values of the three variables are all numerical or numbers. You are a 6’2” tall student who had eight girlfriends and your GPA is 3.98.\n Numerical Variables \nNumerical variables can be discrete or continuous. A discrete variable takes on values of a finite or countable number, while a continuous variable takes on values anywhere over a particular range without gaps or jumps.\n\n GPA is continuous because theoretically it can be any value between 0 and 4. \n The number of relationships you’ve had is discrete because you can count the number and it is finite. The possible values are 0, 1, 2, 3, and so on. Can you have a 0.5 relationship?\n Height is continuous because it can be any number within a range. \n\n Categorical Variables \nFor convenience, categorical variables are usually recorded as numbers in a data set. For example, we can have\n\nGender (Male = 0, Female = 1, Trans = 2) \nClass (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5) \nCountry (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301) \n\nEven United Airlines boarding group is categorical. The group number does provide non-numerical information, which is the order of boarding. You cannot be in both boarding zone one and zone two for the same ticket. You can only be in one group.\nPlease note that the numbers represent categories only; taking differences of these numbers is meaningless. If we use the coding scheme in the examples,\n\nCanada - USA = 101 - 100 = 1???\nGraduate - Sophomore = 5 - 2 = 3 = Junior???\n\nThe arithmetic operations do not make sense. For any data or variables, we need to learn the level of measurements to know which arithmetic operations are meaningful for what type of data.\n\n Levels of Measurements \n Nominal and Ordinal for Categorical Variables \nA categorical variable can be of nominal or ordinal level of measurement.\nThe data is nominal if can not be ordered in a meaningful or natural way. For example,\n\nGender (Male = 0, Female = 1, Trans = 2)  is nominal because Male, Female and Trans cannot be ordered, even the numbering coding has an ordering.\nCountry (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301)  is nominal. There is no reason to put any country before any other country unless there is another variable giving those countries another attribute that can be ordered.\n\nOrdinal data can be arranged in some meaningful order, but differences between data values can NOT be determined or are meaningless.\n\nClass (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5)  is ordinal because Sophomore is one class higher than Freshman, and so on. Here the difference is still meaningless. It seems that Junior is one year higher than Sophomore, and Junior - Sophomore = 1 kind of makes sense. However, “1” does not mean one year higher; instead “1” means Freshman. Moreover, we could even use the numbering (Freshman = 1, Sophomore = 10, Junior = 33, Senior = 44, Graduate = 50) for the Class variable.\n\n Interval and Ratio for Numerical Variables \nNumerical data can be interval or ratio level of measurement.\nInterval data have meaningful differences between any two values but the data do NOT have a natural zero or starting point. The data can do \\(\\color{red} +\\) and \\(\\color{red} -\\), but can’t reasonably do \\(\\color{red} \\times\\) and \\(\\color{red} \\div\\).\n\nTemperature is interval because \\(80^{\\circ}\\)F is 40 degrees higher than \\(40^{\\circ}\\)F \\((80-40=40)\\), but \\(0^{\\circ}\\) does not mean NO heat or NO temperature, but a specific temperature. Also, \\(80^{\\circ}\\)F is NOT twice as hot as \\(40^{\\circ}\\)F.\n\nRatio data have both meaningful differences and ratios, and there is a natural zero starting point that indicates none of the quantity. The data can do \\(\\color{red} +\\), \\(\\color{red} -\\), \\(\\color{red} \\times\\) and \\(\\color{red} \\div\\).\n\nDistance is ratio level of measurement because \\(80\\) miles is twice as far as \\(40\\) miles \\((80/40 = 2)\\), and \\(0\\) mile means NO distance.\n\n\n Converting Numerical to Categorical \nSometimes research purpose we may want to convert a numerical variable into a categorical variable. Figure 2.14 is an example of turning a 100% percentage grade into a letter grade which is categorical. Another is example is turning annual salary (numerical) into income level (categorical). We can say salary between $0 and $50,000 is “low” income level, salary between $50,000 and $120,000 is “middle” income level, and above $120,000 is “high” income level.\n\n\n\n\n\n\n\n\nGrade\n\n\nPercentage\n\n\n\n\n\n\nA\n\n\n[94, 100]\n\n\n\n\nA-\n\n\n[90, 94)\n\n\n\n\nB+\n\n\n[87, 90)\n\n\n\n\nB\n\n\n[83, 87)\n\n\n\n\nB-\n\n\n[80, 83)\n\n\n\n\nC+\n\n\n[77, 80)\n\n\n\n\nC\n\n\n[73, 77)\n\n\n\n\nC-\n\n\n[70, 73)\n\n\n\n\nD+\n\n\n[65, 70)\n\n\n\n\nD\n\n\n[60, 65)\n\n\n\n\nF\n\n\n[0, 60)\n\n\n\n\n\n\nFigure 2.14: Grading scale for this class\n\n\n\n\n\n Practice \n\n\n\n\n\n\nWarningYour turn!\n\n\n\nIdentify the data type of each variable in the Marquette men’s basketball player data\n\n\n\n\n\n\n\n\n\n\nFigure 2.15: 2019 Marquette men’s basketball player data set.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data, Studies, and Causality</span>"
-    ]
-  },
-  {
     "objectID": "part1-02-data.html#exercises",
     "href": "part1-02-data.html#exercises",
-    "title": "2  Data, Studies, and Causality",
-    "section": "2.5 Exercises",
-    "text": "2.5 Exercises\n\nData Type: Identify each of the following as numerical or categorical data.\n\nThe names of the companies that manufacture paper towels\nThe colors of cars\nThe heights of football players\n\nLevel of Measurements: Identify the level of measurement used in each of the following.\n\nThe weights of people in a sample of people living in Milwaukee.\nA physician’s descriptions of “abstains from smoking, light smoker, moderate smoker, heavy smoker.”\nFlower classifications of “rose, tulip, daisy.”\nSuzy measures time in days, with 0 corresponding to her birth date. The day before her birth is -1, the day after her birth is +1, and so on. Suzy has converted the dates of major historical events to her numbering system. What is the level of measurement of these numbers?\n\nDiscrete vs Continuous: Determine whether the data are discrete or continuous.\n\nThe length of stay (in days) for each COVID patient in Wisconsin.\nSeveral subjects are randomly selected and their heights are recorded.\nFrom a data set, we see that a male had an arm circumference of 31.28 cm.\nA sample of married couples is randomly selected and the number of animals in each family is recorded.\n\nSampling Method: Identify which of these types of sampling is used: random, stratified, or cluster.\n\nDr. Yu surveys his statistics class by identifying groups of males and females, then randomly selecting 7 students from each of those two groups.\nDr. Yu conducts a survey by randomly selecting 5 different sports teams at Marquette and surveying all of the student-athletes on those teams.\n427 subjects were randomly assigned to (1) meditation or (2) no mediation group to study the effectiveness of this mindfulness activity on lowering blood pressure.\n\nStudy Type: Determine whether the study is an experiment or an observational study, then identify a major problem with this study.\n\nIn a survey conducted by USA Today, 998 Internet users chose to respond to the question:“How often do you seek medical advice online?” 42% of the respondents said “frequently.”\nThe Physicians’ Health Study involved 21,045 female physicians. Based on random selections, 11,224 of them were treated with aspirin and other other 9,821 were given placebos. The study was stopped early because it became clear that aspirin did not reduce the risk of myocardial infarctions by a substantial amount.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data, Studies, and Causality</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#what-data-mean-in-statistics",
-    "href": "part1-02-data.html#what-data-mean-in-statistics",
     "title": "2  Data: Meaning, Collection, and Types",
-    "section": "",
-    "text": "Data are not only the values. Data also include context: who or what was measured, when and where the measurement happened, and how the measurement was taken.\nData come from a process. Even if the same procedure is repeated, the recorded values will typically vary. Statistics treats that variability as a central feature, not as an inconvenience.\n\n\n2.1.1 Some key terms\nObservational unit (or case). The object being described by a row of data. In the coffee shop story, an observational unit might be a single order, a single student visit, or a single hour, depending on how the data set is defined.\nVariable. A characteristic recorded for each observational unit. In statistics, we often treat a variable as something that can vary across units and across repetitions of data collection.\nData set. A collection of variables measured on a collection of observational units, together with documentation that explains what each variable means and how it was recorded.\nData dictionary (or codebook). A document that defines each variable, its units, allowed values, and any special codes for missing or unknown values.\n\n\n\n\n\n\nTipWhy this matters for model-based statistics\n\n\n\nModel-based statistics starts from a simple idea: the data you see are one possible outcome of a data generating process. Later in the book, we will describe that process using probability models. In this chapter, we stay at the level of careful description, because a probability model cannot rescue a poorly defined variable or a poorly collected data set.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#variables-and-data-sets",
-    "href": "part1-02-data.html#variables-and-data-sets",
-    "title": "2  Data: Meaning, Collection, and Types",
-    "section": "2.2 Variables and data sets",
-    "text": "2.2 Variables and data sets\nMost data sets you will work with in this book have this structure.\n\nEach row corresponds to an observational unit\nEach column corresponds to a variable\nEach cell is the recorded value of one variable for one unit\n\nThis structure is often called a tidy or rectangular data set. It is not the only possible format, but it is the most common starting point for statistical work in R.\n\n2.2.1 Example: a small data set from the coffee shop story\nThe following table is a toy example. It is small on purpose so we can talk about meaning, collection, and type.\n\ncoffee &lt;- data.frame(\n  order_id     = 1:12,\n  time_block   = c(\"8 to 9\", \"8 to 9\", \"8 to 9\", \"9 to 10\", \"9 to 10\", \"9 to 10\",\n                   \"10 to 11\", \"10 to 11\", \"10 to 11\", \"11 to 12\", \"11 to 12\", \"11 to 12\"),\n  mobile_order = c(\"yes\",\"no\",\"no\",\"yes\",\"no\",\"yes\",\"no\",\"no\",\"yes\",\"yes\",\"no\",\"no\"),\n  wait_min     = c(4, 11, 9, 5, 10, 6, 8, 7, 5, 4, 6, 7),\n  items        = c(1, 2, 1, 1, 3, 2, 2, 1, 1, 1, 2, 1),\n  rating       = c(5, 2, 3, 4, 2, 4, 3, 3, 4, 5, 4, 3)\n)\n\nknitr::kable(coffee, caption = \"Toy example data from the coffee shop story.\")\n\n\n\nTable 2.1: Toy example data from the coffee shop story.\n\n\n\n\n\n\norder_id\ntime_block\nmobile_order\nwait_min\nitems\nrating\n\n\n\n\n1\n8 to 9\nyes\n4\n1\n5\n\n\n2\n8 to 9\nno\n11\n2\n2\n\n\n3\n8 to 9\nno\n9\n1\n3\n\n\n4\n9 to 10\nyes\n5\n1\n4\n\n\n5\n9 to 10\nno\n10\n3\n2\n\n\n6\n9 to 10\nyes\n6\n2\n4\n\n\n7\n10 to 11\nno\n8\n2\n3\n\n\n8\n10 to 11\nno\n7\n1\n3\n\n\n9\n10 to 11\nyes\n5\n1\n4\n\n\n10\n11 to 12\nyes\n4\n1\n5\n\n\n11\n11 to 12\nno\n6\n2\n4\n\n\n12\n11 to 12\nno\n7\n1\n3\n\n\n\n\n\n\n\n\nEven this small table raises questions you must answer before analysis.\n\nWhat is the observational unit: an order, a student visit, or a person\nWhat is the meaning of wait time: from payment to pickup, or from joining the line to pickup\nHow was rating collected: asked immediately, or later by email, or only for app users\nAre mobile orders counted differently from in person orders\n\nThose questions are not technicalities. They determine what conclusions are credible.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#how-data-are-generated",
-    "href": "part1-02-data.html#how-data-are-generated",
-    "title": "2  Data: Meaning, Collection, and Types",
-    "section": "2.3 How data are generated",
-    "text": "2.3 How data are generated\nA useful way to think about data generation is to separate three layers.\n\nThe real world process (people, behavior, systems)\nThe measurement process (what gets recorded, with what instrument, with what rules)\nThe data set you analyze (rows, columns, codes, and missing values)\n\nA problem can enter at any layer. For example, a campus survey might have a well written question but a poor response rate, or it might have a high response rate but a confusing question.\n\n2.3.1 Population and sample\nA population is the larger group you want to learn about. A sample is the group you actually observe.\nIn the coffee shop story, several populations are possible.\n\nAll coffee shop visits on campus this semester\nAll student visits during weekday mornings\nAll students who buy coffee on campus\n\nThe population should be defined by the question, not by convenience. The sample is determined by the collection method and practical constraints.\n\n\n2.3.2 Representation and bias\nA sample is most useful when it represents the population for the question being asked. Two common reasons a sample does not represent the population are:\n\nSelection bias. Some units are more likely to be included than others, in a way related to the variables of interest.\nNonresponse or missingness. Some units are included, but some variables are not recorded, in a way related to the outcomes.\n\nIn model-based work, we often describe selection and missingness as parts of the data generating process. If they are severe, they can dominate any later modeling step.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#how-data-are-collected",
-    "href": "part1-02-data.html#how-data-are-collected",
-    "title": "2  Data: Meaning, Collection, and Types",
-    "section": "2.4 How data are collected",
-    "text": "2.4 How data are collected\nMost introductory examples fall into one of these collection approaches.\n\n2.4.1 Sample surveys\nA sample survey collects data from a subset of a population, typically using a questionnaire or structured measurement plan.\nKey design ideas include:\n\nA sampling frame that defines who can be selected\nA selection method, ideally involving randomization\nClear measurement definitions and units\nA plan for handling nonresponse\n\n\n\n2.4.2 Observational studies\nAn observational study records variables as they naturally occur, without assigning treatments or interventions. Observational studies are common in social science, public health, business analytics, and campus life.\nIn the coffee shop story, using transaction logs to compare wait times for mobile versus non mobile orders is observational unless orders were assigned by design. Students choose whether to use the app, and that choice may be related to other factors such as schedule or patience.\n\n\n2.4.3 Experiments\nAn experiment assigns an intervention to units, such as a treatment, policy, or feature change, and then measures outcomes. Random assignment is a powerful tool because it helps separate the intervention effect from other differences between groups.\nIn a campus setting, a small experiment might randomly assign some time blocks to run the mobile ordering pilot, while keeping staffing levels comparable. Then the comparison of wait times has a clearer causal interpretation.\n\n\n\n\n\n\nWarningA practical warning\n\n\n\nMany real data sets combine collection approaches. A data set might include administrative records plus a survey, or sensor data plus a short experiment. When sources are combined, documentation becomes even more important.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#where-data-come-from",
-    "href": "part1-02-data.html#where-data-come-from",
-    "title": "2  Data: Meaning, Collection, and Types",
-    "section": "2.5 Where data come from",
-    "text": "2.5 Where data come from\nModern data work often begins by asking not only how the data were collected, but where the data originate. Here are common sources.\n\n2.5.1 Primary collection\nYou or your team collect the data for a specific question, such as a class survey or a designed experiment. Primary collection offers control, but it requires effort and planning.\n\n\n2.5.2 Administrative and transaction records\nThese are records created as part of running an organization: course registrations, dining swipes, library checkouts, or purchases. They can be large and detailed, but the variables were not originally designed for your research question.\n\n\n2.5.3 Digital traces and platform logs\nApps and websites generate timestamped logs: clicks, views, location pings, and usage patterns. These data can be informative, but they raise privacy and consent issues and they often require careful cleaning.\n\n\n2.5.4 Sensors and instruments\nWearables, lab instruments, and environmental sensors produce streams of measurements. These data can be high frequency and high volume, which makes data type and data structure especially important.\n\n\n2.5.5 Public and open data\nGovernments, research groups, and organizations release public data sets. Open data can be valuable for learning and research, but you still must understand the original collection process and limitations.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#data-types",
-    "href": "part1-02-data.html#data-types",
-    "title": "2  Data: Meaning, Collection, and Types",
-    "section": "2.6 Data types",
-    "text": "2.6 Data types\nData type is about what values a variable can take and what operations make sense on those values. Data type shapes:\n\nHow you summarize a variable in Chapter 3\nWhat kinds of relationships you look for in Chapter 4\nWhat probability models are reasonable later in the book\n\n\n2.6.1 Two broad families\nCategorical variables. Values are labels for categories.\n\nNominal categorical: categories have no natural order (major, residence hall)\nOrdinal categorical: categories have a natural order (rating from 1 to 5)\n\nQuantitative variables. Values are numbers where arithmetic meaning is appropriate.\n\nDiscrete quantitative: counts (number of items ordered)\nContinuous quantitative: measurements on a scale (wait time in minutes)\n\n\n\n2.6.2 Common data types and model building blocks\nLater chapters will introduce probability models carefully. For now, it is enough to see the connection between variable type and the kind of randomness we might model.\n\n\n\n\n\n\n\n\nVariable type\nExample\nA common probability model family\n\n\n\n\nBinary categorical\nmobile order yes or no\nBernoulli or Binomial\n\n\nNominal categorical\nresidence hall\nCategorical or Multinomial\n\n\nOrdinal categorical\nrating 1 to 5\nOrdered categorical models\n\n\nCount\nitems purchased\nPoisson or Negative Binomial\n\n\nContinuous\nwait time\nNormal, log normal, or other continuous models\n\n\nProportion\nfraction of correct answers\nBinomial or Beta type models\n\n\n\n\n\n2.6.3 Data type depends on decisions\nThe same underlying idea can be recorded in different ways.\n\nA rating of 1 to 5 is ordinal categorical, but you might treat it as quantitative when computing an average. That choice has consequences.\nAge can be recorded as a number, or grouped into categories. Grouping can simplify summaries, but it discards information.\nA continuous measurement can be rounded to an integer, which changes the type and may change the model.\n\nGood practice is to document these decisions and to align them with the goals of the analysis.",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#practice",
-    "href": "part1-02-data.html#practice",
-    "title": "2  Data: Meaning, Collection, and Types",
-    "section": "2.7 Practice",
-    "text": "2.7 Practice\n\n\n\n\n\n\nWarningYour turn\n\n\n\nReturn to the coffee shop story and answer these questions.\n\nWhat is a reasonable observational unit if the goal is to study wait time\nList four variables you would want, and describe how each would be measured\nIdentify which variables are categorical and which are quantitative\nFor one categorical and one quantitative variable, describe a sensible summary you might use in Chapter 3",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#chapter-summary",
-    "href": "part1-02-data.html#chapter-summary",
-    "title": "2  Data: Meaning, Collection, and Types",
-    "section": "2.8 Chapter summary",
-    "text": "2.8 Chapter summary\nIn this chapter, you learned how statisticians interpret data and why data meaning and data generation matter.\n\nData are recorded values with context and purpose\nA data set has observational units and variables, supported by documentation\nData are generated by a real world process and a measurement process\nCollection approaches include surveys, observational studies, and experiments\nModern data sources include administrative records, digital traces, sensors, and open data\nData types guide both summaries and later probability modeling",
-    "crumbs": [
-      "Statistics and Data",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"
-    ]
-  },
-  {
-    "objectID": "part1-02-data.html#where-we-are-going-next",
-    "href": "part1-02-data.html#where-we-are-going-next",
-    "title": "2  Data: Meaning, Collection, and Types",
-    "section": "2.9 Where we are going next",
-    "text": "2.9 Where we are going next\nChapter 3 focuses on summarizing one variable at a time. You will learn how to use graphs and numerical summaries to describe patterns and variability, and how those summaries prepare you for model-based inference later in the book.\n\n\n–&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n–&gt;  –&gt; \n\n\n–&gt;\n\n–&gt;  –&gt;\n\n–&gt;              \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n–&gt;  –&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n–&gt;\n\n–&gt; \n\n\n–&gt;\n\n–&gt;  –&gt;\n\n–&gt;        –&gt;  –&gt;\n\n–&gt;\n\n–&gt;\n\n\n–&gt;  –&gt;  –&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n–&gt;",
+    "section": "2.8 Exercises",
+    "text": "2.8 Exercises\n\nData Type: Identify each of the following as numerical or categorical data.\n\nThe names of the companies that manufacture paper towels\nThe colors of cars\nThe heights of football players\n\nLevel of Measurements: Identify the level of measurement used in each of the following.\n\nThe weights of people in a sample of people living in Milwaukee.\nA physician’s descriptions of “abstains from smoking, light smoker, moderate smoker, heavy smoker.”\nFlower classifications of “rose, tulip, daisy.”\nSuzy measures time in days, with 0 corresponding to her birth date. The day before her birth is -1, the day after her birth is +1, and so on. Suzy has converted the dates of major historical events to her numbering system. What is the level of measurement of these numbers?\n\nDiscrete vs Continuous: Determine whether the data are discrete or continuous.\n\nThe length of stay (in days) for each COVID patient in Wisconsin.\nSeveral subjects are randomly selected and their heights are recorded.\nFrom a data set, we see that a male had an arm circumference of 31.28 cm.\nA sample of married couples is randomly selected and the number of animals in each family is recorded.\n\nSampling Method: Identify which of these types of sampling is used: random, stratified, or cluster.\n\nDr. Yu surveys his statistics class by identifying groups of males and females, then randomly selecting 7 students from each of those two groups.\nDr. Yu conducts a survey by randomly selecting 5 different sports teams at Marquette and surveying all of the student-athletes on those teams.\n427 subjects were randomly assigned to (1) meditation or (2) no mediation group to study the effectiveness of this mindfulness activity on lowering blood pressure.\n\nStudy Type: Determine whether the study is an experiment or an observational study, then identify a major problem with this study.\n\nIn a survey conducted by USA Today, 998 Internet users chose to respond to the question:“How often do you seek medical advice online?” 42% of the respondents said “frequently.”\nThe Physicians’ Health Study involved 21,045 female physicians. Based on random selections, 11,224 of them were treated with aspirin and other other 9,821 were given placebos. The study was stopped early because it became clear that aspirin did not reduce the risk of myocardial infarctions by a substantial amount.",
     "crumbs": [
       "Statistics and Data",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data: Meaning, Collection, and Types</span>"

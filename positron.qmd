@@ -1,0 +1,729 @@
+---
+title: "Using Positron with GitHub for R and Python projects"
+subtitle: "A student friendly chapter style guide with concrete examples"
+format:
+  html:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+execute:
+  eval: false
+---
+
+## Chapter overview
+
+This chapter teaches a complete GitHub workflow inside Positron for a data science project that uses both R and Python. You will learn how to clone a repository, open it as a Positron project, create a simple project structure, run example code, and then stage, commit, and push your work back to GitHub.
+
+The goal is not only to complete the steps, but also to understand what each step does and why it matters.
+
+## Learning goals
+
+By the end of this chapter, you should be able to do the following tasks.
+
+1. Explain the difference between a local repository on your computer and a remote repository on GitHub.
+2. Clone a GitHub repository into a new folder using Positron.
+3. Verify the repository status using `git status` and `git remote -v`.
+4. Create a safe, reproducible project structure for R and Python work.
+5. Create and use a Python virtual environment stored inside the project folder.
+6. Make changes, stage changes, commit changes, and push changes.
+7. Choose an authentication method that works for public and private repositories and recover from common authentication errors.
+
+## Mental model: local versus remote
+
+Git is the version control tool on your computer. GitHub is a website that hosts a copy of your repository.
+
+You will work with two copies of the same project.
+
+1. Local repository: the project folder on your computer.
+2. Remote repository: the copy stored on GitHub.
+
+Most commands in this chapter are about keeping these two copies aligned.
+
+### Vocabulary
+
+This chapter uses these words often.
+
+1. Clone: create a local copy of a remote repository.
+2. Pull: bring remote changes down to your local repository.
+3. Stage: choose which changed files will be included in your next commit.
+4. Commit: record a snapshot of staged changes with a message.
+5. Push: send your local commits up to the remote repository.
+
+## Prerequisites and one time setup
+
+### Required software
+
+You need the following tools installed on your computer.
+
+1. Positron
+2. Git
+3. R
+4. Python
+5. Quarto, only if you will render Quarto documents to HTML or PDF
+
+### Check your tools from the Positron Terminal
+
+Open the Terminal panel in Positron and run these commands.
+
+```bash
+git --version
+R --version
+python --version
+quarto --version
+```
+
+What this step is for
+
+You are checking that each tool is installed and available on your PATH, which means your operating system can find and run it.
+
+Syntax explained
+
+1. Each command prints a version number. A version number confirms the tool exists and runs.
+2. The `--version` part is a command line option. In many tools, `--version` tells the tool to print its version and exit.
+
+If any command says it is not found, install that tool before continuing.
+
+### Configure your Git identity
+
+Git records your name and email address inside each commit. Configure these once per computer, or once per repository.
+
+```bash
+git config user.name "First Last"
+git config user.email "name@university.edu"
+```
+
+What this step is for
+
+Without a name and email, Git may refuse to commit or may create commits without correct author information.
+
+Syntax explained
+
+1. `git config` edits Git configuration values.
+2. `user.name` and `user.email` are the configuration keys.
+3. The quotes allow spaces in your name.
+
+Confirm your settings.
+
+```bash
+git config user.name
+git config user.email
+```
+
+## Authentication to GitHub: public and private repositories
+
+Public repositories are readable by anyone. Private repositories require authentication to read and almost always require authentication to push.
+
+In a class, the simplest and most consistent approach is HTTPS plus a personal access token, also called a PAT. SSH is also valid, but it requires an SSH key setup that can vary across computers.
+
+### Option A: HTTPS plus personal access token
+
+When Git asks for a password during push, you enter the token value, not your GitHub account password.
+
+What this step is for
+
+GitHub uses tokens for Git operations over HTTPS. A token can be limited to specific repositories and permissions.
+
+Practical guidance
+
+1. Create a token in GitHub.
+2. Save it in a password manager.
+3. Use it the first time you push from a new computer.
+
+### Option B: SSH key
+
+SSH works well once configured. The tradeoff is that initial setup can be more complex on shared lab machines.
+
+What this step is for
+
+SSH uses a key pair rather than a password. GitHub stores your public key. Your computer stores your private key.
+
+## Create the GitHub repository
+
+You said you create the repository first. For the smoothest student workflow, create the repository with a minimal starter set of files.
+
+On GitHub, do the following tasks.
+
+1. Create a new repository.
+2. Add a README file.
+3. Optionally add a gitignore template. If you skip it, you can add a gitignore after cloning.
+
+## Create a Positron project from a GitHub repository
+
+In Positron, a project is the folder you open as your workspace. For GitHub work, you typically create the local folder by cloning.
+
+### Step 1: copy the repository URL from GitHub
+
+On GitHub, do the following tasks.
+
+1. Open your repository page.
+2. Select the Code button.
+3. Copy the repository URL.
+
+Choose the URL type based on your authentication method.
+
+1. HTTPS URL for PAT workflow.
+2. SSH URL for SSH workflow.
+
+Examples
+
+```text
+https://github.com/ORG/ds-project.git
+git@github.com:ORG/ds-project.git
+```
+
+What this step is for
+
+The URL tells Git where the remote repository lives. When you clone, Git downloads the files and also stores the URL as the remote named `origin`.
+
+### Step 2: clone into a new folder using Positron
+
+In Positron, do the following tasks.
+
+1. Open the Welcome screen.
+2. Select New Folder from Git.
+3. Paste the repository URL.
+4. Choose a location for the new folder.
+5. Complete the clone and open the folder as your workspace.
+
+What this step is for
+
+Cloning creates a local repository that contains the full history and a link back to the GitHub remote.
+
+### Step 3: verify you are in a Git repository
+
+Open the Terminal in the repository root and run:
+
+```bash
+git status
+```
+
+Expected output concepts
+
+1. You should see a branch name such as `main`.
+2. You should not see `not a git repository`.
+
+What this step is for
+
+`git status` is your primary safety check. It tells you whether Git recognizes the folder and whether you have uncommitted changes.
+
+Syntax explained
+
+1. `git` is the program.
+2. `status` is the subcommand.
+3. Many Git commands are structured as `git <subcommand> <options> <arguments>`.
+
+Now verify the remote URL.
+
+```bash
+git remote -v
+```
+
+What this step is for
+
+This confirms where pushes and pulls will go.
+
+Syntax explained
+
+1. `remote` is the subcommand related to remote repositories.
+2. `-v` means verbose, which prints both fetch and push URLs.
+
+## Create a safe project structure for R and Python
+
+A simple structure reduces confusion and prevents common mistakes such as committing generated files.
+
+Create these folders in the Files pane.
+
+1. data
+2. R
+3. python
+4. reports
+
+What this step is for
+
+You are separating data, code, and outputs. This makes it easier to find files and reduces merge conflicts in team settings.
+
+## Add a gitignore file to prevent accidental commits
+
+Create a file named `.gitignore` in the repository root with this content.
+
+```text
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Python
+__pycache__/
+.venv/
+venv/
+
+# Quarto
+.quarto/
+*_files/
+
+# OS
+.DS_Store
+Thumbs.db
+```
+
+What this step is for
+
+Git tracks changes in files. You do not want Git to track temporary files, cache folders, or local environments. A gitignore tells Git which paths to ignore by default.
+
+Syntax explained
+
+1. Each line is a pattern.
+2. A trailing slash means a folder.
+3. `.venv/` ignores the virtual environment folder created later in this chapter.
+4. Lines starting with `#` are comments.
+
+## Create a Python environment inside the project folder
+
+A project specific environment minimizes dependency conflicts and makes it easier to reproduce results.
+
+### Step 1: create the environment
+
+In the Terminal, from the repository root, run:
+
+```bash
+python -m venv .venv
+```
+
+What this step is for
+
+You create an isolated Python environment stored in the `.venv` folder inside the project.
+
+Syntax explained
+
+1. `python -m venv` runs the `venv` module that ships with Python.
+2. `.venv` is the folder name. The dot makes it less visually prominent, but it is still a normal folder.
+
+### Step 2: activate the environment
+
+Choose the command for your operating system.
+
+macOS or Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+What this step is for
+
+Activation updates your shell so that `python` and `pip` point to the environment rather than the system Python.
+
+### Step 3: confirm the environment is active
+
+Run:
+
+```bash
+python -c "import sys; print(sys.executable)"
+```
+
+What this step is for
+
+The printed path should include `.venv`. That confirms you are using the correct interpreter.
+
+Syntax explained
+
+1. `-c` tells Python to run a short command provided as a string.
+2. `sys.executable` prints the path of the Python interpreter currently running.
+
+### Optional: install common data science packages
+
+This chapter does not require extra packages. If you want them, install them after activation.
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install pandas numpy matplotlib
+```
+
+What this step is for
+
+Packages install into the active environment, keeping the rest of your computer unchanged.
+
+Syntax explained
+
+1. `python -m pip` runs pip using the active Python.
+2. `install` is the pip subcommand.
+3. `--upgrade` tells pip to update an installed package to a newer version.
+
+## Add concrete example files in R and Python
+
+This section builds a minimal example that avoids extra dependencies and therefore avoids many installation problems.
+
+### Step 1: create a small dataset
+
+Create `data/toy.csv` with this content.
+
+```text
+x,y
+1,1
+2,2
+3,2
+4,4
+5,5
+6,5
+7,7
+8,8
+```
+
+What this step is for
+
+A small dataset makes it easy to verify that both R and Python can read files from the same repository path.
+
+### Step 2: create an R script
+
+Create `R/toy_analysis.R` with this content.
+
+```r
+d <- read.csv("data/toy.csv")
+
+print(d)
+cat("\nSummary\n")
+print(summary(d))
+
+cat("\nCorrelation\n")
+print(cor(d$x, d$y))
+
+plot(d$x, d$y,
+     main = "toy.csv",
+     xlab = "x",
+     ylab = "y")
+abline(lm(y ~ x, data = d))
+```
+
+What this step is for
+
+This script confirms that R can read data from the repository and produce basic numeric summaries and a plot.
+
+Syntax explained
+
+1. `<-` assigns a value to a variable.
+2. `read.csv("data/toy.csv")` reads a CSV using a relative path. The path is relative to the project root.
+3. `$` selects a column from a data frame.
+4. `lm(y ~ x, data = d)` fits a linear model of y on x.
+
+### Step 3: create a Python script
+
+Create `python/toy_analysis.py` with this content. It uses only the Python standard library.
+
+```python
+import csv
+import math
+
+x = []
+y = []
+
+with open("data/toy.csv", newline="") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        x.append(float(row["x"]))
+        y.append(float(row["y"]))
+
+def mean(a):
+    return sum(a) / len(a)
+
+mx = mean(x)
+my = mean(y)
+
+cov = sum((xi - mx) * (yi - my) for xi, yi in zip(x, y)) / (len(x) - 1)
+sx = math.sqrt(sum((xi - mx) ** 2 for xi in x) / (len(x) - 1))
+sy = math.sqrt(sum((yi - my) ** 2 for yi in y) / (len(y) - 1))
+corr = cov / (sx * sy)
+
+print("n =", len(x))
+print("mean x =", mx)
+print("mean y =", my)
+print("correlation =", corr)
+```
+
+What this step is for
+
+This script confirms that Python can read the same CSV file and compute a correlation without requiring external libraries.
+
+Syntax explained
+
+1. `with open(...) as f` ensures the file is closed automatically.
+2. `csv.DictReader` reads each row as a dictionary using the header row as keys.
+3. `zip(x, y)` pairs values from the two lists.
+4. `len(x) - 1` appears because the covariance and standard deviations use a sample denominator.
+
+### Step 4: run the scripts in Positron
+
+Run the R script.
+
+1. Open `R/toy_analysis.R`.
+2. Use the R console to run selections or run the full file.
+
+Run the Python script.
+
+1. Ensure the `.venv` environment is active or selected.
+2. Open `python/toy_analysis.py`.
+3. Run the file or run selections in the Python console.
+
+What this step is for
+
+You verify the project is correctly set up before you commit and push. Debugging is easier before you add Git complexity.
+
+## The Git workflow inside Positron: pull, stage, commit, push
+
+This section is the core workflow that you will repeat throughout the project.
+
+### Step 1: pull before you start work
+
+In Source Control, use the pull or sync action. Or in the Terminal, run:
+
+```bash
+git pull
+```
+
+What this step is for
+
+Pulling reduces conflicts by ensuring your local repository starts from the most recent remote state.
+
+Syntax explained
+
+1. `pull` is essentially a fetch plus a merge. It downloads remote commits and then applies them to your current branch.
+
+### Step 2: make a small change
+
+Edit `README.md` and add a sentence such as:
+
+```text
+This repository contains an R and Python workflow example using Positron.
+```
+
+Save the file.
+
+What this step is for
+
+A small edit is a safe way to practice staging, committing, and pushing.
+
+### Step 3: stage changes
+
+In the Source Control panel, review the file list and stage the files you want in the commit.
+
+If you prefer the Terminal, stage specific files:
+
+```bash
+git add README.md .gitignore data/toy.csv R/toy_analysis.R python/toy_analysis.py
+```
+
+What this step is for
+
+Staging lets you decide exactly what belongs in the next commit. It is a checkpoint before you record history.
+
+Syntax explained
+
+1. `git add` adds file contents to the staging area.
+2. Listing paths explicitly reduces mistakes compared to adding everything at once.
+
+### Step 4: commit changes
+
+In Source Control, enter a message and commit. If you prefer the Terminal:
+
+```bash
+git commit -m "Add toy dataset and starter R and Python analyses"
+```
+
+What this step is for
+
+A commit is a permanent record of a meaningful change. Commits are local until you push.
+
+Syntax explained
+
+1. `-m` provides the commit message on the command line.
+2. The message should describe what changed and why, in plain language.
+
+### Step 5: push changes to GitHub
+
+In Source Control, use push or sync. Or in the Terminal:
+
+```bash
+git push
+```
+
+What this step is for
+
+Pushing sends your local commits to GitHub so others can see them and so your work is backed up.
+
+What you might see for private repositories
+
+If you use HTTPS, Git may prompt for credentials.
+
+1. Username: your GitHub username
+2. Password: your personal access token
+
+## Troubleshooting private repository authentication
+
+### Problem: Git repeatedly asks for credentials
+
+Likely causes
+
+1. The token expired.
+2. The token does not have the required repository permissions.
+3. The computer does not store credentials.
+
+Recovery steps
+
+1. Create a new token with access to the repository and permission to read and write repository contents.
+2. Try `git push` again and enter the new token.
+
+### Problem: permission denied when pushing
+
+Interpretation
+
+You authenticated successfully, but you do not have write access to that repository.
+
+Recovery steps
+
+1. Confirm you are listed as a collaborator or team member with write access.
+2. Confirm you are using the correct repository URL.
+
+### Problem: you cloned with HTTPS but want SSH
+
+You can change the remote URL.
+
+```bash
+git remote set-url origin git@github.com:ORG/ds-project.git
+git push
+```
+
+What this step is for
+
+Git stores the remote URL. Changing it switches the authentication method without re cloning.
+
+Syntax explained
+
+1. `set-url` updates the URL for a named remote.
+2. `origin` is the default remote name created during cloning.
+
+## Safe recovery patterns for common Git mistakes
+
+### Mistake: you forgot to pull and your push is rejected
+
+Run:
+
+```bash
+git pull
+git push
+```
+
+What this does
+
+1. Pull integrates remote changes.
+2. Push retries after integration.
+
+If you see a merge conflict, pause and ask for help. A merge conflict is not data loss, but it requires careful resolution.
+
+### Mistake: you committed a file that should not be tracked
+
+Example: you accidentally committed `.venv` or large data files.
+
+Fix pattern
+
+1. Add a gitignore rule.
+2. Remove the file from tracking.
+3. Commit the change.
+4. Push.
+
+Example for `.venv`:
+
+```bash
+git rm -r --cached .venv
+git add .gitignore
+git commit -m "Stop tracking the Python environment folder"
+git push
+```
+
+Syntax explained
+
+1. `git rm --cached` removes a file from Git tracking while leaving it on your computer.
+2. `-r` applies to folders recursively.
+
+### Mistake: you want to undo the last commit but keep the changes
+
+Run:
+
+```bash
+git reset --soft HEAD~1
+```
+
+What this step is for
+
+This moves the branch pointer back one commit, while keeping the changes staged so you can recommit with a better message.
+
+Syntax explained
+
+1. `HEAD` means the current commit.
+2. `HEAD~1` means the commit one step before HEAD.
+3. `--soft` keeps changes in the staging area.
+
+## Optional extension: a branch based workflow
+
+Branches are useful for team projects and for assignments that use pull requests.
+
+Create a branch:
+
+```bash
+git checkout -b feature-analysis
+```
+
+Push the branch and set upstream tracking:
+
+```bash
+git push -u origin feature-analysis
+```
+
+What this step is for
+
+A branch isolates your work. A pull request is a structured way to review changes before merging into `main`.
+
+Syntax explained
+
+1. `checkout -b` creates and switches to a new branch.
+2. `-u` sets the upstream branch so future `git push` can omit the branch name.
+
+## Rendering this chapter to HTML or PDF
+
+If you want to distribute this chapter as HTML or PDF, render it with Quarto.
+
+Render to HTML:
+
+```bash
+quarto render positron_github_workflow_chapter.qmd --to html
+```
+
+Render to PDF:
+
+```bash
+quarto render positron_github_workflow_chapter.qmd --to pdf
+```
+
+PDF notes
+
+A PDF render typically requires a LaTeX installation. If you see LaTeX errors, install TinyTeX.
+
+```bash
+quarto install tinytex
+```
+
+## Chapter checklist
+
+Use this checklist as a quick routine.
+
+1. Confirm tools are installed.
+2. Pull before you start work.
+3. Make focused changes.
+4. Stage only what you intend to commit.
+5. Commit with a clear message.
+6. Push and verify on GitHub.
